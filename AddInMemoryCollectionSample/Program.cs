@@ -36,6 +36,8 @@ namespace AddInMemoryCollectionSample
                     .Collapse()
                     .BorderColor(Color.White));
 
+            Examples.Combination();
+
             SpectreConsoleHelpers.ExitPrompt();
         }
     }

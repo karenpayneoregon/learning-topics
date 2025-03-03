@@ -8,17 +8,23 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="readme.md" />
+		<None Remove="readme.md" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="assets\csharp.ico" />
-	  <Content Include="readme.md" />
+		<Content Include="assets\csharp.ico" />
+		<Content Include="readme.md" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
+		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.10" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<Using Include="ConsoleConfigurationLibrary.Classes" Alias="Config" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
@@ -29,9 +35,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+		<PackageReference Include="Dapper" Version="2.1.66" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
 	</ItemGroup>
 
 </Project>

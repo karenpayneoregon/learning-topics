@@ -40,9 +40,7 @@ namespace AddInMemoryCollectionSample.Classes
                 }
             };
 
-            /*
-             *
-             */
+
             var json = JsonSerializer.Serialize(appSettings, Indented);
 
             return json;

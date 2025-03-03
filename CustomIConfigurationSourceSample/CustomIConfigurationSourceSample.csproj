@@ -23,6 +23,7 @@
 	<ItemGroup>
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
 		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>

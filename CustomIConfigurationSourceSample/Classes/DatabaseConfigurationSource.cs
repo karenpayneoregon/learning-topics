@@ -88,13 +88,12 @@ public class DatabaseConfigurationSource : IConfigurationSource
     /// </remarks>
     public T GetValue<T>(string key)
     {
-        if (_cache.TryGetValue(key, out object cachedValue))
+        if (_cache.TryGetValue(key, out var cachedValue))
         {
             return (T)cachedValue;
         }
 
-        using var context = new Context(
-            new DbContextOptionsBuilder<Context>()
+        using var context = new Context(new DbContextOptionsBuilder<Context>()
                 .UseSqlServer(_connectionString)
                 .Options);
 
@@ -135,13 +134,11 @@ public class DatabaseConfigurationSource : IConfigurationSource
             .GetProperty("EntriesCollection", BindingFlags.NonPublic | BindingFlags.Instance)
             ?.GetValue(_cache) as dynamic;
 
-        if (cacheKeys != null)
+        if (cacheKeys == null) return;
+        foreach (var cacheItem in cacheKeys)
         {
-            foreach (var cacheItem in cacheKeys)
-            {
-                var key = cacheItem.GetType().GetProperty("Key").GetValue(cacheItem, null);
-                _cache.Remove(key);
-            }
+            var key = cacheItem.GetType().GetProperty("Key").GetValue(cacheItem, null);
+            _cache.Remove(key);
         }
     }
 }

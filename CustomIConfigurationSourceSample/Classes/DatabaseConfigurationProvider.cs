@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 
-
 namespace CustomIConfigurationSourceSample.Classes;
 
 /// <summary>

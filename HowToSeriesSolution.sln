@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomIConfigurationSourceS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomIConfigurationSourceRazorPages", "CustomIConfigurationSourceRazorPages\CustomIConfigurationSourceRazorPages.csproj", "{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{6D89B7DD-C728-4009-B95C-D2FAC0806AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D89B7DD-C728-4009-B95C-D2FAC0806AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D89B7DD-C728-4009-B95C-D2FAC0806AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FFADEA27-B886-40CE-B4FD-5D3183ADDDFD} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6D89B7DD-C728-4009-B95C-D2FAC0806AF3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{84907B1C-BC8D-4BC5-9D5A-F24B894C3A76} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

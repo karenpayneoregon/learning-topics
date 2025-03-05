@@ -3,6 +3,7 @@ using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Classes;
 using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 #pragma warning disable CS8618, CS9264
@@ -11,6 +12,8 @@ namespace CustomIConfigurationSourceRazorPages.Pages;
 
 public class IndexModel : PageModel
 {
+    [BindProperty]
+    public HelpDesk HelpDesk { get; set; }
 
     private readonly IConfiguration _configuration;
     private readonly Context _context;
@@ -28,6 +31,6 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        HelpDesk helpDesk = DataOperations.ReadFromDatabase(_context);
+        HelpDesk = DataOperations.ReadFromDatabase(_context);
     }
 }

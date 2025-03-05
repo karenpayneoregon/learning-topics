@@ -12,8 +12,6 @@ namespace CustomIConfigurationSourceRazorPages.Pages;
 
 public class IndexModel : PageModel
 {
-    [BindProperty]
-    public HelpDesk HelpDesk { get; set; }
 
     private readonly IConfiguration _configuration;
     private readonly Context _context;
@@ -23,14 +21,14 @@ public class IndexModel : PageModel
         _configuration = configuration;
         _context = context;
 
-        var sss = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        var ccc = sss.MainConnection;
+        var section = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var ccc = section!.MainConnection;
 
 
     }
 
     public void OnGet()
     {
-        HelpDesk = DataOperations.ReadFromDatabase(_context);
+     
     }
 }

@@ -15,15 +15,11 @@ public class Program
         // Register MemoryCache
         builder.Services.AddMemoryCache();
 
-
-
         // Register DbContext
         builder.Services.AddDbContext<Context>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection")));
 
-
-
-
+        
         var configurationBuilder = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);

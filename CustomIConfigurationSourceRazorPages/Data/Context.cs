@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Models;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +24,34 @@ public partial class Context : DbContext
     public virtual DbSet<ConfigurationSetting> ConfigurationSettings { get; set; }
     public virtual DbSet<Setting> Settings { get; set; }
 
+    /// <summary>
+    /// Configures the database context options when used without dependency injection.
+    /// </summary>
+    /// <param name="optionsBuilder">
+    /// An instance of <see cref="DbContextOptionsBuilder"/> used to configure the context.
+    /// </param>
+    /// <remarks>
+    /// This method is invoked when the context is being configured. If the options are not already configured,
+    /// it sets up the SQL Server provider with the main connection string retrieved from the application's configuration.
+    /// </remarks>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=AppsettingsConfigurations;Integrated Security=True;Encrypt=False");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(GetMainConnectionString());
+        }
+    }
+
+    /// <summary>
+    /// Retrieves the main connection string from the application's configuration.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string"/> representing the main connection string used for database connectivity.
+    /// </returns>
+    private static string GetMainConnectionString()
+    {
+        return Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>().MainConnection;
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

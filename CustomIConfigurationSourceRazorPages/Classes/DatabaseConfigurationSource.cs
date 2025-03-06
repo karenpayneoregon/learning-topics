@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using ConsoleConfigurationLibrary.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CustomIConfigurationSourceRazorPages.Classes;
 
@@ -16,8 +17,8 @@ public class DatabaseConfigurationSource : IConfigurationSource
     public DatabaseConfigurationSource(IServiceProvider services, IConfiguration jsonConfiguration)
     {
         _jsonConfiguration = jsonConfiguration;
-        _connectionString = _jsonConfiguration.GetConnectionString("MainConnection");
-
+        _connectionString = _jsonConfiguration.GetConnectionString(nameof(ConnectionStrings.MainConnection));
+        
         // Get MemoryCache from DI
         _cache = services.GetRequiredService<IMemoryCache>();
         _cacheDuration = TimeSpan.FromMinutes(5);

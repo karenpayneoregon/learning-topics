@@ -4,6 +4,13 @@ namespace AddInMemoryCollectionSample.Classes;
 
 public static class SpectreConsoleHelpers
 {
+    /// <summary>
+    /// Displays a prompt in the console instructing the user to press ENTER to exit the demo.
+    /// </summary>
+    /// <remarks>
+    /// This method uses the Spectre.Console library to format the prompt message.
+    /// It waits for the user to press ENTER before proceeding, providing a clear exit point for the application.
+    /// </remarks>
     public static void ExitPrompt()
     {
         Console.WriteLine();
@@ -12,7 +19,7 @@ public static class SpectreConsoleHelpers
         Console.ReadLine();
     }
 
-    public static void Print([CallerMemberName] string? methodName = null)
+    public static void Print([CallerMemberName] string methodName = null)
     {
         AnsiConsole.MarkupLine($"[yellow]{methodName}[/]");
     }

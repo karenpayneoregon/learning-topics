@@ -1,6 +1,7 @@
 ﻿using CustomIConfigurationSourceSample.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+#pragma warning disable CS8601 // Possible null reference assignment.
 
 namespace CustomIConfigurationSourceRazorPages.Classes;
 

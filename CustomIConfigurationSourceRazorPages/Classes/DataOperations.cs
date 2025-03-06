@@ -19,11 +19,12 @@ public class DataOperations
     /// </returns>
     public static HelpDesk ReadFromDatabase(Context context)
     {
-        var settings = context.Settings.AsNoTracking()
+        var settings = context.Settings
+            .AsNoTracking()
             .Where(x => x.Section == nameof(HelpDesk) && (x.Key == nameof(HelpDesk.Phone) || x.Key == nameof(HelpDesk.Email)))
             .ToList();
 
-        return new HelpDesk
+        return new()
         {
             Phone = settings.FirstOrDefault(x => x.Key == nameof(HelpDesk.Phone))?.Value,
             Email = settings.FirstOrDefault(x => x.Key == nameof(HelpDesk.Email))?.Value

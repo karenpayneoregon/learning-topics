@@ -22,6 +22,7 @@ public class DatabaseConfigurationProvider : ConfigurationProvider
         _connectionString = connectionString;
         _cache = cache;
         _cacheDuration = cacheDuration;
+        
     }
 
     public override void Load()

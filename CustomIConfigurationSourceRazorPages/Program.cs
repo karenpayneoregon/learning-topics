@@ -17,12 +17,21 @@ public class Program
 
         // Register DbContext
         builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ConnectionStrings.MainConnection))));
 
-        
+        using var context = new Context();
+        var helpDesk = DataOperations.GetHelpDeskValues(context);
+
+        // Add values from SQL-Server
         var configurationBuilder = new ConfigurationBuilder()
+            .AddInMemoryCollection(new Dictionary<string, string?>()
+            {
+                {"Helpdesk:phone", helpDesk.Phone},
+                {"Helpdesk:email", helpDesk.Email}
+            })
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
 
         // Build service provider early to resolve DI services
         var serviceProvider = builder.Services.BuildServiceProvider();

@@ -17,7 +17,7 @@ public class DataOperations
     /// A <see cref="HelpDesk"/> object containing the phone and email values
     /// retrieved from the database. If no values are found, the properties will be null.
     /// </returns>
-    public static HelpDesk ReadFromDatabase(Context context)
+    public static HelpDesk GetHelpDeskValues(Context context)
     {
         var settings = context.Settings
             .AsNoTracking()

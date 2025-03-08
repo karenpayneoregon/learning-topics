@@ -1,6 +1,8 @@
-﻿@using CustomIConfigurationSourceRazorPages.Classes
+﻿@using CustomIConfigurationSourceRazorPages.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@inject Context _context
+
+@inject IConfiguration Configuration
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,13 +45,19 @@
     <footer class="border-top footer text-muted">
 
         <div class="container">
-
+            
             @{
-                var helpDesk = DataOperations.ReadFromDatabase(_context);
+                /*
+                 * Read the HelpDesk section in memory collection, see configurationBuilder in Program.cs
+                 */
+                var helpDesk = Configuration.GetSection(nameof(HelpDesk)).Get<HelpDesk>();
+                var email = helpDesk.Email;
+                var phone = helpDesk.Phone;
             }
 
-            <span class="text-success fw-bold">Help Desk:</span> <strong>Phone</strong> @helpDesk.Phone
-            <div class="vr opacity-100"></div> <strong>Email</strong> @helpDesk.Email
+            <span class="text-success fw-bold">Help Desk:</span> <strong>Phone</strong> @phone
+            <div class="vr opacity-100"></div> <strong>Email</strong> @email
+            
 
         </div>
     </footer>

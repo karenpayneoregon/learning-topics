@@ -4,13 +4,12 @@
 @inject IConfiguration Configuration
 @inject ILogger<dynamic> Logger
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CustomIConfigurationSourceRazorPages</title>
+    <title>@ViewData["Title"] - Custom IConfiguration</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -49,7 +48,7 @@
         <div class="container">
             
             @{
-                Logger.LogInformation("Rendering _Layout.cshtml at {Time}", DateTime.Now);
+                Logger.LogInformation("Reading help desk value...");
                 /*
                  * Read the HelpDesk section in memory collection, see configurationBuilder in Program.cs
                  */
@@ -61,14 +60,13 @@
             <span class="text-success fw-bold">Help Desk:</span> <strong>Phone</strong> @phone
             <div class="vr opacity-100"></div> <strong>Email</strong> @email
             
-
         </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+                

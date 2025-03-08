@@ -2,6 +2,8 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @inject IConfiguration Configuration
+@inject ILogger<dynamic> Logger
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +49,7 @@
         <div class="container">
             
             @{
+                Logger.LogInformation("Rendering _Layout.cshtml at {Time}", DateTime.Now);
                 /*
                  * Read the HelpDesk section in memory collection, see configurationBuilder in Program.cs
                  */

@@ -2,6 +2,7 @@ using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Classes;
 using CustomIConfigurationSourceSample.Data;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 #pragma warning disable ASP0000
 
 namespace CustomIConfigurationSourceRazorPages;
@@ -11,6 +12,17 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        // Configure Serilog
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)  // Suppress ASP.NET Core logs
+            .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)  // Suppress System logs
+            .MinimumLevel.Information()
+            .WriteTo.Console()
+            .CreateLogger();
+
+        // Add Serilog to the logging pipeline
+        builder.Host.UseSerilog();
 
         // Register MemoryCache
         builder.Services.AddMemoryCache();
@@ -22,7 +34,7 @@ public class Program
         using var context = new Context();
         var helpDesk = DataOperations.GetHelpDeskValues(context);
 
-        // Add values from SQL-Server
+        // Add values from SQL-Server which are used in _Layout.cshtml
         var configurationBuilder = new ConfigurationBuilder()
             .AddInMemoryCollection(new Dictionary<string, string?>()
             {
@@ -39,23 +51,19 @@ public class Program
         // Add Database Configuration Source before building final configuration
         configurationBuilder.Add(new DatabaseConfigurationSource(serviceProvider, configurationBuilder.Build()));
 
-
         // Use the final configuration to register it with the dependency injection container
         IConfiguration configuration = configurationBuilder.Build();
         builder.Services.AddSingleton<IConfiguration>(configuration); // Register IConfiguration in DI
 
-
-
+        
         // Add services to the container.
         builder.Services.AddRazorPages();
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
@@ -66,8 +74,7 @@ public class Program
         app.UseAuthorization();
 
         app.MapStaticAssets();
-        app.MapRazorPages()
-           .WithStaticAssets();
+        app.MapRazorPages().WithStaticAssets();
 
         app.Run();
     }

@@ -51,6 +51,6 @@ public class DatabaseConfigurationProvider : ConfigurationProvider
             }
         }
 
-        Data = settings; // Ensure data is set for IConfiguration
+        Data = settings!; // Ensure data is set for IConfiguration
     }
 }

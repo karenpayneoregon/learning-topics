@@ -1,13 +1,9 @@
 ﻿
 using ConsoleConfigurationLibrary.Models;
-using CustomIConfigurationSourceRazorPages.Classes;
 using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Data;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-using System.Text;
 
 #pragma warning disable CS8618, CS9264
 
@@ -33,19 +29,22 @@ public class IndexModel : PageModel
     /// This constructor sets up the configuration and database context for the Razor Page.
     /// It also retrieves the main connection string from the application's configuration.
     /// </remarks>
-    public IndexModel(IConfiguration configuration,  Context context)
+    public IndexModel(IConfiguration configuration, Context context)
     {
         _configuration = configuration;
         _context = context;
 
-        var section = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        var ccc = section!.MainConnection;
-
-
+        var section1 = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var mainConnection = section1!.MainConnection;
     }
+
+
 
     public void OnGet()
     {
+        var section2 = _configuration.GetSection(nameof(Layout)).Get<Layout>();
+        var title = section2?.Title ?? "Home page"; 
 
+        ViewData["Title"] = title; // Store title in ViewData
     }
 }

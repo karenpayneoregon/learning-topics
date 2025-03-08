@@ -1,4 +1,4 @@
-using ConsoleConfigurationLibrary.Models;
+﻿using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Classes;
 using CustomIConfigurationSourceSample.Data;
 using Microsoft.EntityFrameworkCore;
@@ -15,13 +15,12 @@ public class Program
 
         // Configure Serilog
         Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)  // Suppress ASP.NET Core logs
-            .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)  // Suppress System logs
+            .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+            .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)
             .MinimumLevel.Information()
             .WriteTo.Console()
             .CreateLogger();
 
-        // Add Serilog to the logging pipeline
         builder.Host.UseSerilog();
 
         // Register MemoryCache
@@ -34,29 +33,29 @@ public class Program
         using var context = new Context();
         var helpDesk = DataOperations.GetHelpDeskValues(context);
 
-        // Add values from SQL-Server which are used in _Layout.cshtml
+        // Add Configuration Sources
         var configurationBuilder = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("other.json", optional: false, reloadOnChange: true)
             .AddInMemoryCollection(new Dictionary<string, string?>()
             {
                 {"Helpdesk:phone", helpDesk.Phone},
                 {"Helpdesk:email", helpDesk.Email}
-            })
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            });
 
 
-        // Build service provider early to resolve DI services
+        //  Build service provider early to resolve DI services
         var serviceProvider = builder.Services.BuildServiceProvider();
 
-        // Add Database Configuration Source before building final configuration
+        //  Add Database Configuration Source before final build
         configurationBuilder.Add(new DatabaseConfigurationSource(serviceProvider, configurationBuilder.Build()));
 
-        // Use the final configuration to register it with the dependency injection container
-        IConfiguration configuration = configurationBuilder.Build();
-        builder.Services.AddSingleton<IConfiguration>(configuration); // Register IConfiguration in DI
+        //  Build configuration and register it in DI
+        var configuration = configurationBuilder.Build();
+        builder.Services.AddSingleton<IConfiguration>(configuration); // ✅ Correct way
 
-        
-        // Add services to the container.
+        // Add services to the container
         builder.Services.AddRazorPages();
 
         var app = builder.Build();
@@ -68,14 +67,10 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
         app.UseRouting();
-
         app.UseAuthorization();
-
         app.MapStaticAssets();
         app.MapRazorPages().WithStaticAssets();
-
         app.Run();
     }
 }

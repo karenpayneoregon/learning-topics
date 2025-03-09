@@ -1,5 +1,6 @@
 ﻿using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Classes;
+using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -34,17 +35,19 @@ public class Program
         var helpDesk = DataOperations.GetHelpDeskValues(context);
 
         // Add Configuration Sources
+
         var configurationBuilder = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile("other.json", optional: false, reloadOnChange: true)
+            .AddUserSecrets<MailSettings>()
             .AddInMemoryCollection(new Dictionary<string, string?>()
             {
                 {"Helpdesk:phone", helpDesk.Phone},
                 {"Helpdesk:email", helpDesk.Email}
             });
 
-
+        
         //  Build service provider early to resolve DI services
         var serviceProvider = builder.Services.BuildServiceProvider();
 

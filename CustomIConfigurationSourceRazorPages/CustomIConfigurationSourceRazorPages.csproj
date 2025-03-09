@@ -4,14 +4,15 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
+	  <UserSecretsId>7fba46f3-24f9-4832-a34c-46e91d29f03c</UserSecretsId>
+  </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <NoWarn>1701;1702;CS8602</NoWarn>
+	  <NoWarn>1701;1702;CS8602;CS8601</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <NoWarn>1701;1702;CS8602</NoWarn>
+	  <NoWarn>1701;1702;CS8602;CS8601</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -2,7 +2,6 @@
 using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Data;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 #pragma warning disable CS8618, CS9264
@@ -13,8 +12,17 @@ public class IndexModel : PageModel
 {
 
     private readonly IConfiguration _configuration;
-    private readonly Context _context;
 
+    /// <summary>
+    /// Gets the mail-related configuration settings for the application.
+    /// </summary>
+    /// <remarks>
+    /// This property retrieves its value from the application's configuration, specifically from the 
+    /// "MailSettings" section. It includes details such as the sender's email address, SMTP host, 
+    /// port, timeout, and the folder for storing email pickups. The settings are stored in secrets.
+    /// </remarks>
+    public MailSettings MailSettings { get; private set; }
+    private readonly Context _context;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="IndexModel"/> class.
@@ -34,17 +42,31 @@ public class IndexModel : PageModel
         _configuration = configuration;
         _context = context;
 
-        var section1 = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        var mainConnection = section1!.MainConnection;
+        // non-secrets
+        var connectionSection = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var mainConnection = connectionSection!.MainConnection;
+
     }
-
-
-
+    
+    /// <summary>
+    /// Handles GET requests for the Index Razor Page.
+    /// </summary>
+    /// <remarks>
+    /// This method retrieves layout-related configuration settings, such as the page title, 
+    /// and assigns them to the <see cref="PageModel.ViewData"/> dictionary for rendering in the Razor Page.
+    /// Additionally, it fetches mail-related settings from the application's configuration 
+    /// and assigns them to the <see cref="MailSettings"/> property which is stored in user secrets.
+    /// </remarks>
     public void OnGet()
     {
-        var section2 = _configuration.GetSection(nameof(Layout)).Get<Layout>();
-        var title = section2?.Title ?? "Home page"; 
+        // non-secrets
+        var layoutSection = _configuration.GetSection(nameof(Layout)).Get<Layout>();
+        var title = layoutSection?.Title ?? "Home page"; 
 
-        ViewData["Title"] = title; // Store title in ViewData
+        ViewData["Title"] = title;
+
+        // in secrets
+        MailSettings = _configuration.GetSection(nameof(MailSettings)).Get<MailSettings>();
+
     }
 }

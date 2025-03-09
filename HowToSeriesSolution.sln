@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web projects", "Web project
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryConfigurationSourceRazorPages", "MemoryConfigurationSourceRazorPages\MemoryConfigurationSourceRazorPages.csproj", "{37BAA5F7-4ECC-1520-28DE-A937D4C6F343}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDeskApplication", "HelpDeskApplication\HelpDeskApplication.csproj", "{567A1F13-9F3C-23B0-28DB-39E0D2353431}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{37BAA5F7-4ECC-1520-28DE-A937D4C6F343}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37BAA5F7-4ECC-1520-28DE-A937D4C6F343}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37BAA5F7-4ECC-1520-28DE-A937D4C6F343}.Release|Any CPU.Build.0 = Release|Any CPU
+		{567A1F13-9F3C-23B0-28DB-39E0D2353431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567A1F13-9F3C-23B0-28DB-39E0D2353431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567A1F13-9F3C-23B0-28DB-39E0D2353431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567A1F13-9F3C-23B0-28DB-39E0D2353431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{CD42C8B1-D1F7-4DD4-9E2B-5E2B3D47F1DA} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{0363E199-36E5-4351-9A8E-57446F991DD8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{37BAA5F7-4ECC-1520-28DE-A937D4C6F343} = {0363E199-36E5-4351-9A8E-57446F991DD8}
+		{567A1F13-9F3C-23B0-28DB-39E0D2353431} = {0363E199-36E5-4351-9A8E-57446F991DD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

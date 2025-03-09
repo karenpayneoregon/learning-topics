@@ -49,7 +49,7 @@
                 Logger.LogInformation("Reading help desk value...");
 
                 var helpDesk = Configuration.GetSection(nameof(HelpDesk)).Get<HelpDesk>();
-                var email = helpDesk!.Email;
+                var email = helpDesk.Email;
                 var phone = helpDesk.Phone;
             }
 

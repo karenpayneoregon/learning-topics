@@ -3,6 +3,7 @@ using CustomIConfigurationSourceRazorPages.Classes;
 using CustomIConfigurationSourceRazorPages.Models;
 using CustomIConfigurationSourceSample.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.Memory;
 using Serilog;
 #pragma warning disable ASP0000
 
@@ -24,41 +25,19 @@ public class Program
 
         builder.Host.UseSerilog();
 
-        // Register MemoryCache
-        builder.Services.AddMemoryCache();
-
         // Register DbContext
-        builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ConnectionStrings.MainConnection))));
+        builder.Services.AddDbContext<Context>(options => options.UseSqlServer(
+            builder.Configuration.GetConnectionString(nameof(ConnectionStrings.MainConnection))));
 
-        using var context = new Context();
-        var helpDesk = DataOperations.GetHelpDeskValues(context);
+        var configurationBuilder = SetupCustomConfiguration();
 
-        // Add Configuration Sources
-
-        var configurationBuilder = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile("other.json", optional: false, reloadOnChange: true)
-            .AddUserSecrets<MailSettings>()
-            .AddInMemoryCollection(new Dictionary<string, string?>()
-            {
-                {"Helpdesk:phone", helpDesk.Phone},
-                {"Helpdesk:email", helpDesk.Email}
-            });
-
-        
-        //  Build service provider early to resolve DI services
+        //  Build service provider
         var serviceProvider = builder.Services.BuildServiceProvider();
-
-        //  Add Database Configuration Source before final build
-        configurationBuilder.Add(new DatabaseConfigurationSource(serviceProvider, configurationBuilder.Build()));
 
         //  Build configuration and register it in DI
         var configuration = configurationBuilder.Build();
-        builder.Services.AddSingleton<IConfiguration>(configuration); // ✅ Correct way
+        builder.Services.AddSingleton<IConfiguration>(configuration); 
 
-        // Add services to the container
         builder.Services.AddRazorPages();
 
         var app = builder.Build();
@@ -75,5 +54,46 @@ public class Program
         app.MapStaticAssets();
         app.MapRazorPages().WithStaticAssets();
         app.Run();
+    }
+
+    /// <summary>
+    /// Configures a custom <see cref="IConfigurationBuilder"/> by adding various configuration sources.
+    /// </summary>
+    /// <remarks>
+    /// This method sets up the configuration builder with multiple sources, including:
+    /// <list type="bullet">
+    /// <item><description>JSON files such as "appsettings.json" and "other.json".</description></item>
+    /// <item><description>User secrets for the <see cref="MailSettings"/> class.</description></item>
+    /// <item><description>An in-memory configuration source populated with data from <see cref="DataOperations.GetHelpDeskValues"/>.</description></item>
+    /// </list>
+    /// Additionally, it demonstrates how to retrieve a specific <see cref="MemoryConfigurationSource"/> from the builder's sources.
+    /// </remarks>
+    /// <returns>An instance of <see cref="IConfigurationBuilder"/> configured with the specified sources.</returns>
+    private static IConfigurationBuilder SetupCustomConfiguration()
+    {
+        /*
+         * An alternate to AddInMemoryCollection in ConfigurationBuilder
+         */
+        var memorySource = new MemoryConfigurationSource { InitialData = DataOperations.GetHelpDeskValues() };
+
+        // Add Configuration Sources
+        var configurationBuilder = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("other.json", optional: false, reloadOnChange: true)
+            .AddUserSecrets<MailSettings>()
+            .Add(memorySource);
+
+
+        /*
+         * Find the MemoryConfigurationSource instance in the ConfigurationBuilder
+         * For demonstration purposes only
+         */
+        var memoryConfigurationSource = configurationBuilder.Sources
+            .OfType<MemoryConfigurationSource>()
+            .FirstOrDefault();
+
+
+        return configurationBuilder;
     }
 }

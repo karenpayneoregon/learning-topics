@@ -1,6 +1,6 @@
 ﻿# About
 
-
+Various examples for an article.
 
 ## NuGet packages
 

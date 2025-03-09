@@ -64,7 +64,8 @@ public class DatabaseConfigurationSource : IConfigurationSource
     /// database to fetch configuration settings. It utilizes caching to improve performance 
     /// and reduce database load.
     /// </remarks>
-    public IConfigurationProvider Build(IConfigurationBuilder builder) => new DatabaseConfigurationProvider(_jsonConfiguration, _connectionString, _cache, _cacheDuration);
+    public IConfigurationProvider Build(IConfigurationBuilder builder) 
+        => new DatabaseConfigurationProvider(_jsonConfiguration, _connectionString, _cache, _cacheDuration);
 
     /// <summary>
     /// Retrieves a strongly typed configuration value associated with the specified key.

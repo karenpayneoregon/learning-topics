@@ -2,8 +2,11 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using ConsoleConfigurationLibrary.Models;
+using CustomIConfigurationSourceSample.Classes;
 using CustomIConfigurationSourceSample.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CustomIConfigurationSourceSample.Data;
 
@@ -21,7 +24,7 @@ public partial class Context : DbContext
     public virtual DbSet<ConfigurationSetting> ConfigurationSettings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=AppsettingsConfigurations;Integrated Security=True;Encrypt=False");
+        => optionsBuilder.UseSqlServer(GetMainConnectionString());
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,4 +37,21 @@ public partial class Context : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    /// <summary>
+    /// Retrieves the main connection string from the application's configuration.
+    /// </summary>
+    /// <remarks>
+    /// Can not use the <see cref="AppConfiguration"/> class to retrieve the main connection string here as <see cref="AppConfiguration"/>
+    /// has not been initialized yet.  See <see cref="DatabaseConfigurationSource"/> which is responsible for loading data
+    /// from the database.
+    ///
+    /// <see cref="Config.Configuration.JsonRoot()"/> where Config is an alias in the project file.
+    /// 
+    /// </remarks>
+    /// <returns>
+    /// A <see cref="string"/> representing the main connection string used for database connectivity.
+    /// </returns>
+    private static string GetMainConnectionString() 
+        => Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>().MainConnection;
 }

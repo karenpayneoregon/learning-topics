@@ -1,6 +1,5 @@
 ﻿using ConsoleConfigurationLibrary.Models;
 using CustomIConfigurationSourceSample.Classes;
-using CustomIConfigurationSourceSample.Data;
 using CustomIConfigurationSourceSample.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -10,21 +9,13 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-  
-        var builder = new ConfigurationBuilder();
-        builder.Add(new DatabaseConfigurationSource()); 
-        var configuration = builder.Build();
 
-        var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        string mainConnection = connectionStrings.MainConnection;
-        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
-
-        string phone = configuration.GetValue<string>(nameof(HelpDesk.Phone));
-        AnsiConsole.MarkupLine($"[cyan]Phone:[/] {phone}");
-
-        string email = configuration.GetValue<string>(nameof(HelpDesk.Email));
-        AnsiConsole.MarkupLine($"[cyan]Email:[/] {email}");
-
+        AnsiConsole.MarkupLine("[cyan]Connection string[/]");
+        AnsiConsole.MarkupLine($"[yellow]{AppConfiguration.Instance.MainConnection}[/]");
+        Console.WriteLine();
+        AnsiConsole.MarkupLine("[cyan]Help desk[/]");
+        AnsiConsole.MarkupLine($"[white]Phone:[/] [yellow]{AppConfiguration.Instance.HelpDesk.Phone}[/]");
+        AnsiConsole.MarkupLine($"[white]Email:[/] [yellow]{AppConfiguration.Instance.HelpDesk.Email}[/]");
 
         Console.ReadLine();
     }

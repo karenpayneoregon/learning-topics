@@ -7,11 +7,12 @@
     <div class="container d-flex justify-content-center">
         <div class="card shadow mt-5" style="width: 28rem;">
             <div class="card-body">
-                <h1 class="card-title">Card title</h1>
+                <h1 class="card-title">About</h1>
                 <p class="card-text">Help desk information in footer</p>
-                <p class="card-text mb2">Code in _layout.cshtml</p>
+                <p class="card-text mb-2">Code in _layout.cshtml</p>
 
                 <p class="card-text fw-bold">User secrets</p>
+
                 <ul>
                     <li><strong>From Address:</strong> @Model.MailSettings.FromAddress</li>
                     <li><strong>Host:</strong> @Model.MailSettings.Host</li>
@@ -19,6 +20,7 @@
                     <li><strong>Timeout:</strong> @Model.MailSettings.TimeOut</li>
                     <li><strong>Pickup Folder:</strong> @Model.MailSettings.PickupFolder</li>
                 </ul>
+
             </div>
         </div>
 

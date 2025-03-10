@@ -69,11 +69,10 @@ internal partial class Program
 
                 secretItems.Add(new()
                 {
-                    FileName = file,
+                    ProjectFileName = file,
                     UserSecretsId = userSecretsId
                 });
 
-                //AnsiConsole.MarkupLine($"[cyan]{file}[/] - UserSecretsId: [yellow]{userSecretsId}[/]");
             }
         }
         catch (UnauthorizedAccessException unauthorized)

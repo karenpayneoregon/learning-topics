@@ -16,20 +16,22 @@ internal partial class Program
             return;
         }
 
-        string rootDirectory = @"C:\OED\DotnetLand\VS2022";
-        string outputFile = @"UserSecretsProjects.json";
+        const string rootDirectory = @"C:\OED\DotnetLand\VS2022";
+        const string outputFile = @"UserSecretsProjects.json";
 
         List<SecretItem> secretItems = [];
 
         try
         {
-            AnsiConsole.MarkupLine("[yellow]Scanning for UserSecretsId values...[/]");
+
+            AnsiConsole.MarkupLine("[yellow]Scanning...[/]");
             ScanDirectory(rootDirectory, secretItems);
 
-            // Serialize the results to a JSON file
             string json = JsonSerializer.Serialize(secretItems, Indented);
             File.WriteAllText(outputFile, json);
+            var results = JsonSerializer.Deserialize<List<SecretItem>>(json);
 
+            Console.WriteLine(ObjectDumper.Dump(results));
             Console.WriteLine($"Scan complete. Results saved in: {outputFile}");
         }
         catch (Exception ex)
@@ -62,14 +64,16 @@ internal partial class Program
             foreach (var file in Directory.GetFiles(directory, "*.csproj", SearchOption.AllDirectories))
             {
                 string userSecretsId = ExtractUserSecretsId(file);
+                
                 if (string.IsNullOrEmpty(userSecretsId)) continue;
-                secretItems.Add(new SecretItem
+
+                secretItems.Add(new()
                 {
                     FileName = file,
                     UserSecretsId = userSecretsId
                 });
 
-                AnsiConsole.MarkupLine($"[cyan]{file}[/] - UserSecretsId: [yellow]{userSecretsId}[/]");
+                //AnsiConsole.MarkupLine($"[cyan]{file}[/] - UserSecretsId: [yellow]{userSecretsId}[/]");
             }
         }
         catch (UnauthorizedAccessException unauthorized)
@@ -101,9 +105,12 @@ internal partial class Program
     {
         try
         {
+
             var content = File.ReadAllText(filePath);
-            Match match = GenerateUserSecretsIdRegex().Match(content);
+            var match = GenerateUserSecretsIdRegex().Match(content);
+
             return match.Success ? match.Groups[1].Value : null;
+
         }
         catch (Exception ex)
         {

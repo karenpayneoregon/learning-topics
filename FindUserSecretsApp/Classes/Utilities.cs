@@ -29,5 +29,13 @@
         /// This property checks for the existence of the folder using the <see cref="System.IO.Directory.Exists(string)"/> method.
         /// </remarks>
         public static bool SecretsFolderExists => Directory.Exists(SecretsFolder);
+
+        /// <summary>
+        /// Constructs the full path to the project folder within the user secrets directory.
+        /// </summary>
+        /// <param name="sender">The name or identifier of the project.</param>
+        /// <returns>The full path to the project folder as a string.</returns>
+        public static string ProjectFolder(string sender) => 
+            Path.Combine(SecretsFolder, sender);
     }
 }

@@ -15,9 +15,5 @@ internal partial class Program
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
         SetupLogging.Development();
     }
-    public static JsonSerializerOptions Indented => new() { WriteIndented = true };
-
-
-    [GeneratedRegex(@"<UserSecretsId>(.*?)</UserSecretsId>", RegexOptions.IgnoreCase, "en-US")]
-    private static partial Regex GenerateUserSecretsIdRegex();
+  
 }

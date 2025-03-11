@@ -31,4 +31,13 @@ public class SecretItem
     /// It is typically defined in the project file and is essential for accessing user-specific configuration data.
     /// </remarks>
     public string UserSecretsId { get; init; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the secret item is valid.
+    /// </summary>
+    /// <remarks>
+    /// A secret item is considered valid if the associated project folder exists
+    /// within the UserSecrets directory.
+    /// </remarks>
+    public bool IsValid { get; set; }
 }

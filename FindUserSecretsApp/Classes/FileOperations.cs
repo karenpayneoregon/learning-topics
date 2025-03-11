@@ -132,6 +132,23 @@ namespace FindUserSecretsApp.Classes
             return secretItems;
         }
 
+        public static (string[] json, bool exists) ReadSecretFile(string userSecretsId)
+        {
+            var directory = Utilities.ProjectFolder(userSecretsId);
+
+            if (Directory.Exists(directory))
+            {
+                var file = Path.Combine(directory, "secrets.json");
+                if (File.Exists(file))
+                {
+                    var isEmpty = Utilities.IsEmptyJsonObject(File.ReadAllText(file));
+                    return (File.ReadAllLines(file), !isEmpty);
+                }
+            }
+
+            return ([], false);
+        }
+
         public static JsonSerializerOptions Indented => new() { WriteIndented = true };
 
 

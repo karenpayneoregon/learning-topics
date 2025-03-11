@@ -1,4 +1,7 @@
-﻿namespace FindUserSecretsApp.Classes
+﻿using System.Text.Json.Nodes;
+using System.Text.Json;
+
+namespace FindUserSecretsApp.Classes
 {
     public class Utilities
     {
@@ -37,5 +40,32 @@
         /// <returns>The full path to the project folder as a string.</returns>
         public static string ProjectFolder(string sender) => 
             Path.Combine(SecretsFolder, sender);
+
+        /// <summary>
+        /// Determines whether the provided JSON string represents an empty JSON object.
+        /// </summary>
+        /// <param name="jsonString">The JSON string to evaluate.</param>
+        /// <returns>
+        /// <c>true</c> if the JSON string represents an empty JSON object or is invalid; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// An empty JSON object is defined as an object with no properties (e.g., <c>{ }</c>).
+        /// If the input JSON string is invalid, the method will return <c>true</c> and log an error message.
+        /// </remarks>
+        public static bool IsEmptyJsonObject(string jsonString)
+        {
+            try
+            {
+                JsonNode? jsonNode = JsonNode.Parse(jsonString);
+
+                // Check if it's an empty object
+                return jsonNode is JsonObject { Count: 0 };
+            }
+            catch (JsonException)
+            {
+                Console.WriteLine("Error: Invalid JSON format.");
+                return true; 
+            }
+        }
     }
 }

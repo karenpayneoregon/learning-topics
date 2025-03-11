@@ -56,7 +56,7 @@ namespace SecretsLibrary.Classes
         {
             try
             {
-                JsonNode? jsonNode = JsonNode.Parse(jsonString);
+                var jsonNode = JsonNode.Parse(jsonString);
 
                 // Check if it's an empty object
                 return jsonNode is JsonObject { Count: 0 };

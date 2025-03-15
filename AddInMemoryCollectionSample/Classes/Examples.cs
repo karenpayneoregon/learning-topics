@@ -10,6 +10,22 @@ namespace AddInMemoryCollectionSample.Classes;
 internal class Examples
 {
 
+    public static void Conventional()
+    {
+        SpectreConsoleHelpers.Print();
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
+        var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+
+        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {connectionStrings.MainConnection}");
+
+        Console.WriteLine();
+    }
+
     /// <summary>
     /// Demonstrates the use of an in-memory collection to configure and retrieve application settings.
     /// </summary>
@@ -163,6 +179,7 @@ internal class Examples
         AnsiConsole.MarkupLine($"[cyan]Title:[/] {titleLayout}");
         AnsiConsole.MarkupLine($"[cyan]Footer:[/] {footerLayout}");
 
+        Console.WriteLine();
     }
 
     /// <summary>
@@ -192,6 +209,8 @@ internal class Examples
         AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
         AnsiConsole.MarkupLine($"[cyan]Phone:[/] {helpDesk.Phone}");
         AnsiConsole.MarkupLine($"[cyan]Email:[/] {helpDesk.Email}");
+
+        Console.WriteLine();
     }
 
     /// <summary>
@@ -220,54 +239,38 @@ internal class Examples
             }).Build();
 
         var companySettings = configuration.GetSection(nameof(CompanySettings)).Get<CompanySettings>();
+
         AnsiConsole.MarkupLine($"[cyan]Name:[/] {companySettings.Name}");
         AnsiConsole.MarkupLine($"[cyan]Address:[/] {companySettings.Address}");
         AnsiConsole.MarkupLine($"[cyan]City:[/] {companySettings.City}");
         AnsiConsole.MarkupLine($"[cyan]State:[/] {companySettings.State}");
 
         var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        string mainConnection = connectionStrings.MainConnection;
 
-        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
- 
+        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {connectionStrings.MainConnection}");
+
+        Console.WriteLine();
+
     }
 
+    /// <summary>
+    /// Demonstrates the use of strongly-typed configuration settings in .NET Core.
+    /// </summary>
+    /// <remarks>
+    /// This method showcases how to configure and retrieve application settings using:
+    /// <list type="bullet">
+    /// <item><description>In-memory collections</description></item>
+    /// <item><description>JSON configuration files</description></item>
+    /// <item><description>Dependency injection with <see cref="IOptions{TOptions}"/></description></item>
+    /// </list>
+    /// The method retrieves and displays company settings and connection strings.
+    /// </remarks>
     public static void CompanySettings()
     {
         SpectreConsoleHelpers.Print();
 
-        string filePath = "companysettings.json";
+        var configData = CompanySettingsReader.CompanySettingsList();
 
-
-        // Read the JSON file
-        string jsonContent = File.ReadAllText(filePath);
-
-        // Deserialize JSON into a Dictionary<string, object>
-        var settings = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
-
-        // Convert settings to key-value pairs for in-memory configuration
-        var configData = new List<KeyValuePair<string, string>>();
-
-        foreach (var key in settings)
-        {
-            if (key.Value is JsonElement { ValueKind: JsonValueKind.Object } element)
-            {
-                var nestedDict = JsonSerializer.Deserialize<Dictionary<string, string>>(element.GetRawText());
-                foreach (var nestedKey in nestedDict)
-                {
-                    configData.Add(new KeyValuePair<string, string>($"{key.Key}:{nestedKey.Key}", nestedKey.Value));
-                }
-            }
-            else
-            {
-                configData.Add(new KeyValuePair<string, string>(key.Key, key.Value?.ToString() ?? ""));
-            }
-        }
-
-        // Use ConfigurationBuilder to add in-memory collection
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -281,9 +284,8 @@ internal class Examples
 
 
         var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
-        string mainConnection = connectionStrings.MainConnection;
 
-        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
+        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {connectionStrings.MainConnection}");
 
         // Resolve the strongly-typed settings
         var companySettings = serviceProvider.GetRequiredService<IOptions<CompanySettings>>().Value;
@@ -294,13 +296,6 @@ internal class Examples
         AnsiConsole.MarkupLine($"[cyan]Company City:[/] {companySettings.City}");
         AnsiConsole.MarkupLine($"[cyan]Company State:[/] {companySettings.State}");
 
+        Console.WriteLine();
     }
-}
-
-public class CompanySettings
-{
-    public string Name { get; set; } = string.Empty;
-    public string Address { get; set; } = string.Empty;
-    public string City { get; set; } = string.Empty;
-    public string State { get; set; } = string.Empty;
 }

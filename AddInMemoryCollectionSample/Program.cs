@@ -7,6 +7,8 @@ namespace AddInMemoryCollectionSample
     {
         static void Main(string[] args)
         {
+            Examples.Conventional();
+
             Examples.DryRun();
 
             Examples.DryRun2();
@@ -38,12 +40,10 @@ namespace AddInMemoryCollectionSample
 
             Examples.Combination();
 
-            Console.WriteLine();
-
+            
             Examples.CompanySettingsBasic();
 
-            Console.WriteLine();
-
+            
             Examples.CompanySettings();
 
             SpectreConsoleHelpers.ExitPrompt();

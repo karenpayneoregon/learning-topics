@@ -2,6 +2,8 @@
 using SecretsLibrary.Classes;
 using SecretsLibrary.Models;
 
+using static SecretsLibrary.Classes.FileOperations;
+
 
 namespace FindUserSecretsApp;
 
@@ -25,8 +27,8 @@ internal partial class Program
         try
         {
             AnsiConsole.MarkupLine("[yellow]Scanning...[/]");
-            FileOperations.ScanDirectory(rootDirectory, secretItems);
-            List<SecretItem> results = await FileOperations.WriteSecretsFileAsync(outputFile, secretItems);
+            ScanDirectory(rootDirectory, secretItems);
+            List<SecretItem> results = await WriteSecretsFileAsync(outputFile, secretItems);
 
             Console.Clear();
 

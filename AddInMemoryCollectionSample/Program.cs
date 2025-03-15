@@ -38,6 +38,14 @@ namespace AddInMemoryCollectionSample
 
             Examples.Combination();
 
+            Console.WriteLine();
+
+            Examples.CompanySettingsBasic();
+
+            Console.WriteLine();
+
+            Examples.CompanySettings();
+
             SpectreConsoleHelpers.ExitPrompt();
         }
     }

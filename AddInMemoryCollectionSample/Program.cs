@@ -46,6 +46,8 @@ namespace AddInMemoryCollectionSample
             
             Examples.CompanySettings();
 
+            Examples.DryRun5();
+
             SpectreConsoleHelpers.ExitPrompt();
         }
     }

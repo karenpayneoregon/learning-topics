@@ -32,8 +32,6 @@ public class DataOperations
             {"Helpdesk:phone", settings.FirstOrDefault(x => x.Key == nameof(HelpDesk.Phone))?.Value},
             {"Helpdesk:email", settings.FirstOrDefault(x => x.Key == nameof(HelpDesk.Email))?.Value}
         };
-
-
     }
 
 }

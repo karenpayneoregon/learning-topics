@@ -1,0 +1,7 @@
+{
+  "Layout": {
+    "Header": "Visible",
+    "Title": "Some title",
+    "Footer": "Hidden"
+  }
+}

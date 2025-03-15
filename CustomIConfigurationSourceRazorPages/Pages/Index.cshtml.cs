@@ -43,7 +43,9 @@ public class IndexModel : PageModel
         _context = context;
 
         // non-secrets
-        var connectionSection = Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var connectionSection = Config.Configuration.JsonRoot()
+            .GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+
         var mainConnection = connectionSection!.MainConnection;
 
     }

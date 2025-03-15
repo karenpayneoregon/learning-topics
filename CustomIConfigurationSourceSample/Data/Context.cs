@@ -53,5 +53,8 @@ public partial class Context : DbContext
     /// A <see cref="string"/> representing the main connection string used for database connectivity.
     /// </returns>
     private static string GetMainConnectionString() 
-        => Config.Configuration.JsonRoot().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>().MainConnection;
+        => Config.Configuration.JsonRoot()
+            .GetSection(nameof(ConnectionStrings))
+            .Get<ConnectionStrings>()
+            .MainConnection;
 }

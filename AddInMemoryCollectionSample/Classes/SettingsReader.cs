@@ -8,7 +8,7 @@ namespace AddInMemoryCollectionSample.Classes;
 /// companysettings.json would be in a location accessible to all applications or there could be a MS build
 /// event that copies the companysettings.json from a standard location.
 /// </summary>
-public class CompanySettingsReader
+public class SettingsReader
 {
     /// <summary>
     /// Reads company settings from a JSON file and converts them into a list of key-value pairs
@@ -58,5 +58,38 @@ public class CompanySettingsReader
         return configData;
     }
 
+    /// <summary>
+    /// Loads layout configuration from a JSON file and converts it into a dictionary of key-value pairs.
+    /// </summary>
+    /// <remarks>
+    /// The method reads a JSON file named "layout.json", extracts the "Layout" section, and processes 
+    /// its properties into a flattened dictionary structure. This is useful for scenarios where layout 
+    /// configuration needs to be dynamically loaded and accessed programmatically.
+    /// </remarks>
+    /// <returns>
+    /// A dictionary containing key-value pairs representing the layout configuration, where keys are 
+    /// prefixed with "Layout:" to indicate their origin.
+    /// </returns>
+    /// <exception cref="FileNotFoundException">
+    /// Thrown if the "layout.json" file is not found.
+    /// </exception>
+    /// <exception cref="JsonException">
+    /// Thrown if the JSON content cannot be parsed.
+    /// </exception>
+    public static Dictionary<string, string> LoadLayout()
+    {
+
+        var document = JsonDocument.Parse(File.ReadAllText("layout.json"));
+        var layoutDict = new Dictionary<string, string>();
+
+        if (!document.RootElement.TryGetProperty("Layout", out var layoutElement)) return layoutDict;
+        foreach (var property in layoutElement.EnumerateObject())
+        {
+            layoutDict[$"Layout:{property.Name}"] = property.Value.GetString() ?? string.Empty;
+        }
+
+        return layoutDict;
+
+    }
     public static JsonSerializerOptions Options => new() { PropertyNameCaseInsensitive = true };
 }

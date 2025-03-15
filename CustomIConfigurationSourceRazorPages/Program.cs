@@ -36,7 +36,7 @@ public class Program
 
         //  Build configuration and register it in DI
         var configuration = configurationBuilder.Build();
-        builder.Services.AddSingleton<IConfiguration>(configuration); 
+        builder.Services.AddSingleton<IConfiguration>(configuration);
 
         builder.Services.AddRazorPages();
 

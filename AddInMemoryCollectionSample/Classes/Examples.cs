@@ -1,5 +1,8 @@
-﻿using System.Text.Json;
+﻿using System.Data;
+using System.Text.Json;
 using AddInMemoryCollectionSample.Models;
+using Dapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -10,16 +13,40 @@ namespace AddInMemoryCollectionSample.Classes;
 internal class Examples
 {
 
+    /// <summary>
+    /// Demonstrates the conventional approach to reading configuration settings 
+    /// from an appsettings.json file and displaying them using Spectre.Console.
+    /// </summary>
+    /// <remarks>
+    /// This method retrieves connection strings and settings from the database 
+    /// and displays them in the console. It uses Dapper for database interaction 
+    /// and Spectre.Console for formatted console output.
+    /// </remarks>
     public static void Conventional()
     {
         SpectreConsoleHelpers.Print();
 
-        var configuration = new ConfigurationBuilder()
+        IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .Build();
 
         var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+
+        using IDbConnection db = new SqlConnection(connectionStrings.MainConnection);
+        string sql = """
+             SELECT Section + ':' + [Key] AS [Key], Value 
+             FROM dbo.Settings;
+             """;
+        var dictionary = db.Query<(string Key, string Value)>(sql)
+            .ToDictionary(x => x.Key, x => x.Value);
+
+        foreach (var kvp in dictionary)
+        {
+            AnsiConsole.MarkupLine($"[hotpink3]Key:[/] {kvp.Key}, [hotpink3]Value:[/] {kvp.Value}");
+        }
+
+        Console.WriteLine();
 
         AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {connectionStrings.MainConnection}");
 
@@ -149,6 +176,57 @@ internal class Examples
 
     }
 
+    public static void DryRun4()
+    {
+
+        SpectreConsoleHelpers.Print();
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings1.json", optional: true, reloadOnChange: true)
+            .AddInMemoryCollection(new Dictionary<string, string>
+            {
+                { "Layout:Header", "Visible" },
+                { "Layout:Title", "Some title" },
+                { "Layout:Footer", "Hidden" }
+            }).Build();
+
+        var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var layout = configuration.GetSection(nameof(Layout)).Get<Layout>();
+
+        var mainConnection = connectionStrings.MainConnection;
+        var headerLayout = layout.Header;
+        var titleLayout = layout.Title;
+        var footerLayout = layout.Footer;
+
+        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
+        AnsiConsole.MarkupLine($"[cyan]Header:[/] {headerLayout}");
+        AnsiConsole.MarkupLine($"[cyan]Title:[/] {titleLayout}");
+        AnsiConsole.MarkupLine($"[cyan]Footer:[/] {footerLayout}");
+
+        Console.WriteLine();
+
+    }
+
+    public static void DryRun5()
+    {
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings1.json", optional: true, reloadOnChange: true)
+            .AddInMemoryCollection(SettingsReader.LoadLayout()) // Inject the layout.json content
+            .Build();
+
+        var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
+        var layout = configuration.GetSection(nameof(Layout)).Get<Layout>();
+
+        AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {connectionStrings.MainConnection}");
+        AnsiConsole.MarkupLine($"[cyan]Header:[/] {layout.Header}");
+        AnsiConsole.MarkupLine($"[cyan]Title:[/] {layout.Title}");
+        AnsiConsole.MarkupLine($"[cyan]Footer:[/] {layout.Footer}");
+
+    }
+
     /// <summary>
     /// Reads configuration settings from the "appsettings.json" file and displays 
     /// the connection string and layout information in the console.
@@ -193,19 +271,20 @@ internal class Examples
     /// </remarks>
     public static void Combination()
     {
-            
+
         SpectreConsoleHelpers.Print();
 
         var settings = DataOperations.ReadFromDatabase();
         var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory()) 
+            .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddInMemoryCollection(settings).Build();
+            .AddInMemoryCollection(settings)
+            .Build();
 
         var connectionStrings = configuration.GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
         string mainConnection = connectionStrings.MainConnection;
         var helpDesk = configuration.GetSection(nameof(HelpDesk)).Get<HelpDesk>();
-      
+
         AnsiConsole.MarkupLine($"[cyan]Connection String:[/] {mainConnection}");
         AnsiConsole.MarkupLine($"[cyan]Phone:[/] {helpDesk.Phone}");
         AnsiConsole.MarkupLine($"[cyan]Email:[/] {helpDesk.Email}");
@@ -269,7 +348,7 @@ internal class Examples
     {
         SpectreConsoleHelpers.Print();
 
-        var companyData = CompanySettingsReader.CompanySettingsList();
+        var companyData = SettingsReader.CompanySettingsList();
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())

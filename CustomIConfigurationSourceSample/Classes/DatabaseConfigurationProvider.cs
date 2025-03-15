@@ -88,7 +88,7 @@ public class DatabaseConfigurationProvider : ConfigurationProvider
         {
             foreach (var setting in context.ConfigurationSettings)
             {
-                settings[setting.Key] = setting.Value;  // Database values override JSON values
+                settings[setting.Key] = setting.Value; 
 
                 // Cache the value
                 _cache.Set(setting.Key, setting.Value, _cacheDuration);

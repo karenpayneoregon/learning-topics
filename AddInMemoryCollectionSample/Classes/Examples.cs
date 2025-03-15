@@ -269,12 +269,12 @@ internal class Examples
     {
         SpectreConsoleHelpers.Print();
 
-        var configData = CompanySettingsReader.CompanySettingsList();
+        var companyData = CompanySettingsReader.CompanySettingsList();
 
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddInMemoryCollection(configData)
+            .AddInMemoryCollection(companyData)
             .Build();
 
         // Set up dependency injection
@@ -290,7 +290,6 @@ internal class Examples
         // Resolve the strongly-typed settings
         var companySettings = serviceProvider.GetRequiredService<IOptions<CompanySettings>>().Value;
 
-        // Strongly typed access
         AnsiConsole.MarkupLine($"[cyan]Company Name:[/] {companySettings.Name}");
         AnsiConsole.MarkupLine($"[cyan]Company Address:[/] {companySettings.Address}");
         AnsiConsole.MarkupLine($"[cyan]Company City:[/] {companySettings.City}");

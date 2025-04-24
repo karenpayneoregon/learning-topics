@@ -1,8 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using StringsBetweenQuotesExample.Classes;
+﻿using StringsBetweenQuotesExample.Classes;
+using static System.Globalization.DateTimeFormatInfo;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Timers;
+using StringsBetweenQuotesExample.Models;
+using NodaTime;
+using NodaTime.Text;
+// ReSharper disable ConvertToLocalFunction
+
+// ReSharper disable FormatStringProblem
 
 namespace StringsBetweenQuotesExample;
 
@@ -12,6 +16,76 @@ internal partial class Program
     private static void Main(string[] args)
     {
 
+        ConfigurationHelpers.ConfigurationBuilder();
+        Console.WriteLine(AppConfiguration.Instance.MainConnection);
+
+        Console.WriteLine();
+        var hp1 = AppConfiguration.Instance.HelpDesk;
+        var hp2 = AppConfiguration.Instance.ReadSection<HelpDesk>(nameof(HelpDesk));
+
+        try
+        {
+            var counter = new HtmlTableCounter(@"C:\OED\WebApps\CF11_Jobs");
+            int count = counter.CountTableTags();
+            Console.WriteLine($"Total <table> tags found: {count}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
+        Console.ReadLine();
+    }
+
+    private static void CalculateAndDisplayTimeDifference()
+    {
+        DateTime futureDate = new(2025, 3, 26, 14, 30, 0);
+        Console.WriteLine(DateCalculator.CalculateTimeDifference(futureDate));
+
+        var calendarSystem = CalendarSystem.Gregorian;
+        var start = new LocalDateTime(2025, 3, 10, 15, 0, calendarSystem);
+        var end = new LocalDateTime(2025, 6, 1, 5, 10, calendarSystem);
+
+        var timeLeft = Period.Between(start, end, PeriodUnits.Days | PeriodUnits.Hours | PeriodUnits.Minutes | PeriodUnits.Seconds)
+            .ToDuration();
+
+        Console.WriteLine(timeLeft);
+    }
+
+    private static void NodaTimeGetTimeDifferenceMessage()
+    {
+        Console.WriteLine(NodaHelpers.GetTimeDifference(new DateTime(2025, 4, 23, 23, 59, 59)));
+    }
+
+    private static void GenerateAndDisplayMonthDetails()
+    {
+        IEnumerable<Month> months = CurrentInfo!.MonthNames[..^1].Select((name, index) =>
+            new Month(index + 1, name));
+
+        var indexed = months.ToList().Get();
+        foreach (var item in indexed)
+        {
+
+            Console.WriteLine($"{item.Index,-4}{item.Value.Name,-12} Start: {item.StartIndex,-4} End: {item.EndIndex}");
+        }
+    }
+
+    private static void ProcessAndDisplayWeeks()
+    {
+        var nextWeeksDates = DateTimeHelpers.NextWeeksDates();
+        var days = DateTimeHelpers.GetMonthDays(DateTime.Now.Month);
+
+        int year = 2025;
+        int month = 3;
+        List<List<DateOnly>> weeks = DateTimeHelpers.GetWeeksInMonth(year, month);
+        foreach (var (index, week) in weeks.Index())
+        {
+            Console.WriteLine($"Week {index + 1}: {string.Join(", ", week)}");
+        }
+    }
+
+    private static void DomainSample()
+    {
         WorkingDemo.Set();
         var ts = WorkingDemo.Get();
         if (ts != null)
@@ -23,8 +97,6 @@ internal partial class Program
             AnsiConsole.MarkupLine($"[yellow]Regular Expressions domain Timeout[/] " +
                                    $"[white]{formatted}[/]");
         }
-        AnsiConsole.MarkupLine("[yellow]Done[/]");
-        Console.ReadLine();
     }
 
     private static void SetRegexTimeoutAndDisplay()
@@ -67,7 +139,7 @@ internal partial class Program
         {
             result.UpdateFirstName("Jane");
         }
-        
+
 
         if (result.BirthDate() == new DateOnly(1960, 12, 25))
         {
@@ -118,6 +190,66 @@ public static class Extensions
     public static void UpdateBirth(this FormattableString sender, DateOnly value)
     {
         sender.GetArguments()[2] = value;
+    }
+}
+
+public static class RangeHelpers
+{
+
+    public static List<Container<T>> Get<T>(this List<T> sender) =>
+        sender.Select((element, index) => new Container<T>
+        {
+            Value = element,
+            StartIndex = new(index),
+            EndIndex = new(sender.Count - index - 1, true),
+            Index = index + 1
+        }).ToList();
+
+    public static List<Container<T>> Get<T>(this T[] sender) =>
+        sender.Select((element, index) => new Container<T>
+        {
+            Value = element,
+            StartIndex = new(index),
+            EndIndex = new(sender.Length - index - 1, true),
+            Index = index + 1
+        }).ToList();
+}
+
+
+public class DateCalculator
+{
+    /// <summary>
+    /// Calculates the time difference between the current date and a specified future date.
+    /// </summary>
+    /// <param name="futureDate">The future date for which the time difference is to be calculated. 
+    /// This date must be later than the current date and time.</param>
+    /// <returns>A string representing the time difference in terms of months, days, hours, and minutes. 
+    /// If the provided date is not in the future, a message indicating this is returned.</returns>
+    public static string CalculateTimeDifference(DateTime futureDate)
+    {
+        if (futureDate <= DateTime.Now)
+        {
+            return "The provided date must be in the future.";
+        }
+
+        DateTime now = DateTime.Now;
+
+        // Calculate total months difference
+        int months = ((futureDate.Year - now.Year) * 12) + futureDate.Month - now.Month;
+
+        if (futureDate.Day < now.Day)
+        {
+            months--; // Adjust if the future day is earlier than the current day
+        }
+
+        // Calculate remaining days, hours, and minutes
+        TimeSpan timeSpan = futureDate - now.AddMonths(months);
+        int days = timeSpan.Days;
+        int hours = timeSpan.Hours;
+        int minutes = timeSpan.Minutes;
+
+        // Build the result dynamically
+        return $"{(months > 0 ? $"{months} months, " : "")}{days} days, {hours} hours, {minutes} minutes.";
     }
 }
 

@@ -6,13 +6,18 @@ using Serilog;
 namespace HelpDeskApplication.Pages;
 public class IndexModel : PageModel
 {
-    private readonly IOptionsSnapshot<HelpDesk> _helpdeskSnapshot;
+    public string DatabasePassword { get; private set; } = "Not Found";
 
-    public IndexModel(IOptionsSnapshot<HelpDesk> helpdeskSnapshot)
+    private readonly IOptionsSnapshot<HelpDesk> _helpdeskSnapshot;
+    private readonly DatabaseSettings _databaseSettings;
+    public IndexModel(IOptionsSnapshot<HelpDesk> helpdeskSnapshot, IOptions<DatabaseSettings> options)
     {
         _helpdeskSnapshot = helpdeskSnapshot;
+        _databaseSettings = options.Value;
+
     }
     public void OnGet()
     {
+        DatabasePassword = _databaseSettings.DatabasePassword;
     }
 }

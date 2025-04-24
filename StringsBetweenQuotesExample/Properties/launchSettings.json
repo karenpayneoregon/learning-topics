@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "StringsBetweenQuotesExample": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Server": "Server1",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

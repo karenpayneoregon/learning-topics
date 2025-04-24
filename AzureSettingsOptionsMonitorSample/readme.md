@@ -1,0 +1,3 @@
+﻿# About
+
+This is an easy how-to implementation of [OnChange](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1.onchange?view=net-9.0-pp) for [IOptionsMonitor](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1?view=net-9.0-pp). The [options pattern](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-9.0) uses classes to provide strongly typed access to groups of related settings, usually in ASP.NET Core applications read from appsettings.json. 

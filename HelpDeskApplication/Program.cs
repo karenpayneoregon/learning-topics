@@ -8,7 +8,6 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-
         // Configure Serilog
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
@@ -19,14 +18,26 @@ public class Program
 
         builder.Host.UseSerilog();
 
-        // Add services to the container.
         builder.Services.AddRazorPages();
 
-        builder.Services.Configure<HelpDesk>(
-            builder.Configuration.GetSection(nameof(HelpDesk)));
+        builder.Services.Configure<HelpDesk>(builder.Configuration.GetSection(nameof(HelpDesk)));
 
+        // Define the path where key-per-file secrets are stored
+        var secretsPath = "C:\\OED\\Secrets"; 
+
+        if (Directory.Exists(secretsPath))
+        {
+            builder.Configuration.AddKeyPerFile(secretsPath, optional: true, reloadOnChange: true);
+        }
+
+        builder.Services.Configure<DatabaseSettings>(options =>
+        {
+            options.DatabasePassword = builder.Configuration[nameof(DatabaseSettings.DatabasePassword)] ?? "???";
+        });
 
         var app = builder.Build();
+        
+
 
         if (!app.Environment.IsDevelopment())
         {

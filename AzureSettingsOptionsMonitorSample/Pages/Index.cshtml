@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="main-content">
+    <div class="container">
+        <h1 class="text-center">IOptionsMonitor &mdash; OnChange</h1>
+    </div>
+
+    <div class="container text-center mt-3">
+        Tenant Name: <span id="tenantNameDisplay" class="fw-bold text-success">@Model.TenantName</span>
+    </div>
+</div>
+
+<script>
+    /*
+     * for demonstration purposes only to show changes in the tenant name
+     * Alternate for fetch, fetch('/?handler=TenantName') is not indicating the page
+     *
+     * Currently check every 5 seconds for changes in the tenant name, feel free to set it to a lower value.
+     */
+    setInterval(() => {
+        fetch('Index/?handler=TenantName')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('tenantNameDisplay').innerText = data;
+            });
+    }, 5000);
+
+    /*
+     * This is a simple example of how to use the IOptionsMonitor interface to monitor changes in the configuration
+     * and update the UI accordingly.
+     *
+     * In this example, we are using the IOptionsMonitor interface to monitor changes in the TenantName property
+     * of the AzureSettings class. When the TenantName property changes, we update the UI to reflect the new value.
+     */ 
+
+</script>

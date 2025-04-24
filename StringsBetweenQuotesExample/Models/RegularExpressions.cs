@@ -22,3 +22,27 @@ public class RegularExpressions
     [JsonConverter(typeof(TimeSpanConverter))]
     public TimeSpan Timeout { get; set; }
 }
+
+public class ConnectionStrings
+{
+    public string MainConnection { get; set; }
+}
+public class HelpDesk
+{
+    public string Phone { get; set; }
+    public string Email { get; set; }
+}
+
+public class Layout
+{
+    public string Header { get; set; }
+    public string Title { get; set; }
+    public string Footer { get; set; }
+}
+public class AppSettings
+{
+    public ConnectionStrings ConnectionStrings { get; set; }
+    public RegularExpressions RegularExpressions { get; set; }
+    public HelpDesk HelpDesk { get; set; }
+    public Layout Layout { get; set; }
+}

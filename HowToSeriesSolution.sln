@@ -44,10 +44,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationTest", "Config
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldKeywordSample", "FieldKeywordSample\FieldKeywordSample.csproj", "{042041D5-D048-490E-B2CB-76E9E8DC8166}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureSettingsOptionsMonitorSample", "AzureSettingsOptionsMonitorSample\AzureSettingsOptionsMonitorSample.csproj", "{A60A3C54-9C64-4F86-BD72-801BB8D9895F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOptionsMonitorAzureSettingsBasicApp", "IOptionsMonitorAzureSettingsBasicApp\IOptionsMonitorAzureSettingsBasicApp.csproj", "{7A86797E-241E-4B33-8439-B10E415E1652}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempApp", "TempApp\TempApp.csproj", "{AF3D3A70-776D-4C00-88A5-18F030F2C179}"
 EndProject
 Global
@@ -100,14 +96,6 @@ Global
 		{042041D5-D048-490E-B2CB-76E9E8DC8166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{042041D5-D048-490E-B2CB-76E9E8DC8166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{042041D5-D048-490E-B2CB-76E9E8DC8166}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A60A3C54-9C64-4F86-BD72-801BB8D9895F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A60A3C54-9C64-4F86-BD72-801BB8D9895F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A60A3C54-9C64-4F86-BD72-801BB8D9895F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A60A3C54-9C64-4F86-BD72-801BB8D9895F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A86797E-241E-4B33-8439-B10E415E1652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A86797E-241E-4B33-8439-B10E415E1652}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A86797E-241E-4B33-8439-B10E415E1652}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A86797E-241E-4B33-8439-B10E415E1652}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Release|Any CPU.ActiveCfg = Release|Any CPU

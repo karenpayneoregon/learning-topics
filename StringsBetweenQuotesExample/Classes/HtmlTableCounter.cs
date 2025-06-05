@@ -2,6 +2,15 @@
 
 namespace StringsBetweenQuotesExample.Classes;
 
+/// <summary>
+/// Represents a utility class for counting the occurrences of HTML &lt;table&gt; tags 
+/// within files located in a specified root directory.
+/// </summary>
+/// <remarks>
+/// This class is designed to recursively search through all files with a specific 
+/// extension in the given directory and count the number of &lt;table&gt; tags using 
+/// regular expressions.
+/// </remarks>
 public partial class HtmlTableCounter
 {
     public string RootDirectory { get; }

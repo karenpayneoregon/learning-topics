@@ -10,7 +10,6 @@ using NodaTime.Text;
 
 namespace StringsBetweenQuotesExample;
 
-public record Person(string FirstName, string LastName, DateOnly BirthDate);
 internal partial class Program
 {
     private static void Main(string[] args)
@@ -75,9 +74,11 @@ internal partial class Program
         var nextWeeksDates = DateTimeHelpers.NextWeeksDates();
         var days = DateTimeHelpers.GetMonthDays(DateTime.Now.Month);
 
-        int year = 2025;
-        int month = 3;
+        int year = DateTime.Now.Year;
+        int month = DateTime.Now.Month;
+
         List<List<DateOnly>> weeks = DateTimeHelpers.GetWeeksInMonth(year, month);
+
         foreach (var (index, week) in weeks.Index())
         {
             Console.WriteLine($"Week {index + 1}: {string.Join(", ", week)}");

@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FieldKeywordSample", "Field
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempApp", "TempApp\TempApp.csproj", "{AF3D3A70-776D-4C00-88A5-18F030F2C179}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Records samples", "Records samples", "{CB4D0241-DDE3-A211-69EF-02A692A1327C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintMembersSamples", "PrintMembersSamples\PrintMembersSamples.csproj", "{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +104,10 @@ Global
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +128,7 @@ Global
 		{7357AAF9-C784-427E-B895-C2E37B59858F} = {EFD6BCA2-6CA1-4303-BE7F-357195F7E735}
 		{042041D5-D048-490E-B2CB-76E9E8DC8166} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{AF3D3A70-776D-4C00-88A5-18F030F2C179} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{AEE7E9C6-3DE1-45D5-8F85-68609F1A866E} = {CB4D0241-DDE3-A211-69EF-02A692A1327C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

@@ -26,6 +26,11 @@ internal partial class Program
             """;
 
         var wines = db.Query<Wine>(statement).AsList();
+
+        foreach (var wine in wines)
+        {
+            
+        }
         Console.ReadLine();
     }
 

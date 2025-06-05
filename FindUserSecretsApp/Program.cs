@@ -12,13 +12,14 @@ internal partial class Program
     private static async Task Main()
     {
 
-
         if (!Utilities.SecretsFolderExists)
         {
             AnsiConsole.MarkupLine("[red]UserSecrets folder not found.[/]");
             return;
         }
-        
+
+        AnsiConsole.MarkupLine($"[yellow]Secrets main folder[/] [cyan]{Utilities.SecretsFolder}[/]");
+
         const string rootDirectory = @"C:\OED\DotnetLand\VS2022";
         const string outputFile = @"UserSecretsProjects.json";
 
@@ -43,7 +44,7 @@ internal partial class Program
             }
 
 
-            Console.WriteLine($"Scan complete. Results saved in: {outputFile} with a count of {results.Count}");
+            AnsiConsole.MarkupLine($"[yellow]Scan complete. Results saved in:[/] [cyan]{outputFile}[/] [yellow]with a count of[/] [cyan]{results.Count}[/]");
 
         }
         catch (Exception ex)
@@ -51,8 +52,6 @@ internal partial class Program
             Log.Error(ex, $"In {nameof(Main)}");
             Console.WriteLine($"Error: {ex.Message}");
         }
-
-        AnsiConsole.MarkupLine("[yellow]Done[/]");
         
         Console.ReadLine();
 

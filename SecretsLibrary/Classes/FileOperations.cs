@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using SecretsLibrary.Models;
 using Serilog;
+using Spectre.Console;
 
 namespace SecretsLibrary.Classes
 {
@@ -39,23 +40,43 @@ namespace SecretsLibrary.Classes
 
                     if (string.IsNullOrEmpty(userSecretsId)) continue;
 
-                    secretItems.Add(new()
+                    if (Directory.Exists(Path.Combine(Utilities.SecretsFolder, userSecretsId)))
                     {
-                        ProjectFileName = file,
-                        UserSecretsId = userSecretsId
-                    });
+                        var (json, exists) = ReadSecretFile(userSecretsId);
+                        if (exists)
+                        {
+                            var data = StringSanitizer.StripQuotesAndBreaks(string.Join(Environment.NewLine, json));
+                            secretItems.Add(new()
+                            {
+                                ProjectFileName = file,
+                                UserSecretsId = userSecretsId,
+                                Contents = data.RemoveExtraWhitespace(),
+                            });
+                        }
+  
+                    }
+                    else
+                    {
+                        secretItems.Add(new()
+                        {
+                            ProjectFileName = file,
+                            UserSecretsId = userSecretsId,
+                            Contents = "[No secrets found]",
+                        });
+                    }
+         
 
                 }
             }
             catch (UnauthorizedAccessException unauthorized)
             {
                 Log.Error(unauthorized, $"In {nameof(ScanDirectory)}");
-                Console.WriteLine($"Access denied: {directory}");
+                AnsiConsole.MarkupLine($"[deeppink3]Access denied:[/] {directory}");
             }
             catch (Exception ex)
             {
                 Log.Error(ex, $"In {nameof(ScanDirectory)}");
-                Console.WriteLine($"Error processing {directory}: {ex.Message}");
+                AnsiConsole.MarkupLine($"[deeppink3]Error processing[/] {directory}: {ex.Message}");
             }
         }
 

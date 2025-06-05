@@ -1,5 +1,5 @@
 ﻿namespace SecretsLibrary.Models;
-
+#nullable disable
 /// <summary>
 /// Represents a secret item containing information about a file and its associated UserSecretsId.
 /// </summary>
@@ -40,4 +40,15 @@ public class SecretItem
     /// within the UserSecrets directory.
     /// </remarks>
     public bool IsValid { get; set; }
+    /// <summary>
+    /// Gets or sets the contents of the secret file associated with the secret item.
+    /// </summary>
+    /// <value>
+    /// A string representing the sanitized contents of the secret file. 
+    /// If no secrets are found, the value will be "[No secrets found]".
+    /// </value>
+    /// <remarks>
+    /// The contents are processed to remove unnecessary whitespace, quotes, and line breaks.
+    /// </remarks>
+    public string Contents { get; set; }
 }

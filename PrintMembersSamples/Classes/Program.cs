@@ -17,17 +17,4 @@ internal partial class Program
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
     }
 
-    private static Table CreateTable()
-    {
-        return new Table()
-            .RoundedBorder().BorderColor(Color.LightSlateGrey)
-            .AddColumn("[b]First[/]")
-            .AddColumn("[b]Last[/]")
-            .AddColumn("[b]SSN[/]")
-            .AddColumn("[b]BirthDate[/]")
-            .Alignment(Justify.Center)
-            .Title("[yellow]Data[/]");
-    }
-
-
 }

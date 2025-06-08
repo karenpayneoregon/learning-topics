@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using PrintMembersSamples.Models;
+﻿using PrintMembersSamples.Models;
 
 
 namespace PrintMembersSamples.Classes;

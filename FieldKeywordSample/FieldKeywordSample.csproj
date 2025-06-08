@@ -33,4 +33,9 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
+	<ItemGroup>
+	  <Using Include="Spectre.Console">
+	    <Alias>SC</Alias>
+	  </Using>
+	</ItemGroup>
 </Project>

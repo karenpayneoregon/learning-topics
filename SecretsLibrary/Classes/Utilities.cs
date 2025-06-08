@@ -29,7 +29,7 @@ namespace SecretsLibrary.Classes
         /// </value>
         /// <remarks>
         /// The UserSecrets folder is typically located in the Application Data directory under "Microsoft\UserSecrets".
-        /// This property checks for the existence of the folder using the <see cref="System.IO.Directory.Exists(string)"/> method.
+        /// This property checks for the existence of the folder using the <see cref="Directory.Exists(string)"/> method.
         /// </remarks>
         public static bool SecretsFolderExists => Directory.Exists(SecretsFolder);
 

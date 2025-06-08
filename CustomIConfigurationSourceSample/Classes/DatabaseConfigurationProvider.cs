@@ -1,7 +1,10 @@
-﻿using CustomIConfigurationSourceSample.Data;
+﻿using System.Diagnostics;
+using CustomIConfigurationSourceSample.Data;
+using EntityCoreFileLogger;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace CustomIConfigurationSourceSample.Classes;
 
@@ -51,48 +54,21 @@ public class DatabaseConfigurationProvider : ConfigurationProvider
         _cacheDuration = cacheDuration;
     }
 
-    /// <summary>
-    /// Loads configuration settings from both a JSON configuration source and a database.
-    /// </summary>
-    /// <remarks>
-    /// This method retrieves configuration settings from a JSON file and a database.
-    /// Database settings take precedence over JSON settings. Additionally, database
-    /// settings are cached to optimize performance and reduce the number of database queries.
-    /// </remarks>
-    /// <exception cref="DbUpdateException">
-    /// Thrown when an error occurs while accessing the database.
-    /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// Thrown when the database context is not properly configured.
-    /// </exception>
-    /// <example>
-    /// To use this method, create an instance of <see cref="DatabaseConfigurationProvider"/> and call
-    /// the <see cref="Load"/> method to populate the configuration data.
-    /// </example>
     public override void Load()
     {
         var settings = new Dictionary<string, string>();
 
-        // Load settings from appsettings.json first
         foreach (var kvp in _jsonConfiguration.AsEnumerable())
-        {
             settings[kvp.Key] = kvp.Value;
-        }
 
-        // Load settings from the database with caching
-        var options = new DbContextOptionsBuilder<Context>()
-            .UseSqlServer(_connectionString)
-            .Options;
+        var options = DbContextOptions.DbContextOptionsBuilder(_connectionString);
 
-        using (var context = new Context(options))
+        using var context = new Context(options.Options);
+
+        foreach (var setting in context.ConfigurationSettings)
         {
-            foreach (var setting in context.ConfigurationSettings)
-            {
-                settings[setting.Key] = setting.Value; 
-
-                // Cache the value
-                _cache.Set(setting.Key, setting.Value, _cacheDuration);
-            }
+            settings[setting.Key] = setting.Value;
+            _cache.Set(setting.Key, setting.Value, _cacheDuration);
         }
 
         Data = settings;

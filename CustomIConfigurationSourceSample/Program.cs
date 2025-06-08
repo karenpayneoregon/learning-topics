@@ -1,7 +1,4 @@
-﻿using ConsoleConfigurationLibrary.Models;
-using CustomIConfigurationSourceSample.Classes;
-using CustomIConfigurationSourceSample.Models;
-using Microsoft.Extensions.Configuration;
+﻿using CustomIConfigurationSourceSample.Classes;
 
 namespace CustomIConfigurationSourceSample;
 
@@ -16,6 +13,7 @@ internal partial class Program
         AnsiConsole.MarkupLine("[cyan]Help desk[/]");
         AnsiConsole.MarkupLine($"[white]Phone:[/] [yellow]{AppConfiguration.Instance.HelpDesk.Phone}[/]");
         AnsiConsole.MarkupLine($"[white]Email:[/] [yellow]{AppConfiguration.Instance.HelpDesk.Email}[/]");
+
 
         Console.ReadLine();
     }

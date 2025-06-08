@@ -15,6 +15,7 @@ internal partial class Program
         if (!Utilities.SecretsFolderExists)
         {
             AnsiConsole.MarkupLine("[red]UserSecrets folder not found.[/]");
+            Console.ReadLine();
             return;
         }
 
@@ -22,6 +23,14 @@ internal partial class Program
 
         const string rootDirectory = @"C:\OED\DotnetLand\VS2022";
         const string outputFile = @"UserSecretsProjects.json";
+
+        if (!Directory.Exists(rootDirectory))
+        {
+            
+            AnsiConsole.MarkupLine("[red]Root directory not found![/]");
+            Console.ReadLine();
+            return;
+        }
 
         List<SecretItem> secretItems = [];
 

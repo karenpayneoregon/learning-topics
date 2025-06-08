@@ -26,6 +26,18 @@ public partial class Context : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer(GetMainConnectionString());
 
+    /// <summary>
+    /// Configures the model for the database context by defining the shape of entities, their relationships,
+    /// and database mapping.
+    /// </summary>
+    /// <param name="modelBuilder">
+    /// An instance of <see cref="ModelBuilder"/> used to configure the model for the database context.
+    /// </param>
+    /// <remarks>
+    /// This method is called when the model for a derived context is being created. It allows the configuration of entity types
+    /// and relationships to be defined using the Fluent API. Any additional configuration can be implemented in the 
+    /// <see cref="OnModelCreatingPartial"/> method.
+    /// </remarks>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ConfigurationSetting>(entity =>

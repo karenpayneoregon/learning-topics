@@ -17,4 +17,4 @@ public partial record Person(
     string SSN,
     string UserName,
     string Password,
-    string[] PhoneNumbers) : ITaxpayer { }
+    string[] PhoneNumbers) : ITaxpayer;

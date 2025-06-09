@@ -5,12 +5,13 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
+		<ApplicationIcon>password.ico</ApplicationIcon>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="readme.md" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="assets\csharp.ico" />
+		<Content Include="password.ico" />
 		<Content Include="readme.md" />
 	</ItemGroup>
 

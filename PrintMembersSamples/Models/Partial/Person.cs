@@ -8,7 +8,6 @@ public partial record Person
     public override string ToString()
     {
         var builder = new StringBuilder();
-        
         var person = this;
 
         /*
@@ -18,16 +17,18 @@ public partial record Person
          * (`this`) but with `BirthDate` set to its default value. Otherwise, it retains the current
          * instance (`this`). The resulting `Person` instance is then assigned to the `person` variable.
          */
-        if (!System.Diagnostics.Debugger.IsAttached)
+        if (!Appsettings.Instance.RevealSensitiveInformation)
         {
+
             //person = (BirthDate.Year.IsBetween(1980, 1985))
             //    ? this with { BirthDate = default }
             //    : this;
 
-            // Hide the birthdate the outside of the debugger
             person = person with
             {
-                BirthDate = default
+                BirthDate = default,
+                UserName = "redacted",
+                Password = "redacted"
             };
         }
         
@@ -36,27 +37,41 @@ public partial record Person
         return builder.ToString();
     }
 
-    protected virtual bool PrintMembers(StringBuilder sb)
+    /// <summary>
+    /// Appends the string representation of the current <see cref="Person"/> instance's members to the specified
+    /// <see cref="StringBuilder"/>.
+    /// </summary>
+    /// <param name="builder">The <see cref="StringBuilder"/> to which the member information will be appended.</param>
+    /// <returns>
+    /// <c>true</c> if the operation was successful; otherwise, <c>false</c>.
+    /// </returns>
+    /// <remarks>
+    /// This method formats and appends the member data of the <see cref="Person"/> instance, names, SSN, birthdate, 
+    /// username, password, and phone numbers. If the debugger is attached, sensitive data is displayed in full; otherwise, 
+    /// certain fields are masked or redacted for security.
+    /// </remarks>
+    protected virtual bool PrintMembers(StringBuilder builder)
     {
-        if (System.Diagnostics.Debugger.IsAttached)
+        if (Appsettings.Instance.RevealSensitiveInformation)
         {
-            sb.Append($"{FirstName,-10}{LastName,-10}{SSN,-13}{BirthDate,-12:MM/dd/yyyy}");
+            builder.Append($"{FirstName,-10}{LastName,-10}{SSN,-13}{BirthDate,-14:MM/dd/yyyy}{UserName,-10}{Password,-12}");
         }
         else
         {
-            sb.Append($"{FirstName,-10}{LastName,-10}{SSN.MaskSsn(),-13}{BirthDate,-12:MM/dd/yyyy}");
+            builder.Append($"{FirstName,-10}{LastName,-10}{SSN.MaskSsn(),-13}{BirthDate,-14:MM/dd/yyyy}{UserName,-10}{Password,-12}");
         }
 
 
         if (!(PhoneNumbers?.Length > 0))
         {
-            sb.Append("None");
+            builder.Append("None");
             return true;
         }
 
-        sb.Append(string.Join(", ", PhoneNumbers));
-        sb.Append("");
+        builder.Append(string.Join(", ", PhoneNumbers));
+        builder.Append("");
 
         return true;
+
     }
 }

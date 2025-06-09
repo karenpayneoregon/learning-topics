@@ -21,11 +21,6 @@ public static class SpectreConsoleHelpers
         AnsiConsole.WriteLine();
     }
 
-    public static void Print(string text)
-    {
-        AnsiConsole.MarkupLine($"[hotpink2]{text}[/]");
-    }
-
     /// <summary>
     /// Enhances the string representation of a <see cref="Person"/> object
     /// by applying color formatting to its property names using NuGet package Spectre.Console.

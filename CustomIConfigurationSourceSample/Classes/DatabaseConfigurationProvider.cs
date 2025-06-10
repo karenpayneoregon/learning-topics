@@ -61,7 +61,7 @@ public class DatabaseConfigurationProvider : ConfigurationProvider
         foreach (var kvp in _jsonConfiguration.AsEnumerable())
             settings[kvp.Key] = kvp.Value;
 
-        var options = DbContextOptions.DbContextOptionsBuilder(_connectionString);
+        var options = DbContextOptions.DbContextOptionsBuilderDevelopment(_connectionString);
 
         using var context = new Context(options.Options);
 

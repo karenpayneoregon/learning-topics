@@ -1,0 +1,1 @@
+Using ConsoleConfigurationLibrary.Classes.ApplicationValidation.cs  add ValidateOnStart to validate Models\ConnectionStrings class  properties MainConnection and SecondaryConnection in Main method of Program.cs and wrap in a try catch. 

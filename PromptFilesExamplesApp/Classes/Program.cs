@@ -1,9 +1,8 @@
-﻿using FindUserSecretsApp.Classes;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
-namespace FindUserSecretsApp;
+namespace PromptFilesExamplesApp;
 internal partial class Program
 {
     [ModuleInitializer]
@@ -13,9 +12,6 @@ internal partial class Program
         var product = assembly?.GetCustomAttribute<AssemblyProductAttribute>()?.Product;
 
         Console.Title = product!;
-
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
-        SetupLogging.Development();
     }
-
 }

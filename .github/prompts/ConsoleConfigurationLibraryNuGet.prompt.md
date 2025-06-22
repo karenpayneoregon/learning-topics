@@ -1,0 +1,1 @@
+Add NuGet pakcage ConsoleConfigurationLibrary to the current project.

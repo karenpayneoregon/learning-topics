@@ -23,27 +23,28 @@ public class Person : IPerson
     public int Id { get; set; }
 
     /// <summary>
-    /// Gets or sets the first name of the customer.
+    /// Gets or sets the first name of the person.
     /// </summary>
-    /// <value>
-    /// The first name of the customer, with leading and trailing whitespace removed.
-    /// </value>
+    /// <remarks>
+    /// The setter automatically capitalizes the first letter of the FirstName using the
+    /// <see cref="Classes.StringExtensions.CapitalizeFirstLetter"/> method.
+    /// </remarks>
     public required string FirstName
     {
         get;
         set => field = value.CapitalizeFirstLetter();
     }
     /// <summary>
-    /// Gets or sets the last name of the customer.
+    /// Gets or sets the last name of the person.
     /// </summary>
-    /// <value>
-    /// The last name of the customer.
-    /// </value>
+    /// <remarks>
+    /// The setter automatically capitalizes the first letter of the LastName using the
+    /// <see cref="Classes.StringExtensions.CapitalizeFirstLetter"/> method.
+    /// </remarks>
     public required string LastName
     {
         get;
         set => field = value.CapitalizeFirstLetter();
     }
-
     public required DateOnly BirthDate { get; set; }
 }

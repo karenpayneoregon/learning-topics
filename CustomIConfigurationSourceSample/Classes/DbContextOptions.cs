@@ -54,7 +54,8 @@ internal class DbContextOptions
 
         var options = new DbContextOptionsBuilder<Context>()
             .UseSqlServer(connectionString)
-            .LogTo(new DbContextToFileLogger().Log, [DbLoggerCategory.Database.Command.Name], LogLevel.Information);
+            .LogTo(new DbContextToFileLogger().Log, [DbLoggerCategory.Database.Command.Name], 
+                LogLevel.Information);
 
         return options;
 

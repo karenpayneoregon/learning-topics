@@ -9,51 +9,31 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        //GenerateAndDisplayCustomers();
-        ValidateConnectionStringsOnStart();
+
+        GroupCustomersByGender();
         Console.ReadLine();
     }
 
-    private static void GenerateAndDisplayCustomers()
+    private static void GroupCustomersByGender()
     {
-
-        PrintCyan();
-
-        var customers = BogusCustomer.GenerateCustomers(20);
-        var table = CreateTable();
-        foreach (var customer in customers)
-        {
-            table.AddRow(customer.FirstName, customer.LastName,
-                customer.Gender == Gender.Female
-                    ? $"[deepskyblue3]{customer.Gender}[/]"
-                    : customer.Gender.ToString()!, customer.BirthDay.ToString("MM/dd/yyyy"), customer.Email);
-        }
-
-        AnsiConsole.Write(table);
-    }
-
-    private static void ValidateConnectionStringsOnStart()
-    {
-
-        PrintCyan();
-        // Validate ConnectionStrings properties on start
-        var (valid, errors) = ApplicationValidation.ValidateOnStartReporter<ConnectionStrings>(nameof(ConnectionStrings),
-            cs => cs.MainConnection,
-            cs => cs.SecondaryConnection
-        );
-        if (!valid)
-        {
-            AnsiConsole.MarkupLine("[red]Validation failed:[/]");
-            foreach (var error in errors)
+        var genderGroups = BogusCustomer.GenerateCustomers(20)
+            .GroupBy(c => c.Gender)
+            .Select(g => new 
             {
-                Console.WriteLine($"   {error}");
+                Gender = g.Key,
+                Count = g.Count(),
+                List = g.ToList()
+            }).ToList();
+
+        foreach (var cg in genderGroups)
+        {
+            AnsiConsole.MarkupLine($"[cyan]{cg.Gender}[/]: [b]{cg.Count}[/]");
+            foreach (var customer in cg.List)
+            {
+                Console.WriteLine($"   {customer.Id,-5}{customer.FirstName,-12} {customer.LastName,-15} {customer.Email}");
             }
         }
-        else
-        {
-            AnsiConsole.MarkupLine($"[{Color.Pink1}]Validation succeeded.[/]");
-        }
-
-        Console.WriteLine("Done");
     }
+
 }
+

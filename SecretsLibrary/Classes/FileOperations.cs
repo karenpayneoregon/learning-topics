@@ -46,7 +46,7 @@ namespace SecretsLibrary.Classes
                         if (exists)
                         {
                             var data = StringSanitizer.StripQuotesAndBreaks(string.Join(Environment.NewLine, json));
-                            secretItems.Add(new()
+                            secretItems.Add(new SecretItem
                             {
                                 ProjectFileName = file,
                                 UserSecretsId = userSecretsId,
@@ -57,7 +57,7 @@ namespace SecretsLibrary.Classes
                     }
                     else
                     {
-                        secretItems.Add(new()
+                        secretItems.Add(new SecretItem
                         {
                             ProjectFileName = file,
                             UserSecretsId = userSecretsId,

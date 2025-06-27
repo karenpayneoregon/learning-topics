@@ -1,10 +1,6 @@
-﻿using System.Diagnostics;
-using CustomIConfigurationSourceSample.Data;
-using EntityCoreFileLogger;
-using Microsoft.EntityFrameworkCore;
+﻿using CustomIConfigurationSourceSample.Data;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace CustomIConfigurationSourceSample.Classes;
 

@@ -44,7 +44,7 @@ internal partial class Program
 
             if (results.Count >0)
             {
-                Console.WriteLine(ObjectDumper.Dump(results));
+                AnsiConsole.MarkupLine($"{ObjectDumper.Dump(results).Replace("SecretItem", "[yellow]SecretItem[/]")}");
                 Console.WriteLine();
             }
             else

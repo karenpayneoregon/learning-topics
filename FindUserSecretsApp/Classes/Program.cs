@@ -1,7 +1,5 @@
-﻿using FindUserSecretsApp.Classes;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-using SecretsLibrary.Classes;
 using SerilogLibrary;
 
 // ReSharper disable once CheckNamespace

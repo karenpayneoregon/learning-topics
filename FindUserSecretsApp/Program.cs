@@ -1,8 +1,8 @@
-﻿using Serilog;
-using SecretsLibrary.Classes;
+﻿using SecretsLibrary.Classes;
+using SecretsLibrary.Converters;
 using SecretsLibrary.Models;
-
-using static SecretsLibrary.Classes.FileOperations;
+using Serilog;
+using System.Text.Json;
 
 
 namespace FindUserSecretsApp;
@@ -19,12 +19,16 @@ internal partial class Program
             return;
         }
 
-        AnsiConsole.MarkupLine($"[yellow]Secrets main folder[/] [cyan]{Utilities.SecretsFolder}[/]");
+        AnsiConsole.MarkupLine($"[yellow]Secrets folder[/] [cyan]{Utilities.SecretsFolder}[/]");
 
-        const string rootDirectory = @"C:\OED\DotnetLand\VS2022";
+        string visualStudioFolder = GetApplicationSettings().VisualStudioFolder;
+        AnsiConsole.MarkupLine($"[yellow]Root directory[/] [cyan]{visualStudioFolder}[/]");
+
+
         const string outputFile = @"UserSecretsProjects.json";
+        const string projectFile = "UserProjects.json";
 
-        if (!Directory.Exists(rootDirectory))
+        if (!Directory.Exists(visualStudioFolder))
         {
             
             AnsiConsole.MarkupLine("[red]Root directory not found![/]");
@@ -36,25 +40,38 @@ internal partial class Program
 
         try
         {
-            AnsiConsole.MarkupLine("[yellow]Scanning...[/]");
-            ScanDirectory(rootDirectory, secretItems);
-            List<SecretItem> results = await WriteSecretsFileAsync(outputFile, secretItems);
+            /*
+             * See Status from Spectre.Console
+             */
+            AnsiConsole.Status()
+                .Start("[cyan]Scanning...[/]", ctx =>
+                {
+                    ctx.Spinner(Spinner.Known.Star);
+                    ctx.SpinnerStyle(Style.Parse("deeppink2"));
+                    ScanDirectory(visualStudioFolder, secretItems);
+                });
 
-            Console.Clear();
-
-            if (results.Count >0)
+            if (secretItems.Count >0)
             {
-             AnsiConsole.MarkupLine($"{ObjectDumper.Dump(results).Replace("SecretItem", "[yellow]SecretItem[/]")}");
-                Console.WriteLine();
-            }
-            else
+
+                var projects = secretItems.Select(x => new SecretData(x.UserSecretsId, x.ProjectFileName)).ToList();
+                await File.WriteAllTextAsync(projectFile, JsonSerializer.Serialize(projects, JsonSerializerOptions));
+
+                var options = JsonSerializerOptions;
+                options.Converters.Add(new SecretItemConverter());
+
+                var json = JsonSerializer.Serialize(secretItems, options);
+                await File.WriteAllTextAsync(outputFile, json);
+
+                AnsiConsole.MarkupLine($"[yellow]Scan complete. Results saved in:[/] [cyan]{outputFile}[/] [yellow]with a count of[/] [cyan]{secretItems.Count}[/]");
+                Log.Information($"Scan complete. Results saved in: {outputFile} with a count of {secretItems.Count}");
+
+            } else
             {
-                AnsiConsole.MarkupLine("[red]No user secrets found.[/]");
+                AnsiConsole.MarkupLine("[red]No UserSecrets found in the specified directory.[/]");
+                Log.Information("No UserSecrets found.");
+
             }
-
-
-            AnsiConsole.MarkupLine($"[yellow]Scan complete. Results saved in:[/] [cyan]{outputFile}[/] [yellow]with a count of[/] [cyan]{results.Count}[/]");
-
         }
         catch (Exception ex)
         {
@@ -65,4 +82,6 @@ internal partial class Program
         Console.ReadLine();
 
     }
+
+    private static JsonSerializerOptions JsonSerializerOptions => new() { WriteIndented = true };
 }

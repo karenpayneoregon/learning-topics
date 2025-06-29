@@ -1,4 +1,6 @@
-﻿namespace SecretsLibrary.Models;
+﻿using System.Text.Json;
+
+namespace SecretsLibrary.Models;
 #nullable disable
 /// <summary>
 /// Represents a secret item containing information about a file and its associated UserSecretsId.
@@ -32,14 +34,7 @@ public class SecretItem
     /// </remarks>
     public string UserSecretsId { get; init; }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether the secret item is valid.
-    /// </summary>
-    /// <remarks>
-    /// A secret item is considered valid if the associated project folder exists
-    /// within the UserSecrets directory.
-    /// </remarks>
-    public bool IsValid { get; set; }
+ 
 
     /// <summary>
     /// Gets or sets the contents of the secret item as a dictionary of key-value pairs.
@@ -48,5 +43,7 @@ public class SecretItem
     /// This property holds the deserialized data from the secrets.json file associated with the UserSecretsId.
     /// Each key-value pair represents a secret stored in the file.
     /// </remarks>
-    public Dictionary<string, string> Contents { get; set; }
+    //public Dictionary<string, string> Contents { get; set; }
+    public JsonDocument Contents { get; set; }
+
 }

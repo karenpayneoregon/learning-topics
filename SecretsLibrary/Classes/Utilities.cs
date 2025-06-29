@@ -15,6 +15,10 @@ namespace SecretsLibrary.Classes
         /// <returns>
         /// A <see cref="string"/> representing the full path to the user secrets folder.
         /// </returns>
+        /// <remarks>
+        /// Windows %APPDATA%\Microsoft\UserSecrets
+        /// Linux/Mac ~/.microsoft/usersecrets
+        /// </remarks>
         public static string SecretsFolder => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "Microsoft",
@@ -38,7 +42,7 @@ namespace SecretsLibrary.Classes
         /// </summary>
         /// <param name="sender">The name or identifier of the project.</param>
         /// <returns>The full path to the project folder as a string.</returns>
-        public static string ProjectFolder(string sender) => 
+        public static string ProjectFolder(string sender) =>
             Path.Combine(SecretsFolder, sender);
 
         /// <summary>
@@ -64,25 +68,9 @@ namespace SecretsLibrary.Classes
             catch (JsonException)
             {
                 Console.WriteLine("Error: Invalid JSON format.");
-                return true; 
+                return true;
             }
         }
 
-        /// <summary>
-        /// Reads a secret file associated with the specified identifier and displays its content.
-        /// </summary>
-        /// <param name="secretIdentifier">
-        /// The identifier used to locate the secret file.
-        /// </param>
-        /// <remarks>
-        /// This method utilizes <see cref="FileOperations.ReadSecretFile(string)"/> to retrieve the content of the secret file.
-        /// If the file exists, its content is displayed line by line in the console.
-        /// </remarks>
-        public static string ReadSecretFile(string secretIdentifier)
-        {
-            var (json, exists) = FileOperations.ReadSecretFile(secretIdentifier);
-
-            return exists ? string.Join(Environment.NewLine, json) : "";
-        }
     }
 }

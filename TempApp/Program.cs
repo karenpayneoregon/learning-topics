@@ -11,6 +11,7 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        Work.ReadConfiguration();
         Console.ReadLine();
     }
 

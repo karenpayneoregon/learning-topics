@@ -40,15 +40,13 @@ public class SecretItem
     /// within the UserSecrets directory.
     /// </remarks>
     public bool IsValid { get; set; }
+
     /// <summary>
-    /// Gets or sets the contents of the secret file associated with the secret item.
+    /// Gets or sets the contents of the secret item as a dictionary of key-value pairs.
     /// </summary>
-    /// <value>
-    /// A string representing the sanitized contents of the secret file. 
-    /// If no secrets are found, the value will be "[No secrets found]".
-    /// </value>
     /// <remarks>
-    /// The contents are processed to remove unnecessary whitespace, quotes, and line breaks.
+    /// This property holds the deserialized data from the secrets.json file associated with the UserSecretsId.
+    /// Each key-value pair represents a secret stored in the file.
     /// </remarks>
-    public string Contents { get; set; }
+    public Dictionary<string, string> Contents { get; set; }
 }

@@ -1,16 +1,20 @@
 ﻿using System.Diagnostics;
+using Microsoft.Extensions.Configuration;
 
 namespace TempApp.Classes;
 internal static class Work
 {
-    [DebuggerStepThrough, DebuggerStepperBoundary]
-    public static void Run()
+    public static void ReadConfiguration()
     {
-        Method2();
-    }
+        IConfiguration config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.karen.payne.json", optional: false, reloadOnChange: true)
+            .Build();
 
-    private static void Method2()
-    {
-        Console.WriteLine("Skipped but still executes");
+        var helpDesk = config.GetSection(nameof(HelpDesk)).Get<HelpDesk>();
+
+        Console.WriteLine($"Phone: {helpDesk.Phone}");
+        Console.WriteLine($"Email: {helpDesk.Email}");
     }
 }

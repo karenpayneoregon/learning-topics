@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using static System.DateTime;
 
-namespace SecretsLibrary.Classes;
+namespace SerilogLibrary;
 
 public class SetupLogging
 {
@@ -9,7 +9,8 @@ public class SetupLogging
     {
         Log.Logger = new LoggerConfiguration()
             .WriteTo.File(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", $"{Now.Year}-{Now.Month}-{Now.Day}", "Log.txt"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", $"{Now.Year}-{Now.Month}-{Now.Day}",
+                    "Log.txt"),
                 rollingInterval: RollingInterval.Infinite,
                 outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
             .CreateLogger();

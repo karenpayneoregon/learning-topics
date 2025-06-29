@@ -45,12 +45,27 @@ namespace SecretsLibrary.Classes
                         var (json, exists) = ReadSecretFile(userSecretsId);
                         if (exists)
                         {
-                            var data = StringSanitizer.StripQuotesAndBreaks(string.Join(Environment.NewLine, json));
+                            var rawJson = string.Join(Environment.NewLine, json);
+                            Dictionary<string, string>? dict = null;
+
+        
+                            try
+                            {
+                                using var doc = JsonDocument.Parse(rawJson);
+                                var parsedJson = doc.RootElement.Clone();
+                                dict = JsonSerializer.Deserialize<Dictionary<string, string>>(rawJson) ?? new Dictionary<string, string>();
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.Warning(ex, $"Could not parse secrets.json for {userSecretsId}");
+                                dict = new Dictionary<string, string> { { "Alert", "Has no secrets or error parsing data" } };
+                            }
+
                             secretItems.Add(new SecretItem
                             {
                                 ProjectFileName = file,
                                 UserSecretsId = userSecretsId,
-                                Contents = data.RemoveExtraWhitespace(),
+                                Contents = dict
                             });
                         }
   
@@ -61,7 +76,7 @@ namespace SecretsLibrary.Classes
                         {
                             ProjectFileName = file,
                             UserSecretsId = userSecretsId,
-                            Contents = "[No secrets found]",
+                            Contents = new Dictionary<string, string> { ["[Info]"] = "No secrets found" },
                         });
                     }
          
@@ -179,8 +194,9 @@ namespace SecretsLibrary.Classes
                 var file = Path.Combine(directory, "secrets.json");
                 if (File.Exists(file))
                 {
+                    var lines = File.ReadAllLines(file);
                     var isEmpty = Utilities.IsEmptyJsonObject(File.ReadAllText(file));
-                    return (File.ReadAllLines(file), !isEmpty);
+                    return (lines, !isEmpty);
                 }
             }
 

@@ -1,0 +1,17 @@
+{
+  "help": "https://go.microsoft.com/fwlink/?linkid=866610",
+  "root": false,
+  "dependentFileProviders": {
+    "add": {
+      "fileToFile": {
+        "add": {
+          "appsettings.karen.payne.json": [
+            "appsettings.json"
+          ]
+        }
+      }
+    }
+  }
+}
+
+

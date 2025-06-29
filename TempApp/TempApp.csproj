@@ -41,6 +41,9 @@
 	  <None Update="appsettings.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	  <None Update="appsettings.karen.payne.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 
@@ -52,7 +55,25 @@
 		<AdditionalFiles Include="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</AdditionalFiles>
+		<None Update="appsettings.karen.payne.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</None>
+		<None Update="appsettings.production.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</None>
+		<None Update="appsettings.development.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</None>
+		<None Update="appsettings.demo.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</None>
 	</ItemGroup>
+
+
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />

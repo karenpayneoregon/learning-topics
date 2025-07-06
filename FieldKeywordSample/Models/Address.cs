@@ -1,4 +1,5 @@
-﻿using FieldKeywordSample.Interfaces;
+﻿using FieldKeywordSample.Classes;
+using FieldKeywordSample.Interfaces;
 using static FieldKeywordSample.Classes.Helpers;
 
 namespace FieldKeywordSample.Models;
@@ -14,7 +15,12 @@ public class Address : IAddress
     public int Id { get; set; }
     public required int CustomerId { get; set; }
     public required string Street { get; set; }
-    public required string City { get; set; }
+
+    public required string City
+    {
+        get;
+        set => field = value.CapitalizeFirstLetter();
+    }
     /// <summary>
     /// Gets or sets the state abbreviation for the address.
     /// </summary>

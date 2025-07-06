@@ -10,18 +10,10 @@ namespace FieldKeywordSample.Models;
 /// </remarks>
 public class Customer : Person, ICustomer
 {
-    /// <summary>
-    /// Gets or sets the unique identifier for the customer.
-    /// </summary>
-    /// <value>
-    /// The unique identifier for the customer.
-    /// </value>
     public int CustomerId { get; set; }
-
     public List<Address> Addresses
     {
         get;
         set => field = value ?? field;
     }
-
 }

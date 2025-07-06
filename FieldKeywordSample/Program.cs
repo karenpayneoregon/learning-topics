@@ -1,5 +1,4 @@
 ﻿using FieldKeywordSample.Classes;
-using FieldKeywordSample.Interfaces;
 using FieldKeywordSample.Models;
 
 namespace FieldKeywordSample;
@@ -7,6 +6,16 @@ namespace FieldKeywordSample;
 internal partial class Program
 {
     static void Main(string[] args)
+    {
+
+        var people = MockedData.People();
+
+
+        AnsiConsole.MarkupLine("[yellow]Exit[/]");
+        Console.ReadLine();
+    }
+
+    private static void ProcessAndDisplayPeople()
     {
         var people = MockedData.People();
 
@@ -45,10 +54,6 @@ internal partial class Program
 
             Console.WriteLine();
         }
-
-        AnsiConsole.MarkupLine("[yellow]Exit[/]");
-        Console.ReadLine();
     }
-
-
 }
+

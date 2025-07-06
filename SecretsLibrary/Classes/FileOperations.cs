@@ -59,6 +59,7 @@ public partial class FileOperations
     /// <exception cref="Exception">Thrown when an unexpected error occurs during directory processing.</exception>
     public static void ScanDirectory(string directory, List<SecretItem> secretItems)
     {
+        
         try
         {
             foreach (var file in Directory.GetFiles(directory, "*.csproj", SearchOption.AllDirectories))

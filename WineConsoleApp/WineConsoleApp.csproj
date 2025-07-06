@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ApplicationIcon>assets\csharp.ico</ApplicationIcon>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Product>EF Core Wines code sample</Product>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="ForTwitter.sql" />
+	  <None Remove="Models\readme.md" />
+	  <None Remove="readme.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="assets\csharp.ico" />
+	  <Content Include="Models\readme.md" />
+	  <Content Include="readme.md" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="EntityCoreFileLogger" Version="1.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Spectre.Console" Version="0.47.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Models\WineType.cs">
+	    <DependentUpon>WineType.tt</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Models\WineType.tt">
+	    <LastGenOutput>WineType.cs</LastGenOutput>
+	    <Generator>TextTemplatingFileGenerator</Generator>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<Target Name="MakeLogDir" AfterTargets="Build">
+		<MakeDir Directories="$(OutDir)LogFiles\$([System.DateTime]::Now.ToString(yyyy-MM-dd))" />
+	</Target>
+
+</Project>

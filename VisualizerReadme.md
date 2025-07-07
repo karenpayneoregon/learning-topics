@@ -6,6 +6,7 @@ Prompt for IEnumerable Visualizer  by project
 
 - Where not is Customer
 - Where is Customer
+- Get only Customers where Address.State == "OR"
 - Where is Customer Address count is greater than 1
 - Where BirthDate.Year < 1975
 - Where BirthDate.Year == 1978

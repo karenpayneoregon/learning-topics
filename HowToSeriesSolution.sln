@@ -75,6 +75,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visual Studio IEnumerable v
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WineConsoleApp", "WineConsoleApp\WineConsoleApp.csproj", "{67191AC3-93DD-CCAD-9697-ABD4E4900709}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{3A7EF8F9-A58A-6994-3FF9-E29A10D92AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectionExistsAppsettingsApp", "SectionExistsAppsettingsApp\SectionExistsAppsettingsApp.csproj", "{2C551961-4592-4217-A74B-0BF21B9E4775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +161,10 @@ Global
 		{67191AC3-93DD-CCAD-9697-ABD4E4900709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67191AC3-93DD-CCAD-9697-ABD4E4900709}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67191AC3-93DD-CCAD-9697-ABD4E4900709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C551961-4592-4217-A74B-0BF21B9E4775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C551961-4592-4217-A74B-0BF21B9E4775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C551961-4592-4217-A74B-0BF21B9E4775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C551961-4592-4217-A74B-0BF21B9E4775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +194,7 @@ Global
 		{919E2DB8-144F-41AE-B5C7-B58E96D0F378} = {7EDE3968-EDDE-8EA2-8DC4-C78AA0C1171C}
 		{7EDE3968-EDDE-8EA2-8DC4-C78AA0C1171C} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{67191AC3-93DD-CCAD-9697-ABD4E4900709} = {B8685830-424C-DC28-90E6-E26DA1901509}
+		{2C551961-4592-4217-A74B-0BF21B9E4775} = {3A7EF8F9-A58A-6994-3FF9-E29A10D92AEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

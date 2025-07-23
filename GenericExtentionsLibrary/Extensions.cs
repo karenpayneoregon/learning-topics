@@ -1,4 +1,4 @@
-﻿namespace GenericExtentionsLibrary;
+﻿namespace GenericExtensionsLibrary;
 
 public static class Extensions
 {

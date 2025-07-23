@@ -10,8 +10,4 @@ public class Customer
     public override string ToString() => $"{Id,-3}{FirstName,-7}{LastName,-10} ~ ";
 }
 
-public enum Gender
-{
-    Male,
-    Female
-}
+

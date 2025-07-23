@@ -52,6 +52,7 @@ internal partial class Program
             cs => cs.MainConnection,
             cs => cs.SecondaryConnection
         );
+
         if (!valid)
         {
             AnsiConsole.MarkupLine("[red]Validation failed:[/]");

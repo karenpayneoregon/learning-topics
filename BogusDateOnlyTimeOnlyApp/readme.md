@@ -25,6 +25,3 @@ See `BogusLibrary1` class project.
 |  | Weekday          | Get a random weekday.                                                      |
 
 
-## Messed up markdown
-
-:stop_sign: For some reason the markdown is messed up in the readme file only online.

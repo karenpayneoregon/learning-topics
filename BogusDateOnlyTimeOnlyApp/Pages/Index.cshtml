@@ -1,0 +1,63 @@
+﻿@page
+@model BogusDateOnlyTimeOnlyApp.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="fs-5">Bogus DateOnly TimeOnly &mdash; samples</h1>
+<h2 class="fs-6">Customers Recent</h2>
+<div class="container border border-primary ">
+    <div class="row fw-bold border-bottom bg-primary text-white">
+        <div class="col">First Name</div>
+        <div class="col">Last Name</div>
+        <div class="col">Birthdate</div>
+        <div class="col">Time</div>
+    </div>
+    @foreach (var customer in Model.CustomersRecent)
+    {
+        <div class="row border-bottom py-2">
+            <div class="col">@customer.FirstName</div>
+            <div class="col">@customer.LastName</div>
+            <div class="col">@customer.BirthdateFormatted</div>
+            <div class="col">@customer.TimeFormatted</div>
+        </div>
+    }
+</div>
+
+<h2 class="fs-6">Customers Between</h2>
+<div class="container border border-primary">
+    <div class="row fw-bold border-bottom bg-primary text-white">
+        <div class="col">First Name</div>
+        <div class="col">Last Name</div>
+        <div class="col">Birthdate</div>
+        <div class="col">Time</div>
+    </div>
+    @foreach (var customer in Model.CustomersBetween)
+    {
+        <div class="row border-bottom py-2">
+            <div class="col">@customer.FirstName</div>
+            <div class="col">@customer.LastName</div>
+            <div class="col">@customer.BirthdateFormatted</div>
+            <div class="col">@customer.TimeFormatted</div>
+        </div>
+    }
+</div>
+
+<h2 class="fs-6">Customers Soon</h2>
+<div class="container border border-primary">
+    <div class="row fw-bold border-bottom bg-primary text-white">
+        <div class="col">First Name</div>
+        <div class="col">Last Name</div>
+        <div class="col">Birthdate</div>
+        <div class="col">Time</div>
+    </div>
+    @foreach (var customer in Model.CustomersSoon)
+    {
+        <div class="row border-bottom py-2">
+            <div class="col">@customer.FirstName</div>
+            <div class="col">@customer.LastName</div>
+            <div class="col">@customer.BirthdateFormatted</div>
+            <div class="col">@customer.TimeFormatted</div>
+        </div>
+    }
+</div>

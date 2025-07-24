@@ -22,4 +22,8 @@ See `BogusLibrary1` class project.
 | | RecentOffset   | Get a random DateTimeOffset within the last few days.                       | 
 | | Timespan       | Get a random TimeSpan.                                                      | 
 | | Month          | Get a random month.                                                         | 
-| | Weekday        | Get a random weekday.                                                       |
+| | Weekday        | Get a random weekday.         |
+
+## Messed up markdown
+
+:stop_sign: For some reason the markdown is messed up in the readme file only online.

@@ -1,6 +1,6 @@
 ﻿# About
 
-Code samples for using DteOnly and TimeOnly with Bogus.
+Code samples for using DateOnly and TimeOnly with Bogus.
 
 See `BogusLibrary1` class project.
 

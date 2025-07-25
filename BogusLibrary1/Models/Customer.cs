@@ -3,6 +3,13 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace BogusLibrary1.Models;
+
+/// <summary>
+/// Represents a customer with personal details and formatted date and time properties.
+/// </summary>
+/// <remarks>
+/// DateOnly and TimeOnly properties do not format properly using DisplayAttribute thus their formatted versions are provided as properties.
+/// </remarks>
 public class Customer
 {
     public int Id { get; set; }

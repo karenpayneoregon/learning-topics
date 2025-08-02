@@ -10,6 +10,7 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+
         AnsiConsole.MarkupLine(PropertyExists(nameof(ConnectionStrings), nameof(ConnectionStrings.MainConnection))
             ? "[green]ConnectionStrings:MainConnection exists[/]"
             : "[red]ConnectionStrings:MainConnection does not exist[/]");

@@ -1,6 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
 using Serilog;
-using Spectre.Console;
 using SpreadsheetLight;
 using Color = System.Drawing.Color;
 #pragma warning disable CS8602
@@ -26,7 +25,7 @@ public class ExcelOperations
     /// It creates an Excel file using the SpreadsheetLight library, applies styling to the header row, 
     /// and ensures the header remains visible when scrolling.
     /// </remarks>
-    /// <exception cref="System.Exception">
+    /// <exception cref="Exception">
     /// Thrown if the Excel file cannot be saved, typically due to the file being open in another application.
     /// </exception>
     public static bool CreateCustomerViewReport(System.Data.DataTable table, string excelFileName)
@@ -43,26 +42,23 @@ public class ExcelOperations
             table.Columns["ContactType"].ColumnName = "Contact Type";
             table.Columns["GenderType"].ColumnName = "Gender";
 
-
             using var document = new SLDocument();
-
 
             // insert data into the first worksheet
             document.ImportDataTable(1, SLConvert.ToColumnIndex("A"), table, true);
-
-
+            
             // set the header style
             var headerStyle = HeaderStyle(document);
             document.SetCellStyle(1, 1, 1, 5, headerStyle);
 
             // Give WorkSheet a meaningful name
             document.RenameWorksheet(SLDocument.DefaultFirstSheetName, Path.GetFileNameWithoutExtension(excelFileName));
-
+            
             // ensure header is visible when scrolling down
             document.FreezePanes(1, 5);
 
             // Auto fit columns
-            for (int columnIndex = 1; columnIndex < table.Columns.Count; columnIndex++)
+            for (var columnIndex = 1; columnIndex < table.Columns.Count; columnIndex++)
             {
                 document.AutoFitColumn(columnIndex);
             }
@@ -81,10 +77,17 @@ public class ExcelOperations
     }
 
     /// <summary>
-    /// Create the first row format/style
+    /// Creates a style for the header row in an Excel worksheet.
     /// </summary>
-    /// <param name="document">Instance of a <see cref="SLDocument"/></param>
-    /// <returns>A <see cref="SLStyle"/></returns>
+    /// <param name="document">An instance of the <see cref="SLDocument"/> representing the Excel document.</param>
+    /// <returns>
+    /// A <see cref="SLStyle"/> object that defines the formatting for the header row, 
+    /// including bold text, white font color, and a light gray background with accent colors.
+    /// </returns>
+    /// <remarks>
+    /// This method is used to define a consistent and visually appealing style for the header row in Excel worksheets.
+    /// The style includes bold text, a white font color, and a patterned background with theme-based accent colors.
+    /// </remarks>
     public static SLStyle HeaderStyle(SLDocument document)
     {
 
@@ -93,6 +96,7 @@ public class ExcelOperations
 
         headerStyle.Font.Bold = true;
         headerStyle.Font.FontColor = Color.White;
+
         headerStyle.Fill.SetPattern(
             PatternValues.LightGray,
             SLThemeColorIndexValues.Accent1Color,
@@ -120,8 +124,8 @@ public class ExcelOperations
     public static void CreateSortableHeader(SLDocument document)
     {
 
-        var statistics = document.GetWorksheetStatistics();
-        int lastColIndex = statistics.EndColumnIndex;
+        SLWorksheetStatistics? statistics = document.GetWorksheetStatistics();
+        var lastColIndex = statistics.EndColumnIndex;
 
         string lastColLetter = SLConvert.ToColumnName(lastColIndex);
         List<string> columnNames = [];
@@ -129,7 +133,7 @@ public class ExcelOperations
         var headers = Headers(document, columnNames);
 
         // Set headers
-        for (int index = 0; index < headers.Length; index++)
+        for (var index = 0; index < headers.Length; index++)
             document.SetCellValue(1, index + 1, headers[index]);
 
         var table = document.CreateTable("A1", $"{lastColLetter}{statistics.EndRowIndex + 1}");
@@ -158,12 +162,12 @@ public class ExcelOperations
     /// </remarks>
     private static string[] Headers(SLDocument document, List<string> columnNames)
     {
-        int colIndex = 1;
+        var colIndex = 1;
 
         // Loop through the first row to get column headers
         while (true)
         {
-            string value = document.GetCellValueAsString(1, colIndex);
+            var value = document.GetCellValueAsString(1, colIndex);
 
             if (string.IsNullOrWhiteSpace(value)) break;
 
@@ -171,7 +175,7 @@ public class ExcelOperations
             colIndex++;
         }
 
-        string[] headers = columnNames.ToArray();
+        var headers = columnNames.ToArray();
         return headers;
     }
 

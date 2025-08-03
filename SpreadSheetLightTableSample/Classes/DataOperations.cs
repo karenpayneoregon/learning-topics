@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Serilog;
+using SpreadSheetLightTableSample.Data;
 using SpreadSheetLightTableSample.Models;
 
 namespace SpreadSheetLightTableSample.Classes;

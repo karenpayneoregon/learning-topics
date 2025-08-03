@@ -30,6 +30,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Spectre.Console" Version="0.50.0" />
+		<PackageReference Include="ExcelMapper" Version="5.2.598" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -64,9 +64,11 @@ public class ExcelOperations
             }
 
             CreateSortableHeader(document);
+
             document.SaveAs(excelFileName);
 
             return true;
+
         }
         catch (Exception exception)
         {
@@ -90,8 +92,7 @@ public class ExcelOperations
     /// </remarks>
     public static SLStyle HeaderStyle(SLDocument document)
     {
-
-
+        
         SLStyle headerStyle = document.CreateStyle();
 
         headerStyle.Font.Bold = true;
@@ -103,6 +104,7 @@ public class ExcelOperations
             SLThemeColorIndexValues.Accent5Color);
 
         return headerStyle;
+
     }
 
     /// <summary>
@@ -176,6 +178,8 @@ public class ExcelOperations
         }
 
         var headers = columnNames.ToArray();
+
+
         return headers;
     }
 

@@ -12,6 +12,7 @@ internal partial class Program
     static async Task Main(string[] args)
     {
         AnsiConsole.MarkupLine("[yellow]Reading data[/]");
+
         var (data, isSuccess) = await DataOperations.GetCustomerReportData();
         if (!isSuccess)
         {

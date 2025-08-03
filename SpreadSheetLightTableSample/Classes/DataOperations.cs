@@ -28,7 +28,6 @@ public static class DataOperations
         }
         catch (Exception ex)
         {
-            // Optional: log the exception
             Log.Error(ex, "Error fetching customer report data");
             return ([], false);
         }

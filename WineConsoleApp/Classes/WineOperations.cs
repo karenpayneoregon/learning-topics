@@ -14,8 +14,6 @@ namespace WineConsoleApp.Classes;
 public class WineOperations
 {
 
-
-    
     public static void Indexing()
     {
         CyanMarkup("Indexing");
@@ -91,6 +89,16 @@ public class WineOperations
 
     }
 
+    /// <summary>
+    /// Retrieves all wines from the database.
+    /// </summary>
+    /// <returns>
+    /// A list of <see cref="Models.Wine"/> objects representing all wines available in the database.
+    /// </returns>
+    /// <remarks>
+    /// This method establishes a database context using <see cref="Data.WineContext"/> 
+    /// and retrieves all records from the <c>Wines</c> table.
+    /// </remarks>
     public static List<Wine> GetAllWines()
     {
         using WineContext context = new();
@@ -101,9 +109,6 @@ public class WineOperations
         using WineContext context = new();
 
         List<Wine> allWines = context.Wines.ToList();
-
-
-
 
         CyanMarkup("All");
 

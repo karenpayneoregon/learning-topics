@@ -38,5 +38,5 @@ public class Wine
     /// such as Red, White, or Rose. This property is mapped to an integer value in the database.
     /// </remarks>
     public WineType WineType { get; set; }
-    public override string ToString() => $"{WineType} {Name}";
+    public override string ToString() => $"{WineType, -12} {Name}";
 }

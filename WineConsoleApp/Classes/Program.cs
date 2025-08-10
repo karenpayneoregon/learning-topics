@@ -2,6 +2,8 @@
 using Spectre.Console;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using WineConsoleApp.Classes;
+
 // ReSharper disable CheckNamespace
 
 namespace WineConsoleApp;
@@ -16,6 +18,8 @@ internal partial class Program
         Console.Title = product!;
 
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+
+        SetupLogging.ToFile();
 
         AnsiConsole.Write(
             new FigletText("EF Core Enum conversions: Wines")

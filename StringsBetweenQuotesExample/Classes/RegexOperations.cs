@@ -5,7 +5,7 @@ namespace StringsBetweenQuotesExample.Classes;
 public class RegexOperations
 {
 
-    public static string _timeout => "REGEX_DEFAULT_MATCH_TIMEOUT";
+    public static string Timeout => "REGEX_DEFAULT_MATCH_TIMEOUT";
 
     /// <summary>
     /// Retrieves the regular expression timeout value from the configuration.
@@ -33,7 +33,7 @@ public class RegexOperations
     /// </remarks>
     public static void SetTimeout()
     {
-        AppDomain.CurrentDomain.SetData(_timeout, TimeSpan.FromSeconds(RegexTimeOut().Seconds));
+        AppDomain.CurrentDomain.SetData(Timeout, TimeSpan.FromSeconds(RegexTimeOut().Seconds));
     }
 
     /// <summary>
@@ -43,5 +43,5 @@ public class RegexOperations
     /// A <see cref="TimeSpan"/> representing the timeout value if it is set; otherwise, <c>null</c>.
     /// </returns>
     public static TimeSpan? GetTimeout() 
-        => (TimeSpan?)AppDomain.CurrentDomain.GetData(_timeout);
+        => (TimeSpan?)AppDomain.CurrentDomain.GetData(Timeout);
 }

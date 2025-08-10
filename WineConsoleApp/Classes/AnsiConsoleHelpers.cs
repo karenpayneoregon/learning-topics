@@ -1,4 +1,6 @@
 ﻿using Spectre.Console;
+using System.Runtime.CompilerServices;
+using Serilog;
 
 namespace WineConsoleApp.Classes;
 public static class AnsiConsoleHelpers
@@ -10,6 +12,13 @@ public static class AnsiConsoleHelpers
     public static void CyanMarkup(string text)
     {
         AnsiConsole.MarkupLine($"[cyan]{text}[/]");
+    }
+
+    public static void PrintCyan([CallerMemberName] string? methodName = null)
+    {
+        AnsiConsole.MarkupLine($"[cyan]{methodName}[/]");
+        Log.Information($"Starting {methodName}");
+        Console.WriteLine();
     }
     private static void Render(Rule rule)
     {
@@ -23,10 +32,5 @@ public static class AnsiConsoleHelpers
         Render(new Rule($"[yellow]Press a key to exit the demo[/]").RuleStyle(Style.Parse("silver")).Centered());
         Console.ReadLine();
     }
-    public static void Line()
-    {
-        Console.WriteLine();
-        Render(new Rule($"[yellow]Indexing[/]").RuleStyle(Style.Parse("silver")).Centered());
 
-    }
 }

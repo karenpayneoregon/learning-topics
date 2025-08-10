@@ -1,5 +1,8 @@
+using HelpDeskApplication.Classes;
 using HelpDeskApplication.Models;
+using Microsoft.Extensions.Options;
 using Serilog;
+using RequiredDirectories = HelpDeskApplication.Classes.RequiredDirectories;
 
 namespace HelpDeskApplication;
 public class Program
@@ -22,8 +25,10 @@ public class Program
 
         builder.Services.Configure<HelpDesk>(builder.Configuration.GetSection(nameof(HelpDesk)));
 
+        var fileSettings = builder.Configuration.GetSection(nameof(FileSettings)).Get<FileSettings>();
+
         // Define the path where key-per-file secrets are stored
-        var secretsPath = "C:\\OED\\Secrets"; 
+        var secretsPath = fileSettings.SecretsDirectory;
 
         if (Directory.Exists(secretsPath))
         {
@@ -35,6 +40,19 @@ public class Program
             options.DatabasePassword = builder.Configuration[nameof(DatabaseSettings.DatabasePassword)] ?? "???";
         });
 
+
+
+
+        // Bind configuration section to FileSettings
+        builder.Services.AddOptions<RequiredDirectories>()
+            .Bind(builder.Configuration.GetSection(nameof(FileSettings))); 
+
+        // using IValidateOptions<T>:
+        builder.Services.AddSingleton<IValidateOptions<RequiredDirectories>, DirectoryOptionsValidation>();
+        builder.Services.AddOptions<RequiredDirectories>()
+            .ValidateOnStart();
+
+        
         var app = builder.Build();
         
 

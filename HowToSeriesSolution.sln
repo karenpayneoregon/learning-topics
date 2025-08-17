@@ -99,6 +99,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadSheetLightTableSample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadSheetLightTableSampleLibrary", "SpreadSheetLightTableSampleLibrary\SpreadSheetLightTableSampleLibrary.csproj", "{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DateTime", "DateTime", "{F8550BD0-EF94-E9DF-83BD-CD6255A1019D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeWeekNumberSample", "DateTimeWeekNumberSample\DateTimeWeekNumberSample.csproj", "{34F257BE-4B70-4B96-9D30-DA5AC79921B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,6 +209,10 @@ Global
 		{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -241,6 +249,7 @@ Global
 		{3B441642-0094-41B0-85A9-0B3E8DD5E197} = {2075631B-31DD-92B6-B0A7-6AFE1F99C0B4}
 		{FBE48AD3-73D9-4A80-A23F-C1C916ADBF61} = {F4A27CA2-A98B-9BA4-06DE-958D2E3B2285}
 		{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0} = {F4A27CA2-A98B-9BA4-06DE-958D2E3B2285}
+		{34F257BE-4B70-4B96-9D30-DA5AC79921B9} = {F8550BD0-EF94-E9DF-83BD-CD6255A1019D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-md">
+    <form method="post">
+
+        <div class="row">
+            <div class="col-md-4">
+                <label asp-for="@Model.Week" class="form-label">Current date time and week number</label>
+                <input class="form-control" type="week" asp-for="@Model.Week" />
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="mt-2">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+

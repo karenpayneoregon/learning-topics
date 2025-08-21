@@ -27,9 +27,9 @@ public class IndexModel : PageModel
 
         Log.Information("Week array: {W}", string.Join(",", week));
         Week = ISOWeek.ToDateTime(Convert.ToInt32(week[0]), Convert.ToInt32(week[1]), DayOfWeek.Monday);
-
+        
         Log.Information("Week = {W}", DateOnly.FromDateTime(Week));
         
-        Log.Information("Week extension {WOY}", DateTime.Now.WeekOfYear());
+        Log.Information("Week extension {WOY}", Week.Date.WeekOfYear());
     }
 }

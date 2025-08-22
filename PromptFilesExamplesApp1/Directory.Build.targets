@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<EnablePartialClassAutoNesting>true</EnablePartialClassAutoNesting>
+		<PartialClassAutoNestingVerbose>false</PartialClassAutoNestingVerbose>
+
+		<!-- Stable obj\ root -->
+		<_NestingPropsPath>$(BaseIntermediateOutputPath)FileNesting.DependentUpon.generated.props</_NestingPropsPath>
+
+		<!-- Force VS re-evaluate when the generated props changes -->
+		<MSBuildAllProjects>
+			$(MSBuildAllProjects);$(_NestingPropsPath)
+		</MSBuildAllProjects>
+	</PropertyGroup>
+
+	<!-- Import previous mappings -->
+	<Import Project="$(_NestingPropsPath)" Condition="Exists('$(_NestingPropsPath)')" />
+
+	<UsingTask TaskName="WritePartialNestingProps"
+			   TaskFactory="CodeTaskFactory"
+			   AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup>
+			<Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+			<OutputPath ParameterType="System.String" Required="true" />
+			<Verbose ParameterType="System.Boolean" Required="false" />
+			<ProjectDir ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Reference Include="mscorlib" />
+			<Reference Include="System" />
+			<Reference Include="System.Xml" />
+			<Reference Include="System.Core" />
+			<Reference Include="$(MSBuildToolsPath)\Microsoft.Build.Framework.dll" />
+			<Reference Include="$(MSBuildToolsPath)\Microsoft.Build.Utilities.Core.dll" />
+
+			<Using Namespace="System" />
+			<Using Namespace="System.Text.RegularExpressions" />
+
+			<Code Type="Class" Language="cs">
+				<![CDATA[
+        public sealed class WritePartialNestingProps : Microsoft.Build.Utilities.Task
+        {
+          public Microsoft.Build.Framework.ITaskItem[] Sources { get; set; }
+          public string OutputPath { get; set; }
+          public bool Verbose { get; set; }
+          public string ProjectDir { get; set; }
+
+          private sealed class Entry
+          {
+            public string File;
+            public string Dir;
+            public string FileName;
+            public string Namespace;
+            public string Class;
+            public int    Weight;
+            public bool   IsRoot;
+          }
+
+          public override bool Execute()
+          {
+            try
+            {
+              var rxNamespace = new System.Text.RegularExpressions.Regex(@"\bnamespace\s+([^\s{;]+)", System.Text.RegularExpressions.RegexOptions.Compiled);
+              var rxPartial   = new System.Text.RegularExpressions.Regex(@"\bpartial\s+(?:class|struct|record(?:\s+class|\s+struct)?)\s+([A-Za-z_][A-Za-z0-9_]*)\b", System.Text.RegularExpressions.RegexOptions.Compiled);
+
+              var entries = new System.Collections.Generic.List<Entry>();
+              var src = this.Sources ?? new Microsoft.Build.Framework.ITaskItem[0];
+
+              for (int i = 0; i < src.Length; i++)
+              {
+                string path = src[i].GetMetadata("FullPath");
+                if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(path)) continue;
+
+                string text; try { text = System.IO.File.ReadAllText(path); } catch { continue; }
+
+                int  weight = CountNonBlankLines(text);
+                bool isRoot = text.IndexOf("NEST-ROOT", System.StringComparison.OrdinalIgnoreCase) >= 0;
+
+                string ns = "";
+                var nsMatch = rxNamespace.Match(text);
+                if (nsMatch.Success) ns = nsMatch.Groups[1].Value.Trim();
+
+                var matches = rxPartial.Matches(text);
+                for (int j = 0; j < matches.Count; j++)
+                {
+                  string cls = matches[j].Groups[1].Value.Trim();
+                  var e = new Entry();
+                  e.File     = path;
+                  e.Dir      = System.IO.Path.GetDirectoryName(path) ?? "";
+                  e.FileName = System.IO.Path.GetFileName(path);
+                  e.Namespace= ns;
+                  e.Class    = cls;
+                  e.Weight   = weight;
+                  e.IsRoot   = isRoot;
+                  entries.Add(e);
+                }
+              }
+
+              // Group by ns::cls
+              var groups = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<Entry>>(System.StringComparer.Ordinal);
+              for (int k = 0; k < entries.Count; k++)
+              {
+                var e = entries[k];
+                string key = e.Namespace + "::" + e.Class;
+                System.Collections.Generic.List<Entry> list;
+                if (!groups.TryGetValue(key, out list))
+                {
+                  list = new System.Collections.Generic.List<Entry>();
+                  groups[key] = list;
+                }
+                list.Add(e);
+              }
+
+              var sb = new System.Text.StringBuilder();
+              sb.AppendLine("<Project>");
+              sb.AppendLine("  <ItemGroup>");
+
+              foreach (var kv in groups)
+              {
+                var parts = kv.Value;
+                if (parts.Count < 2) continue;
+
+                parts.Sort(new System.Comparison<Entry>(CompareForAnchor));
+                var anchor = parts[0];
+
+                for (int i = 1; i < parts.Count; i++)
+                {
+                  var p = parts[i];
+
+                  // Parent and child must be in the SAME folder
+                  if (!string.Equals(p.Dir, anchor.Dir, System.StringComparison.OrdinalIgnoreCase))
+                  {
+                    if (Verbose)
+                      Log.LogMessage(Microsoft.Build.Framework.MessageImportance.Low,
+                        "[Nesting] Skip cross-dir: '" + p.FileName + "' under '" + anchor.FileName + "'");
+                    continue;
+                  }
+
+                  // IMPORTANT: Update path relative to PROJECT DIR (not anchor dir)
+                  string updateAttr = EscapeXml(RelativeTo(p.File, this.ProjectDir));
+                  sb.AppendLine("    <Compile Update=\"" + updateAttr + "\">");
+                  sb.AppendLine("      <DependentUpon>" + EscapeXml(anchor.FileName) + "</DependentUpon>");
+                  sb.AppendLine("    </Compile>");
+                }
+              }
+
+              sb.AppendLine("  </ItemGroup>");
+              sb.AppendLine("</Project>");
+
+              string outDir = System.IO.Path.GetDirectoryName(OutputPath);
+              if (!string.IsNullOrEmpty(outDir) && !System.IO.Directory.Exists(outDir))
+                System.IO.Directory.CreateDirectory(outDir);
+
+              System.IO.File.WriteAllText(OutputPath, sb.ToString(), new System.Text.UTF8Encoding(false));
+              Log.LogMessage(Microsoft.Build.Framework.MessageImportance.Low, "[Nesting] Wrote: " + OutputPath);
+              return true;
+            }
+            catch (System.Exception ex)
+            {
+              Log.LogError("[Nesting] " + ex.ToString());
+              return false;
+            }
+          }
+
+          private static int CompareForAnchor(Entry a, Entry b)
+          {
+            if (a.IsRoot != b.IsRoot) return b.IsRoot ? 1 : -1;
+            if (a.Weight != b.Weight) return (a.Weight > b.Weight) ? -1 : 1;
+            return System.StringComparer.OrdinalIgnoreCase.Compare(a.FileName, b.FileName);
+          }
+
+          private static int CountNonBlankLines(string text)
+          {
+            if (string.IsNullOrEmpty(text)) return 0;
+            int count = 0;
+            using (System.IO.StringReader sr = new System.IO.StringReader(text))
+            {
+              string line;
+              while ((line = sr.ReadLine()) != null)
+              {
+                if (!string.IsNullOrWhiteSpace(line)) count++;
+              }
+            }
+            return count;
+          }
+
+          private static string EscapeXml(string s)
+          {
+            if (s == null) return "";
+            return s.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;")
+                    .Replace("\"", "&quot;").Replace("'", "&apos;");
+          }
+
+          private static string RelativeTo(string fileFullPath, string baseDir)
+          {
+            try
+            {
+              var fileUri = new System.Uri(System.IO.Path.GetFullPath(fileFullPath));
+              var baseDirFull = System.IO.Path.GetFullPath(System.IO.Path.Combine(baseDir, "."));
+              if (!baseDirFull.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
+                baseDirFull += System.IO.Path.DirectorySeparatorChar.ToString();
+              var baseUri = new System.Uri(baseDirFull);
+              string rel = baseUri.MakeRelativeUri(fileUri).ToString();
+              return System.Uri.UnescapeDataString(rel).Replace('/', System.IO.Path.DirectorySeparatorChar);
+            }
+            catch
+            {
+              return System.IO.Path.GetFileName(fileFullPath);
+            }
+          }
+        }
+      ]]>
+			</Code>
+		</Task>
+	</UsingTask>
+
+	<!-- Run on normal and design-time builds -->
+	<Target Name="GeneratePartialClassNesting"
+			BeforeTargets="CoreCompile;ResolveReferences;PrepareForBuild"
+			Condition="'$(EnablePartialClassAutoNesting)' == 'true'">
+
+		<ItemGroup>
+			<_AllSources Include="@(Compile)" Condition="Exists('%(Compile.FullPath)')" />
+		</ItemGroup>
+
+		<WritePartialNestingProps
+			Sources="@(_AllSources)"
+			OutputPath="$(_NestingPropsPath)"
+			ProjectDir="$(MSBuildProjectDirectory)"
+			Verbose="$(PartialClassAutoNestingVerbose)" />
+	</Target>
+</Project>

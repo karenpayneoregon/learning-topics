@@ -6,7 +6,6 @@ namespace PromptFilesExamplesApp1.Models;
 internal partial class Person
 {
     public event PropertyChangedEventHandler? PropertyChanged;
-
     protected void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 

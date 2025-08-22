@@ -2,7 +2,7 @@
 using System.ComponentModel;
 
 namespace PromptFilesExamplesApp1.Models;
-
+// NEST-ROOT
 internal partial class Person : Base, INotifyPropertyChanged
 {
     public string FirstName

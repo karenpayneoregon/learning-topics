@@ -2,6 +2,10 @@
 using static System.DateTime;
 
 namespace PromptFilesExamplesApp1.Classes;
+/// <summary>
+/// Provides functionality for configuring and initializing logging mechanisms 
+/// within the application, specifically for development environments.
+/// </summary>
 internal class SetupLogging
 {
     public static void Development()

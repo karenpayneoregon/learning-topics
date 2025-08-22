@@ -101,7 +101,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DateTime", "DateTime", "{F8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimeWeekNumberSample", "DateTimeWeekNumberSample\DateTimeWeekNumberSample.csproj", "{34F257BE-4B70-4B96-9D30-DA5AC79921B9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File nesting", "File nesting", "{FAA6FE31-8004-E514-9729-D18E5D55AA18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromptFilesExamplesApp1", "PromptFilesExamplesApp1\PromptFilesExamplesApp1.csproj", "{39046FA3-4618-491A-B1A3-DAB925A6035D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +213,10 @@ Global
 		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34F257BE-4B70-4B96-9D30-DA5AC79921B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39046FA3-4618-491A-B1A3-DAB925A6035D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39046FA3-4618-491A-B1A3-DAB925A6035D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39046FA3-4618-491A-B1A3-DAB925A6035D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39046FA3-4618-491A-B1A3-DAB925A6035D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -249,6 +253,7 @@ Global
 		{FBE48AD3-73D9-4A80-A23F-C1C916ADBF61} = {F4A27CA2-A98B-9BA4-06DE-958D2E3B2285}
 		{3B9E5B69-B3BE-4E3F-9AEE-7B0544BEE4E0} = {F4A27CA2-A98B-9BA4-06DE-958D2E3B2285}
 		{34F257BE-4B70-4B96-9D30-DA5AC79921B9} = {F8550BD0-EF94-E9DF-83BD-CD6255A1019D}
+		{39046FA3-4618-491A-B1A3-DAB925A6035D} = {C77C0044-9CAF-DB5C-D498-119248A9E1AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

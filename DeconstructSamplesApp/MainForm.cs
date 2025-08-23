@@ -14,7 +14,7 @@ public partial class MainForm : Form
 
     private void PeopleDictionaryButton_Click(object sender, EventArgs e)
     {
-        foreach (var (index, person) in personDictionary)
+        foreach (var (index, person) in PersonDictionary)
         {
             Debug.WriteLine($"{index,-4}" +
                             $"{person.FirstName, -12}" +
@@ -24,7 +24,7 @@ public partial class MainForm : Form
         }
     }
 
-    public static Dictionary<int, Person> personDictionary = Persons
+    public static Dictionary<int, Person> PersonDictionary = Persons
         .Select((p, index) => new { Key = index + 1, Value = p })
         .ToDictionary(x => x.Key, x => x.Value);
 

@@ -13,29 +13,23 @@ namespace FooterLibrary;
 [HtmlTargetElement("author", TagStructure = TagStructure.NormalOrSelfClosing)]
 public sealed class AuthorTagHelper : TagHelper
 {
-    /// <summary>
-    /// Text for the author’s name. Defaults to "Karen Payne".
-    /// </summary>
-    public string Name { get; set; } = "Karen Payne";
+    /// <summary>Author’s display name.</summary>
+    public string Name { get; set; } = "Jane Payne";
 
-    /// <summary>
-    /// CSS margin-left value (e.g., "5px"). Empty to omit inline style.
-    /// </summary>
+    /// <summary>Inline left margin (e.g., "5px"). Empty/null omits the style.</summary>
     public string? MarginLeft { get; set; } = "5px";
 
-    /// <summary>
-    /// Set an outer tag name. Defaults to "span".
-    /// </summary>
+    /// <summary>Outer tag to render (default: span).</summary>
     public string Tag { get; set; } = "span";
 
-    /// <summary>
-    /// Optional CSS classes applied to the outer tag.
-    /// </summary>
+    /// <summary>Optional CSS classes on the outer tag.</summary>
     public string? Class { get; set; }
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        output.TagName = Tag; // span by default
+        output.TagName = Tag;
+        output.TagMode = TagMode.StartTagAndEndTag;
+
         if (!string.IsNullOrWhiteSpace(Class))
             output.Attributes.SetAttribute("class", Class);
 
@@ -43,6 +37,6 @@ public sealed class AuthorTagHelper : TagHelper
             output.Attributes.SetAttribute("style", $"margin-left: {MarginLeft};");
 
         var encodedName = HtmlEncoder.Default.Encode(Name);
-        output.Content.SetHtmlContent($@"by <strong>{encodedName}</strong>");
+        output.Content.SetHtmlContent($"by <strong>{encodedName}</strong>");
     }
 }

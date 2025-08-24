@@ -25,3 +25,11 @@
 }
 ```
 
+## Project References
+
+```xml
+<ItemGroup>
+  <ProjectReference nclude="..CustomTagHelpersLibraryCustomTagHelpersLibrary.sproj" />
+  <ProjectReference nclude="..\FooterLibraryFooterLibrary.csproj" />
+</ItemGroup>
+```

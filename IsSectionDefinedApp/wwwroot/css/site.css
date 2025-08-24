@@ -27,8 +27,8 @@ body {
     - KarenHtmlHelpers
     - _Layout.cshtml, @Html.AppFooter()
 */
-.app-footer {
-    position: absolute; /* you’re using the zero-extra-length approach */
+/*.app-footer {
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -40,5 +40,12 @@ body {
 
 .app-footer .container {
     height: 100%;
-    /* optional: remove container padding if you want tight height control */
+}*/
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }

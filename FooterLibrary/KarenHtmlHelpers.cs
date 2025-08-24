@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace IsSectionDefinedApp.Helpers;
+namespace FooterLibrary;
 
 /// <summary>
 /// Provides custom HTML helper methods for rendering specific HTML content in the IsSectionDefinedApp application.
 /// </summary>
+/// <remarks>
+/// Use the provided TagHelpers for current ASP.NET Core projects.
+/// This class is for educational purposes only.
+/// </remarks>
 public static class KarenHtmlHelpers
 {
 

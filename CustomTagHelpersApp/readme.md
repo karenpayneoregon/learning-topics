@@ -14,6 +14,12 @@
 <app-footer app-name="Payroll System" author-name="John Doe" year="2030" />
 ```
 
+## _ViewImports.cshtml
+```csharp
+@addTagHelper *, FooterLibrary
+@addTagHelper *, CustomTagHelpersLibrary
+```
+
 ### site.css
 ```css
 .footer {

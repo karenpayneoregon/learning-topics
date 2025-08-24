@@ -4,7 +4,7 @@ Simple example of [IsSectionDefined](https://learn.microsoft.com/en-us/dotnet/ap
 
 ## 08-23-2025
 
-Added `FooterLibrary.KarenHtmlHelpers` for creating application footer
+Added 
 
 **site.css**
 

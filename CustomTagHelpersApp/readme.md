@@ -29,7 +29,7 @@
 
 ```xml
 <ItemGroup>
-  <ProjectReference nclude="..CustomTagHelpersLibraryCustomTagHelpersLibrary.sproj" />
-  <ProjectReference nclude="..\FooterLibraryFooterLibrary.csproj" />
+  <ProjectReference include="..\CustomTagHelpersLibrary\CustomTagHelpersLibrary.csproj" />
+  <ProjectReference include="..\FooterLibrary\FooterLibrary.csproj" />
 </ItemGroup>
 ```

@@ -1,11 +1,33 @@
 ﻿@page
+@using CustomTagHelpersLibrary.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    WebsiteContext webContext = new()
+    {
+        Version = new Version(1, 3),
+        CopyrightYear = 2025,
+        Approved = true,
+        TagsToShow = 131
+    };
 }
+
 
 <div class="container">
     <div class="alert alert-primary" role="alert">
         <h1 class="fs-5">Welcome</h1>    
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <h2> Website info </h2>
+            <website-information info="webContext" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <color-label color="red">Should output red</color-label>
+        </div>
     </div>
 </div>

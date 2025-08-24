@@ -21,12 +21,14 @@ public class IndexModel : PageModel
     public void OnPost()
     {
         /*
-         * Have to manipulate Week to get year/month else receiving page will not translate correctly
+         * Have to manipulate Week to get year/month
          */
         var week = Request.Form[nameof(Week)].First()!.Split("-W");
 
-        Log.Information("Week array: {W}", string.Join(",", week));
-        Week = ISOWeek.ToDateTime(Convert.ToInt32(week[0]), Convert.ToInt32(week[1]), DayOfWeek.Monday);
+        Log.Information("Week array: {W}", string.Join(",", week))
+
+        Week = ISOWeek.ToDateTime(Convert.ToInt32(week[0]), Convert.ToInt32(week[1]), 
+            DayOfWeek.Monday);
         
         Log.Information("Week = {W}", DateOnly.FromDateTime(Week));
         

@@ -30,14 +30,14 @@ namespace FooterLibrary
 
             var year = Year ?? DateTime.UtcNow.Year;
             var authorHtml = IncludeAuthor
-                ? $@" <span style=""margin-left: 5px;"">by <strong>{HtmlEncoder.Default.Encode(AuthorName)}</strong></span>"
+                ? $" <span style=\"margin-left: 5px;\">by <strong>{HtmlEncoder.Default.Encode(AuthorName)}</strong></span>"
                 : string.Empty;
 
             // Only encode the free text parts; classes are literal
             var app = HtmlEncoder.Default.Encode(AppName);
 
             output.Content.SetHtmlContent(
-                $@"<div class=""{ContainerClass}"">&copy; {year}{authorHtml} - {app}</div>"
+                $"<div class=\"{ContainerClass}\">&copy; {year}{authorHtml} - {app}</div>"
             );
         }
     }

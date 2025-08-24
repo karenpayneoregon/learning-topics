@@ -1,7 +1,16 @@
 ﻿@page
 
+@using CustomTagHelpersLibrary.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    WebsiteContext webContext = new()
+    {
+        Version = new Version(1, 3),
+        CopyrightYear = 2025,
+        Approved = true,
+        TagsToShow = 131 };
 }
 
+<h3> website info </h3>
+<website-information info="webContext" />

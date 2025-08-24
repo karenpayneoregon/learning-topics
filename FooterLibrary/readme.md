@@ -2,6 +2,14 @@
 
 This project provides a reusable footer component for ASP.NET Core applications using Tag Helpers. It allows developers to easily add a consistent footer across their web applications with customizable properties such as application name, author details, year, and CSS classes.
 
+## ⚙️ TagHelpers 
+
+| Name | Description |
+|:---------|:---------|
+| AppFooterTagHelper | Renders a footer element with customizable properties such as application name, author details, year, and CSS classes. |
+| AppHeaderTagHelper | Renders a header element with customizable properties such as application name, author details, year, and CSS classes. |
+
+
 ## _ViewImports.cshtml
 
 Add

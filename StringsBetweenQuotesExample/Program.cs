@@ -14,7 +14,9 @@ internal partial class Program
 {
     private static void Main(string[] args)
     {
+        ProcessAndDisplayWeeks();
 
+        Console.ReadLine();
         ConfigurationHelpers.ConfigurationBuilder();
         Console.WriteLine(AppConfiguration.Instance.MainConnection);
 
@@ -32,6 +34,7 @@ internal partial class Program
         {
             Console.WriteLine($"Error: {ex.Message}");
         }
+
 
         Console.ReadLine();
     }

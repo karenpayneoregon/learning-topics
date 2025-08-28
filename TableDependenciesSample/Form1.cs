@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using ConsoleConfigurationLibrary.Classes;
 using Microsoft.Data.SqlClient;
 using SqlLibrary.Classes;
@@ -43,6 +44,7 @@ public partial class Form1 : Form
         if (e.Node.Tag is not null)
         {
             var details = e.Node.Tag as TreeDataItem;
+            Debug.WriteLine(details);
         }
     }
 
@@ -51,12 +53,12 @@ public partial class Form1 : Form
     {
         Font boldFont = new(DependencyTreeView.Font, FontStyle.Bold);
 
-
         IReadOnlyList<DependencyGroupItem> result = await SqlServerHelpers
             .TableDependenciesAsync(connectionString);
 
         DependencyTreeView.BeginUpdate();
         var parentNode = DependencyTreeView.Nodes.Add(TableName(connectionString));
+
         try
         {
             foreach (var tableItem in result)

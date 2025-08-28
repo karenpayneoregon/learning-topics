@@ -32,6 +32,7 @@ partial class Form1
         LoadTreeViewButton = new Button();
         DependencyTreeView = new TreeView();
         button2 = new Button();
+        label1 = new Label();
         SuspendLayout();
         // 
         // AboutButton
@@ -67,11 +68,22 @@ partial class Form1
         button2.UseVisualStyleBackColor = true;
         button2.Click += ClearTreeView_Click;
         // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+        label1.Location = new Point(12, 93);
+        label1.Name = "label1";
+        label1.Size = new Size(237, 20);
+        label1.TabIndex = 4;
+        label1.Text = "See ouput window on node click'";
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(638, 544);
+        Controls.Add(label1);
         Controls.Add(button2);
         Controls.Add(DependencyTreeView);
         Controls.Add(LoadTreeViewButton);
@@ -80,6 +92,7 @@ partial class Form1
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Code sample";
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -87,4 +100,5 @@ partial class Form1
     private Button LoadTreeViewButton;
     private TreeView DependencyTreeView;
     private Button button2;
+    private Label label1;
 }

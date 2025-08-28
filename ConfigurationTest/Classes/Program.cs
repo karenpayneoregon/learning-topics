@@ -13,7 +13,7 @@ internal partial class Program
     public static void Initialize()
     {
         Console.Title = "TODO";
-        WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+        //WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
         Setup();
     }
 

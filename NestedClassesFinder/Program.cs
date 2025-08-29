@@ -7,8 +7,9 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.UpperFolder(5), "PromptFilesExamplesApp1");
-        //var path = "C:\\OED\\DotnetLand\\VS2022\\CodeExperiments\\GeneratedRegexApp";
+        var path = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory.UpperFolder(5), 
+            "PromptFilesExamplesApp1");
 
         FileNestingWriter.CreateFileNestingJson_FromMismatches(path);
         IEnumerable<(string ClassName, string FilePath)> result = NestedHelper.Find(path);

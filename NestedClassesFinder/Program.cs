@@ -11,9 +11,7 @@ internal partial class Program
             AppDomain.CurrentDomain.BaseDirectory.UpperFolder(5),
             "PromptFilesExamplesApp1");
 
-        var projectFile = Directory
-            .EnumerateFiles(path, "*.csproj", SearchOption.TopDirectoryOnly)
-            .FirstOrDefault();
+        var projectFile = ProjectFile();
 
         if (projectFile is not null)
         {
@@ -22,16 +20,23 @@ internal partial class Program
         }
 
         FileNestingWriter.CreateFileNestingJson_FromMismatches(path);
+        
         IEnumerable<(string ClassName, string FilePath)> result = NestedHelper.Find(path);
+
         StringBuilder sb = new();
-        foreach (var (ClassName, FilePath) in result)
+        foreach (var (className, filePath) in result)
         {
-            sb.AppendLine($"Class: {ClassName}, File: {FilePath}");
-            AnsiConsole.MarkupLine($"[cyan]Class:[/] [b]{ClassName}[/]");
-            AnsiConsole.MarkupLine($"  [yellow]File:[/] {FilePath.Replace(path, ".")}");
+            sb.AppendLine($"Class: {className}, File: {filePath}");
+            AnsiConsole.MarkupLine($"[cyan]Class:[/] [b]{className}[/]");
+            AnsiConsole.MarkupLine($"  [yellow]File:[/] {filePath.Replace(path, ".")}");
         }
         File.WriteAllText("output.txt", sb.ToString());
 
         SpectreConsoleHelpers.ExitPrompt();
+
+        string? ProjectFile() =>
+            Directory
+                .EnumerateFiles(path, "*.csproj", SearchOption.TopDirectoryOnly)
+                .FirstOrDefault();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PromptFilesExamplesApp1.Classes;
 
-public static partial class StringExtensions
+public static class StringExtensions
 {
     /// <summary>
     /// Extracts a substring from the input string, either up to the first period (inclusive)

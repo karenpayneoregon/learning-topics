@@ -21,7 +21,7 @@ internal partial class Program
             AnsiConsole.MarkupLine($"  [yellow]File:[/] {FilePath}");
         }
         File.WriteAllText("output.txt", sb.ToString());
-        Console.WriteLine("Done");
+        
         SpectreConsoleHelpers.ExitPrompt();
     }
 }

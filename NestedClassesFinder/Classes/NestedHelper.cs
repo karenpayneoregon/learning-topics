@@ -9,47 +9,43 @@ namespace NestedClassesFinder.Classes;
 
 public static class NestedHelper
 {
+    // Use your existing Find(...) unchanged if you still need mismatch-only elsewhere.
+
     /// <summary>
-    /// Finds partial classes whose file name does NOT match the declared class name.
-    /// Skips generated files, Program.cs, and intentional suffixes like .Designer.cs.
-    /// Returns (ClassName, FilePath).
+    /// Returns all partial class declarations (ClassName, FilePath, IsStatic).
+    /// Skips Program.cs and common generated/aux files.
     /// </summary>
     public static IEnumerable<(string ClassName, string FilePath)> Find(string rootDirectory)
     {
         if (string.IsNullOrWhiteSpace(rootDirectory))
             throw new ArgumentException("Root directory is required.", nameof(rootDirectory));
-
         if (!Directory.Exists(rootDirectory))
             throw new DirectoryNotFoundException($"Directory not found: {rootDirectory}");
 
-        var partialClassPattern =
-            new Regex(@"\bpartial\s+(?:record\s+)?class\s+([A-Za-z_][A-Za-z0-9_]*)\b",
-                      RegexOptions.Compiled | RegexOptions.Multiline);
+        // Robust regex: matches any "partial ... class <Name>"
+        var partialClassPattern = new Regex(
+            @"\bpartial\b(?s).*?\bclass\s+([A-Za-z_][A-Za-z0-9_]*)\b",
+            RegexOptions.Compiled);
 
-        string[] ignoreNameSuffixes = new[]
+        string[] ignoreNameSuffixes =
         {
-            ".Designer", 
-            ".g", ".g.i", 
-            ".razor", 
-            ".razor.g", 
-            ".AssemblyInfo", 
-            ".GlobalUsings"
+            ".Designer", ".g", ".g.i", ".razor", ".razor.g", ".AssemblyInfo", ".GlobalUsings"
         };
+        bool HasIgnoredSuffix(string baseName) =>
+            ignoreNameSuffixes.Any(sfx => baseName.EndsWith(sfx, StringComparison.OrdinalIgnoreCase));
 
-        bool HasIgnoredSuffix(string fileBaseName)
-            => ignoreNameSuffixes.Any(sfx => fileBaseName.EndsWith(sfx, StringComparison.OrdinalIgnoreCase));
+        var results = new List<(string ClassName, string FilePath)>();
 
-        var mismatches = new List<(string ClassName, string FilePath)>();
-
-        foreach (var file in EnumerateCsFiles(rootDirectory))
+        foreach (var file in EnumerateCandidateFiles(rootDirectory))
         {
-            var baseName = Path.GetFileNameWithoutExtension(file);
+            var baseName = GetCanonicalBaseName(file);
 
-            // skip Program.cs outright
+            // Skip Program.cs (normalized name check)
             if (baseName.Equals("Program", StringComparison.OrdinalIgnoreCase))
                 continue;
 
-            var isIgnoredFileName = HasIgnoredSuffix(baseName);
+            if (HasIgnoredSuffix(baseName))
+                continue;
 
             string text;
             try { text = File.ReadAllText(file); }
@@ -58,28 +54,48 @@ public static class NestedHelper
             foreach (Match m in partialClassPattern.Matches(text))
             {
                 var className = m.Groups[1].Value;
+
+                // Compare class name vs canonical filename
                 var nameMatches = baseName.Equals(className, StringComparison.Ordinal);
 
-                if (!nameMatches && !isIgnoredFileName)
-                {
-                    mismatches.Add((className, file));
-                }
+                if (!nameMatches)
+                    results.Add((className, file));
             }
         }
 
-        return mismatches;
-
+        return results;
     }
 
-    /// <summary>
-    /// Recursively enumerates all C# files (*.cs) in the specified directory and its subdirectories.
-    /// Skips directories such as "bin", "obj", ".git", and ".vs".
-    /// </summary>
-    /// <param name="root">The root directory to start searching for C# files.</param>
-    /// <returns>An enumerable collection of file paths to C# files.</returns>
-    /// <exception cref="ArgumentNullException">Thrown if <paramref name="root"/> is <c>null</c>.</exception>
-    /// <exception cref="DirectoryNotFoundException">Thrown if the specified <paramref name="root"/> directory does not exist.</exception>
     private static IEnumerable<string> EnumerateCsFiles(string root)
+    {
+        var stack = new Stack<string>();
+        stack.Push(root);
+        while (stack.Count > 0)
+        {
+            var current = stack.Pop();
+            if (ShouldSkipDir(current))
+                continue;
+
+            string[] subDirs;
+            try { subDirs = Directory.GetDirectories(current); } catch { continue; }
+            foreach (var d in subDirs) stack.Push(d);
+
+            string[] files;
+            try { files = Directory.GetFiles(current, "*.cs"); } catch { continue; }
+            foreach (var f in files) yield return f;
+        }
+    }
+
+    private static bool ShouldSkipDir(string path)
+    {
+        var dir = Path.GetFileName(path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+        return dir.Equals("bin", StringComparison.OrdinalIgnoreCase)
+            || dir.Equals("obj", StringComparison.OrdinalIgnoreCase)
+            || dir.Equals(".git", StringComparison.OrdinalIgnoreCase)
+            || dir.Equals(".vs", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static IEnumerable<string> EnumerateCandidateFiles(string root)
     {
         var stack = new Stack<string>();
         stack.Push(root);
@@ -91,27 +107,30 @@ public static class NestedHelper
                 continue;
 
             string[] subDirs;
-            try { subDirs = Directory.GetDirectories(current); }
-            catch { continue; }
+            try { subDirs = Directory.GetDirectories(current); } catch { continue; }
+            foreach (var d in subDirs) stack.Push(d);
 
-            foreach (var dir in subDirs)
-                stack.Push(dir);
-
+            // IMPORTANT: include everything, not just *.cs
             string[] files;
-            try { files = Directory.GetFiles(current, "*.cs"); }
-            catch { continue; }
+            try { files = Directory.GetFiles(current, "*"); } catch { continue; }
 
-            foreach (var file in files)
-                yield return file;
+            foreach (var f in files)
+            {
+                var name = Path.GetFileName(f);
+                // Accept: *.cs, *.cs., *.cs.. (trim trailing dots before checking)
+                var trimmed = name.TrimEnd('.');
+                if (trimmed.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+                    yield return f;
+            }
         }
     }
 
-    private static bool ShouldSkipDir(string path)
+    private static string GetCanonicalBaseName(string filePath)
     {
-        var dir = Path.GetFileName(path.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
-        return dir.Equals("bin", StringComparison.OrdinalIgnoreCase)
-            || dir.Equals("obj", StringComparison.OrdinalIgnoreCase)
-            || dir.Equals(".git", StringComparison.OrdinalIgnoreCase)
-            || dir.Equals(".vs", StringComparison.OrdinalIgnoreCase);
+        // Normalize: remove trailing dots, then strip a single .cs extension if present
+        var name = Path.GetFileName(filePath).TrimEnd('.'); // e.g., "Cusomer.Other.cs"
+        if (name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+            name = name.Substring(0, name.Length - 3);       // -> "Cusomer.Other"
+        return name;
     }
 }

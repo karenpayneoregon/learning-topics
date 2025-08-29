@@ -108,7 +108,9 @@ public static class FileNestingWriter
             }
         };
 
-        var json = JsonSerializer.Serialize(jsonObject, new JsonSerializerOptions { WriteIndented = true });
+        var json = JsonSerializer.Serialize(jsonObject, JsonSerializerOptions);
         File.WriteAllText(Path.Combine(rootDirectory, outputPath), json);
     }
+
+    private static JsonSerializerOptions JsonSerializerOptions => new() { WriteIndented = true };
 }

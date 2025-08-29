@@ -8,13 +8,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Product>Template</Product>
+		<Product>Nested sample</Product>
 	</PropertyGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <Content Remove="C:\Users\paynek\.nuget\packages\consoleconfigurationlibrary\1.0.0.12\contentFiles\any\net8.0\readme.md" />
 	  <Content Remove="C:\Users\paynek\.nuget\packages\serilogthemeslibrary\1.0.0.2\contentFiles\any\net8.0\readme.md" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 		<PackageReference Include="Serilog" Version="4.3.0" />
@@ -50,5 +50,9 @@
 	  <None Update="appsettings.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="assets\" />
 	</ItemGroup>
 </Project>

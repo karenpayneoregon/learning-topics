@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace NestedClassesFinder.Classes;
 
@@ -58,7 +53,7 @@ public static class FileNestingWriter
             // var filePath  = t.Item2;
 
             var child = Path.GetFileName(filePath);  // actual file on disk
-            var parent = className + ".cs";           // expected name from the class
+            var parent = $"{className}.cs";           // expected name from the class
 
             if (!fileToFile.TryGetValue(child, out var parents))
             {

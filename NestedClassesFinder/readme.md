@@ -4,6 +4,9 @@ This project generates a `.filenesting.json` for a partial class in another proj
 
 The `.filenesting.json` is created in this project debug folder.
 
+
+![Figure](assets/figure.png)
+
 # Usage
 
 Change the `path` variable in the `Program.cs` file to point to the project containing the partial class.

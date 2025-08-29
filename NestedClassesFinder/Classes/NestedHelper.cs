@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace NestedClassesFinder.Classes;
 
 
-public static class NestedHelper
+public static partial class NestedHelper
 {
     // Use your existing Find(...) unchanged if you still need mismatch-only elsewhere.
 
@@ -23,14 +19,13 @@ public static class NestedHelper
             throw new DirectoryNotFoundException($"Directory not found: {rootDirectory}");
 
         // Robust regex: matches any "partial ... class <Name>"
-        var partialClassPattern = new Regex(
-            @"\bpartial\b(?s).*?\bclass\s+([A-Za-z_][A-Za-z0-9_]*)\b",
-            RegexOptions.Compiled);
+        var partialClassPattern = FindPartialClassRegex();
 
         string[] ignoreNameSuffixes =
-        {
+        [
             ".Designer", ".g", ".g.i", ".razor", ".razor.g", ".AssemblyInfo", ".GlobalUsings"
-        };
+        ];
+
         bool HasIgnoredSuffix(string baseName) =>
             ignoreNameSuffixes.Any(sfx => baseName.EndsWith(sfx, StringComparison.OrdinalIgnoreCase));
 
@@ -130,7 +125,11 @@ public static class NestedHelper
         // Normalize: remove trailing dots, then strip a single .cs extension if present
         var name = Path.GetFileName(filePath).TrimEnd('.'); // e.g., "Cusomer.Other.cs"
         if (name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
-            name = name.Substring(0, name.Length - 3);       // -> "Cusomer.Other"
+            // name = name.Substring(0, name.Length - 3);
+            name = name[..^3];       // -> "Cusomer.Other"
         return name;
     }
+
+    [GeneratedRegex(@"\bpartial\b(?s).*?\bclass\s+([A-Za-z_][A-Za-z0-9_]*)\b", RegexOptions.Compiled)]
+    private static partial Regex FindPartialClassRegex();
 }

@@ -45,10 +45,10 @@
                    placeholder="your password">
         </div>
     </div>
-    
+
     <div class="row mb-5">
         <div class="col-4">
-            <label for="password4" class="text-danger">Disabled input</label>
+            <label for="password4" class="fw-bold text-danger">Disabled input</label>
             <input id="password4"
                    data-toggle="password"
                    data-placement="before"
@@ -60,7 +60,7 @@
                    placeholder="your password" />
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-4">
             <label class="fw-bold text-primary">Event log for show/hide passwords</label>
@@ -79,28 +79,63 @@
             function writeLog(message) {
                 var current = $log.text();
                 $log.text(current + message + "\n");
-                $log.scrollTop($log[0].scrollHeight); // auto-scroll down
+                $log.scrollTop($log[0].scrollHeight);
             }
 
             $('input[data-toggle="password"]').each(function () {
                 var $input = $(this);
 
-                // Skip disabled inputs
+                // Try to find the plugin's eye toggle next to the input
+                var $toggle = $input
+                    .siblings('button')
+                    .add($input.siblings('.input-group-append').find('.btn'))
+                    .add($input.siblings('.input-group-prepend').find('.btn'))
+                    .first();
+
                 if ($input.is(':disabled')) {
+                    // Ensure no event handlers are attached
+                    $input.off('show.bs.password hide.bs.password');
+
+                    // Visually and functionally disable the eye toggle if present
+                    if ($toggle.length) {
+                        $toggle
+                            .attr('disabled', 'disabled')
+                            .attr('aria-disabled', 'true')
+                            .attr('title', 'Password field is disabled')
+                            .addClass('disabled');
+
+                        // Block clicks just in case
+                        $toggle.on('click.password-block', function (e) {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            return false;
+                        });
+                    }
+
+                    // Skip binding
                     return;
                 }
 
-                // Subscribe only for enabled inputs
+                // Enabled inputs: bind plugin events (do NOT call .password() here)
                 $input
                     .on('show.bs.password', function () {
-                        writeLog('show.bs.password fired for #' + this.id);
+                        writeLog(`show.bs.password fired for #${this.id}`);
                     })
                     .on('hide.bs.password', function () {
-                        writeLog('hide.bs.password fired for #' + this.id);
+                        writeLog(`hide.bs.password fired for #${this.id}`);
                     });
             });
         });
     </script>
+
+    <style>
+        /*
+        * Make disabled toggle clearly inert even if theme doesn't handle it
+        * Can be placed in site-wide CSS if desired or a page specific .css file
+        */
+        .btn.disabled, .btn[disabled] {
+            pointer-events: none;
+            opacity: .5;
+        }
+    </style>
 }
-
-

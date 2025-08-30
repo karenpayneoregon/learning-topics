@@ -56,7 +56,8 @@
                    type="password"
                    data-size="sm"
                    disabled="disabled"
-                   placeholder="your password">
+                   value="secret password goes here"
+                   placeholder="your password" />
         </div>
     </div>
     
@@ -81,14 +82,25 @@
                 $log.scrollTop($log[0].scrollHeight); // auto-scroll down
             }
 
-            $('input[data-toggle="password"]')
-                .on('show.bs.password', function () {
-                    writeLog('show.bs.password fired for #' + this.id);
-                })
-                .on('hide.bs.password', function () {
-                    writeLog('hide.bs.password fired for #' + this.id);
-                });
+            $('input[data-toggle="password"]').each(function () {
+                var $input = $(this);
+
+                // Skip disabled inputs
+                if ($input.is(':disabled')) {
+                    return;
+                }
+
+                // Subscribe only for enabled inputs
+                $input
+                    .on('show.bs.password', function () {
+                        writeLog('show.bs.password fired for #' + this.id);
+                    })
+                    .on('hide.bs.password', function () {
+                        writeLog('hide.bs.password fired for #' + this.id);
+                    });
+            });
         });
     </script>
 }
+
 

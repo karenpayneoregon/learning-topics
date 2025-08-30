@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
 namespace NestedClassesFinder.Classes;
 public static class DirectoryExtensions
@@ -48,10 +44,9 @@ public static class DirectoryExtensions
             return pFolderName;
         }
     }
-    public static string CurrentProjectFolder(this string sender)
-    {
-        return sender.UpperFolder(3);
-    }
+    public static string CurrentProjectFolder(this string sender) 
+        => sender.UpperFolder(3);
+
     /// <summary>
     /// Get a list of all folders above 'FolderName'
     /// </summary>

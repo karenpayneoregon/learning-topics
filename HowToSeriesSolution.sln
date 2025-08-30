@@ -121,6 +121,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Creating nesting files", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedClassesFinder", "NestedClassesFinder\NestedClassesFinder.csproj", "{B9C15397-4838-A313-FF22-BB739AB4D70F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HideShowPasswordSample", "HideShowPasswprdSample\HideShowPasswordSample.csproj", "{E75B8DAC-C379-4192-B3A0-1AF99D8458FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +265,10 @@ Global
 		{B9C15397-4838-A313-FF22-BB739AB4D70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9C15397-4838-A313-FF22-BB739AB4D70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9C15397-4838-A313-FF22-BB739AB4D70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -309,6 +315,7 @@ Global
 		{B908F7F1-20FF-DEB8-27C3-0E9EE2966907} = {A8B1D009-E5A9-8820-B8AF-AA0649BEFD28}
 		{930EADA6-450D-7FD5-733A-E1AEE990267C} = {C77C0044-9CAF-DB5C-D498-119248A9E1AD}
 		{B9C15397-4838-A313-FF22-BB739AB4D70F} = {930EADA6-450D-7FD5-733A-E1AEE990267C}
+		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD} = {53D0748C-043C-A660-2311-AE5C91B568A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

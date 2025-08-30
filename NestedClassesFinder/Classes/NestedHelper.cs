@@ -123,10 +123,10 @@ public static partial class NestedHelper
     private static string GetCanonicalBaseName(string filePath)
     {
         // Normalize: remove trailing dots, then strip a single .cs extension if present
-        var name = Path.GetFileName(filePath).TrimEnd('.'); // e.g., "Cusomer.Other.cs"
+        var name = Path.GetFileName(filePath).TrimEnd('.'); // e.g., "Customer.Other.cs"
         if (name.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
             // name = name.Substring(0, name.Length - 3);
-            name = name[..^3];       // -> "Cusomer.Other"
+            name = name[..^3];       // -> "Customer.Other"
         return name;
     }
 

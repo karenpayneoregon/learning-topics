@@ -1,6 +1,4 @@
-﻿using StringsBetweenQuotesExample.Models;
-
-namespace StringsBetweenQuotesExample.Classes;
+﻿namespace StringsBetweenQuotesExample.Classes;
 
 public class RegexOperations
 {

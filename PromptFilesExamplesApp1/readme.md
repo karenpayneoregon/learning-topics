@@ -24,3 +24,24 @@
   }
 }
 ```
+
+or
+```json
+{
+  "help": "https://go.microsoft.com/fwlink/?linkid=866610",
+  "root": true,
+  "dependentFileProviders": {
+    "add": {
+      "fileToFile": {
+        "add": {
+          "GeneratedRegularExpressions.cs": [
+            "Customer.cs",
+            "Person.cs",
+            "DataOperations.cs"
+          ]
+        }
+      }
+    }
+  }
+}
+```

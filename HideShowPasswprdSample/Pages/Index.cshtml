@@ -8,66 +8,59 @@
 
 
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-4">
-            <label for="password1">Standard placement</label>
-            <input id="password1"
-                   data-toggle="password"
-                   class="form-control"
-                   type="password"
-                   maxlength="10"
-                   data-size="sm" @* use size small for input/eye remove for default size or use lg *@
-                   placeholder="Enter the password">
+    <form method="post">
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="password1">Standard placement</label>
+                <input id="password1"
+                       data-toggle="password"
+                       class="form-control"
+                       type="password"
+                       maxlength="20"
+                       data-size="sm" @* use size small for input/eye remove for default size or use lg *@
+                       placeholder="Enter the password" name="PasswordContainer.Password1" value="@Model.PasswordContainer.Password1">
+            </div>
         </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-4">
-            <label for="password2">left placement</label>
-            <input id="password2"
-                   data-toggle="password"
-                   data-placement="before" @* placed eye before input *@
-                   class="form-control"
-                   type="password"
-                   data-size="sm"
-                   placeholder="Enter the password">
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-4">
-            <label for="password3">Custom placeholder</label>
-            <input id="password3"
-                   data-toggle="password"
-                   data-placement="before"
-                   class="form-control"
-                   type="password"
-                   data-size="sm"
-                   placeholder="your password">
-        </div>
-    </div>
-
-    <div class="row mb-5">
-        <div class="col-4">
-            <label for="password4" class="fw-bold text-danger">Disabled input</label>
-            <input id="password4"
-                   data-toggle="password"
-                   data-placement="before"
-                   class="form-control"
-                   type="password"
-                   data-size="sm"
-                   disabled="disabled"
-                   value="secret password goes here"
-                   placeholder="your password" />
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-4">
-            <label class="fw-bold text-primary">Event log for show/hide passwords</label>
-            <pre id="passwordLog" class="border p-2" style="height:150px; overflow:auto;"></pre>
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="password2">left placement</label>
+                <input id="password2"
+                       data-toggle="password"
+                       data-placement="before" @* placed eye before input *@
+                       class="form-control"
+                       type="password"
+                       data-size="sm"
+                       placeholder="Enter the password" name="PasswordContainer.Password2" value="@Model.PasswordContainer.Password2">
+            </div>
         </div>
 
-    </div>
+        <div class="row mb-3">
+            <div class="col-4">
+                <label for="password3">Custom placeholder</label>
+                <input id="password3"
+                       data-toggle="password"
+                       data-placement="before"
+                       class="form-control"
+                       type="password"
+                       data-size="sm"
+                       placeholder="your password" name="PasswordContainer.Password3" value="@Model.PasswordContainer.Password3">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-4">
+                <label class="fw-bold text-primary">Event log for show/hide passwords</label>
+                <pre id="passwordLog" class="border p-2" style="height: 150px; overflow: auto;"></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
 </div>
 
 @section Scripts
@@ -130,9 +123,9 @@
 
     <style>
         /*
-        * Make disabled toggle clearly inert even if theme doesn't handle it
-        * Can be placed in site-wide CSS if desired or a page specific .css file
-        */
+                * Make disabled toggle clearly inert even if theme doesn't handle it
+                * Can be placed in site-wide CSS if desired or a page specific .css file
+                */
         .btn.disabled, .btn[disabled] {
             pointer-events: none;
             opacity: .5;

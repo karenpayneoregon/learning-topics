@@ -10,7 +10,9 @@
     <div class="alert alert-primary" role="alert">
         <h1 class="fs-5">Password toggles</h1>
     </div>
+
     <form method="post">
+
         <div class="row mb-3">
             <div class="col-4">
                 <label for="password1">Standard placement</label>
@@ -20,9 +22,12 @@
                        type="password"
                        maxlength="20"
                        data-size="sm" @* use size small for input/eye remove for default size or use lg *@
-                       placeholder="Enter the password" name="PasswordContainer.Password1" value="@Model.PasswordContainer.Password1">
+                       placeholder="Enter the password"
+                       name="PasswordContainer.Password1"
+                       value="@Model.PasswordContainer.Password1">
             </div>
         </div>
+
         <div class="row mb-3">
             <div class="col-4">
                 <label for="password2">left placement</label>
@@ -32,7 +37,9 @@
                        class="form-control"
                        type="password"
                        data-size="sm"
-                       placeholder="Enter the password" name="PasswordContainer.Password2" value="@Model.PasswordContainer.Password2">
+                       placeholder="Enter the password"
+                       name="PasswordContainer.Password2"
+                       value="@Model.PasswordContainer.Password2">
             </div>
         </div>
 
@@ -45,7 +52,8 @@
                        class="form-control"
                        type="password"
                        data-size="sm"
-                       placeholder="your password" name="PasswordContainer.Password3" value="@Model.PasswordContainer.Password3">
+                       placeholder="your password" name="PasswordContainer.Password3"
+                       value="@Model.PasswordContainer.Password3">
             </div>
         </div>
 

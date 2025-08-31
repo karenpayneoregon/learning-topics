@@ -1,0 +1,113 @@
+﻿@page
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Toggle Password Visibility</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .form-label,
+        .password-container > label {
+            display: block;
+            margin-bottom: .375rem;
+        }
+
+        .input-group .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-eye {
+            line-height: 1;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Sign In</h1>
+
+        <form>
+
+            <div class="row mb-3">
+
+                <div class="col-3">
+                    <label class="form-label" for="userID">User name</label>
+                    <input type="text" name="userID" id="userID" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-3">
+                    <div class="password-container">
+                        <label for="Password" class="form-label">Password:</label>
+                        <div class="input-group">
+                            <input id="Password"
+                                   name="Password"
+                                   type="password"
+                                   class="form-control"
+                                   dir="ltr"
+                                   style="text-align: left;" />
+
+                            <button type="button"
+                                    class="btn btn-outline-dark"
+                                    data-toggle="password"
+                                    data-target="#Password"
+                                    aria-label="Show password"
+                                    aria-pressed="false">
+                                <i class="bi bi-eye toggle-eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" id="submit" class="btn btn-primary">Log In</button>
+        </form>
+    </div>
+
+    @section Scripts {
+        <script>
+            (function () {
+                function togglePassword(btn) {
+
+                    const target = btn.getAttribute('data-target');
+                    const input = target ? document.querySelector(target) : null;
+
+                    if (!input) return;
+
+                    const icon = btn.querySelector('i.bi');
+                    const makeVisible = input.type === 'password';
+
+                    input.type = makeVisible ? 'text' : 'password';
+                    btn.setAttribute('aria-pressed', String(makeVisible));
+                    btn.setAttribute('aria-label', makeVisible ? 'Hide password' : 'Show password');
+
+                    if (icon) {
+                        icon.classList.toggle('bi-eye', !makeVisible);
+                        icon.classList.toggle('bi-eye-slash', makeVisible);
+                    }
+                }
+
+                document.addEventListener('click', function (e) {
+                    const btn = e.target.closest('[data-toggle="password"]');
+                    if (btn) togglePassword(btn);
+                });
+
+            })();
+
+        </script>
+    }
+</body>
+
+</html>
+

@@ -1,0 +1,22 @@
+﻿.valFailure {
+    color: #bf1616;
+    background-color: #FFBABA;
+    border: 3px solid #bf1616;
+    font-weight: bold;
+    text-align: left;
+    margin: 5px 0;
+    line-height: 1;
+}
+
+.valFailure ul {
+    padding-left: 20px;
+}
+
+.valFailure ul li {
+    padding-top: 5px;
+}
+
+/* hide validation-summary by default else it will show as coded */
+.validation-summary-valid {
+    display: none;
+}

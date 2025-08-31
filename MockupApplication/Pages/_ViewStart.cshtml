@@ -1,0 +1,5 @@
+﻿@{
+    var routeUrl = ViewContext.RouteData.Values["Page"]!.ToString();
+    var pages = new List<string> { "LoginPage" };
+    Layout = pages.Any(routeUrl!.Contains) ? "_Layout1" : "_Layout";
+}

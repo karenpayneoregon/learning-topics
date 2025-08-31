@@ -1,0 +1,19 @@
+﻿if (builder.Environment.IsDevelopment())
+{
+
+    SetupLogging.Development();
+
+    builder.Services.AddDbContextPool<Context>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+            .EnableSensitiveDataLogging()
+            //.LogTo(Log.Logger.Information, LogLevel.Information,null));
+            .LogTo(new DbContextToFileLogger().Log));
+}
+else
+{
+
+    SetupLogging.Production();
+
+    builder.Services.AddDbContextPool<Context>(options =>
+        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+}

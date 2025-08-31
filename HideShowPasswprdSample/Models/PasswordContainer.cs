@@ -2,7 +2,7 @@
 
 namespace HideShowPasswordSample.Models;
 
-public class PasswordContainer
+public record PasswordContainer
 {
     public  string? Password1 { get; set; }
     public  string? Password2 { get; set; }

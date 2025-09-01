@@ -8,12 +8,15 @@ public class IndexModel : PageModel
 {
     [BindProperty]
     public WeekDays WeekDay { get; set; }
+
+    [BindProperty]
+    public string FirstName { get; set; }
+
     public void OnGet()
     {
-        Log.Information("Greetings");
     }
     public void OnPost()
     {
-        Log.Information("Selected week day {WeekDay}", (int)WeekDay);
+        Log.Information("Selected week day {WeekDay}", (int)WeekDay +1);
     }
 }

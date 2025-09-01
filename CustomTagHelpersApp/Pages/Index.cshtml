@@ -26,32 +26,50 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-12 text-center">
             <color-label color="red">Should output red</color-label>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-3">
-        <h2> Select a day </h2>
+    
+    <div class="row mb-3">
+        <div class="col-3">
 
 
-        <form method="post">
-            <label for="weekDay">sss
-                <select-enum enum-type="typeof(WeekDays)"
-                             @* selected-value="(int)WeekDays.FRI" *@
+            <form method="post">
+
+                <label for="weekDay">Select a weekday</label>
+
+                <select-enum enum-type="@(typeof(WeekDays))"
                              class="w-auto"
                              focus-ring-color="rgba(var(--bs-primary-rgb), .25)"
                              focus-ring-width=".25rem"
+                             id="weekDay"
                              name="weekDay">
-                </select-enum></label>
+                </select-enum>
+                
+                <text-entry id="Name"  
+                            value="@Model.FirstName" 
+                            label="Name:" 
+                            label-text="First"
+                            placeholder="Enter your name.">
+                </text-entry>
+
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+            
+  
 
 
-            <button type="submit">Submit</button>
-        </form>
-
+        </div>
 
     </div>
+    
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+    </div>
 </div>
+
+

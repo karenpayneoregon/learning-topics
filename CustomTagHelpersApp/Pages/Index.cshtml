@@ -37,13 +37,21 @@
     <div class="col-3">
         <h2> Select a day </h2>
 
-        <select-enum enum-type="typeof(WeekDays)"
-                     selected-value="(int)WeekDays.FRI"
-                     class="w-auto"
-                     focus-ring-color="rgba(var(--bs-primary-rgb), .25)"
-                     focus-ring-width=".25rem"
-                     name="weekDay">
-        </select-enum>
+
+        <form method="post">
+            <label for="weekDay">sss
+                <select-enum enum-type="typeof(WeekDays)"
+                             @* selected-value="(int)WeekDays.FRI" *@
+                             class="w-auto"
+                             focus-ring-color="rgba(var(--bs-primary-rgb), .25)"
+                             focus-ring-width=".25rem"
+                             name="weekDay">
+                </select-enum></label>
+
+
+            <button type="submit">Submit</button>
+        </form>
+
 
     </div>
 </div>

@@ -4,6 +4,8 @@ namespace CustomTagHelpersApp.Classes;
 
 public enum WeekDays
 {
+    [Display(Name = "Sunday")]
+    SUN,
     [Display(Name = "Monday")]
     MON,
 
@@ -20,8 +22,5 @@ public enum WeekDays
     FRI,
 
     [Display(Name = "Saturday")]
-    SAT,
-
-    [Display(Name = "Sunday")]
-    SUN
+    SAT
 }

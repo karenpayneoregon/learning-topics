@@ -16,82 +16,67 @@ namespace CustomTagHelpersLibrary;
 /// <remarks>
 /// https://github.com/LazZiya/TagHelpers/blob/master/LazZiya.TagHelpers/SelectEnumTagHelper.cs
 /// </remarks>
+[HtmlTargetElement("select-enum")]
 public class SelectEnumTagHelper : TagHelper
 {
-    private readonly ILogger _log;
-
+    [HtmlAttributeName("selected-value")]
     public int SelectedValue { get; set; }
 
-    /// <summary>typeof(MyEnum)</summary>
-    public Type EnumType { get; set; }
+    [HtmlAttributeName("enum-type")]
+    public Type EnumType { get; set; } = default!;
 
-    /// <summary>A delegate for getting localized value.</summary>
     public Func<string, string>? TextLocalizerDelegate { get; set; }
 
-    /// <summary>Optional extra CSS classes (merged). Example: "w-auto my-1".</summary>
-    public string? @class { get; set; } // maps to "class" attribute in Razor
+    // Map the HTML class attr to a safe C# name
+    [HtmlAttributeName("class")]
+    public string? AdditionalClasses { get; set; }
 
-    /// <summary>
-    /// Optional focus ring overrides. Example:
-    /// FocusRingColor="rgba(var(--bs-success-rgb), .25)" FocusRingWidth=".25rem"
-    /// </summary>
+    [HtmlAttributeName("focus-ring-color")]
     public string? FocusRingColor { get; set; }
-    public string? FocusRingWidth { get; set; }
 
-    public SelectEnumTagHelper(ILogger<SelectEnumTagHelper> log) => _log = log;
+    [HtmlAttributeName("focus-ring-width")]
+    public string? FocusRingWidth { get; set; }
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = "select";
 
-        // ---- merge classes: ensure Bootstrap 5.3 focus ring + form styling ----
-        var existingClass = output.Attributes.FirstOrDefault(a => a.Name == "class")?.Value?.ToString();
-        var classParts = new[]
-        {
-                "form-select",     // Bootstrap select styling
-                "focus-ring",      // Bootstrap 5.3 focus helper
-                existingClass,
-                @class
-            }
-        .Where(s => !string.IsNullOrWhiteSpace(s))
-        .SelectMany(s => s!.Split(' ', StringSplitOptions.RemoveEmptyEntries))
-        .Distinct(StringComparer.Ordinal)
-        .ToArray();
+        // classes: add Bootstrap + focus helper, then merge user classes
+        var classes = new List<string> { "form-select", "focus-ring" };
+        if (!string.IsNullOrWhiteSpace(AdditionalClasses))
+            classes.AddRange(AdditionalClasses.Split(' ', StringSplitOptions.RemoveEmptyEntries));
+        output.Attributes.SetAttribute("class", string.Join(' ', classes.Distinct(StringComparer.Ordinal)));
 
-        output.Attributes.SetAttribute("class", string.Join(' ', classParts));
-
-        // ---- merge optional focus ring CSS variable overrides ----
-        var existingStyle = output.Attributes.FirstOrDefault(a => a.Name == "style")?.Value?.ToString();
-        var styleParts = new List<string>();
+        // focus ring CSS vars (optional)
+        var stylePieces = new List<string>();
         if (!string.IsNullOrWhiteSpace(FocusRingColor))
-            styleParts.Add($"--bs-focus-ring-color: {FocusRingColor}");
+            stylePieces.Add($"--bs-focus-ring-color: {FocusRingColor}");
         if (!string.IsNullOrWhiteSpace(FocusRingWidth))
-            styleParts.Add($"--bs-focus-ring-width: {FocusRingWidth}");
-
-        if (styleParts.Count > 0)
+            stylePieces.Add($"--bs-focus-ring-width: {FocusRingWidth}");
+        if (stylePieces.Count > 0)
         {
-            var mergedStyle = (existingStyle is null || existingStyle.Trim().Length == 0)
-                ? string.Join("; ", styleParts) + ";"
-                : existingStyle.Trim().TrimEnd(';') + "; " + string.Join("; ", styleParts) + ";";
-            output.Attributes.SetAttribute("style", mergedStyle);
+            var existingStyle = (output.Attributes["style"]?.Value?.ToString() ?? "").Trim().TrimEnd(';');
+            var merged = string.IsNullOrEmpty(existingStyle) ? "" : existingStyle + "; ";
+            merged += string.Join("; ", stylePieces) + ";";
+            output.Attributes.SetAttribute("style", merged);
         }
 
-        // ---- build options ----
+        // options
         foreach (int e in Enum.GetValues(EnumType))
         {
-            var op = new TagBuilder("option");
-            op.Attributes.Add("value", $"{e}");
+            var option = new TagBuilder("option");
+            option.Attributes.Add("value", e.ToString());
 
-            var displayText = TextLocalizerDelegate is null
+            var text = TextLocalizerDelegate is null
                 ? GetEnumFieldDisplayName(e)
-                : GetEnumFieldLocalizedDisplayName(e);
+                : TextLocalizerDelegate(GetEnumFieldDisplayName(e));
 
-            op.InnerHtml.Append(displayText);
+            option.InnerHtml.Append(text);
 
             if (e == SelectedValue)
-                op.Attributes.Add("selected", "selected");
+                option.Attributes.Add("selected", "selected");
 
-            output.Content.AppendHtml(op);
+            output.Content.AppendHtml(option);
         }
     }
 
@@ -102,10 +87,6 @@ public class SelectEnumTagHelper : TagHelper
             .GetCustomAttributes(false)
             .OfType<DisplayAttribute>()
             .SingleOrDefault()?.Name;
-
         return displayName ?? fieldName;
     }
-
-    private string GetEnumFieldLocalizedDisplayName(int value)
-        => TextLocalizerDelegate!(GetEnumFieldDisplayName(value));
 }

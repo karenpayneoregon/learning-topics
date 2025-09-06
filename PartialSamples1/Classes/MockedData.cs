@@ -1,4 +1,5 @@
-﻿using PartialSamples1.Models;
+﻿using PartialSamples1.Interfaces;
+using PartialSamples1.Models;
 
 namespace PartialSamples1.Classes;
 
@@ -58,6 +59,64 @@ internal class MockedData
         
         return clients;
         
+    }
+
+    /// <summary>
+    /// Generates a randomized list of people with unique IDs, first names, last names, and genders.
+    /// </summary>
+    /// <returns>A list of <see cref="IPerson"/> objects with randomized data.</returns>
+    /// <remarks>
+    /// The method alternates between male and female names to create a balanced dataset.
+    /// </remarks>
+    public static List<IPerson> RandomizePeople()
+    {
+        string[] firstNamesMale = ["james", "john", "robert", "michael", "david"];
+        string[] firstNamesFemale = ["mary", "patricia", "jennifer", "linda", "elizabeth"];
+        string[] lastNames = ["smith", "johnson", "williams", "brown", "jones"];
+
+        List<IPerson> people = [];
+
+        for (int index = 1; index <= 10; index++)
+        {
+            bool isMale = index % 2 == 1;
+            string firstName = isMale
+                ? firstNamesMale[(index / 2) % firstNamesMale.Length]
+                : firstNamesFemale[(index / 2 - 1) % firstNamesFemale.Length];
+
+            string lastName = lastNames[(index - 1) % lastNames.Length];
+
+            people.Add(new Person
+            {
+                Id = index,
+                FirstName = firstName,
+                LastName = lastName,
+                Gender = isMale ? Gender.Male : Gender.Female
+            });
+        }
+
+        return people;
+    }
+
+    /// <summary>
+    /// Generates a list of randomized Social Security Numbers (SSNs) in a standard format.
+    /// </summary>
+    /// <returns>A list of strings representing Social Security Numbers in the format "XXX-XX-XXXX".</returns>
+    /// <remarks>
+    /// Each SSN is generated using random numbers to ensure uniqueness within the list.
+    /// This method is useful for testing scenarios where valid but non-real SSNs are required.
+    /// </remarks>
+    public static List<string> GeneratedSocialSecurityNumbers()
+    {
+        var random = new Random();
+        var ssnList = new List<string>();
+
+        for (int index = 0; index < 5; index++)
+        {
+            string ssn = $"{random.Next(100, 1000):000}-{random.Next(10, 100):00}-{random.Next(1000, 10000):0000}";
+            ssnList.Add(ssn);
+        }
+
+        return ssnList;
     }
 }
 

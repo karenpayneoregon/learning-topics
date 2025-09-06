@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Product>Template</Product>
+		<Product>partial classes and properties</Product>
 	</PropertyGroup>
 
 	<ItemGroup>

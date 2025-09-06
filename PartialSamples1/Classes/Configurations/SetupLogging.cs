@@ -12,5 +12,6 @@ internal class SetupLogging
                 rollingInterval: RollingInterval.Infinite,
                 outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} [{Level}] {Message}{NewLine}{Exception}")
             .CreateLogger();
+        
     }
 }

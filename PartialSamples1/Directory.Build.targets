@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<EnablePartialClassAutoNesting>true</EnablePartialClassAutoNesting>
+		<PartialClassAutoNestingVerbose>false</PartialClassAutoNestingVerbose>
+		<_NestingPropsPath>$(BaseIntermediateOutputPath)FileNesting.DependentUpon.generated.props</_NestingPropsPath>
+		<MSBuildAllProjects>$(MSBuildAllProjects);$(_NestingPropsPath)</MSBuildAllProjects>
+	</PropertyGroup>
+
+	<Target Name="GeneratePartialNestingProps"
+			BeforeTargets="CoreCompile"
+			Condition="'$(EnablePartialClassAutoNesting)' == 'true'">
+
+		<ItemGroup>
+			<_AllCsFiles Include="**\*.cs"
+						 Exclude="$(BaseIntermediateOutputPath)**\*;$(IntermediateOutputPath)**\*;$(OutDir)**\*;obj\**\*;bin\**\*" />
+		</ItemGroup>
+
+		<WritePartialNestingProps
+			Sources="@(_AllCsFiles)"
+			OutputPath="$(_NestingPropsPath)"
+			Verbose="$(PartialClassAutoNestingVerbose)"
+			ProjectDir="$(MSBuildProjectDirectory)" />
+	</Target>
+
+	<!-- Import the generated props at project scope -->
+	<Import Project="$(_NestingPropsPath)" Condition="Exists('$(_NestingPropsPath)')" />
+
+	<UsingTask
+	  TaskName="WritePartialNestingProps"
+	  TaskFactory="CodeTaskFactory"
+	  AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+		<ParameterGroup>
+			<Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+			<OutputPath ParameterType="System.String" Required="true" />
+			<Verbose ParameterType="System.Boolean" Required="false" />
+			<ProjectDir ParameterType="System.String" Required="true" />
+		</ParameterGroup>
+		<Task>
+			<Reference Include="System.Core" />
+			<Using Namespace="System" />
+			<Using Namespace="System.IO" />
+			<Using Namespace="System.Text" />
+			<Using Namespace="System.Text.RegularExpressions" />
+			<Using Namespace="Microsoft.Build.Framework" />
+			<Using Namespace="Microsoft.Build.Utilities" />
+
+			<Code Type="Class" Language="cs">
+				<![CDATA[
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
+
+public sealed class WritePartialNestingProps : Task
+{
+  public ITaskItem[] Sources { get; set; }
+  public string OutputPath { get; set; }
+  public bool Verbose { get; set; }
+  public string ProjectDir { get; set; }
+
+  private sealed class Entry
+  {
+    public string File;
+    public string Dir;
+    public string FileName;
+    public string Namespace;
+    public string Class;
+    public int    Weight;
+    public bool   IsRoot;
+  }
+
+  public override bool Execute()
+  {
+    try
+    {
+      // Keep regexes simple for CodeTaskFactory
+      Regex rxNamespace = new Regex(@"\bnamespace\s+([A-Za-z_][A-Za-z0-9_.]*)");
+      Regex rxPartial   = new Regex(@"\bpartial\s+(class|struct|record)\s+([A-Za-z_][A-Za-z0-9_]*)\b");
+
+      List<Entry> entries = new List<Entry>();
+      ITaskItem[] src = (this.Sources != null) ? this.Sources : new ITaskItem[0];
+
+      for (int i = 0; i < src.Length; i++)
+      {
+        string path = src[i].GetMetadata("FullPath");
+        if (string.IsNullOrEmpty(path) || !File.Exists(path)) continue;
+
+        string text;
+        try { text = File.ReadAllText(path); } catch { continue; }
+
+        int lineCount = CountNonBlankLines(text);
+        bool hasMarker = text.IndexOf("NEST-ROOT", StringComparison.OrdinalIgnoreCase) >= 0;
+
+        string ns = "";
+        Match nsMatch = rxNamespace.Match(text);
+        if (nsMatch.Success) ns = nsMatch.Groups[1].Value.Trim();
+
+        MatchCollection matches = rxPartial.Matches(text);
+        for (int j = 0; j < matches.Count; j++)
+        {
+          string cls = matches[j].Groups[2].Value.Trim();
+
+          Entry e = new Entry();
+          e.File      = path;
+          e.Dir       = SafeGetDirectoryName(path);
+          e.FileName  = Path.GetFileName(path);
+          e.Namespace = ns;
+          e.Class     = cls;
+
+          string fileNoExt = SafeGetFileNameWithoutExtension(e.FileName);
+          bool exactBaseName   = string.Equals(fileNoExt, e.Class, StringComparison.OrdinalIgnoreCase);
+          bool dottedChildName = fileNoExt.StartsWith(e.Class + ".", StringComparison.OrdinalIgnoreCase);
+          bool looseNameMatch  = (!exactBaseName && !dottedChildName && fileNoExt.IndexOf(e.Class, StringComparison.OrdinalIgnoreCase) >= 0);
+
+          int nameWeight = exactBaseName ? 100 : (dottedChildName ? 50 : (looseNameMatch ? 10 : 0));
+
+          e.IsRoot = exactBaseName || (!exactBaseName && hasMarker);
+          e.Weight = (nameWeight * 1000) + lineCount;
+
+          entries.Add(e);
+        }
+      }
+
+      // Group by namespace::class
+      Dictionary<string, List<Entry>> groups = new Dictionary<string, List<Entry>>(StringComparer.OrdinalIgnoreCase);
+      for (int i = 0; i < entries.Count; i++)
+      {
+        Entry e = entries[i];
+        string key = (e.Namespace ?? "") + "::" + e.Class;
+        List<Entry> list;
+        if (!groups.TryGetValue(key, out list))
+        {
+          list = new List<Entry>();
+          groups[key] = list;
+        }
+        list.Add(e);
+      }
+
+      StringBuilder sb = new StringBuilder();
+      sb.AppendLine("<Project>");
+      sb.AppendLine("  <ItemGroup>");
+
+      foreach (KeyValuePair<string, List<Entry>> kv in groups)
+      {
+        List<Entry> parts = kv.Value;
+        if (parts.Count < 2) continue;
+
+        Comparison<Entry> cmp = new Comparison<Entry>(CompareForAnchor);
+        parts.Sort(cmp);
+        Entry anchor = parts[0];
+
+        for (int i = 1; i < parts.Count; i++)
+        {
+          Entry p = parts[i];
+
+          // Parent and child must be in the SAME folder
+          if (!string.Equals(p.Dir, anchor.Dir, StringComparison.OrdinalIgnoreCase))
+          {
+            if (Verbose)
+              Log.LogMessage(MessageImportance.Low,
+                "[Nesting] Skip cross-dir: '{0}' under '{1}'", p.FileName, anchor.FileName);
+            continue;
+          }
+
+          string updateAttr = EscapeXml(RelativeTo(p.File, this.ProjectDir));
+          sb.AppendLine("    <Compile Update=\"" + updateAttr + "\">");
+          sb.AppendLine("      <DependentUpon>" + EscapeXml(anchor.FileName) + "</DependentUpon>");
+          sb.AppendLine("    </Compile>");
+        }
+      }
+
+      sb.AppendLine("  </ItemGroup>");
+      sb.AppendLine("</Project>");
+
+      string outDir = SafeGetDirectoryName(this.OutputPath);
+      if (outDir.Length > 0 && !Directory.Exists(outDir))
+        Directory.CreateDirectory(outDir);
+
+      File.WriteAllText(this.OutputPath, sb.ToString());
+
+      if (Verbose) Log.LogMessage(MessageImportance.High, "[Nesting] Wrote: " + this.OutputPath);
+      return true;
+    }
+    catch (Exception ex)
+    {
+      Log.LogErrorFromException(ex, true);
+      return false;
+    }
+  }
+
+  private static int CompareForAnchor(Entry a, Entry b)
+  {
+    if (a.IsRoot != b.IsRoot) return b.IsRoot ? 1 : -1;
+    if (a.Weight != b.Weight) return (a.Weight > b.Weight) ? -1 : 1;
+    return StringComparer.OrdinalIgnoreCase.Compare(a.FileName, b.FileName);
+  }
+
+  private static int CountNonBlankLines(string text)
+  {
+    if (string.IsNullOrEmpty(text)) return 0;
+    int count = 0;
+    using (StringReader sr = new StringReader(text))
+    {
+      string line;
+      while ((line = sr.ReadLine()) != null)
+      {
+        if (!string.IsNullOrWhiteSpace(line)) count++;
+      }
+    }
+    return count;
+  }
+
+  private static string EscapeXml(string s)
+  {
+    if (s == null) return "";
+    return s.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;")
+            .Replace("\"", "&quot;").Replace("'", "&apos;");
+  }
+
+  private static string SafeGetDirectoryName(string path)
+  {
+    string d = Path.GetDirectoryName(path);
+    return d == null ? "" : d;
+  }
+
+  private static string SafeGetFileNameWithoutExtension(string fileName)
+  {
+    string n = Path.GetFileNameWithoutExtension(fileName);
+    return n == null ? "" : n;
+  }
+
+  private static string RelativeTo(string fileFullPath, string baseDir)
+  {
+    try
+    {
+      string fileFull = Path.GetFullPath(fileFullPath);
+      string baseDirFull = Path.GetFullPath(Path.Combine(baseDir ?? ".", "."));
+      if (!baseDirFull.EndsWith(Path.DirectorySeparatorChar.ToString()))
+        baseDirFull += Path.DirectorySeparatorChar.ToString();
+
+      Uri fileUri = new Uri(fileFull);
+      Uri baseUri = new Uri(baseDirFull);
+      string rel = baseUri.MakeRelativeUri(fileUri).ToString();
+      return Uri.UnescapeDataString(rel).Replace('/', Path.DirectorySeparatorChar);
+    }
+    catch
+    {
+      string n = Path.GetFileName(fileFullPath);
+      return (n != null && n.Length > 0) ? n : fileFullPath;
+    }
+  }
+}
+      ]]>
+			</Code>
+		</Task>
+	</UsingTask>
+</Project>

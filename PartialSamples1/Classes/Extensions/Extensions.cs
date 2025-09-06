@@ -1,15 +1,28 @@
 ﻿#nullable disable
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PartialSamples1.Classes.Extensions;
 
+/// <summary>
+/// Provides extension methods for string manipulation and validation.
+/// </summary>
 public static partial class Extensions
 {
+    
+    /// <summary>
+    /// Mask SSN
+    /// </summary>
+    /// <param name="ssn">Valid SSN</param>
+    /// <param name="digitsToShow">How many digits to show on right which defaults to 4</param>
+    /// <param name="maskCharacter">Character to mask with which defaults to X</param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>    
     public static partial string MaskSsn(this string ssn, int digitsToShow = 4, char maskCharacter = 'X');
+
+    /// <summary>
+    /// Capitalizes the first letter of the given string.
+    /// </summary>
+    /// <param name="input">The string to capitalize.</param>
+    /// <returns>A new string with the first letter capitalized. If the input is null or empty, the original string is returned.</returns>
+    public static partial string CapitalizeFirstLetter(this string? input);
     public static bool IsInteger(this string sender)
     {
         foreach (var c in sender)
@@ -21,10 +34,5 @@ public static partial class Extensions
     public static bool IsNotInteger(this string sender)
         => sender.IsInteger() == false;
 
-    public static string RemoveStartAndEndQuotes(this string sender)
-        => (sender?.Length ?? 0) < 2
-            ? sender
-            : sender!.Length > 1 && (sender[0] == '"' && sender[^1] == '"' || sender[0] == '\'' && sender[^1] == '\'')
-                ? sender.Substring(1, sender.Length - 2)
-                : sender;
+
 }

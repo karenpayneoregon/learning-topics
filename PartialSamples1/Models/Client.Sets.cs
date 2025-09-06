@@ -17,7 +17,7 @@ public partial class Client
         get; 
         set => SetField(ref field, value.CapitalizeFirstLetter());
     }
-    public partial Gender Gender { get; set => SetField(ref field, value); }
+    public partial Gender? Gender { get; set => SetField(ref field, value); }
 
     public override string ToString() => $"{Id,-4}{FirstName, -10} {LastName, -14} ({Gender})";
 

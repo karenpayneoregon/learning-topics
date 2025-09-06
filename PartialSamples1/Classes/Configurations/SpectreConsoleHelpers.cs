@@ -4,10 +4,15 @@ using System.Runtime.CompilerServices;
 namespace PartialSamples1.Classes.Configurations;
 public static class SpectreConsoleHelpers
 {
+    /// <summary>
+    /// Displays a prompt in the console indicating the user should press any key to exit the application.
+    /// </summary>
+    /// <remarks>
+    /// This method uses Spectre.Console to format the prompt message and waits for user input via <see cref="Console.ReadLine"/>.
+    /// </remarks>
     public static void ExitPrompt()
     {
-        Console.WriteLine();
-        AnsiConsole.MarkupLine("[bold cyan]Press any key to exit...[/]");
+        AnsiConsole.MarkupLine("[bold mediumpurple2]Press any key to exit...[/]");
 
         Console.ReadLine();
     }
@@ -24,10 +29,6 @@ public static class SpectreConsoleHelpers
         Console.WriteLine();
     }
 
-    public static void LineSeparator()
-    {
-        AnsiConsole.Write(new Rule().RuleStyle(Style.Parse("grey")).Centered());
-    }
 
     /// <summary>
     /// Spectre.Console  Add [ to [ and ] to ] so Children[0].Name changes to Children[[0]].Name

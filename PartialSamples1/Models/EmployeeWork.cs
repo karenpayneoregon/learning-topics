@@ -9,7 +9,7 @@ namespace PartialSamples1.Models;
 /// <remarks>
 /// Part of an answer for Microsoft I replied to.
 /// </remarks>
-public partial class EmployeeWork : INotifyPropertyChanged
+public partial class EmployeeWork : PropertySetters, INotifyPropertyChanged
 {
     public partial int Id { get; set; }
     public partial decimal HourlyWage { get; set; }

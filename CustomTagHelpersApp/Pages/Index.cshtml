@@ -34,33 +34,31 @@
     
     <div class="row mb-3">
         <div class="col-3">
-
-
+            
             <form method="post">
-
+                @{
+                    var dow = (int)DateTime.Now.DayOfWeek;
+                }
                 <label for="weekDay">Select a weekday</label>
-
                 <select-enum enum-type="@(typeof(WeekDays))"
                              class="w-auto"
                              focus-ring-color="rgba(var(--bs-primary-rgb), .25)"
                              focus-ring-width=".25rem"
                              id="weekDay"
+                             selected-value="@dow"
                              name="weekDay">
                 </select-enum>
                 
-                <text-entry id="Name"  
+                <text-entry id="firstName"  
+                            margin-top="3"
                             value="@Model.FirstName" 
-                            label="Name:" 
-                            label-text="First"
-                            placeholder="Enter your name.">
+                            label-text="First name"
+                            placeholder="Enter your first name.">
                 </text-entry>
 
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </form>
             
-  
-
-
         </div>
 
     </div>

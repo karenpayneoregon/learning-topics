@@ -127,6 +127,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PasswordEye", "PasswordEye"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockupApplication", "MockupApplication\MockupApplication.csproj", "{6730DD97-BE8C-42F7-0BE4-A135C688E120}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Partial classes and properties", "Partial classes and properties", "{F23151BD-DA02-8321-455D-78E33FEB7350}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialSamples1", "PartialSamples1\PartialSamples1.csproj", "{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -277,6 +281,10 @@ Global
 		{6730DD97-BE8C-42F7-0BE4-A135C688E120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6730DD97-BE8C-42F7-0BE4-A135C688E120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6730DD97-BE8C-42F7-0BE4-A135C688E120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -326,6 +334,7 @@ Global
 		{E75B8DAC-C379-4192-B3A0-1AF99D8458FD} = {579976BD-A4D7-2559-36E6-21E1614D792F}
 		{579976BD-A4D7-2559-36E6-21E1614D792F} = {53D0748C-043C-A660-2311-AE5C91B568A3}
 		{6730DD97-BE8C-42F7-0BE4-A135C688E120} = {579976BD-A4D7-2559-36E6-21E1614D792F}
+		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0} = {F23151BD-DA02-8321-455D-78E33FEB7350}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

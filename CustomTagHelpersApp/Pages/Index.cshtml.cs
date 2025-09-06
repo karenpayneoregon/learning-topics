@@ -10,13 +10,25 @@ public class IndexModel : PageModel
     public WeekDays WeekDay { get; set; }
 
     [BindProperty]
-    public string FirstName { get; set; }
+    public required string FirstName { get; set; }
 
     public void OnGet()
     {
+        FirstName = "John";
     }
     public void OnPost()
     {
-        Log.Information("Selected week day {WeekDay}", (int)WeekDay +1);
+        //Console.WriteLine(new string('_', 50));
+
+        //Log.Information("Selected week day {WeekDay}", (int)WeekDay + 1);
+
+
+        //if (!string.IsNullOrWhiteSpace(FirstName))
+        //{
+        //    Log.Information("First name is {FirstName}", FirstName);
+        //} else
+        //{
+        //    Log.Information("First name is not provided");
+        //}
     }
 }

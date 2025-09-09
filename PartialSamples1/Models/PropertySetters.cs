@@ -21,6 +21,7 @@ public class PropertySetters
 
     protected void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new(propertyName));
+    
     /// <summary>
     /// Sets the field to the specified value and raises the <see cref="PropertyChanged"/> event if the value has changed.
     /// </summary>

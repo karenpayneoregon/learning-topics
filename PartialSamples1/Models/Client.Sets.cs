@@ -10,7 +10,8 @@ public partial class Client
     public partial string FirstName 
     { 
         get; 
-        set => SetField(ref field, value.CapitalizeFirstLetter());}
+        set => SetField(ref field, value.CapitalizeFirstLetter());
+    }
 
     public partial string LastName
     {
@@ -37,8 +38,12 @@ public partial class Client
     protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
     {
         if (EqualityComparer<T>.Default.Equals(field, value)) return false;
+        
         field = value;
+        
         OnPropertyChanged(propertyName);
+        
         return true;
+        
     }
 }

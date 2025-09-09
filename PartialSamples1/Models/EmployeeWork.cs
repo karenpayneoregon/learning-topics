@@ -21,4 +21,6 @@ public partial class EmployeeWork : PropertySetters, INotifyPropertyChanged
     /// See DataScripts\EmployeeWork.sql
     /// </summary>
     public partial decimal Salary { get; private set; }
+
+    public partial void PerformWork();
 }

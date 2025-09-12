@@ -23,16 +23,6 @@ public static partial class Extensions
     /// <param name="input">The string to capitalize.</param>
     /// <returns>A new string with the first letter capitalized. If the input is null or empty, the original string is returned.</returns>
     public static partial string CapitalizeFirstLetter(this string? input);
-    public static bool IsInteger(this string sender)
-    {
-        foreach (var c in sender)
-            if (c is < '0' or > '9') return false;
-
-        return true;
-    }
-
-    public static bool IsNotInteger(this string sender)
-        => sender.IsInteger() == false;
-
-
+    public static partial bool IsInteger(this string sender);
+    public static partial bool IsNotInteger(this string sender);
 }

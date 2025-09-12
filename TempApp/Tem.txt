@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+
+8: C:\
+7: C:\OED
+6: C:\OED\DotnetLand
+5: C:\OED\DotnetLand\VS2022
+4: C:\OED\DotnetLand\VS2022\HowToSeriesSolution
+3: C:\OED\DotnetLand\VS2022\HowToSeriesSolution\TempApp
+1: C:\OED\DotnetLand\VS2022\HowToSeriesSolution\TempApp\bin\Debug
+2: C:\OED\DotnetLand\VS2022\HowToSeriesSolution\TempApp\bin
+0: C:\OED\DotnetLand\VS2022\HowToSeriesSolution\TempApp\bin\Debug\net9.0\
+
+

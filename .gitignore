@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /PartialSamples1/DataScripts/.vscode/settings.json
+/.github/prompts/.vscode/settings.json

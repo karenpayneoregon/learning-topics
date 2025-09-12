@@ -26,7 +26,7 @@ public static class DirectoryHelper
         var chain = new List<string>();
 
         // chain[0] = deepest (starting) folder, last = root
-        while (directoryInfo is { })
+        while (directoryInfo is not null)
         {
             chain.Add(directoryInfo.FullName);
             directoryInfo = directoryInfo.Parent;

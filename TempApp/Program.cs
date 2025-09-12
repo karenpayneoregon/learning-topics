@@ -11,15 +11,8 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        //Work.ReadConfiguration();
-        var dict = AppDomain.CurrentDomain.BaseDirectory.UpperFolders();
-
-        foreach (var (key, value) in dict)
-        {
-            Console.WriteLine($"{key}: {value}");
-        }
-
-        Console.WriteLine();
+        Work.ReadConfiguration();
+  
         Console.ReadLine();
     }
 

@@ -140,6 +140,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EF Core examples", "EF Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseContextExampleApp", "BaseContextExampleApp\BaseContextExampleApp.csproj", "{4E01F766-13D5-4387-B084-FFD8C5F0F009}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryHelperSample1", "DirectoryHelperSample1\DirectoryHelperSample1.csproj", "{F425D9E6-4925-46EA-8523-B319824417BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -302,6 +304,10 @@ Global
 		{4E01F766-13D5-4387-B084-FFD8C5F0F009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E01F766-13D5-4387-B084-FFD8C5F0F009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E01F766-13D5-4387-B084-FFD8C5F0F009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F425D9E6-4925-46EA-8523-B319824417BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F425D9E6-4925-46EA-8523-B319824417BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F425D9E6-4925-46EA-8523-B319824417BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F425D9E6-4925-46EA-8523-B319824417BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -354,6 +360,7 @@ Global
 		{8AECCAAF-CE56-43A7-B2FC-1D2EB1348BB0} = {F23151BD-DA02-8321-455D-78E33FEB7350}
 		{E261CE3E-728D-413F-B7EB-17A92E91FEA8} = {CD0E1165-DDD0-05C7-2747-147969218046}
 		{4E01F766-13D5-4387-B084-FFD8C5F0F009} = {2B8C56C5-DCE6-4FEE-BFCF-1C16E42D256A}
+		{F425D9E6-4925-46EA-8523-B319824417BF} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

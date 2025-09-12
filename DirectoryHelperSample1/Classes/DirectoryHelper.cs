@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TempApp.Classes;
+﻿namespace DirectoryHelperSample1.Classes;
 
 public static class DirectoryHelper
 {
@@ -28,14 +22,14 @@ public static class DirectoryHelper
         if (string.IsNullOrWhiteSpace(folderName))
             return result;
 
-        var dir = new DirectoryInfo(folderName);
+        var directoryInfo = new DirectoryInfo(folderName);
         var chain = new List<string>();
 
         // chain[0] = deepest (starting) folder, last = root
-        while (dir != null)
+        while (directoryInfo is { })
         {
-            chain.Add(dir.FullName);
-            dir = dir.Parent;
+            chain.Add(directoryInfo.FullName);
+            directoryInfo = directoryInfo.Parent;
         }
 
         // Keys: 0…N where 0 = deepest; insert high->low 

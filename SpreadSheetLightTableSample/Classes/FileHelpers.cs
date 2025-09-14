@@ -34,7 +34,7 @@ internal class FileHelpers
         try
         {
             await using var fileStream = File.Open(fileName, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
-            fileStream?.Close();
+            fileStream.Close();
         }
         catch (IOException ex)
         {

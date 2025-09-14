@@ -37,10 +37,8 @@ public class IndexModel(Context context) : PageModel
                 GlobalCulture.CurrentCulture.DateTimeFormat.GetMonthName(g.Key),
                 g.ToList()))
             .ToList();
-        
-        foreach (var day in BirthDays)
-        {
-            Console.WriteLine($"{day:Id}{day,-20:F}{day:Age}");
-        }
+
+        BirthDayTableView.PrintBirthDays(BirthDays);
+
     }
 }

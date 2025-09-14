@@ -33,4 +33,13 @@
 	<ItemGroup>
 		<Using Include="System.Globalization.CultureInfo" Alias="GlobalCulture" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Spectre.Console" Version="0.50.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="DataScripts\" />
+	</ItemGroup>
+
 </Project>

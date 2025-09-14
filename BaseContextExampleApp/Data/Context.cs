@@ -20,7 +20,10 @@ public partial class Context : ProtoTypeContext
     {
         modelBuilder.Entity<BirthDays>(entity =>
         {
-            entity.Property(e => e.YearsOld).HasComputedColumnSql("((CONVERT([int],format(getdate(),'yyyyMMdd'))-CONVERT([int],format([BirthDate],'yyyyMMdd')))/(10000))", false);
+            entity.Property(e => e.YearsOld)
+                .HasComputedColumnSql(
+                    "((CONVERT([int],format(getdate(),'yyyyMMdd'))-CONVERT([int],format([BirthDate],'yyyyMMdd')))/(10000))", 
+                    false);
         });
 
         OnModelCreatingPartial(modelBuilder);

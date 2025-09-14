@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Birthday list";
+}
+
+<div class="container">
+    <div class="alert alert-dark shadow" role="alert">
+        <h1 class="fs-5">Birthdays</h1>    
+    </div>
+</div>
+
+<div class="container mt-4">
+
+    @foreach (var group in Model.BirthDays.OrderBy(b => b.BirthDate.Month).ThenBy(b => b.BirthDate.Day).GroupBy(b => b.BirthDate.Month))
+    {
+        <div class="mb-5">
+            <h2 class="mb-3">@GlobalCulture.CurrentCulture.DateTimeFormat.GetMonthName(group.Key)</h2>
+            <div class="row">
+                @foreach (var b in group)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow h-100">
+                            <div class="card-body">
+                                <h2 class="card-title">@b.FirstName @b.LastName</h2>
+                                <p class="card-text">
+                                    <strong>Birth Date:</strong> @b.BirthDate.ToString("MMMM dd, yyyy") <br/>
+                                    <strong>Age:</strong> @(b.YearsOld?.ToString() ?? "Unknown")
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+

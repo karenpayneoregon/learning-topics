@@ -144,6 +144,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryHelperSample1", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelFormatCustomSample", "ModelFormatCustomSample\ModelFormatCustomSample.csproj", "{EC8DD323-CDD8-4D0D-BEEE-3CFE3103491D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthDaysApp", "BirthDaysApp\BirthDaysApp.csproj", "{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -314,6 +316,10 @@ Global
 		{EC8DD323-CDD8-4D0D-BEEE-3CFE3103491D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC8DD323-CDD8-4D0D-BEEE-3CFE3103491D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC8DD323-CDD8-4D0D-BEEE-3CFE3103491D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,6 +374,7 @@ Global
 		{4E01F766-13D5-4387-B084-FFD8C5F0F009} = {2B8C56C5-DCE6-4FEE-BFCF-1C16E42D256A}
 		{F425D9E6-4925-46EA-8523-B319824417BF} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{EC8DD323-CDD8-4D0D-BEEE-3CFE3103491D} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{7250BCFD-E0DF-4F14-B926-F5B1B44B01C0} = {2B8C56C5-DCE6-4FEE-BFCF-1C16E42D256A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

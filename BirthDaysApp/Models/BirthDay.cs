@@ -40,8 +40,8 @@ public class BirthDay : IFormattable
         => (format switch
         {
             "Id" => $"{Id, -5}",
-            "F" => $"{FirstName} {LastName}",
-            "Age" => YearsOld.HasValue ? YearsOld.Value.ToString() : "Unknown",
+            "F" or "FullName" => $"{FirstName} {LastName}",
+            "A" or "Age" => YearsOld.HasValue ? YearsOld.Value.ToString() : "Unknown",
             _ => base.ToString()
         })!;
     /// <summary>

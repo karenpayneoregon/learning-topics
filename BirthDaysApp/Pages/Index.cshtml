@@ -12,12 +12,14 @@
 
 <div class="container mt-4">
 
-    @foreach (var group in Model.BirthDays.OrderBy(b => b.BirthDate.Month).ThenBy(b => b.BirthDate.Day).GroupBy(b => b.BirthDate.Month))
+    @foreach (var group in Model.GroupedBirthDays)
     {
         <div class="mb-5">
-            <h2 class="mb-3">@GlobalCulture.CurrentCulture.DateTimeFormat.GetMonthName(group.Key)</h2>
+
+            <h2 class="mb-3">@GlobalCulture.CurrentCulture.DateTimeFormat.GetMonthName(group.Month)</h2>
+
             <div class="row">
-                @foreach (var b in group)
+                @foreach (var b in group.Items)
                 {
                     <div class="col-md-4 mb-3">
                         <div class="card shadow h-100">

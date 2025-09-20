@@ -12,6 +12,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="C:\Users\paynek\.nuget\packages\consoleconfigurationlibrary\1.0.0.12\contentFiles\any\net8.0\readme.md" />
+	  <Content Remove="C:\Users\paynek\.nuget\packages\serilogthemeslibrary\1.0.0.2\contentFiles\any\net8.0\readme.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="readme.md" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Serilog" Version="4.3.0" />
 		<PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.2" />
 		<PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />

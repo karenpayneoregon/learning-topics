@@ -82,8 +82,3 @@ public partial class Context : DbContext
 }
 ```
 
----
-```csharp
-builder.Services.AddDbContext<Context>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString(nameof(ConnectionStrings.MainConnection))));
-```

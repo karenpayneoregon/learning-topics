@@ -13,6 +13,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
+        
         // Configure Serilog
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
@@ -25,15 +26,13 @@ public class Program
 
         // Register DbContext
         builder.Services.AddDbContext<Context>(options => options.UseSqlServer(
-            builder.Configuration.GetConnectionString(nameof(ConnectionStrings.MainConnection))));
+            builder.Configuration.GetConnectionString("MainConnection")));
         
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 

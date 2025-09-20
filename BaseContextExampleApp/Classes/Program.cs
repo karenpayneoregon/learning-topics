@@ -2,6 +2,7 @@
 using ConsoleConfigurationLibrary.Classes;
 using ConsoleHelperLibrary.Classes;
 using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using static ConsoleConfigurationLibrary.Classes.ApplicationConfiguration;
@@ -22,6 +23,15 @@ internal partial class Program
 
         SetupLogging.Development();
         Setup();
+
+        // See ProtoTypeContext
+        var dict = Environment.GetEnvironmentVariables();
+        if (!dict.Contains("CONSOLE_ENVIRONMENT"))
+        {
+            AnsiConsole.MarkupLine("[bold red]Please set the environment variable[/] [yellow]CONSOLE_ENVIRONMENT[/]");
+            SpectreConsoleHelpers.ExitPrompt();
+            return;
+        }
 
     }
     private static void Setup()

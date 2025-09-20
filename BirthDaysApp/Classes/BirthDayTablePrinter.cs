@@ -24,11 +24,7 @@ public static class BirthDayTableView
     /// </remarks>
     public static void PrintBirthDays(IEnumerable<BirthDay> birthDays)
     {
-        var table = new Table()
-            .Title("[cyan bold]Birthdays[/]")
-            .Border(TableBorder.Rounded)
-            .Centered();
-
+        var table = new Table().Title("[cyan bold]Birthdays[/]").Border(TableBorder.Rounded).Centered();
         table.AddColumn("[cyan]First Name[/]");
         table.AddColumn("[cyan]Last Name[/]");
         table.AddColumn("[cyan]Birth Date[/]");

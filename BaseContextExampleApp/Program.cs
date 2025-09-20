@@ -7,6 +7,8 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+
+
         using var context = new Context();
         var birthDays = context.BirthDays.ToList();
 
@@ -16,6 +18,8 @@ internal partial class Program
         {
             Console.WriteLine($"{item.Id, -4}{item.FirstName, -15}{item.LastName, -15}{item.BirthDate, -15:MM/dd/yyyy}{item.YearsOld}");
         }
+        
         SpectreConsoleHelpers.ExitPrompt();
+        
     }
 }

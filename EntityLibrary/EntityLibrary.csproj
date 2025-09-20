@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\paynek\.nuget\packages\consoleconfigurationlibrary\1.0.0.10\contentFiles\any\net8.0\readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="readme.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
     <PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.9" />

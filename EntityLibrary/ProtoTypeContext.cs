@@ -21,6 +21,7 @@ public abstract class ProtoTypeContext() : DbContext(BuildOptions())
         var builder = new DbContextOptionsBuilder()
             .UseSqlServer(AppConnections.Instance.MainConnection);
 
+        // NOTE - adjust based on your environment variable setup
         var env = Environment.GetEnvironmentVariable("CONSOLE_ENVIRONMENT") ?? "Production";
 
         if (env.Equals("Development", StringComparison.OrdinalIgnoreCase))

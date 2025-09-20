@@ -1,6 +1,4 @@
 ﻿@page
-@using System.Globalization
-@using BirthDaysApp.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Birthday list";
@@ -8,37 +6,41 @@
 
 <div class="container">
     <div class="alert alert-dark shadow" role="alert">
-        <h1 class="fs-5">Birthdays</h1>    
+        <h1 class="fs-5">Birthdays</h1>
     </div>
 </div>
 
 <div class="container mt-4">
+    
+    @{
+        var grouped = Model.GroupedBirthDays;
 
-    @foreach (var group in Model.GroupedBirthDays)
-    {
-        <div class="mb-5">
-            <h2 class="mb-3">@group.MonthName</h2>
+    }
 
-            <div class="row">
-                @foreach (var b in group.Items)
-                {
-                    <div class="col-md-4 mb-3">
-                        <div class="card shadow h-100">
-                            <div class="card-body">
-
-                                <h2 class="card-title">@b.ToString("FullName", GlobalCulture.CurrentCulture)</h2>
-
-                                <p class="card-text">
-                                    <strong>Birth Date:</strong> @b.BirthDate.ToString("MMMM dd, yyyy", GlobalCulture.CurrentCulture) <br/>
-                                    <strong>Age:</strong> @b.Age.ToString(GlobalCulture.CurrentCulture)
-                                </p>
+    <main>
+        @foreach (var group in grouped)
+        {
+            <div class="mb-5">
+                <h2 class="mb-3">@group.MonthName</h2>
+                <div class="row">
+                    @foreach (var b in group.Items)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card shadow h-100">
+                                <div class="card-body">
+                                    <h2 class="card-title">@b.ToString("FullName", GlobalCulture.CurrentCulture)</h2>
+                                    <p class="card-text">
+                                        <strong>Birth Date:</strong> @b.BirthDate.ToString("MMMM dd, yyyy", GlobalCulture.CurrentCulture) <br/>
+                                        <strong>Age:</strong> @b.Age.ToString(GlobalCulture.CurrentCulture)
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
 
-        </div>
-    }
+            </div>
+        }
+    </main>
 </div>
 

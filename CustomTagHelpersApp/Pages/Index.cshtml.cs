@@ -20,7 +20,7 @@ public class IndexModel : PageModel
     {
         //Console.WriteLine(new string('_', 50));
 
-        //Log.Information("Selected week day {WeekDay}", (int)WeekDay + 1);
+        Log.Information("Selected week day {WeekDay} {Name}", (int)WeekDay + 1, WeekDay);
 
 
         //if (!string.IsNullOrWhiteSpace(FirstName))

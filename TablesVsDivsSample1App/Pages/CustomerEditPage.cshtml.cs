@@ -8,9 +8,7 @@ namespace TablesVsDivsSample1App.Pages
 {
     public class CustomerEditPageModel(Context context) : PageModel
     {
-        private readonly Context _context = context;
-
-        // Bind on GET and POST so the hidden field round-trips on form submit
+        
         [BindProperty(SupportsGet = true)]
         public string? ReturnUrl { get; set; }
 
@@ -24,7 +22,7 @@ namespace TablesVsDivsSample1App.Pages
                 return NotFound();
             }
 
-            var customers = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+            var customers = await context.Customers.FirstOrDefaultAsync(c => c.Id == id);
             if (customers == null)
             {
                 return NotFound();
@@ -41,21 +39,20 @@ namespace TablesVsDivsSample1App.Pages
                 return Page();
             }
 
-            _context.Attach(Customers).State = EntityState.Modified;
+            context.Attach(Customers).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.Customers.Any(e => e.Id == Customers.Id))
+                if (!context.Customers.Any(e => e.Id == Customers.Id))
                 {
                     return NotFound();
                 }
             }
 
-            // Only redirect to local URLs to avoid open redirects
             if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
                 return LocalRedirect(ReturnUrl);
 

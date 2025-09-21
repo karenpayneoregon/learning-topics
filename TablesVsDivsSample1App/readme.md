@@ -6,6 +6,10 @@ The purpose of this project is to recommend not using tables but instead using t
 
 Since two pages use the edit page, the edit page needs to know where to return after saving or canceling. This is done by passing a `returnUrl` parameter in the query string. This requires `builder.Services.AddHttpContextAccessor();` in `Program.cs` and injecting `IHttpContextAccessor` in the edit page.
 
+## Database
+
+See script in the `Scripts` folder.
+
 
 ## Miscellaneous Notes
 

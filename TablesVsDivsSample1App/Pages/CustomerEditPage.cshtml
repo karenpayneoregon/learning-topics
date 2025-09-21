@@ -1,0 +1,63 @@
+﻿@page
+@model TablesVsDivsSample1App.Pages.CustomerEditPageModel
+
+@{
+    ViewData["Title"] = "CustomerEditPage";
+}
+
+<h1>CustomerEditPage</h1>
+
+<h4>Customers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Customers.Id" />
+            <div class="form-group">
+                
+                <label asp-for="Customers.Company" class="control-label"></label>
+                <input asp-for="Customers.Company" class="form-control" />
+                <span asp-validation-for="Customers.Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Customers.ContactType" class="control-label"></label>
+                <input asp-for="Customers.ContactType" class="form-control" />
+                <span asp-validation-for="Customers.ContactType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Customers.ContactName" class="control-label"></label>
+                <input asp-for="Customers.ContactName" class="form-control" />
+                <span asp-validation-for="Customers.ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Customers.Country" class="control-label"></label>
+                <input asp-for="Customers.Country" class="form-control" />
+                <span asp-validation-for="Customers.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Customers.JoinDate" class="control-label"></label>
+                <input asp-for="Customers.JoinDate" class="form-control" />
+                <span asp-validation-for="Customers.JoinDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @* return to calling page *@
+    <a href="@Model.ReturnUrl">Back to List</a>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

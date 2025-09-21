@@ -1,6 +1,5 @@
 using BirthDaysApp.Classes;
 using BirthDaysApp.Data;
-using ConsoleConfigurationLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

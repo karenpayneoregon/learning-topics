@@ -1,0 +1,65 @@
+﻿@page
+@model TablesVsDivsSample1App.Pages.UsingDivsPageModel
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+}
+<h1 class="fs-4 mb-3">Customers (Divs with Bootstrap 5)</h1>
+
+<div class="container">
+
+    <!-- Sticky Header visible md+ only -->
+    <div class="row fw-bold py-2 bg-dark text-white sticky-top shadow-sm z-1 d-none d-md-flex">
+        <div class="col-md-3">Company</div>
+        <div class="col-md-2">Contact Type</div>
+        <div class="col-md-2">Contact Name</div>
+        <div class="col-md-1">Country</div>
+        <div class="col-md-2">Join Date</div>
+        <div class="col-md-2 text-end">Actions</div>
+    </div>
+
+    <!-- Data Rows with Zebra Style + Mobile Labels -->
+    @for (int i = 0; i < Model.Customers.Count; i++)
+    {
+        var item = Model.Customers[i];
+        var rowClass = (i % 2 == 0) ? "bg-light" : "";
+
+        <div class="row border-bottom py-3 align-items-center @rowClass">
+            <div class="col-12 col-md-3">
+                <span class="d-md-none fw-semibold me-1">Company:</span>
+                @item.Company
+            </div>
+            <div class="col-12 col-md-2">
+                <span class="d-md-none fw-semibold me-1">Contact Type:</span>
+                @item.ContactType
+            </div>
+            <div class="col-12 col-md-2">
+                <span class="d-md-none fw-semibold me-1">Contact Name:</span>
+                @item.ContactName
+            </div>
+            <div class="col-12 col-md-1">
+                <span class="d-md-none fw-semibold me-1">Country:</span>
+                @item.Country
+            </div>
+            <div class="col-12 col-md-2">
+                <span class="d-md-none fw-semibold me-1">Join Date:</span>
+                @item.JoinDate.ToString("MM/dd/yyyy")
+            </div>
+
+            <div class="col-12 col-md-2 d-flex justify-content-start justify-content-md-end gap-2 mt-2 mt-md-0">
+                <a asp-page="./CustomerEditPage"
+                   asp-route-id="@item.Id"
+                   asp-route-returnUrl="@($"{Request.Path}{Request.QueryString}")"
+                   class="btn btn-sm btn-outline-primary"
+                   title="Edit">
+                    <i class="bi bi-pencil"></i>
+                </a>
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" title="Details">
+                    <i class="bi bi-eye"></i>
+                </a>
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </div>
+        </div>
+    }
+</div>

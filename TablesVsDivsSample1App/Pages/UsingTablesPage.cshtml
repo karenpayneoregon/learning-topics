@@ -1,0 +1,71 @@
+﻿@page
+@model TablesVsDivsSample1App.Pages.UsingTablesPageModel
+
+@{
+    ViewData["Title"] = "UsingTablesPage";
+}
+
+<h1 class="fs-4">Customers (using tables)</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].ContactType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].JoinDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Customers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JoinDate)
+                </td>
+                <td>
+                    <a asp-page="./CustomerEditPage"
+                       asp-route-id="@item.Id"
+                       asp-route-returnUrl="@($"{Request.Path}{Request.QueryString}")"
+                       class="btn btn-sm btn-outline-primary"
+                       title="Edit">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" title="Details">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using BirthDaysApp.Models;
-using ConsoleConfigurationLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BirthDaysApp.Data;

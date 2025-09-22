@@ -12,6 +12,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
+        
         // Configure Serilog
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
@@ -25,23 +26,10 @@ public class Program
         // assist with getting caller in edit page
         builder.Services.AddHttpContextAccessor();
 
-        // Register DbContext
-        builder.Services.AddDbContext<Context>(options => options.UseSqlServer(
-            builder.Configuration.GetConnectionString("MainConnection"))
-            .LogTo(new DbContextToFileLogger().Log, 
-            [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
+        RegisterDbContextAndLogFiles(builder, out var logDir);
 
         var app = builder.Build();
 
-        if (app.Environment.IsDevelopment())
-        {
-            var logDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", DateTime.Now.ToString("yyyy-MM-dd"));
-            if (!Directory.Exists(logDir))
-            {
-                Directory.CreateDirectory(logDir);
-            }
-        }
-        
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -61,5 +49,38 @@ public class Program
         app.MapRazorPages();
 
         app.Run();
+    }
+
+    /// <summary>
+    /// Configures the application's database context and sets up the directory for log files.
+    /// </summary>
+    /// <param name="builder">
+    /// The <see cref="WebApplicationBuilder"/> used to configure the application's services and environment.
+    /// </param>
+    /// <param name="logDir">
+    /// An output parameter that provides the path to the directory where log files will be stored.
+    /// </param>
+    private static void RegisterDbContextAndLogFiles(WebApplicationBuilder builder, out string logDir)
+    {
+        // Register DbContext
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
+                .EnableSensitiveDataLogging()
+                .LogTo(new DbContextToFileLogger().Log,
+                    [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
+        }
+        else
+        {
+            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
+                .LogTo(new DbContextToFileLogger().Log,
+                    [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
+        }
+
+        logDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", DateTime.Now.ToString("yyyy-MM-dd"));
+        if (!Directory.Exists(logDir))
+        {
+            Directory.CreateDirectory(logDir);
+        }
     }
 }

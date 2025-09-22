@@ -16,6 +16,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
 
+        // see validators note in readme.md
         builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         // Enable FluentValidation's automatic validation
         builder.Services.AddFluentValidationAutoValidation();

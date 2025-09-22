@@ -15,7 +15,10 @@ See script in the `Scripts` folder.
 
 ## Validation
 
-The application uses FluentValidation for model validation. Validators are located in the `Validators` folder and are automatically registered in the dependency injection container.
+The application uses [FluentValidation](https://www.nuget.org/packages/FluentValidation.AspNetCore/11.3.1?_src=template) for model validation. Validators are located in the `Validators` folder and are automatically registered in the dependency injection container.
+
+> **Note**
+> This package has been deprecated as it is legacy and is no longer maintained. The package works fine, but consider reading [the following](https://docs.fluentvalidation.net/en/latest/aspnet.html).
 
 ## Miscellaneous Notes
 

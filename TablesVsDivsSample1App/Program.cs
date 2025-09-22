@@ -1,6 +1,9 @@
 using EntityCoreFileLogger;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Reflection;
 using TablesVsDivsSample1App.Data;
 
 namespace TablesVsDivsSample1App;
@@ -12,7 +15,11 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
-        
+
+        builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        // Enable FluentValidation's automatic validation
+        builder.Services.AddFluentValidationAutoValidation();
+
         // Configure Serilog
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)

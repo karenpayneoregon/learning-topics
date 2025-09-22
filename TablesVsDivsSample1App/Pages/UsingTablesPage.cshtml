@@ -51,6 +51,7 @@
                     @Html.DisplayFor(modelItem => item.JoinDate)
                 </td>
                 <td>
+                    @* Added by Karen *@
                     <a asp-page="./CustomerEditPage"
                        asp-route-id="@item.Id"
                        asp-route-returnUrl="@($"{Request.Path}{Request.QueryString}")"

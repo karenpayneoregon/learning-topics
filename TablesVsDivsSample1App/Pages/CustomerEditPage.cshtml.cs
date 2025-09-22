@@ -6,6 +6,14 @@ using TablesVsDivsSample1App.Models;
 
 namespace TablesVsDivsSample1App.Pages
 {
+    /// <summary>
+    /// Represents the page model for editing customer information.
+    /// </summary>
+    /// <remarks>
+    /// This class is used to handle the logic for retrieving and updating customer data
+    /// within this page for editing customers. It interacts with the database context
+    /// to perform operations such as fetching customer details and saving changes.
+    /// </remarks>
     public class CustomerEditPageModel(Context context) : PageModel
     {
         
@@ -54,7 +62,9 @@ namespace TablesVsDivsSample1App.Pages
             }
 
             if (!string.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+            {
                 return LocalRedirect(ReturnUrl);
+            }
 
             // Fallback: go to whatever makes sense as a default
             return RedirectToPage("./Index");

@@ -44,9 +44,8 @@
 	</ItemGroup>
 
 
-	<Target Name="MakeLogDir" AfterTargets="Build">
-		<!-- Create folder LogFiles than each day create a folder with the current date -->
+	<!--<Target Name="MakeLogDir" AfterTargets="Build">
 		<MakeDir Directories="$(OutDir)LogFiles\$([System.DateTime]::Now.ToString(yyyy-MM-dd))" />
-	</Target>
+	</Target>-->
 
 </Project>

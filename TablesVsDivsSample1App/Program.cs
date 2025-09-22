@@ -1,7 +1,6 @@
 using EntityCoreFileLogger;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using TablesVsDivsSample1App.Classes;
 using TablesVsDivsSample1App.Data;
 
 namespace TablesVsDivsSample1App;
@@ -33,6 +32,16 @@ public class Program
             [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
 
         var app = builder.Build();
+
+        if (app.Environment.IsDevelopment())
+        {
+            var logDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles", DateTime.Now.ToString("yyyy-MM-dd"));
+            if (!Directory.Exists(logDir))
+            {
+                Directory.CreateDirectory(logDir);
+            }
+        }
+        
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

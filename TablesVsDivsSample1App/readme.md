@@ -13,6 +13,10 @@ See script in the `Scripts` folder.
 1. Create the database in SSMS.
 2. Run the script to create the necessary tables and seed data.
 
+## Validation
+
+The application uses FluentValidation for model validation. Validators are located in the `Validators` folder and are automatically registered in the dependency injection container.
+
 ## Miscellaneous Notes
 
 - In the project file

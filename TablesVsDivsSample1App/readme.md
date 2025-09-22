@@ -10,6 +10,8 @@ Since two pages use the edit page, the edit page needs to know where to return a
 
 See script in the `Scripts` folder.
 
+1. Create the database in SSMS.
+2. Run the script to create the necessary tables and seed data.
 
 ## Miscellaneous Notes
 

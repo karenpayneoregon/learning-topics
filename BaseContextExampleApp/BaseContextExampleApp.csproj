@@ -9,6 +9,7 @@
 
 	<PropertyGroup>
 		<Product>ProtoTypeContext example</Product>
+		<Description>Demo</Description>
 	</PropertyGroup>
 
 	<ItemGroup>

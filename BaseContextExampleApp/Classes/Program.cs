@@ -16,6 +16,7 @@ internal partial class Program
     {
         var assembly = Assembly.GetEntryAssembly();
         var product = assembly?.GetCustomAttribute<AssemblyProductAttribute>()?.Product;
+        var description = assembly?.GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
 
         Console.Title = product!;
 

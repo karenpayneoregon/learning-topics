@@ -1,0 +1,50 @@
+﻿@page
+@model MultipleSubmitButtons1.Pages.IndexModel
+@{
+    ViewData["Title"] = "Session Selection";
+}
+
+<link href="~/css/indexpage.css" rel="stylesheet" />
+
+<h2 class="mb-3">Select Your Program</h2>
+
+<form method="post" class="vstack gap-3">
+    <!-- Show any page-level model errors -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3 d-flex align-items-center gap-2">
+        <label asp-for="CountInput" class="form-label mb-0">How many sessions?</label>
+
+        <input asp-for="CountInput"
+               type="number" min="1"
+               class="form-control input-small-number d-inline-block text-end"
+               style="width:6rem;" />
+
+        <!-- Field-level message goes right under/next to the input -->
+        <span asp-validation-for="CountInput" class="text-danger ms-2"></span>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+        @foreach (var program in Model.Programs)
+        {
+            <button type="submit"
+                    name="action"
+                    value="@program.Key"
+                    class="btn btn-outline-dark">
+                @program.Value
+            </button>
+        }
+    </div>
+
+    @if (Model.SessionCount.HasValue && !string.IsNullOrEmpty(Model.Program))
+    {
+        <div class="alert alert-success mt-3">
+            You requested @Model.SessionCount session(s) of <strong>@Model.Program</strong>.
+        </div>
+    }
+</form>
+
+@section Scripts {
+    <!-- This pulls in jquery, jquery.validate, jquery.validate.unobtrusive -->
+    <partial name="_ValidationScriptsPartial" />
+}

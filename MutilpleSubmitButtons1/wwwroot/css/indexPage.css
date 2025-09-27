@@ -1,0 +1,25 @@
+﻿.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* Narrow, right-aligned number input */
+.input-small-number {
+    width: 100px; /* adjust as needed */
+    text-align: right; /* align numbers to the right */
+}
+
+/* Optional: remove spinners */
+.input-small-number::-webkit-outer-spin-button,
+.input-small-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-small-number {
+    -moz-appearance: textfield;
+}
+

@@ -36,10 +36,10 @@
         }
     </div>
 
-    @if (Model.SessionCount.HasValue && !string.IsNullOrEmpty(Model.Program))
+    @if (Model.MainCount.HasValue && !string.IsNullOrEmpty(Model.Program))
     {
         <div class="alert alert-success mt-3">
-            You requested @Model.SessionCount session(s) of <strong>@Model.Program</strong>.
+            You requested @Model.MainCount session(s) of <strong>@Model.Program</strong>.
         </div>
     }
 </form>

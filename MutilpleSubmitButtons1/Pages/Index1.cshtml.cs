@@ -26,12 +26,12 @@ public IActionResult OnPostButton1()
             return Page();
         }
 
-        // Basic sanity check: force a selection
-        if (string.IsNullOrWhiteSpace(Program))
-        {
-            ModelState.AddModelError(nameof(Program), "Please select a program.");
-            return Page();
-        }
+        // Key is what got posted from the <select>
+        var selectedKey = Program;
+
+        // Lookup the value (friendly display text) from Programs dictionary
+        Programs.TryGetValue(selectedKey, out var selectedValue);
+
 
         HttpContext.Session.SetString("Program", Program); 
         HttpContext.Session.SetInt32("Count", Count); 

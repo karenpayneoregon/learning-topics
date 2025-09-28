@@ -6,6 +6,13 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Services.AddSession(o =>
+        {
+            o.Cookie.HttpOnly = true;
+            o.Cookie.IsEssential = true;
+            o.IdleTimeout = TimeSpan.FromMinutes(20);
+        });
+
         /*
          * For reading configuration values into a Dictionary<string, string> from appsettings.json
          * for buttons and their corresponding program names.
@@ -24,6 +31,8 @@ public class Program
         
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+
+        app.UseSession(); // <-- important
 
         app.UseRouting();
 

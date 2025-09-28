@@ -1,30 +1,37 @@
 ﻿@page
 @model MultipleSubmitButtons1.Pages.IndexModel
 @{
-    ViewData["Title"] = "Session Selection";
+    ViewData["Title"] = "Selection";
 }
 
+<script src="lib/debugHelper.js"></script>
 <link href="~/css/indexpage.css" rel="stylesheet" />
 
-<h2 class="mb-3">Select Your Program</h2>
+<h1 class="mb-3 fs-4">Select Your Program</h1>
 
 <form method="post" class="vstack gap-3">
+
     <!-- Show any page-level model errors -->
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="mb-3 d-flex align-items-center gap-2">
+
         <label asp-for="CountInput" class="form-label mb-0">How many sessions?</label>
 
+        <!-- see indexPage.css for styling -->
         <input asp-for="CountInput"
                type="number" min="1"
                class="form-control input-small-number d-inline-block text-end"
-               style="width:6rem;" />
+               style="width: 6rem;"/>
 
         <!-- Field-level message goes right under/next to the input -->
         <span asp-validation-for="CountInput" class="text-danger ms-2"></span>
+
     </div>
 
     <div class="d-flex flex-wrap gap-2">
+
+        @* create buttons for each program from json in appsettings.json *@
         @foreach (var program in Model.Programs)
         {
             <button type="submit"
@@ -34,12 +41,14 @@
                 @program.Value
             </button>
         }
+
     </div>
 
+    @* display result from form submission *@
     @if (Model.MainCount.HasValue && !string.IsNullOrEmpty(Model.Program))
     {
         <div class="alert alert-success mt-3">
-            You requested @Model.MainCount session(s) of <strong>@Model.Program</strong>.
+            You requested <strong>@Model.MainCount</strong> session(s) of <strong>@Model.Program</strong>.
         </div>
     }
 </form>

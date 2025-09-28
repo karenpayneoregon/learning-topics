@@ -1,0 +1,47 @@
+﻿@page
+@model MultipleSubmitButtons1.Pages.Index2Model
+@{
+    ViewData["Title"] = "Session receive two parms";
+}
+
+<script src="lib/debugHelper.js"></script>
+
+
+<h1 class="fs-4 text-center">Passed via Session</h1>
+
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-2 text-end">
+            First value:
+        </div>
+        <div class="col-8 fw-bold">
+            @Model.ProgramParam
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-2 text-end">
+            Second value:
+        </div>
+        <div class="col-8 fw-bold">
+            @(Model.CountParam.HasValue ? Model.CountParam.Value.ToString() : "N/A")
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        /*
+        * Karen code
+        * ALT+1 toggles adding/removing debugger.css
+        */
+        // document.addEventListener('keydown', function (event) {
+
+        //     if (event.key === '1' && event.altKey && event.ctrlKey) {
+        //         $debugHelper.toggle();
+        //     }
+
+        // });
+    </script>
+}

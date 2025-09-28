@@ -1,0 +1,13 @@
+﻿@page
+@model MultipleSubmitButtons1.Pages.Index1Model
+@{
+    ViewData["Title"] = "Session two params";
+}
+
+<script src="lib/debugHelper.js"></script>
+
+<div class="content">
+    <form method="post">
+        <input type="submit" value="Session two params" class="btn btn-primary" asp-page-handler="Button1" />
+    </form>
+</div>

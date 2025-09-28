@@ -47,7 +47,11 @@ public class IndexModel(IOptions<Dictionary<string, string>> programs) : PageMod
     /// </remarks>
     public Dictionary<string, string> Programs { get; } = programs.Value;
 
-    public void OnGet() { }
+    public void OnGet()
+    {
+        
+
+    }
 
     /// <summary>
     /// Handles the form submission for the Index page.
@@ -69,10 +73,17 @@ public class IndexModel(IOptions<Dictionary<string, string>> programs) : PageMod
             return Page();
         }
 
-        var currentAction = Request.Form["action"].ToString();
+        if (!Request.Form.TryGetValue("action", out var actionValue) || actionValue.Count == 0 || actionValue[0] is null)
+        {
+            ModelState.AddModelError(string.Empty, "Action is required.");
+            MainCount = null;
+            return Page();
+        }
+
         MainCount = CountInput;
 
-        if (Programs.TryGetValue(currentAction, out var programName))
+        var actionKey = actionValue[0]!;
+        if (Programs.TryGetValue(actionKey, out var programName))
         {
             Program = programName;
         }

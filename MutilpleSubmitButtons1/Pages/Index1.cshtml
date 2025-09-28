@@ -6,8 +6,32 @@
 
 <script src="lib/debugHelper.js"></script>
 
-<div class="content">
-    <form method="post">
-        <input type="submit" value="Session two params" class="btn btn-primary" asp-page-handler="Button1" />
-    </form>
-</div>
+<form method="post">
+    @Html.AntiForgeryToken()
+    
+    <div class="mb-3">
+        <label asp-for="Program" class="form-label">Program</label>
+        <select asp-for="Program" class="form-select">
+                @foreach (var kvp in Model.Programs)
+            {
+                <!-- Key is the actual identifier stored in Program -->
+                <option value="@kvp.Key">@kvp.Value</option>
+            }
+        </select>
+        <span asp-validation-for="Program" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Count" class="form-label">Count</label>
+        <input asp-for="Count" type="number" class="form-control" min="1" />
+        <span asp-validation-for="Count" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" asp-page-handler="Button1" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

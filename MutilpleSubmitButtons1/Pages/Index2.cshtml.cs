@@ -9,7 +9,7 @@ namespace MultipleSubmitButtons1.Pages
         public int? CountParam { get; private set; }
 
         /// <summary>
-        /// Handles GET requests to the page.
+        /// Handles GET requests to the page from Index1.
         /// </summary>
         /// <remarks>
         /// This method initializes the <see cref="ProgramParam"/> and <see cref="CountParam"/> properties

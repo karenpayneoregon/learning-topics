@@ -49,8 +49,6 @@ public class IndexModel(IOptions<Dictionary<string, string>> programs) : PageMod
 
     public void OnGet()
     {
-        
-
     }
 
     /// <summary>

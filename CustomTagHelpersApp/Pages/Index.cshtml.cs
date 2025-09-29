@@ -18,17 +18,18 @@ public class IndexModel : PageModel
     }
     public void OnPost()
     {
-        //Console.WriteLine(new string('_', 50));
+        Console.WriteLine(new string('_', 50));
 
         Log.Information("Selected week day {WeekDay} {Name}", (int)WeekDay + 1, WeekDay);
 
 
-        //if (!string.IsNullOrWhiteSpace(FirstName))
-        //{
-        //    Log.Information("First name is {FirstName}", FirstName);
-        //} else
-        //{
-        //    Log.Information("First name is not provided");
-        //}
+        if (!string.IsNullOrWhiteSpace(FirstName))
+        {
+            Log.Information("First name is {FirstName}", FirstName);
+        }
+        else
+        {
+            Log.Information("First name is not provided");
+        }
     }
 }

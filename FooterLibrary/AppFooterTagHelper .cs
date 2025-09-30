@@ -27,7 +27,7 @@ namespace FooterLibrary;
 public sealed class AppFooterTagHelper : TagHelper
 {
     private const string DefaultAppName = "TODO"; // Replace "TODO" with your default application name
-    private const string DefaultAuthorName = "Karen Payne";
+    private const string DefaultAuthorName = "Karen Payne"; // Replace "Karen Payne" with your default author name
 
     public string? AppName { get; set; }
     public bool IncludeAuthor { get; set; } = true;  // defaults to true

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="Lib/styles/headers.css" rel="stylesheet" />
+    <script src="lib/debugHelper.js"></script>
+    <link href="Lib/styles/index.css" rel="stylesheet" />
+    <!--suppress no favicon-->
+    <link rel="shortcut icon" href="#">
+
+    <style>
+        select{
+            scrollbar-width: none; /*For Firefox*/;
+            -ms-overflow-style: none;  /*For Internet Explorer 10+*/;
+        }
+
+        select::-webkit-scrollbar { /*For WebKit Browsers*/
+            width: 0;
+        }
+    </style>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    
+    <link href="Lib/jQueryConfirm/dist/jquery-confirm.min.css" rel="stylesheet" />
+    <script src="Lib/jQueryConfirm/dist/jquery-confirm.min.js"></script>
+</head>
+
+<body>
+    <div class="nine mt-3">
+        <h1>select <span> has selection</span></h1>
+    </div>
+
+    <main>
+
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="countries">Select countries you have lived in:</label>
+                </div>
+
+            </div>
+            <div class="row mb-1">
+                <div class="col">
+                    <select id="countries" class="form-select" style="width: 200px" multiple>
+                        <option value="ca">Canada</option>
+                        <option value="us">United States</option>
+                        <option value="mx">Mexico</option>
+                        <option value="uk">United Kingdom</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>
+                        <input type="checkbox" class="form-check-input" id="lived-outside-us"> Lived outside US
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        /*
+         * Provides the ability to add outlines to every single element on a page
+         * Usage: Pass true to toggle for development environment, false for other environments
+         * To invoke, press ALT+CTRL+1 which toggles adding/removing debugger.css
+        */
+        document.addEventListener('keydown', function (event) {
+
+            if (event.key === '1' && event.altKey && event.ctrlKey) {
+                // this is for development environment
+                $debugHelper.toggle(true);
+            }
+
+        });
+
+    });
+
+</script>
+
+    <script>
+
+        const checkbox = document.getElementById("lived-outside-us");
+        const countriesSelect = document.getElementById("countries");
+
+        checkbox.addEventListener("change", () => {
+            if (!checkbox.checked) {
+                /*
+                 * Check if any countries are selected
+                 * - from MDN: The some() method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+                 * - some() will return true if at least one option is selected
+                 */
+                const hasSelection = Array.from(countriesSelect.options).some(opt => opt.selected);
+
+                if (hasSelection) {
+                    const confirmed = confirm("Unchecking will clear your selected countries. Continue?");
+                    if (confirmed) {
+                        // Clear selections
+                        for (let index = 0; index < countriesSelect.options.length; index++) {
+                            countriesSelect.options[index].selected = false;
+                        }
+                    } else {
+                        // Re-check the box if user cancels
+                        checkbox.checked = true;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -25,7 +25,7 @@ public class IndexModel : PageModel
          */
         var week = Request.Form[nameof(Week)].First()!.Split("-W");
 
-        Log.Information("Week array: {W}", string.Join(",", week))
+        Log.Information("Week array: {W}", string.Join(",", week));
 
         Week = ISOWeek.ToDateTime(Convert.ToInt32(week[0]), Convert.ToInt32(week[1]), 
             DayOfWeek.Monday);

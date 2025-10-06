@@ -24,7 +24,7 @@ public partial class MainForm : Form
         }
     }
 
-    public static Dictionary<int, Person> PersonDictionary = Persons
+    private static readonly Dictionary<int, Person> PersonDictionary = Persons
         .Select((p, index) => new { Key = index + 1, Value = p })
         .ToDictionary(x => x.Key, x => x.Value);
 

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TODO</title>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!--suppress no favicon-->
+    <link rel="shortcut icon" href="#">
+
+    <!-- styles are here temp and once okay move to a .css file(s) -->
+    <style>
+    </style>
+
+</head>
+<body>
+
+    <main>
+
+        <div class="container">
+            <h4 class="mb-3">People List</h4>
+            <table class="table table-hover align-middle table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Edit</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" onclick="editPerson(this)" data-id="1" class="text-primary"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td><a href="#" onclick="deletePerson(this)" data-id="1" class="text-danger"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="editPerson(this)" data-id="2" class="text-primary"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>Jane</td>
+                        <td>Smith</td>
+                        <td><a href="#" onclick="deletePerson(this)" data-id="2" class="text-danger"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="editPerson(this)" data-id="3" class="text-primary"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>Michael</td>
+                        <td>Johnson</td>
+                        <td><a href="#" onclick="deletePerson(this)" data-id="3" class="text-danger"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="editPerson(this)" data-id="4" class="text-primary"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>Emily</td>
+                        <td>Brown</td>
+                        <td><a href="#" onclick="deletePerson(this)" data-id="4" class="text-danger"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="editPerson(this)" data-id="5" class="text-primary"><i class="bi bi-pencil-square"></i></a></td>
+                        <td>David</td>
+                        <td>Wilson</td>
+                        <td><a href="#" onclick="deletePerson(this)" data-id="5" class="text-danger"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </main>
+
+
+
+<script>
+
+    function editPerson(element) {
+        const id = element.getAttribute('data-id');
+        console.log(`Edit person with ID: ${id}`);
+        alert(`Edit person with ID: ${id}`);
+    }
+
+    function deletePerson(element) {
+        const id = element.getAttribute('data-id');
+        console.log(`Delete person with ID: ${id}`);
+        alert(`Delete person with ID: ${id}`);
+    }
+
+</script>
+
+
+</body>
+</html>

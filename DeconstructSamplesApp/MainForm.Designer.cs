@@ -33,7 +33,7 @@ partial class MainForm
         // 
         // PeopleDictionaryButton
         // 
-        PeopleDictionaryButton.Location = new Point(12, 30);
+        PeopleDictionaryButton.Location = new Point(109, 98);
         PeopleDictionaryButton.Name = "PeopleDictionaryButton";
         PeopleDictionaryButton.Size = new Size(271, 29);
         PeopleDictionaryButton.TabIndex = 0;
@@ -45,11 +45,12 @@ partial class MainForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(800, 450);
+        ClientSize = new Size(488, 225);
         Controls.Add(PeopleDictionaryButton);
+        FormBorderStyle = FormBorderStyle.FixedToolWindow;
         Name = "MainForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "Form1";
+        Text = "Deconstruction: dictionary";
         ResumeLayout(false);
     }
 

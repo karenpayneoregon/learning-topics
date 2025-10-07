@@ -103,8 +103,7 @@
 </div>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="Lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script>
         // Required: editPerson reads the id from an element attribute
         function editPerson(element) {
@@ -116,9 +115,8 @@
         // Required: deletePerson reads the id from an element attribute
         function deletePerson(element) {
             const id = element.getAttribute('data-id');
-            console.log(`Delete person with ID: ${id}`);
-            alert(`Deleted person with ID: ${id}`);
-            // Example: remove the row from the UI after deletion
+            //alert(`Deleted person with ID: ${id}`);
+            // remove the row from the UI after deletion
             const trigger = document.querySelector(`[data-id="${id}"]`);
             const row = trigger ? trigger.closest('tr') : null;
             if (row) row.remove();

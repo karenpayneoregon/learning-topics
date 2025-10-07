@@ -30,77 +30,59 @@
 </head>
 <body>
 
-    <main>
+<main>
 
-        <div class="container">
-            <h1 class="mb-3 fs-5 mt-5">People List</h1>
+    <div class="container">
+        <h1 class="mb-3 fs-5 mt-5 text-center">People List</h1>
 
-            <table class="table table-hover align-middle table-bordered">
-                <thead class="table-light">
-                    <tr>
-                        <th scope="col">Edit</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="#" onclick="editPerson(this)" data-id="1" class="text-primary" aria-label="Edit John Doe"><i class="bi bi-pencil-square"></i></a></td>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="1" class="text-danger" aria-label="Delete John Doe"><i class="bi bi-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" onclick="editPerson(this)" data-id="2" class="text-primary" aria-label="Edit Jane Smith"><i class="bi bi-pencil-square"></i></a></td>
-                        <td>Jane</td>
-                        <td>Smith</td>
-                        <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="2" class="text-danger" aria-label="Delete Jane Smith"><i class="bi bi-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" onclick="editPerson(this)" data-id="3" class="text-primary" aria-label="Edit Michael Johnson"><i class="bi bi-pencil-square"></i></a></td>
-                        <td>Michael</td>
-                        <td>Johnson</td>
-                        <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="3" class="text-danger" aria-label="Delete Michael Johnson"><i class="bi bi-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" onclick="editPerson(this)" data-id="4" class="text-primary" aria-label="Edit Emily Brown"><i class="bi bi-pencil-square"></i></a></td>
-                        <td>Emily</td>
-                        <td>Brown</td>
-                        <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="4" class="text-danger" aria-label="Delete Emily Brown"><i class="bi bi-trash"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#" onclick="editPerson(this)" data-id="5" class="text-primary" aria-label="Edit David Wilson"><i class="bi bi-pencil-square"></i></a></td>
-                        <td>David</td>
-                        <td>Wilson</td>
-                        <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="5" class="text-danger" aria-label="Delete David Wilson"><i class="bi bi-trash"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </main>
-
-
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" data-bs-backdrop="static" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="confirmDeleteTitle">Confirm Deletion</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete <strong id="deleteTargetLabel">this person</strong>?
-                This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
-            </div>
-        </div>
+        <table class="table table-hover table-success align-middle table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th scope="col">Edit</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="#" onclick="editPerson(this)" data-id="1" class="text-primary" aria-label="Edit John Doe"><i class="bi bi-pencil-square"></i></a></td>
+                <td>John</td>
+                <td>Doe</td>
+                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="1" class="text-danger" aria-label="Delete John Doe"><i class="bi bi-trash"></i></a></td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="editPerson(this)" data-id="2" class="text-primary" aria-label="Edit Jane Smith"><i class="bi bi-pencil-square"></i></a></td>
+                <td>Jane</td>
+                <td>Smith</td>
+                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="2" class="text-danger" aria-label="Delete Jane Smith"><i class="bi bi-trash"></i></a></td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="editPerson(this)" data-id="3" class="text-primary" aria-label="Edit Michael Johnson"><i class="bi bi-pencil-square"></i></a></td>
+                <td>Michael</td>
+                <td>Johnson</td>
+                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="3" class="text-danger" aria-label="Delete Michael Johnson"><i class="bi bi-trash"></i></a></td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="editPerson(this)" data-id="4" class="text-primary" aria-label="Edit Emily Brown"><i class="bi bi-pencil-square"></i></a></td>
+                <td>Emily</td>
+                <td>Brown</td>
+                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="4" class="text-danger" aria-label="Delete Emily Brown"><i class="bi bi-trash"></i></a></td>
+            </tr>
+            <tr>
+                <td><a href="#" onclick="editPerson(this)" data-id="5" class="text-primary" aria-label="Edit David Wilson"><i class="bi bi-pencil-square"></i></a></td>
+                <td>David</td>
+                <td>Wilson</td>
+                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="5" class="text-danger" aria-label="Delete David Wilson"><i class="bi bi-trash"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-</div>
+
+</main>
+
+<div id="modal-container"></div>
+
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="Lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -148,6 +130,19 @@
                 modal.hide();
             };
         }
+
+
+        // Load the modal HTML into this page
+        fetch('confirmDeleteModal.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('modal-container').innerHTML = html;
+            })
+            .then(() => {
+                // Optional: reattach event listeners or reinitialize Bootstrap modals if needed
+                console.log("Delete confirmation modal loaded.");
+            })
+            .catch(err => console.error('Failed to load modal:', err));
     </script>
 
 

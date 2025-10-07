@@ -33,50 +33,62 @@
 <main>
 
     <div class="container">
+
         <h1 class="mb-3 fs-5 mt-5 text-center">People List</h1>
 
-        <table class="table table-hover table-success align-middle table-bordered">
+        <table class="table table-sm table-hover table-success align-middle table-bordered">
             <thead class="table-light">
-            <tr>
-                <th scope="col">Edit</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Delete</th>
-            </tr>
+                <tr>
+                    <th scope="col">Edit</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Delete</th>
+                </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td><a href="#" onclick="editPerson(this)" data-id="1" class="text-primary" aria-label="Edit John Doe"><i class="bi bi-pencil-square"></i></a></td>
-                <td>John</td>
-                <td>Doe</td>
-                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="1" class="text-danger" aria-label="Delete John Doe"><i class="bi bi-trash"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#" onclick="editPerson(this)" data-id="2" class="text-primary" aria-label="Edit Jane Smith"><i class="bi bi-pencil-square"></i></a></td>
-                <td>Jane</td>
-                <td>Smith</td>
-                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="2" class="text-danger" aria-label="Delete Jane Smith"><i class="bi bi-trash"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#" onclick="editPerson(this)" data-id="3" class="text-primary" aria-label="Edit Michael Johnson"><i class="bi bi-pencil-square"></i></a></td>
-                <td>Michael</td>
-                <td>Johnson</td>
-                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="3" class="text-danger" aria-label="Delete Michael Johnson"><i class="bi bi-trash"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#" onclick="editPerson(this)" data-id="4" class="text-primary" aria-label="Edit Emily Brown"><i class="bi bi-pencil-square"></i></a></td>
-                <td>Emily</td>
-                <td>Brown</td>
-                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="4" class="text-danger" aria-label="Delete Emily Brown"><i class="bi bi-trash"></i></a></td>
-            </tr>
-            <tr>
-                <td><a href="#" onclick="editPerson(this)" data-id="5" class="text-primary" aria-label="Edit David Wilson"><i class="bi bi-pencil-square"></i></a></td>
-                <td>David</td>
-                <td>Wilson</td>
-                <td><a href="#" onclick="openDeleteModal(this); return false;" data-id="5" class="text-danger" aria-label="Delete David Wilson"><i class="bi bi-trash"></i></a></td>
-            </tr>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td><a href="#" onclick="editPerson(this)" data-id="1" class="text-primary" aria-label="Edit John Doe"><i class="bi bi-pencil-square"></i></a></td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td><a href="#" onclick="openDeleteModal(this);return false;" data-id="1" class="text-danger" aria-label="Delete John Doe"><i class="bi bi-trash"></i></a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="editPerson(this)" data-id="2" class="text-primary" aria-label="Edit Jane Smith"><i class="bi bi-pencil-square"></i></a></td>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td><a href="#" onclick="openDeleteModal(this);return false;" data-id="2" class="text-danger" aria-label="Delete Jane Smith"><i class="bi bi-trash"></i></a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="editPerson(this)" data-id="3" class="text-primary" aria-label="Edit Michael Johnson"><i class="bi bi-pencil-square"></i></a></td>
+                    <td class="table-active">Michael</td>
+                    <td class="table-active">Johnson</td>
+                    <td><a href="#" onclick="openDeleteModal(this);return false;" data-id="3" class="text-danger" aria-label="Delete Michael Johnson"><i class="bi bi-trash"></i></a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="editPerson(this)" data-id="4" class="text-primary" aria-label="Edit Emily Brown"><i class="bi bi-pencil-square"></i></a></td>
+                    <td>Emily</td>
+                    <td>Brown</td>
+                    <td><a href="#" onclick="openDeleteModal(this);return false;" data-id="4" class="text-danger" aria-label="Delete Emily Brown"><i class="bi bi-trash"></i></a></td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="editPerson(this)" 
+                           data-id="5" class="text-primary" 
+                           aria-label="Edit David Wilson"><i class="bi bi-pencil-square"></i></a></td>
+                    <td>David</td>
+                    <td>Wilson</td>
+                    <td><a href="#" 
+                           onclick="openDeleteModal(this);return false;" data-id="5" 
+                           class="text-danger" aria-label="Delete David Wilson"><i class="bi bi-trash"></i></a></td>
+                </tr>
             </tbody>
         </table>
+
+        <!-- Reload Button -->
+        <div>
+            <button type="button" class="btn btn-outline-success" onclick="window.location.reload(); window.location.reload();">
+                <i class="bi bi-arrow-clockwise"></i> Reload Page
+            </button>
+        </div>
     </div>
 
 </main>

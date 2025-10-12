@@ -3,6 +3,7 @@ using System.Data;
 using AddImagesFromFilesApp.Classes.Configuration;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Serilog;
 
 namespace AddImagesFromFilesApp.Classes;
 public class CategoryRepository
@@ -166,7 +167,9 @@ public class CategoryRepository
             INSERT INTO dbo.Categories (CategoryName, Description, Photo)
             VALUES (@CategoryName, @Description, @Photo);
             """;
+        
         _connection.Open();
+        
         using var transaction = _connection.BeginTransaction();
         try
         {
@@ -177,6 +180,7 @@ public class CategoryRepository
         catch(Exception ex)
         {
             transaction.Rollback();
+            Log.Error(ex, "Error inserting multiple categories.");
             return (0, false);
         }
     }

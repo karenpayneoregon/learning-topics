@@ -19,19 +19,19 @@
         "terminal.ansiMagenta": "#FF73FD",
         "terminal.ansiRed": "#FF6C60",
         "terminal.ansiWhite": "#B5B3AA",
-        "iLoveWorkSpaceColors": true,
-        "iLoveWorkSpaceRandom": false,
-        "titleBar.activeBackground": "#c4fafc",
+        "titleBar.activeBackground": "#321fdd",
         "titleBar.activeForeground": "#000000",
-        "titleBar.inactiveBackground": "#c4fafc",
+        "titleBar.inactiveBackground": "#321fdd",
         "titleBar.inactiveForeground": "#000000",
-        "titleBar.border": "#c4fafc",
-        "activityBar.background": "#c4fafc",
+        "titleBar.border": "#321fdd",
+        "activityBar.background": "#321fdd",
         "activityBar.foreground": "#000000",
-        "statusBar.background": "#c4fafc",
+        "statusBar.background": "#321fdd",
         "statusBar.foreground": "#000000",
-        "statusBar.debuggingBackground": "#c4fafc",
+        "statusBar.debuggingBackground": "#321fdd",
         "statusBar.debuggingForeground": "#000000",
-        "tab.activeBorder": "#c4fafc"
+        "tab.activeBorder": "#321fdd",
+        "iLoveWorkSpaceColors": true,
+        "iLoveWorkSpaceRandom": false
     }
 }

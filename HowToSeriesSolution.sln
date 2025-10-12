@@ -178,6 +178,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SelectUnCheckedExample", "S
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddImagesFromFilesApp", "AddImagesFromFilesApp\AddImagesFromFilesApp.csproj", "{CF066EC5-D075-4013-AE51-8DB5568132BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -368,6 +370,10 @@ Global
 		{DE2DAF76-F0BB-17C1-75D2-EAFFE1101E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE2DAF76-F0BB-17C1-75D2-EAFFE1101E04}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE2DAF76-F0BB-17C1-75D2-EAFFE1101E04}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{CF066EC5-D075-4013-AE51-8DB5568132BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF066EC5-D075-4013-AE51-8DB5568132BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF066EC5-D075-4013-AE51-8DB5568132BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF066EC5-D075-4013-AE51-8DB5568132BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -429,6 +435,7 @@ Global
 		{34179EF2-5F12-44D6-BF30-B85FDCE4244C} = {D04CF0F2-974C-5D72-9175-74118F68291D}
 		{CD517278-6853-A268-9E8A-400D1F4CDE6C} = {53D0748C-043C-A660-2311-AE5C91B568A3}
 		{DE2DAF76-F0BB-17C1-75D2-EAFFE1101E04} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{CF066EC5-D075-4013-AE51-8DB5568132BF} = {A8B1D009-E5A9-8820-B8AF-AA0649BEFD28}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

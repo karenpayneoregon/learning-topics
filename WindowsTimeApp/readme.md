@@ -12,3 +12,8 @@ Get Windows Uptime.
 ### Tool alias
 
 Is define as `uptime` in the project file.
+
+## Misc
+
+- `IsoNoMsDateTimeConverter` usage in Program.Old
+- `Serilog` is for debugging purpose only

@@ -33,7 +33,15 @@ public class WindowsCode
             $"Total Days: {TotalDays:F2}\n" +
             $"Boot Time: {BootTime:O}";
     }
-
+    
+    
+    /// <summary>
+    /// Displays the system uptime information in a formatted output.
+    /// </summary>
+    /// <remarks>
+    /// This method retrieves the system uptime details using <see cref="WindowsTimeApp.Classes.WindowsCode.GetSystemUptime"/> 
+    /// and outputs them in a visually formatted manner using the Spectre.Console library.
+    /// </remarks>
     public static void Show()
     {
         Console.WriteLine();
@@ -82,20 +90,12 @@ public class WindowsCode
     /// <summary>
     /// Retrieves the system uptime information and serializes it into a JSON string.
     /// </summary>
-    /// <param name="indented">
-    /// A boolean value indicating whether the JSON output should be formatted with indentation.
-    /// If <c>true</c>, the JSON output will be indented for readability; otherwise, it will be compact.
-    /// </param>
     /// <returns>
     /// A JSON string representing the system uptime information, including details such as weeks, days, hours, minutes, seconds,
     /// total days, and the system boot time.
     /// </returns>
-    public static string GetSystemUptimeAsJson(bool indented = true)
-    {
-        var dto = GetSystemUptime();
-
-        return JsonSerializer.Serialize(dto, JsonSerializerOptions);
-    }
+    public static string GetSystemUptimeAsJson() 
+        => JsonSerializer.Serialize(GetSystemUptime(), JsonSerializerOptions);
 
     private static JsonSerializerOptions JsonSerializerOptions => new()
     {

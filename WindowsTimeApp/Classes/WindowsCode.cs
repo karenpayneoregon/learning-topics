@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Spectre.Console;
 
 
 namespace WindowsTimeApp.Classes;
@@ -26,18 +27,33 @@ public class WindowsCode
         /// <summary>System boot time (local time).</summary>
         public DateTime BootTime { get; set; }
 
+
         public override string ToString() =>
             $"Uptime: {Weeks} week(s), {Days} day(s), {Hours} hour(s), {Minutes} minute(s), {Seconds} second(s)\n" +
             $"Total Days: {TotalDays:F2}\n" +
             $"Boot Time: {BootTime:O}";
     }
 
+    public static void Show()
+    {
+        Console.WriteLine();
+        AnsiConsole.MarkupLine("[b]Windows uptime[/]");
+        Console.WriteLine();
+        
+        var g = GetSystemUptime();
+        
+        AnsiConsole.MarkupLine($"[hotpink2]    Uptime:[/] {g.Weeks} week(s), {g.Days} day(s), {g.Hours} hour(s), {g.Minutes} minute(s), {g.Seconds} second(s)\n" +
+                               $"[hotpink2]Total Days:[/] {g.TotalDays:F2}\n" +
+                               $"[hotpink2] Boot Time:[/] {g.BootTime:O}");
+        
+        Console.WriteLine();
+    }
     /// <summary>
     /// Retrieves the system uptime information, including details such as weeks, days, hours, minutes, seconds,
     /// total days, and the system boot time.
     /// </summary>
     /// <returns>
-    /// An instance of <see cref="WindowsTimeApp.Classes.WindowsCode.SystemUptimeDto"/> containing the system uptime details.
+    /// An instance of <see cref="WindowsCode.SystemUptimeDto"/> containing the system uptime details.
     /// </returns>
     public static SystemUptimeDto GetSystemUptime()
     {

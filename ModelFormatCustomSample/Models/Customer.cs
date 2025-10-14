@@ -10,10 +10,10 @@ public record Customer(int Id, string FirstName, string LastName, DateOnly Birth
     public string ToString(string? format, IFormatProvider? _)
         => format switch
         {
-            "A" => $"{BirthDay.GetAge()}",
+            "A" or "Age" => $"{BirthDay.GetAge()}",
             "F" => $"{Id,-5}{FirstName} {LastName}",
             "N" => $"{FirstName} {LastName}",
-            "B" => $"{BirthDay}",
+            "B" or "Birth" => $"{BirthDay}",
             "I" => $"{Id}",
             _ => $"{Id,-3}{BirthDay} {LastName}, {BirthDay}"
         };

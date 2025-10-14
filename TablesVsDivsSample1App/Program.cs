@@ -73,14 +73,16 @@ public class Program
         // Register DbContext
         if (builder.Environment.IsDevelopment())
         {
-            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
+            builder.Services.AddDbContext<Context>(options 
+                => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
                 .EnableSensitiveDataLogging()
                 .LogTo(new DbContextToFileLogger().Log,
                     [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
         }
         else
         {
-            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
+            builder.Services.AddDbContext<Context>(options 
+                => options.UseSqlServer(builder.Configuration.GetConnectionString("MainConnection"))
                 .LogTo(new DbContextToFileLogger().Log,
                     [DbLoggerCategory.Database.Command.Name], LogLevel.Information));
         }

@@ -9,7 +9,7 @@ internal partial class Program
     {
         Customer customer = new(1, "Karen", "Payne", new DateOnly(1956, 9, 24));
 
-        AnsiConsole.MarkupLine($"[cyan]A[/]: {customer:A}");
+        AnsiConsole.MarkupLine($"[cyan]A[/]: {customer:Age}");
         AnsiConsole.MarkupLine($"[cyan]F[/]: {customer:F}");
         AnsiConsole.MarkupLine($"[cyan]N[/]: {customer:N}");
         AnsiConsole.MarkupLine($"[cyan]B[/]: {customer:B}");

@@ -25,15 +25,15 @@
 
         <legend class="h6">Months</legend>
 
-        @for (var i = 0; i < Model.Items.Count; i++)
+        @for (var index = 0; index < Model.Items.Count; index++)
         {
-            <input type="hidden" asp-for="Items[i].Id" />
-            <input type="hidden" asp-for="Items[i].Text" />
+            <input type="hidden" asp-for="Items[index].Id" />
+            <input type="hidden" asp-for="Items[index].Text" />
 
             <div class="form-check mb-2">
-                <input class="form-check-input" asp-for="Items[i].IsSelected" />
-                <label class="form-check-label" asp-for="Items[i].IsSelected">
-                    @Model.Items[i].Text
+                <input class="form-check-input" asp-for="Items[index].IsSelected" />
+                <label class="form-check-label" asp-for="Items[index].IsSelected">
+                    @Model.Items[index].Text
                 </label>
             </div>
         }

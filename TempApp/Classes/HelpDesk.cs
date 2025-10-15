@@ -8,7 +8,7 @@ public class HelpDesk : INotifyPropertyChanged
     public string Phone { get; set => SetField(ref field, value); }
     public string Email { get; set => SetField(ref field, value); }
 
-    public event PropertyChangedEventHandler? PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged;
 
     protected void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

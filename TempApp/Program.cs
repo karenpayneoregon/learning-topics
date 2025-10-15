@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using System.Data;
+﻿using Dapper;
 using Microsoft.Data.SqlClient;
-using TempApp.Json.Appsettings;
-using Dapper;
+using Microsoft.Extensions.Configuration;
+using System.Data;
+using System.Globalization;
 using TempApp.Classes;
+using TempApp.Json.Appsettings;
 
 namespace TempApp;
 
@@ -11,8 +12,9 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        Work.ReadConfiguration();
-  
+        var list = Lookups.BuildMonths();
+        //Work.ReadConfiguration();
+
         Console.ReadLine();
     }
 

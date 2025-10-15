@@ -1,0 +1,24 @@
+﻿/* Fieldset + legend styling using Bootstrap CSS variables */
+.fieldset-bordered {
+    border: 1px solid var(--bs-border-color);
+    border-radius: .75rem; /* rounded-3-ish */
+    padding: 1.25rem 1rem 1rem; /* space for the legend overlap */
+    margin-bottom: 1rem;
+    position: relative;
+    width: 10em;
+}
+
+.fieldset-bordered > legend {
+    font-size: 1rem; /* ~h6 */
+    font-weight: 600;
+    margin: 0; /* reset default */
+    padding: .25rem .75rem;
+    width: auto; /* shrink-to-fit */
+    border: 1px solid var(--bs-border-color);
+    border-radius: .5rem;
+    background-color: var(--bs-body-bg); /* matches theme (light/dark) */
+    /* sit on the fieldset border */
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+}

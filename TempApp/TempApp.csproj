@@ -22,12 +22,12 @@
 	</ItemGroup>-->
 
 	<ItemGroup>
-		<PackageReference Include="Bogus" Version="35.6.3" />
+		<PackageReference Include="Bogus" Version="35.6.4" />
 		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
 		<PackageReference Include="JsonByExampleGenerator" Version="0.10.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.10" />
+		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.12" />
 	</ItemGroup>
 	<ItemGroup>
 		<Using Include="ConsoleConfigurationLibrary.Classes.Configuration" Alias="Config" />
@@ -77,8 +77,8 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-		<PackageReference Include="Dapper" Version="2.1.35" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
+		<PackageReference Include="Dapper" Version="2.1.66" />
 	</ItemGroup>
 
 </Project>

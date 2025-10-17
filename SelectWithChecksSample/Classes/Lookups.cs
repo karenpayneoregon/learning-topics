@@ -21,7 +21,7 @@ public static class Lookups
     /// BuildMonths(new CultureInfo("fr-FR"))
     /// 
     /// </remarks>
-    public static List<CheckboxItem> BuildMonths(CultureInfo culture = null)
+    public static List<CheckboxItem> BuildMonths(CultureInfo? culture = null)
     {
         culture ??= CurrentCulture;
         var dtf = culture.DateTimeFormat;

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Text.Json;
-using System.Threading.Tasks;
 using VsWhereDataApp.Models;
 
 namespace VsWhereDataApp.Classes;
@@ -76,7 +71,7 @@ internal class FileOperations
     /// <exception cref="FileNotFoundException">Thrown when the specified file does not exist.</exception>
     public static List<Installation> ReadDataJson(string path)
     {
-        if (!File.Exists(path)) throw new FileNotFoundException("Data.json not found.", path);
+        if (!File.Exists(path)) throw new FileNotFoundException("vs.json not found.", path);
         
         var list = JsonSerializer.Deserialize<List<Installation>>(File.ReadAllText(path), Options) ?? [];
         

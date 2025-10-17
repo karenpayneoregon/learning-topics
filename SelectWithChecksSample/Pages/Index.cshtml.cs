@@ -43,11 +43,18 @@ public class IndexModel : PageModel
     public PageResult OnPostButton1()
     {
         var selectedItems = Items.Where(item => item.IsSelected).ToList();
-        foreach (var item in selectedItems)
+        if (selectedItems.Any())
         {
-            AnsiConsole.MarkupLine($"[deeppink3_1]{item.Id, -4}[/][yellow]{item.Text}[/]");
+            foreach (var item in selectedItems)
+            {
+                AnsiConsole.MarkupLine($"[deeppink3_1]{item.Id,-4}[/][yellow]{item.Text}[/]");
+            }
+        }else
+        {
+            AnsiConsole.MarkupLine("[deeppink3_1]No items selected[/]");
         }
-        
+
+
         return Page();
     }
 }

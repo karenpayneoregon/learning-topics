@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>TODO</title>
 
-    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <!--suppress no favicon-->
     <link rel="shortcut icon" href="#">
 
@@ -13,33 +13,39 @@
         input.form-control {
             width: 250px;
         }
-         
     </style>
 
 </head>
-<body >
+<body>
 
-<main class="d-flex flex-column align-items-center justify-content-center mt-5">
+    <main class="d-flex flex-column align-items-center justify-content-center mt-5">
+
         <h1 class="mb-3">Disable pasting</h1>
+
         <div class="container" style="max-width: 500px;">
+
             <form>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label for="email_input" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email_input">
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="password_input" class="form-label">
                         Password <span class="fw-bold text-danger">(pasting disabled)</span>
                     </label>
+
                     <input type="password"
                            class="form-control"
                            onpaste="return false;" ondrop="return false;" autocomplete="off"
-                           id="exampleInputPassword1">
+                           id="password_input">
+
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
+
             </form>
+
         </div>
     </main>
 

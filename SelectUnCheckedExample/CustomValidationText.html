@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TODO</title>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="Lib/styles/headers.css" rel="stylesheet" />
+
+    <script src="lib/debugHelper.js"></script>
+
+    <!--suppress no favicon-->
+    <link rel="shortcut icon" href="#">
+
+    <!-- styles are here temp and once okay move to a .css file(s) -->
+    <style>
+    </style>
+
+</head>
+<body>
+    <div class="nine mt-3">
+        <h1>custom <span> browser date error message</span></h1>
+    </div>
+
+    <main>
+
+        <div class="container">
+            <form id="form1" class="border border-success shadow p-4 w-50">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control mb-2" style="width: 10em" type="text" id="name" name="name" value="Karen" required />
+
+                <label class="form-label" for="to">Resides to</label>
+                <input class="form-control mb-4" style="width: 10em" type="date" id="to" name="FORM_RESIDES_DATE_TO" required />
+
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+        </div>
+
+    </main>
+
+    <div class="clear"></div>
+
+    <script>
+        var maxDate;
+        document.addEventListener("DOMContentLoaded",
+            () => {
+
+
+                /*
+                 * Provides the ability to add outlines to every single element on a page
+                 * Usage: Pass true to toggle for development environment, false for other environments
+                 * To invoke, press ALT+CTRL+1 which toggles adding/removing debugger.css
+                */
+                document.addEventListener('keydown',
+                    function (event) {
+
+                        if (event.key === '1' && event.altKey && event.ctrlKey) {
+                            // this is for development environment
+                            $debugHelper.toggle(true);
+                        }
+
+
+                    });
+
+                // CCD specific code
+                const toPicker = document.getElementById('to');
+                const fiveYearsAgo = new Date();
+                fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
+                const formattedDate = fiveYearsAgo.toISOString().split('T')[0];
+                toPicker.setAttribute('min', formattedDate);
+                maxDate = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+
+                document.getElementById('to').max = maxDate;
+
+
+            });
+
+    </script>
+
+    <script>
+
+/*        const dateFormatted = new Intl.DateTimeFormat("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        }).format(maxDate);*/
+
+/*        const input = document.querySelector('input[name="FORM_RESIDES_DATE_TO"]');
+        input.addEventListener('invalid',
+            function (event) {
+                if (event.target.validity.valueMissing) {
+
+                    event.target.setCustomValidity(`Date must be before ${dateFormatted} or ${dateFormatted}.`);
+                }
+            });*/
+
+/*        input.addEventListener('change',
+            function (event) {
+                event.target.setCustomValidity('');
+            });*/
+
+    </script>
+    <script>
+        // Get the form element
+        const form = document.getElementById('form1');
+        const toInput = document.getElementById('to');
+
+
+        form.addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+            const toValue = toInput.value;
+            if (!toValue) {
+                alert("Please select a date first.");
+                return;
+            }
+
+            // Parse manually to avoid timezone shift
+            const [year, month, day] = toValue.split('-');
+            const dateObj = new Date(year, month - 1, day); // local date (no UTC shift)
+
+            const dateFormatted = new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }).format(dateObj);
+
+            alert(dateFormatted);
+
+        });
+    </script>
+</body>
+</html>

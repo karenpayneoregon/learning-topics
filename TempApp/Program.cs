@@ -17,7 +17,11 @@ internal partial class Program
         //var list = Lookups.BuildMonths();
         //Work.ReadConfiguration();
 
-        AnsiConsole.MarkupLine($"[green3_1]Copyright {Special.GetCopyright()}[/]");
+
+        AnsiConsole.MarkupLine($"[green3_1]    Company[/] {Info.GetCompany()}");
+        AnsiConsole.MarkupLine($"[green3_1]    Product[/] {Info.GetProduct()}");
+        AnsiConsole.MarkupLine($"[green3_1]  Copyright[/] {Info.GetCopyright()}");
+        AnsiConsole.MarkupLine($"[green3_1]    Version[/] {Info.GetVersion()}");
         Console.ReadLine();
     }
 

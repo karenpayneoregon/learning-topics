@@ -6,11 +6,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<LangVersion>preview</LangVersion>
+		<Copyright>2024-$([System.DateTime]::Now.Year) Karen Payne</Copyright>
+		<Company>Payne coding</Company>
+		<Product>Code samples</Product>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<Copyright>2024-$([System.DateTime]::Now.Year) Karen Payne</Copyright>
-	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Remove="readme.md" />

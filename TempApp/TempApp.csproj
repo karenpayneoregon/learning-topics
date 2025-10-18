@@ -8,6 +8,10 @@
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<Copyright>2024-$([System.DateTime]::Now.Year) Karen Payne</Copyright>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <None Remove="readme.md" />
 	</ItemGroup>

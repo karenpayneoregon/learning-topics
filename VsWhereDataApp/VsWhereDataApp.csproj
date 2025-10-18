@@ -13,6 +13,10 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
+		<Copyright>Copyright $([System.DateTime]::Now.Year) Karen Payne</Copyright>
+	</PropertyGroup>
+
+	<PropertyGroup>
 		<Product>Visual Studio details</Product>
 	</PropertyGroup>
 

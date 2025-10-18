@@ -3,6 +3,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Globalization;
+using System.Reflection;
+using System.Xml.Linq;
 using TempApp.Classes;
 using TempApp.Json.Appsettings;
 
@@ -12,11 +14,13 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        var list = Lookups.BuildMonths();
+        //var list = Lookups.BuildMonths();
         //Work.ReadConfiguration();
 
+        AnsiConsole.MarkupLine($"[green3_1]Copyright {Special.GetCopyright()}[/]");
         Console.ReadLine();
     }
+
 
     private static void GetWinesUsingBogus()
     {

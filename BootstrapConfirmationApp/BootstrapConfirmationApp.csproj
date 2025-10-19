@@ -6,6 +6,18 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Copyright>Copyright $([System.DateTime]::Now.Year)</Copyright>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Remove="C:\Users\paynek\.nuget\packages\serilogthemeslibrary\1.0.0.1\contentFiles\any\net7.0\readme.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="readme.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="readme.md" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.1" />
 		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />

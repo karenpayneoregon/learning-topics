@@ -190,6 +190,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VsWhereDataApp", "VsWhereDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapConfirmationApp", "BootstrapConfirmationApp\BootstrapConfirmationApp.csproj", "{A69ECF7C-E5B2-4D0D-A115-ACD42B1782C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectPropertiesLibrary", "ProjectPropertiesLibrary\ProjectPropertiesLibrary.csproj", "{9683BAB1-42BA-4FE7-80B4-FACFF69C6114}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -400,6 +402,10 @@ Global
 		{A69ECF7C-E5B2-4D0D-A115-ACD42B1782C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A69ECF7C-E5B2-4D0D-A115-ACD42B1782C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A69ECF7C-E5B2-4D0D-A115-ACD42B1782C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9683BAB1-42BA-4FE7-80B4-FACFF69C6114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9683BAB1-42BA-4FE7-80B4-FACFF69C6114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9683BAB1-42BA-4FE7-80B4-FACFF69C6114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9683BAB1-42BA-4FE7-80B4-FACFF69C6114}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -466,6 +472,7 @@ Global
 		{A17445CB-A878-4265-A759-A5BA2AC1C435} = {53D0748C-043C-A660-2311-AE5C91B568A3}
 		{2DEB8AEF-2AA5-0E6B-2B58-EA683CAAE38B} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 		{A69ECF7C-E5B2-4D0D-A115-ACD42B1782C6} = {53D0748C-043C-A660-2311-AE5C91B568A3}
+		{9683BAB1-42BA-4FE7-80B4-FACFF69C6114} = {96EE2CF0-D591-079F-2E48-4A69006AD50E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

@@ -1,0 +1,28 @@
+﻿@page
+@model BootstrapConfirmationApp.Pages.Index2Model
+@{
+}
+
+<h1 class="text-center fs-3 mt-5">Modal dialog from _ConfirmationModal</h1>
+
+<div class="mx-auto p-2 text-center" style="width: 180px;">
+    Order ID: @Model.OrderId
+</div>
+
+<div class="mx-auto p-2 text-center" style="width: 200px;">
+
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        Archive Order
+    </button>
+    
+</div>
+
+<!-- Reuse the modal -->
+<partial name="_ConfirmModal" model="@(ValueTuple.Create("Are you sure you want to archive this order?", "ArchiveOrder", Model.OrderId))" />
+
+@if (Model.UserResponse.HasValue)
+{
+    <div class="alert alert-secondary mt-3 text-center">
+        You clicked: <strong>@(Model.UserResponse.Value ? "Yes" : "No")</strong>
+    </div>
+}

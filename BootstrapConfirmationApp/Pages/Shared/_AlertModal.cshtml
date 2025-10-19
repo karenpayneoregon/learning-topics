@@ -1,0 +1,51 @@
+﻿@model (string Message, string ButtonText, string Title)
+
+@* 
+    This partial page defines a Bootstrap modal dialog intended to display an alert message to the user. 
+    It accepts a tuple model containing the alert message (Message), the text for the confirmation button (ButtonText), 
+    and the title of the modal (Title). The modal is rendered as a form that posts back to the server when the user clicks 
+    the confirmation button. The modal presents the user with the provided message and a single button to acknowledge 
+    the alert. This approach provides a clean, reusable way to inform users about important information or notifications.
+    
+    The button is centered in the modal footer for better visual emphasis.
+
+*@
+
+<form method="post">
+
+    <div class="modal fade"
+         id="alertModal"
+         data-bs-backdrop="static"
+         tabindex="-1" 
+         aria-labelledby="alertModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">@Model.Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    @Model.Message
+                </div>
+                
+                <div class="modal-footer justify-content-center">
+                    <button type="submit"
+                            name="answer"
+                            value="true"
+                            class="btn btn-primary btn-lg">
+                        @Model.ButtonText
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

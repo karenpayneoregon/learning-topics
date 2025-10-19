@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="fs-3 mt-5">Dialog in this page</h1>
+    
+    <div class="mx-auto p-2" style="width: 200px;">
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Open Confirm Modal</button>
+    </div>
+    
+    <!-- Modal -->
+    <form method="post" asp-page-handler="Confirm">
+        <div class="modal fade" id="confirmModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel">Confirmation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        Are you sure you want to proceed?
+                    </div>
+
+                    <input type="hidden" name="actionName" value="Delete" />
+                    <input type="hidden" name="itemId" value="123" />
+
+                    <div class="modal-footer">
+                        <button type="submit" name="answer" value="false" class="btn btn-secondary btn-lg">No</button>
+                        <button type="submit" name="answer" value="true" class="btn btn-primary btn-lg">Yes</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>

@@ -1,15 +1,11 @@
-﻿namespace ProjectPropertiesLibrary;
-using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
 
-
-
+namespace CommonHelpersLibrary;
 /// <summary>
-/// Provides utility methods to retrieve assembly metadata (company, product, copyright, version)
-/// and (optionally) details about the caller that invoked each method.
+/// Provides utility methods to retrieve assembly metadata such as company, product, copyright, and version information.
 /// </summary>
 public class Info
 {

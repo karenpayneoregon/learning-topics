@@ -7,15 +7,18 @@ internal partial class Program
     static void Main(string[] args)
     {
 
-        AnsiConsole.MarkupLine("           Gear :gear:");
-        AnsiConsole.MarkupLine("         Hammer :hammer:");
-        AnsiConsole.MarkupLine("    HighVoltage :high_voltage:");
-        AnsiConsole.MarkupLine("    Information :information:");
-        AnsiConsole.MarkupLine("        Warning :warning:");
-        AnsiConsole.MarkupLine("            Cat :cat:");
-        AnsiConsole.MarkupLine("      CheckMark :check_mark_button:");
-        AnsiConsole.MarkupLine("      LightBulb :light_bulb:");
-        AnsiConsole.MarkupLine("DiamondWithADot :diamond_with_a_dot:");
+        AnsiConsole.MarkupLine("              Gear :gear:");
+        AnsiConsole.MarkupLine("            Hammer :hammer:");
+        AnsiConsole.MarkupLine("       HighVoltage :high_voltage:");
+        AnsiConsole.MarkupLine("       Information :information:");
+        AnsiConsole.MarkupLine("           Warning :warning:");
+        AnsiConsole.MarkupLine("               Cat :cat:");
+        AnsiConsole.MarkupLine("         CheckMark :check_mark_button:");
+        AnsiConsole.MarkupLine("         LightBulb :light_bulb:");
+        AnsiConsole.MarkupLine("   DiamondWithADot :diamond_with_a_dot:");
+        AnsiConsole.MarkupLine("SmallOrangeDiamond :small_orange_diamond:");
+        AnsiConsole.MarkupLine("         Collision :collision:");
+        AnsiConsole.MarkupLine("         CrossMark :cross_mark:");
         SpectreConsoleHelpers.ExitPrompt();
     }
 }

@@ -64,6 +64,21 @@ public partial class PackageWork
         File.WriteAllText("GroupedPackages.txt", sb.ToString());
     }
 
+    /// <summary>
+    /// Groups the available NuGet packages by their names.
+    /// </summary>
+    /// <returns>
+    /// An <see cref="IEnumerable{T}"/> of <see cref="IGrouping{TKey, TElement}"/> where the key is the package name 
+    /// and the elements are <see cref="Package"/> objects representing the grouped packages.
+    /// </returns>
+    /// <remarks>
+    /// This method retrieves all available NuGet packages and groups them by their names for further processing.
+    /// </remarks>
+    public static IEnumerable<IGrouping<string, Package>> GetPackagesGroupedByName()
+    {
+        var packages = AvailablePackages();
+        return packages.GroupBy(p => p.Name);
+    }
 
     /// <summary>
     /// Retrieves a list of NuGet package sources, including their names, sources, and enabled statuses.

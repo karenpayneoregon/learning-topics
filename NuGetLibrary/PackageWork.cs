@@ -74,11 +74,8 @@ public partial class PackageWork
     /// <remarks>
     /// This method retrieves all available NuGet packages and groups them by their names for further processing.
     /// </remarks>
-    public static IEnumerable<IGrouping<string, Package>> GetPackagesGroupedByName()
-    {
-        var packages = AvailablePackages();
-        return packages.GroupBy(p => p.Name);
-    }
+    public static IEnumerable<IGrouping<string, Package>> GetPackagesGroupedByName() 
+        => AvailablePackages().GroupBy(p => p.Name);
 
     /// <summary>
     /// Retrieves a list of NuGet package sources, including their names, sources, and enabled statuses.

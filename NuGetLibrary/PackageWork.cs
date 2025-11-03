@@ -1,10 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
-using NuGet.Common;
 using NuGet.Configuration;
-using NuGet.Protocol;
-using NuGet.Protocol.Core.Types;
-using NuGet.Versioning;
 using NuGetLibrary.Models;
 
 namespace NuGetLibrary;
@@ -87,7 +83,7 @@ public partial class PackageWork
 
         ISettings settings = Settings.LoadDefaultSettings(null);
 
-        PackageSourceProvider packageSourceProvider = new PackageSourceProvider(settings);
+        PackageSourceProvider packageSourceProvider = new(settings);
         var packageSources = packageSourceProvider.LoadPackageSources();
 
         foreach (var source in packageSources)

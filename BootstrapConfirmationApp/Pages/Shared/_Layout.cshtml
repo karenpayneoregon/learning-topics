@@ -1,4 +1,5 @@
-﻿@using BootstrapConfirmationApp.Classes
+﻿@using CommonLibrary
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index2">Archive Customer</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index3">Alert</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ProjectDetails">About</a>
                         </li>
                     </ul>
                 </div>
@@ -49,7 +54,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            @Info.GetCopyright() | Bootstrap 
+            @ProjectInformation.GetCopyright() | Bootstrap
             <a href="https://getbootstrap.com/docs/5.3/components/modal/" 
                target="_blank">modals</a> 
             documentation

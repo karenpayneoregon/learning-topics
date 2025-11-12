@@ -206,6 +206,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordGeneratorArgonSampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLibrary", "CommonLibrary\CommonLibrary.csproj", "{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterateSamplesApp", "IterateSamplesApp\IterateSamplesApp.csproj", "{BCB348C9-9F43-4884-9272-51E44879BAE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -444,6 +446,10 @@ Global
 		{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB348C9-9F43-4884-9272-51E44879BAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB348C9-9F43-4884-9272-51E44879BAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB348C9-9F43-4884-9272-51E44879BAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB348C9-9F43-4884-9272-51E44879BAE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -517,6 +523,7 @@ Global
 		{E60EF435-8B06-70D4-CAB4-C95048ED3515} = {7A4C05E0-4FF7-B8EC-2124-E708496D3B03}
 		{7C93AB36-5D64-4907-B078-A10AEF26A3D6} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A} = {96EE2CF0-D591-079F-2E48-4A69006AD50E}
+		{BCB348C9-9F43-4884-9272-51E44879BAE3} = {19A55A1F-77FC-81B6-FF24-F3698FC9C129}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

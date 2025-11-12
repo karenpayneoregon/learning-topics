@@ -6,10 +6,11 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h1 class="text-center mb-4">Project Details</h1>
-                    
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1 class="h3 mb-0">Project Details</h1>
+                </div>
+                <div class="card-body bg-light">
                     <div class="row mb-2">
                         <div class="col-12 col-sm-3 fw-bold text-sm-end text-start">Company:</div>
                         <div class="col-12 col-sm-9">@Model.Details.Company</div>
@@ -19,7 +20,6 @@
                         <div class="col-12 col-sm-3 fw-bold text-sm-end text-start">Copyright:</div>
                         <div class="col-12 col-sm-9">@Model.Details.Copyright</div>
                     </div>
-
                     <div class="row mb-2">
                         <div class="col-12 col-sm-3 fw-bold text-sm-end text-start">Project Name:</div>
                         <div class="col-12 col-sm-9">@Model.Details.ProjectName</div>
@@ -29,12 +29,8 @@
                         <div class="col-12 col-sm-3 fw-bold text-sm-end text-start">Version:</div>
                         <div class="col-12 col-sm-9">@Model.Details.Version</div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-

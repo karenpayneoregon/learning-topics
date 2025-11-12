@@ -1,0 +1,30 @@
+﻿namespace IterateSamplesApp.Classes;
+public static class GenericIterators
+{
+    /// <summary>
+    /// Iterates over a collection of items provided as parameters and prints each item
+    /// to the console. If an item is <c>null</c>, it prints an empty string instead.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="values">The collection of items to iterate over, provided as a parameter array.</param>
+    public static void Iterate<T>(params T[] values) =>
+        values.Iterate(x => x?.ToString() ?? "");
+
+    /// <summary>
+    /// Iterates over a collection of items and applies a formatter function to each item.
+    /// The formatted result is then printed to the console along with the item's index.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="values">The collection of items to iterate over.</param>
+    /// <param name="formatter">
+    /// A function that takes an item of type <typeparamref name="T"/> and returns a string
+    /// representation of the item.
+    /// </param>
+    public static void Iterate<T>(this IEnumerable<T> values, Func<T, string> formatter)
+    {
+        foreach (var (index, item) in values.Index())
+            Console.WriteLine($"{index,-5}{formatter(item)}");
+    }
+}
+
+

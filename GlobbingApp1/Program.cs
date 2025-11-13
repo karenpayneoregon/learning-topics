@@ -8,7 +8,11 @@ internal partial class Program
     static async Task Main(string[] args)
     {
         // patterns to include 
-        string[] include = ["**/Doc*.docx", "**/Employee*.sql"];
+        string[] include = 
+            [
+                "**/Doc*.docx", 
+                "**/Employee*.sql"
+            ];
 
         // patterns to exclude
         string[] exclude = 
@@ -22,7 +26,7 @@ internal partial class Program
         ];
         
         var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        // 
+
         if (Directory.Exists(folder))
         {
             MatcherParameters matcherParameters = new()

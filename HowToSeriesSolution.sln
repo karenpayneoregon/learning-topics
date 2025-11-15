@@ -210,6 +210,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterateSamplesApp", "Iterat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobbingApp1", "GlobbingApp1\GlobbingApp1.csproj", "{01455D42-CD92-41BD-8C22-CE1EAD058AD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDeconstructApp", "ModelDeconstructApp\ModelDeconstructApp.csproj", "{261C41CB-D969-EB9F-155A-E116CEE26525}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -456,6 +458,10 @@ Global
 		{01455D42-CD92-41BD-8C22-CE1EAD058AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01455D42-CD92-41BD-8C22-CE1EAD058AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01455D42-CD92-41BD-8C22-CE1EAD058AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261C41CB-D969-EB9F-155A-E116CEE26525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261C41CB-D969-EB9F-155A-E116CEE26525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261C41CB-D969-EB9F-155A-E116CEE26525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261C41CB-D969-EB9F-155A-E116CEE26525}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -531,6 +537,7 @@ Global
 		{E012E1CB-2C46-49DB-8FE7-C67FBB71BE5A} = {96EE2CF0-D591-079F-2E48-4A69006AD50E}
 		{BCB348C9-9F43-4884-9272-51E44879BAE3} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{01455D42-CD92-41BD-8C22-CE1EAD058AD8} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{261C41CB-D969-EB9F-155A-E116CEE26525} = {2075631B-31DD-92B6-B0A7-6AFE1F99C0B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

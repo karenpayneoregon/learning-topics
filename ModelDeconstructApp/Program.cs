@@ -7,9 +7,8 @@ internal partial class Program
     {
         var list = MockedData.People();
 
-        foreach (var person in list)
+        foreach (var (id, fullName, birthDate) in list)
         {
-            var (id, fullName, birthDate) = person;
             Console.WriteLine($"{id, -4}{fullName,-15}{birthDate:MM/dd/yyyy}");
         }
 

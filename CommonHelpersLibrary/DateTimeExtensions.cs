@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommonHelpersLibrary;
+﻿namespace CommonHelpersLibrary;
 public static class DateTimeExtensions
 {
     public static (DateOnly saturday, DateOnly sunday) GetWeekendDates(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)

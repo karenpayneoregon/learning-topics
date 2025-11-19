@@ -7,12 +7,12 @@ public record Customer(int Id, string FirstName, string LastName, DateOnly Birth
     public string FirstName { get; set; } = FirstName;
     public string LastName { get; set; } = LastName;
     public DateOnly BirthDay { get; set; } = BirthDay;
-    public string ToString(string? format, IFormatProvider? _)
-        => format switch
+
+    public string ToString(string? format, IFormatProvider? _) => format switch
         {
             "A" or "Age" => $"{BirthDay.GetAge()}",
-            "F" => $"{Id,-5}{FirstName} {LastName}",
-            "N" => $"{FirstName} {LastName}",
+            "IFl" => $"{Id,-5}{FirstName} {LastName}",
+            "FL" => $"{FirstName} {LastName}",
             "B" or "Birth" => $"{BirthDay}",
             "I" => $"{Id}",
             _ => $"{Id,-3}{BirthDay} {LastName}, {BirthDay}"

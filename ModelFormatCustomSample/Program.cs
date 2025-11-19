@@ -9,13 +9,11 @@ internal partial class Program
     {
         Customer customer = new(1, "Karen", "Payne", new DateOnly(1956, 9, 24));
 
-        AnsiConsole.MarkupLine($"[cyan]A[/]: {customer:Age}");
-        AnsiConsole.MarkupLine($"[cyan]F[/]: {customer:F}");
-        AnsiConsole.MarkupLine($"[cyan]N[/]: {customer:N}");
-        AnsiConsole.MarkupLine($"[cyan]B[/]: {customer:B}");
-        AnsiConsole.MarkupLine($"[cyan]I[/]: {customer:I}");
-        AnsiConsole.MarkupLine($"[cyan]C[/]: {customer}");
-        AnsiConsole.MarkupLine($"[cyan]T[/]: {customer.ToString()}");
+        AnsiConsole.MarkupLine($"[cyan]Age[/]: {customer:Age}");
+        AnsiConsole.MarkupLine($"[cyan]IFL[/]: {customer:IFL}");
+        AnsiConsole.MarkupLine($"[cyan] FL[/]: {customer:FL}");
+        AnsiConsole.MarkupLine($"[cyan]  B[/]: {customer:B}");
+        AnsiConsole.MarkupLine($"[cyan]  I[/]: {customer:I}");
 
         Console.WriteLine();
 

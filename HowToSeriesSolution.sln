@@ -214,6 +214,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelDeconstructApp", "Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekendDatesApp", "WeekendDatesApp\WeekendDatesApp.csproj", "{82B14BFD-7BE1-45B8-9E41-72DD63BCAAE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpperCaseFirstCharConverterApp", "UpperCaseFirstCharConverterApp\UpperCaseFirstCharConverterApp.csproj", "{6F4901ED-1DDB-46D8-B76E-E2729C65697C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -468,6 +470,10 @@ Global
 		{82B14BFD-7BE1-45B8-9E41-72DD63BCAAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B14BFD-7BE1-45B8-9E41-72DD63BCAAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B14BFD-7BE1-45B8-9E41-72DD63BCAAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F4901ED-1DDB-46D8-B76E-E2729C65697C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4901ED-1DDB-46D8-B76E-E2729C65697C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4901ED-1DDB-46D8-B76E-E2729C65697C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4901ED-1DDB-46D8-B76E-E2729C65697C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -545,6 +551,7 @@ Global
 		{01455D42-CD92-41BD-8C22-CE1EAD058AD8} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 		{261C41CB-D969-EB9F-155A-E116CEE26525} = {2075631B-31DD-92B6-B0A7-6AFE1F99C0B4}
 		{82B14BFD-7BE1-45B8-9E41-72DD63BCAAE4} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{6F4901ED-1DDB-46D8-B76E-E2729C65697C} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

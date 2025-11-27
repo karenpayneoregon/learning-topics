@@ -1,8 +1,5 @@
-﻿using System.Text.Json;
-using AuditInterceptorSampleApp.Classes;
+﻿using AuditInterceptorSampleApp.Classes;
 using AuditInterceptorSampleApp.Classes.Configurations;
-using AuditInterceptorSampleApp.Data;
-using Microsoft.EntityFrameworkCore;
 using Spectre.Console;
 
 namespace AuditInterceptorSampleApp;
@@ -11,6 +8,7 @@ internal partial class Program
 {
     static async Task Main(string[] args)
     {
+
         AnsiConsole.MarkupLine("[cyan]Creating database[/]");
 
         var (success, exception) = await SetupDatabase.CreateDatabase();

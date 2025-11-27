@@ -1,18 +1,17 @@
-﻿using AuditInterceptorSampleApp.Classes.Configurations;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.FileSystemGlobbing;
+﻿using Microsoft.Extensions.FileSystemGlobbing;
 using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
 
-namespace AuditInterceptorSampleApp.Classes;
+namespace CommonHelpersLibrary;
+
+/// <summary>
+/// Uses to get the last Serilog log file created.
+/// </summary>
 public static class FileHelper
 {
-
+ 
     /// <summary>
     /// Retrieves the most recently created log file from the "LogFiles" directory.
     /// </summary>
-    /// <remarks>
-    /// Log files are expected to have a ".txt" extension and are searched recursively within the specified directory.
-    /// </remarks>
     /// <returns>
     /// A <see cref="FileInfo"/> object representing the newest log file, or <c>null</c> if no log files are found.
     /// </returns>
@@ -21,7 +20,7 @@ public static class FileHelper
     /// </exception>
     public static FileInfo? GetLogFileName()
     {
-        var rootPath = Config.JsonRoot().GetSection(nameof(SerilogSection)).Get<SerilogSection>().Folder;
+        var rootPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles");
         var pattern = "**/*.txt";
 
 

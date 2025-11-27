@@ -1,27 +1,41 @@
-﻿namespace AuditInterceptorSampleApp.Classes;
+﻿using Microsoft.Extensions.FileSystemGlobbing;
+using Microsoft.Extensions.FileSystemGlobbing.Abstractions;
+
+namespace AuditInterceptorSampleApp.Classes;
 public static class FileHelper
 {
+ 
     /// <summary>
-    /// Retrieves the full path of the most recently modified log file in the "LogFiles" directory.
+    /// Retrieves the most recently created log file from the "LogFiles" directory.
     /// </summary>
     /// <returns>
-    /// The full path of the newest log file, or <c>null</c> if no log files are found.
+    /// A <see cref="FileInfo"/> object representing the newest log file, or <c>null</c> if no log files are found.
     /// </returns>
     /// <exception cref="DirectoryNotFoundException">
     /// Thrown when the "LogFiles" directory does not exist.
     /// </exception>
-    public static string? GetLogFileName()
+    public static FileInfo? GetLogFileName()
     {
-        var directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles");
-        if (!Directory.Exists(directoryPath))
-            throw new DirectoryNotFoundException($"Directory not found: {directoryPath}");
+        var rootPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LogFiles");
+        var pattern = "**/*.txt";
 
-        var newestFile = Directory
-            .EnumerateFiles(directoryPath, "*.txt", SearchOption.TopDirectoryOnly)
-            .Select(path => new FileInfo(path))
-            .OrderByDescending(f => f.LastWriteTime)
+
+        if (!Directory.Exists(rootPath))
+            throw new DirectoryNotFoundException(rootPath);
+
+        var matcher = new Matcher();
+        matcher.AddInclude(pattern);
+
+        var directoryInfo = new DirectoryInfo(rootPath);
+        var dirWrapper = new DirectoryInfoWrapper(directoryInfo);
+
+        var matchResult = matcher.Execute(dirWrapper);
+
+        var newest = matchResult.Files
+            .Select(f => new FileInfo(Path.Combine(rootPath, f.Path)))
+            .OrderByDescending(f => f.LastWriteTimeUtc)
             .FirstOrDefault();
-
-        return newestFile?.FullName;
+        
+        return newest;
     }
 }

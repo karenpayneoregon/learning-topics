@@ -14,14 +14,15 @@ internal partial class Program
         AnsiConsole.MarkupLine("[cyan]Creating database[/]");
 
         var (success, exception) = await SetupDatabase.CreateDatabase();
+        
         if (success)
         {
             AnsiConsole.MarkupLine("[cyan]Performing updates[/]");
+            
             await DataOperations.UpdateRecords();
+            
             AnsiConsole.MarkupLine("[cyan]Done, check out the log file under[/] [yellow]LogFiles[/] [cyan]from the app folder[/]");
-            AnsiConsole.MarkupLine($"[orchid]{FileHelper.GetLogFileName()}[/]");
-            
-            
+            AnsiConsole.MarkupLine($"[orchid]{FileHelper.GetLogFileName().FullName}[/]");
 
         }
         else

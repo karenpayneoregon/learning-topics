@@ -86,6 +86,5 @@ public class AuditInterceptor : SaveChangesInterceptor
             Log.Information($"\nchange list:{changesList.ToJson()}");
         }
         
-        //Log.Information("change list: {@Changes}", changesList);
     }
 }

@@ -1,11 +1,8 @@
-﻿using ConsoleConfigurationLibrary.Classes;
-using ConsoleHelperLibrary.Classes;
+﻿using ConsoleHelperLibrary.Classes;
 using EmojisDemoApp.Classes;
-using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
-using static ConsoleConfigurationLibrary.Classes.ApplicationConfiguration;
 
 // ReSharper disable once CheckNamespace
 namespace EmojisDemoApp;

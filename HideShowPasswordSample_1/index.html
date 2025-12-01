@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>password hold and show demo</title>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="Lib/styles/headers.css" rel="stylesheet" />
+    <script src="lib/debugHelper.js"></script>
+    <link href="Lib/styles/index.css" rel="stylesheet" />
+    <script src="Lib/jquery/dist/jquery.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!--suppress no favicon-->
+    <link rel="shortcut icon" href="#">
+
+    <!-- styles are here temp and once okay move to a .css file(s) -->
+    <style>
+        .password-wrapper .icon {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+            .password-wrapper .icon:hover {
+                color: #000;
+            }
+
+        .password {
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="nine mt-3">
+        <h1>show password <span> press and hold eye</span></h1>
+    </div>
+
+    <main>
+
+        <div class="container mt-3" style="width:20em;">
+            <label for="passwordInput" class="form-label">Password</label>
+
+            <div class="password-wrapper position-relative">
+                <input name="password"
+                       id="passwordInput"
+                       class="password form-control pe-5"
+                       type="password"
+                       value="@PassMyCat1HotDog!" />
+
+                <i class="fa fa-eye icon position-absolute" style="right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.addEventListener('keydown', function (event) {
+
+                if (event.key === '1' && event.altKey && event.ctrlKey) {
+                    $debugHelper.toggle(true);
+                }
+
+            });
+
+            $(".icon").mousedown(function(){
+                // Change the input type to 'text' to show the password
+                $(this).prev('.password').attr('type', 'text');
+            }).on('mouseup mouseleave', function(){
+                // Change the input type back to 'password' to hide it
+                $(this).prev('.password').attr('type', 'password');
+            })
+
+        });
+
+    </script>
+
+</body>
+</html>

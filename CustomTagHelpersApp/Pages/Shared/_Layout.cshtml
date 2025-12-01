@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<FooterLibrary.FooterDetails> FooterOptions
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - customtaghelpersapp</title>
+    <title>@ViewData["Title"] - custom tag helpers app</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CustomTagHelpersApp.styles.css" asp-append-version="true" />
@@ -35,9 +39,15 @@
         </main>
     </div>
 
-    <app-footer app-name="Payroll System" author-name="John Doe" year="2025" />
+@* <app-footer app-name="Payroll System" author-name="John Doe" year="2025" /> *@
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <app-footer app-name="@FooterOptions.Value.ApplicationName"
+                author-name="@FooterOptions.Value.AuthorName"
+                year="@FooterOptions.Value.CopyrightYear">
+    </app-footer>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 

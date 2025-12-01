@@ -49,7 +49,8 @@ public sealed class AppFooterTagHelper : TagHelper
         // Resolve AuthorName fallback
         var author = string.IsNullOrWhiteSpace(AuthorName) ? DefaultAuthorName : AuthorName;
         var authorHtml = IncludeAuthor
-            ? $" <span style=\"margin-left: 5px;\">by <strong>{HtmlEncoder.Default.Encode(author)}</strong></span>"
+            //? $" <span style=\"margin-left: 5px;\">by <strong>{HtmlEncoder.Default.Encode(author)}</strong></span>"
+            ? $" <span style=\"margin-left: 5px;\">by {HtmlEncoder.Default.Encode(author)}</span>"
             : string.Empty;
 
         // Resolve AppName fallback

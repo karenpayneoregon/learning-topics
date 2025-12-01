@@ -1,4 +1,5 @@
 using CustomTagHelpersApp.Classes;
+using FooterLibrary;
 
 namespace CustomTagHelpersApp;
 public class Program
@@ -7,6 +8,10 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Bind FooterDetails from configuration
+        builder.Services.Configure<FooterDetails>(
+            builder.Configuration.GetSection(nameof(FooterDetails)));
+        
         builder.Services.AddRazorPages();
         SetupLogging.Development();
         var app = builder.Build();

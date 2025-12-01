@@ -8,8 +8,6 @@
     <link href="Lib/styles/headers.css" rel="stylesheet" />
     <script src="lib/debugHelper.js"></script>
     <link href="Lib/styles/index.css" rel="stylesheet" />
-    <script src="Lib/jquery/dist/jquery.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <!--suppress no favicon-->
@@ -57,27 +55,42 @@
 
     </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.addEventListener('keydown', function (event) {
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-                if (event.key === '1' && event.altKey && event.ctrlKey) {
-                    $debugHelper.toggle(true);
-                }
-
-            });
-
-            $(".icon").mousedown(function(){
-                // Change the input type to 'text' to show the password
-                $(this).prev('.password').attr('type', 'text');
-            }).on('mouseup mouseleave', function(){
-                // Change the input type back to 'password' to hide it
-                $(this).prev('.password').attr('type', 'password');
-            })
-
+        // keep your debug helper key handler
+        document.addEventListener('keydown', function (event) {
+            if (event.key === '1' && event.altKey && event.ctrlKey) {
+                $debugHelper.toggle(true);
+            }
         });
 
-    </script>
+        // plain JS version of $(".icon").mousedown(...).on('mouseup mouseleave', ...)
+        const icons = document.querySelectorAll('.icon');
+
+        icons.forEach(icon => {
+            const passwordInput = icon.previousElementSibling; // the <input> just before the <i>
+
+            const showPassword = () => {
+                if (passwordInput && passwordInput.classList.contains('password')) {
+                    passwordInput.type = 'text';
+                }
+            };
+
+            const hidePassword = () => {
+                if (passwordInput && passwordInput.classList.contains('password')) {
+                    passwordInput.type = 'password';
+                }
+            };
+
+            icon.addEventListener('mousedown', showPassword);
+            icon.addEventListener('mouseup', hidePassword);
+            icon.addEventListener('mouseleave', hidePassword);
+        });
+
+    });
+</script>
+
 
 </body>
 </html>

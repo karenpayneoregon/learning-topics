@@ -76,3 +76,7 @@ For trainng this is only needed one time.
 Double-click on `Program.cs` to open the code editor.
 
 ![Figure8](instructionsAssets/figure8.png)
+
+## Dock Solution Explorer
+
+In the [video](https://youtu.be/2NsrrTfdY-o?si=rJ5dPR6LEFsVDJj5), click the header and hold then release once in position.

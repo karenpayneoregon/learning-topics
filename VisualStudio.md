@@ -1,4 +1,6 @@
-# Instructions
+# How to create a new solution and projects in Visual Studio
+
+TODO
 
 ## Set-up default project location
 

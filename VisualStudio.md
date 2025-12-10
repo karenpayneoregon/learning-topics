@@ -120,3 +120,9 @@ Above a method, function, class or property type three  <kbd>/</kbd>.
 ## Customize startup
 
 You can [customize](https://learn.microsoft.com/en-us/visualstudio/ide/customizing-the-start-page-for-visual-studio?view=vs-2022) the startup experience for Visual Studio in several different ways, such as opening your most recent solution or just an empty development environment.
+
+## Organize and edit code in Visual Studio
+
+Learn about working with code projects, using code editor features, and maintaining consistent code style.
+
+See the following Microsoft [page](https://learn.microsoft.com/en-us/visualstudio/ide/index-writing-code?view=vs-2022) for features and tutorials.

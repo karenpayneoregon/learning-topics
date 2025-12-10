@@ -1,6 +1,17 @@
-# How to create a new solution and projects in Visual Studio
+﻿# ![Vs](instructionsAssets/vs.png) How to create a new solution and projects in Visual Studio
 
-TODO
+
+The following instructions will walk you through creating a home for learning C#.
+
+The instructions will create a Visual Studio solution, which is done once and becomes a central location for creating several console projects for the free camp learning.
+
+
+:white_check_mark: Avoid using spaces in solution or project names, as well as in file names. 
+
+
+:bulb: [What are solutions and projects in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=visualstudio)?
+
+
 
 ## Set-up default project location
 
@@ -50,7 +61,7 @@ For trainng this is only needed one time.
 
 ![Figure4](instructionsAssets/figure4.png)
 
-- Give the project a meaningful name, e.g., `Lesson1`. Avoid spaces and special characters in the project name followed by on the next page I recommend checking `Do not use top-level namespaces`.
+- Give the project a meaningful name, e.g., `Lesson1`. Avoid spaces and special characters in the project name followed by on the next page I recommend :bulb: checking `Do not use top-level namespaces`.
 - `Framework` accept the default selection.
 - Click the **Create** button.
 

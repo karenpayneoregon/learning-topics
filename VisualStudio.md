@@ -90,7 +90,7 @@ For more see the following [article](https://learn.microsoft.com/en-us/visualstu
 
 ---
 
-## Keyboard
+## Common Keyboard shortcuts
 
 | Command        |   Shortcut    |   Note |
 |:------------- |:-------------|:-------------|

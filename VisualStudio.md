@@ -80,3 +80,28 @@ Double-click on `Program.cs` to open the code editor.
 ## Dock Solution Explorer
 
 In the [video](https://youtu.be/2NsrrTfdY-o?si=rJ5dPR6LEFsVDJj5), click the header and hold then release once in position.
+
+---
+
+## Keyboard
+
+| Command        |   Shortcut    |   Note |
+|:------------- |:-------------|:-------------|
+| Comment selection | <kbd>CTRL</kbd> + <kbd>K</kbd>, <kbd>C</kbd> |  |
+| Uncomment selection | <kbd>CTRL</kbd> + <kbd>K</kbd>, <kbd>U</kbd>  |  |
+| Solution explorer | <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>L</kbd> |  |
+| Find | <kbd>CTRL</kbd> + <kbd>F</kbd> |  |
+| Format document | <kbd>CTRL</kbd> + <kbd>D</kbd> |  |
+| Line cut | <kbd>CTRL</kbd> + <kbd>L</kbd> |  |
+| Overtype mode | <kbd>INS</kbd>  | Toggles |
+| Undo | <kbd>CTRL</kbd> + <kbd>Z</kbd> |  |
+| Cycle clipboard ring | <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>V</kbd> |  |
+| Duplicate line | <kbd>CTRL</kbd> + <kbd>D</kbd> |  |
+
+## Comments
+
+Above a method, function, class or property type three  <kbd>/</kbd>.
+
+- Add in your documentation along with adding questions to ask in class.
+
+![Figure8](instructionsAssets/figure9.png)

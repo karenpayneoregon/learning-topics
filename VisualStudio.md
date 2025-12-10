@@ -1,6 +1,19 @@
 ﻿# ![Vs](instructionsAssets/vs.png) How to create a new solution and projects in Visual Studio
 
-
+<!--TOC-->
+  - [Gentax](#gentax)
+  - [Set-up default project location](#set-up-default-project-location)
+  - [Create a solution](#create-a-solution)
+    - [To create a new solution:](#to-create-a-new-solution)
+  - [Create a new project in the solution](#create-a-new-project-in-the-solution)
+    - [View from Solution Explorer](#view-from-solution-explorer)
+  - [Customize window layouts and personalize tabs](#customize-window-layouts-and-personalize-tabs)
+  - [Dock Solution Explorer](#dock-solution-explorer)
+  - [Common Keyboard shortcuts](#common-keyboard-shortcuts)
+  - [Comments](#comments)
+  - [Customize startup](#customize-startup)
+  - [Organize and edit code in Visual Studio](#organize-and-edit-code-in-visual-studio)
+<!--/TOC-->
 The following instructions will walk you through creating a home for learning C#.
 
 The instructions will create a Visual Studio solution, which is done once and becomes a central location for creating several console projects for the free camp learning.

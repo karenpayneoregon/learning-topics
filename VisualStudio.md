@@ -77,9 +77,16 @@ Double-click on `Program.cs` to open the code editor.
 
 ![Figure8](instructionsAssets/figure8.png)
 
+## Customize window layouts and personalize tabs
+
+In Visual Studio, you can customize the position, size, and behavior of windows to create window layouts that work best for various development workflows. You can also personalize how you use tabs to interact with your code.
+
+For more see the following [article](https://learn.microsoft.com/en-us/visualstudio/ide/customizing-window-layouts-in-visual-studio?view=vs-2022)
+
 ## Dock Solution Explorer
 
-In the [video](https://youtu.be/2NsrrTfdY-o?si=rJ5dPR6LEFsVDJj5), click the header and hold then release once in position.
+:bulb: In the [video](https://youtu.be/2NsrrTfdY-o?si=rJ5dPR6LEFsVDJj5), click the header and hold then release once in position.
+
 
 ---
 
@@ -104,4 +111,12 @@ Above a method, function, class or property type three  <kbd>/</kbd>.
 
 - Add in your documentation along with adding questions to ask in class.
 
-![Figure8](instructionsAssets/figure9.png)
+---
+
+![Figure9](instructionsAssets/figure9.png)
+
+---
+
+## Customize startup
+
+You can [customize](https://learn.microsoft.com/en-us/visualstudio/ide/customizing-the-start-page-for-visual-studio?view=vs-2022) the startup experience for Visual Studio in several different ways, such as opening your most recent solution or just an empty development environment.

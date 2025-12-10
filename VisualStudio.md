@@ -51,6 +51,7 @@ For trainng this is only needed one time.
 ![Figure4](instructionsAssets/figure4.png)
 
 - Give the project a meaningful name, e.g., `Lesson1`. Avoid spaces and special characters in the project name followed by on the next page I recommend checking `Do not use top-level namespaces`.
+- `Framework` accept the default selection.
 - Click the **Create** button.
 
 ![Figure6](instructionsAssets/figure6.png)

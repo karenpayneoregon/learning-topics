@@ -55,3 +55,11 @@ For trainng this is only needed one time.
 - Click the **Create** button.
 
 ![Figure6](instructionsAssets/figure6.png)
+
+### View from Solution Explorer
+
+![Figure7](instructionsAssets/figure7.png)
+
+Double-click on `Program.cs` to open the code editor.
+
+![Figure8](instructionsAssets/figure8.png)

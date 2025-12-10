@@ -11,7 +11,9 @@ The instructions will create a Visual Studio solution, which is done once and be
 
 :bulb: [What are solutions and projects in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=visualstudio)?
 
+## Gentax
 
+Must disable for training.
 
 ## Set-up default project location
 

@@ -9,5 +9,43 @@
 5. Click **OK** to save your changes.
 
 
-
+**Figure 1**
 ![Figure1](instructionsAssets/figure1.png)
+
+## Create a solution
+
+A solution is a container that organizes one or more related projects in Visual Studio. 
+
+By creating a solution all your projects are in one place, making it easier to manage and navigate between them.
+
+For trainng this is only needed one time.
+
+
+### To create a new solution:
+
+- Select **File** > **New Project...** from the menu.
+- The following dialog will appear.
+   - As shown, type in blank solution in the search box.
+   - Click the **Next button**.
+
+> **Note**
+> The blured text shows recently opened solutions and projects. To open one of them, simply click on it.
+
+![Figure2](instructionsAssets/figure2.png)
+
+- In the next dialog (The location will be which was selected in figure 1 above):
+   - Enter a name for your solution in the **Solution name** box, e.g., `TrainingSolution`
+   - Click the **Create** button.
+
+![Figure3](instructionsAssets/figure3.png)
+
+## Create a new project in the solution
+
+- From Visual Studio menu, select View > Solution Explorer.
+- In the Solution Explorer, right-click on the solution node (e.g., `TrainingSolution`) and select **Add** > **New Project...**.
+- Type in `Console App` in the search box.
+- Click the **Next button**.
+
+![Figure4](instructionsAssets/figure4.png)
+
+- Give the project a meaningful name, e.g., `Lesson1`. Avoid spaces and special characters in the project name. 

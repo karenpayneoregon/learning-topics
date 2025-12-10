@@ -9,6 +9,7 @@
     <script src="lib/debugHelper.js"></script>
     <link href="Lib/styles/index.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="Lib/passwordToggle.js"></script>
 
     <!--suppress no favicon-->
     <link rel="shortcut icon" href="#">
@@ -32,7 +33,7 @@
 </head>
 <body>
     <div class="nine mt-3">
-        <h1>show password <span> press and hold eye - no touch support</span></h1>
+        <h1>show password <span> press and hold eye with touch support</span></h1>
     </div>
 
     <main>
@@ -55,49 +56,14 @@
                        type="password"
                        value="@PassMyCat1HotDog!" />
 
-                <i class="fa fa-eye icon position-absolute"
-                   style="right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+                <i class="fa fa-eye icon position-absolute" style="right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+
             </div>
         </div>
 
 
 
     </main>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        // debug helper key handler
-        document.addEventListener('keydown', function (event) {
-            if (event.key === '1' && event.altKey && event.ctrlKey) {
-                $debugHelper.toggle(true);
-            }
-        });
-
-        const icons = document.querySelectorAll('.icon');
-
-        icons.forEach(icon => {
-            const passwordInput = icon.previousElementSibling; // the <input> just before the <i>
-
-            const showPassword = () => {
-                if (passwordInput && passwordInput.classList.contains('password')) {
-                    passwordInput.type = 'text';
-                }
-            };
-
-            const hidePassword = () => {
-                if (passwordInput && passwordInput.classList.contains('password')) {
-                    passwordInput.type = 'password';
-                }
-            };
-
-            icon.addEventListener('mousedown', showPassword);
-            icon.addEventListener('mouseup', hidePassword);
-            icon.addEventListener('mouseleave', hidePassword);
-        });
-
-    });
-</script>
 
 
 </body>

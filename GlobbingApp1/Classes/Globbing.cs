@@ -35,6 +35,8 @@ public class Globbing
         matcher.AddIncludePatterns(mp.Patterns);
         matcher.AddExcludePatterns(mp.ExcludePatterns);
 
-        return await Task.FromResult(() => matcher.GetResultsInFullPath(mp.ParentFolder).ToList());
+        return await Task.FromResult(() => matcher.GetResultsInFullPath(mp.ParentFolder)
+            .ToList())
+            .ConfigureAwait(false);
     }
 }

@@ -248,6 +248,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{97
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistinctByApp", "..\LanguageFeatures\DistinctByApp\DistinctByApp.csproj", "{CDB90C4B-0F84-48D9-160E-6C9E251CB9F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InParameterSampleApp", "InParameterSampleApp\InParameterSampleApp.csproj", "{397BF9E1-0903-48A3-B065-59A60BF6D5B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -522,6 +524,10 @@ Global
 		{CDB90C4B-0F84-48D9-160E-6C9E251CB9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDB90C4B-0F84-48D9-160E-6C9E251CB9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDB90C4B-0F84-48D9-160E-6C9E251CB9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397BF9E1-0903-48A3-B065-59A60BF6D5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397BF9E1-0903-48A3-B065-59A60BF6D5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397BF9E1-0903-48A3-B065-59A60BF6D5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397BF9E1-0903-48A3-B065-59A60BF6D5B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -604,6 +610,7 @@ Global
 		{9FDD9EDF-A595-4EDC-97F0-A2701461D2C2} = {53D0748C-043C-A660-2311-AE5C91B568A3}
 		{CC5FCB91-CECC-6F15-DD4C-1771C08689E4} = {579976BD-A4D7-2559-36E6-21E1614D792F}
 		{CDB90C4B-0F84-48D9-160E-6C9E251CB9F0} = {9792E6E2-564B-9699-7DA2-9F7194AE82F6}
+		{397BF9E1-0903-48A3-B065-59A60BF6D5B8} = {CD42C8B1-D1F7-4DD4-9E2B-5E2B3D47F1DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

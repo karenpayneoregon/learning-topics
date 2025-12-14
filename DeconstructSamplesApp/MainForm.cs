@@ -22,6 +22,15 @@ public partial class MainForm : Form
                             $"{person.DateOfBirth, -14:MM/dd/yyyy}" +
                             $"{person.Gender}");
         }
+
+        foreach (var pair in PersonDictionary)
+        {
+            Debug.WriteLine($"{pair.Key,-4}" +
+                            $"{pair.Value.FirstName, -12}" +
+                            $"{pair.Value.LastName, -12}" +
+                            $"{pair.Value.DateOfBirth, -14:MM/dd/yyyy}" +
+                            $"{pair.Value.Gender}");
+        }
     }
 
     private static readonly Dictionary<int, Person> PersonDictionary = Persons

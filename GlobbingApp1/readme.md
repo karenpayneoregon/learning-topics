@@ -24,3 +24,23 @@ string[] exclude =
 ```
 - Third we only want `.sql` in parent folder `C:\Users\CurrentUser`:
 - Last three ignore along with preventing access denied errors.
+
+## Reading options from JSON file
+
+You can also read the globbing options from a JSON configuration file, for example `appsettings.json` or in this case `GlobbingOptions.json`:
+
+```json
+{
+  "FileGlobbingOptions": {
+    "Include": [ "**/Doc*.docx", "**/Employee*.sql" ],
+    "Exclude": [
+      "**/Doc2*.docx",
+      "**/DesktopStuff/**",
+      "**/SQL Server Management Studio/**",
+      "**/My Music/**",
+      "**/My Pictures/**",
+      "**/My Videos/**"
+    ]
+  }
+}
+```

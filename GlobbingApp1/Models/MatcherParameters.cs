@@ -1,5 +1,5 @@
-﻿namespace GlobbingApp1.Models;
-
+﻿#nullable disable
+namespace GlobbingApp1.Models;
 /// <summary>
 /// Represents the parameters required for file matching operations, including the parent folder,
 /// include patterns, and exclude patterns.

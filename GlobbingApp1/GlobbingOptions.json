@@ -1,0 +1,14 @@
+{
+  "include": [
+    "**/Doc*.docx",
+    "**/Employee*.sql"
+  ],
+  "exclude": [
+    "**/Doc2*.docx",
+    "**/DesktopStuff/**",
+    "**/SQL Server Management Studio/**",
+    "**/My Music/**",
+    "**/My Pictures/**",
+    "**/My Videos/**"
+  ]
+}

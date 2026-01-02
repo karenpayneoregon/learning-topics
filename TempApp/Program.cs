@@ -22,7 +22,7 @@ internal partial class Program
         //AnsiConsole.MarkupLine($"[green3_1]    Product[/] {Info.GetProduct()}");
         //AnsiConsole.MarkupLine($"[green3_1]  Copyright[/] {Info.GetCopyright()}");
         //AnsiConsole.MarkupLine($"[green3_1]    Version[/] {Info.GetVersion()}");
-        GetWinesUsingBogusTree();
+        GetWinesTree();
         Console.ReadLine();
     }
 
@@ -85,7 +85,7 @@ internal partial class Program
     /// assigns unique IDs to each wine, and organizes them into a tree structure.
     /// The wines are grouped by their type and sorted alphabetically within each group.
     /// </remarks>
-    private static void GetWinesUsingBogusTree()
+    private static void GetWinesTree()
     {
         var redWines = new[]
         {

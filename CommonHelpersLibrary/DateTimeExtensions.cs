@@ -18,15 +18,17 @@ public static class DateTimeExtensions
         if (utcDate.Kind != DateTimeKind.Utc)
             throw new ArgumentException("utcDate must be UTC", nameof(utcDate));
 
-        return GetWeekendDates(utcDate, startOfWeek);
+        return utcDate.GetWeekendDates(startOfWeek);
     }
 
 
     public static (DateOnly saturday, DateOnly sunday) GetPreviousWeekendDates(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
-        => GetWeekendDates(date.AddDays(-7), startOfWeek);
+        =>
+            date.AddDays(-7).GetWeekendDates(startOfWeek);
 
     public static (DateOnly saturday, DateOnly sunday) GetNextWeekendDates(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
-        => GetWeekendDates(date.AddDays(7), startOfWeek);
+        =>
+            date.AddDays(7).GetWeekendDates(startOfWeek);
 
 
 }

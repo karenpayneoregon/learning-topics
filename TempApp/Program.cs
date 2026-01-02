@@ -187,7 +187,7 @@ public class Wine
 public enum WineType
 {
     Red = 1,
-    White = 2,
-    Rose = 3
+    White = 3,
+    Rose = 2
 }
 

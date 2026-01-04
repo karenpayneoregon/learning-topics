@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -57,27 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="PublishButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PublishButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAT5JREFUOE+lkjFug0AQRXM2xIIsjAQtpeXSh4gLLkFoOAEHcOsGyRIFsSuwaCAB
-        pBiQTPuTGYlVLG9cOMXX/h123sws+zJNE/4jBmia9pRuAGVZous6qaZpcDqdWOR/fyPdAShIfhgG+L4P
-        QxgwTRNCCBiGgSAIMI6jbF0JoOT1eg3HcTgWvoXYvm7Zu66LMAz5XF3XagBVpqqXr55jtH5+NOyz7B1p
-        mrJXAmjO5XLJXqXdbncXuwHQZS0WC646d9BfBhb5JEmw3+/ZKzvIsgxCF1itVhLQNp30h8MBVVXxpSoB
-        bdvyCJ7n8V6lOI5h2/bjSyQ/Vz0XZ+mpQypAY/4J6PuefyPtSZQ8AyzLgq7riKKIE5UA8gThh/TzeGYQ
-        JW42GxyPRz7zEDDrer2iKArkeX7zAmfdAZ6RBDyvCd/F2ubUxYW2/wAAAABJRU5ErkJggg==
+        vwAADr8BOAVTJAAAATtJREFUOE+lkr2OglAQhX02w73EKIm0lMSSh1gLXsKl8Ql8AFoaEhMLViowNrIL
+        JCuYQHs2Mwk3uoCFFgdO5nK/+WEmbdviHU3oMZ1OX9ID4Hw+oyxLpTzPEccxi/z9GakHoCD5uq7hui6k
+        kNB1HUIISCmx2Wxwu91U6YMAurxarbBcLjnmfXpYf6zZm6YJz/P4uyzLhgGUmbJefyuO0fvnO2cfRV84
+        HA7sBwHU52KxUAP6L9/3e7EHAA1rNptx1q6C6lqzyIdhiCAIxiuIoghCE7BtWwGKvFR+v9/jcrnwUAcB
+        RVFwC5Zl9UrttNvtYBjGMKAbIvku6yk9KU8VUgJqcxRQVRX/xi7j/Tzm8zk0TcN2ux3fA/IE4UWSUoHo
+        ouM4OB6PzxepOyQ1TYM0TZEkycMGjgJekQK8oz/F2ubU5LSqkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="OpenLocalFeedFolderButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="OpenLocalFeedFolderButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAGdJREFUOE9j+P//P0WY4du3b+eB+D8B/B6IBRjQANiAz++e/7+zrQovfnPvBMiQ
-        Bqg+OIC5AKzow/uPWPHrh5f/39/Xhe4iED6PYgCpGKRv1IBRA5ANICYvYMOQlAgiKMFYBYnH/xkAJ1ke
-        bF2em40AAAAASUVORK5CYII=
+        vwAADr8BOAVTJAAAAGpJREFUOE9j+P//PwMlmOHbt2/nv3379p8Afv/t2zcBBjQANuDzu+f/72yrwovf
+        3DsBMqQBqwEgG0CKPrz/iBW/fnj5//19XeguAuHzKAaQikH6Rg0YNQDZAGLyAjYMSYnIOYscjCFAKgYA
+        J1kebE7E39AAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAMQOAADEDgAAAAAAAAAA
         AAD///8A////AP///wL++MVT/emmmPbemq703Jiu9t2YrfTdmK3z2ZSu9NmTr/rjn5/87LZh7P7+Df//

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Publisher.Classes;
 using Publisher.Models;
@@ -18,7 +19,8 @@ namespace Publisher
 
         private void OnShown(object sender, EventArgs e)
         {
-            _bindingSource.DataSource = DirectoryHelper.ProjectItems(SolutionHelper.ProjectNames(DirectoryHelper.SolutionName()));
+            var source = DirectoryHelper.ProjectItems(SolutionHelper.ProjectNames(DirectoryHelper.SolutionName())).OrderBy(x => x.Name);
+            _bindingSource.DataSource = source;
             ProjectListBox.DataSource = _bindingSource;
             
             _bindingSource.PositionChanged += BindingSourceOnPositionChanged;
@@ -42,7 +44,7 @@ namespace Publisher
         /// </remarks>
         private void PositionChanged()
         {
-            VersionsListBox.DataSource = ((ProjectItem) _bindingSource.Current)!.PackageList;
+            VersionsListBox.DataSource = ((ProjectItem) _bindingSource.Current)!.PackageList.OrderByDescending(x => x.Version).ToList();
         }
 
         /// <summary>

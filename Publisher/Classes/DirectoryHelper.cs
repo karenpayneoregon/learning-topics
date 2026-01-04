@@ -94,8 +94,12 @@ public static class DirectoryHelper
             foreach (var packName in packNames)
             {
                 var version = Path.GetFileNameWithoutExtension(packName);
-                version = version.Substring( version.IndexOf(".", StringComparison.Ordinal) +1);
-          
+                //version = version.Substring( version.IndexOf(".", StringComparison.Ordinal) +1);
+
+                var parts = version.Split('.');
+                version = string.Join('.', parts.SkipWhile(p => !char.IsDigit(p[0])));
+
+
                 item.PackageList.Add(new Package()
                 {
                     Name = Path.GetFileName(packName), 

@@ -256,6 +256,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormattableStringBasics", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncrementDecrementApp", "IncrementDecrementApp\IncrementDecrementApp.csproj", "{6D876609-17DB-43C7-BEC9-11727B6D886A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{2A18E756-48A1-E247-9A68-57B5E8CBE245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publisher.csproj", "{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -542,6 +546,10 @@ Global
 		{6D876609-17DB-43C7-BEC9-11727B6D886A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D876609-17DB-43C7-BEC9-11727B6D886A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D876609-17DB-43C7-BEC9-11727B6D886A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -628,6 +636,7 @@ Global
 		{182B3E6D-F827-D7D1-4B4A-B4B5EC231163} = {9792E6E2-564B-9699-7DA2-9F7194AE82F6}
 		{98B6C099-14FC-48D3-8A55-19E4C4363BEB} = {182B3E6D-F827-D7D1-4B4A-B4B5EC231163}
 		{6D876609-17DB-43C7-BEC9-11727B6D886A} = {9792E6E2-564B-9699-7DA2-9F7194AE82F6}
+		{7994E19D-9123-B30C-C2C6-0BAF8CAFDFF2} = {2A18E756-48A1-E247-9A68-57B5E8CBE245}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

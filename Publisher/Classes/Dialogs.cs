@@ -48,7 +48,7 @@ internal class Dialogs
             Caption = caption,
             SizeToContent = true,
             Heading = heading,
-            Icon = TaskDialogIcon.Information,
+            Icon = new TaskDialogIcon(Properties.Resources.question32),
             Buttons = buttons
         };
 

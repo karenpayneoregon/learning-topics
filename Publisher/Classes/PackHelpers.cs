@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Publisher.Classes;
 
@@ -30,29 +28,40 @@ public class PackHelpers
     public static string PackageLocation => ApplicationSettings.Instance.LocalPackagesLocation;
 
     /// <summary>
-    /// Copies a NuGet package to the local feed asynchronously.
+    /// Asynchronously copies a NuGet package from the specified source path to the local feed directory.
     /// </summary>
     /// <param name="source">The full path of the source package to be copied.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     /// <remarks>
     /// This method ensures that the destination directory exists before copying the package.
-    /// The destination is determined by <see cref="ApplicationSettings.LocalPackagesLocation"/>.
+    /// The destination directory is determined by <see cref="ApplicationSettings.LocalPackagesLocation"/>.
+    /// Additionally, the method preserves the original timestamps of the source package file.
     /// </remarks>
     public static async Task CopyPackageAsync(string source)
     {
-
-        var destDir = PackHelpers.PackageLocation;
+        var destDir = PackageLocation;
         var destPath = Path.Combine(destDir, Path.GetFileName(source));
 
         // Ensure destination directory exists
         Directory.CreateDirectory(destDir);
 
-        await using FileStream sourceStream = new FileStream(source, FileMode.Open, FileAccess.Read, FileShare.Read);
-        await using FileStream destStream = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 81920, useAsync: true);
-        await sourceStream.CopyToAsync(destStream);
+        var sourceInfo = new FileInfo(source);
+
+        await using (FileStream sourceStream = new(source, 
+                         FileMode.Open, FileAccess.Read, FileShare.Read))
+        await using (FileStream destStream = new(destPath, 
+                         FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 81920, useAsync: true))
+        {
+            await sourceStream.CopyToAsync(destStream);
+        }
+
+        // Preserve timestamps
+        File.SetCreationTime(destPath, sourceInfo.CreationTime);
+        File.SetLastWriteTime(destPath, sourceInfo.LastWriteTime);
+        File.SetLastAccessTime(destPath, sourceInfo.LastAccessTime);
     }
-    
-    
+
+
+
     /// <summary>
     /// Opens the local feed folder in the default file explorer.
     /// </summary>

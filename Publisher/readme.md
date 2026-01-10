@@ -1,6 +1,6 @@
 ﻿# About
 
-![img](assets/Publisher.png)
+
 
 Utility to publish a NuGet package to a designated local feed.
 

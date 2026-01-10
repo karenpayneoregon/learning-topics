@@ -1,6 +1,6 @@
 ﻿# About
 
-
+Article: [NuGet Package Publisher](https://dev.to/karenpayneoregon/how-to-nuget-local-feeds-2nci)
 
 Utility to publish a NuGet package to a designated local feed.
 

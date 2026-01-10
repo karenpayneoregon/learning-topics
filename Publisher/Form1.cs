@@ -72,11 +72,9 @@ namespace Publisher
                 if (!Dialogs.Question(this, "Question", $"Are you sure you want to publish {Path.GetFileNameWithoutExtension(currentPackage.Name)}?"))
                     return;
                 
-                await PackHelpers.CopyPackageAsync(
-                    Path.Combine(currentProject.Path, currentPackage.Name!),
-                    CopyCommandCheckBox.Checked);
+                await PackHelpers.CopyPackageAsync(Path.Combine(currentProject.Path, currentPackage.Name!));
 
-                Log.Information($"Package {currentPackage} copied successfully");
+                Log.Information("Package {P} copied successfully", currentPackage);
                 Dialogs.Information(this, "Done");
                 
             }

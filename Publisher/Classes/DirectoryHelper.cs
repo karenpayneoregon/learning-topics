@@ -98,8 +98,7 @@ public static class DirectoryHelper
 
                 var parts = version.Split('.');
                 version = string.Join('.', parts.SkipWhile(p => !char.IsDigit(p[0])));
-
-
+                
                 item.PackageList.Add(new Package()
                 {
                     Name = Path.GetFileName(packName), 

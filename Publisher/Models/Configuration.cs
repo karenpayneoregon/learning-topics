@@ -3,7 +3,7 @@
 namespace Publisher.Models;
 
 /// <summary>
-/// Represents the configuration settings for the Publisher application.
+/// Represents the configuration settings for the application.
 /// </summary>
 /// <remarks>
 /// The <see cref="Configuration"/> class encapsulates various settings required for the application, 
@@ -13,7 +13,6 @@ namespace Publisher.Models;
 /// </remarks>
 public class Configuration
 {
-    public string NuGetExecutable { get; set; }
     public string PackageLocation { get; set; }
 
     public List<ClassProjects> ClassProjects { get; set; }

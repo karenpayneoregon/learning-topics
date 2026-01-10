@@ -34,7 +34,6 @@ namespace Publisher
             VersionsListBox = new System.Windows.Forms.ListBox();
             PublishButton = new System.Windows.Forms.Button();
             OpenLocalFeedFolderButton = new System.Windows.Forms.Button();
-            CopyCommandCheckBox = new System.Windows.Forms.CheckBox();
             SuspendLayout();
             // 
             // ProjectListBox
@@ -43,7 +42,7 @@ namespace Publisher
             ProjectListBox.Location = new System.Drawing.Point(5, 11);
             ProjectListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             ProjectListBox.Name = "ProjectListBox";
-            ProjectListBox.Size = new System.Drawing.Size(297, 164);
+            ProjectListBox.Size = new System.Drawing.Size(297, 184);
             ProjectListBox.TabIndex = 0;
             // 
             // VersionsListBox
@@ -52,14 +51,14 @@ namespace Publisher
             VersionsListBox.Location = new System.Drawing.Point(309, 11);
             VersionsListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             VersionsListBox.Name = "VersionsListBox";
-            VersionsListBox.Size = new System.Drawing.Size(140, 164);
+            VersionsListBox.Size = new System.Drawing.Size(140, 184);
             VersionsListBox.TabIndex = 1;
             // 
             // PublishButton
             // 
             PublishButton.Image = (System.Drawing.Image)resources.GetObject("PublishButton.Image");
             PublishButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            PublishButton.Location = new System.Drawing.Point(5, 184);
+            PublishButton.Location = new System.Drawing.Point(5, 210);
             PublishButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             PublishButton.Name = "PublishButton";
             PublishButton.Size = new System.Drawing.Size(445, 31);
@@ -81,23 +80,11 @@ namespace Publisher
             OpenLocalFeedFolderButton.UseVisualStyleBackColor = true;
             OpenLocalFeedFolderButton.Click += OpenLocalFeedFolderButton_Click;
             // 
-            // CopyCommandCheckBox
-            // 
-            CopyCommandCheckBox.AutoSize = true;
-            CopyCommandCheckBox.Location = new System.Drawing.Point(5, 219);
-            CopyCommandCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            CopyCommandCheckBox.Name = "CopyCommandCheckBox";
-            CopyCommandCheckBox.Size = new System.Drawing.Size(289, 24);
-            CopyCommandCheckBox.TabIndex = 4;
-            CopyCommandCheckBox.Text = "Copy command to Windows Clipboard";
-            CopyCommandCheckBox.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(461, 299);
-            Controls.Add(CopyCommandCheckBox);
             Controls.Add(OpenLocalFeedFolderButton);
             Controls.Add(PublishButton);
             Controls.Add(VersionsListBox);
@@ -110,7 +97,6 @@ namespace Publisher
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Local feed publisher";
             ResumeLayout(false);
-            PerformLayout();
 
         }
 
@@ -120,7 +106,6 @@ namespace Publisher
         private System.Windows.Forms.ListBox VersionsListBox;
         private System.Windows.Forms.Button PublishButton;
         private System.Windows.Forms.Button OpenLocalFeedFolderButton;
-        private System.Windows.Forms.CheckBox CopyCommandCheckBox;
     }
 }
 

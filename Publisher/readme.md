@@ -8,7 +8,6 @@ Uses `appsettings.json` which resides in the executable folder for configuration
 
 ```json
 {
-  "NuGetExecutable": "C:\\OED\\Dotnetland\\CodeStash\\NuGetStuff\\nuget.exe",
   "PackageLocation": "C:\\OED\\Dotnetland\\NuGetLocal"
 }
 ```

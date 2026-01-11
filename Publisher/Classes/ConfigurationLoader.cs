@@ -14,6 +14,11 @@ namespace Publisher.Classes;
 /// </remarks>
 public static class ConfigurationLoader
 {
+    private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
     /// <summary>
     /// Loads the configuration settings from the <c>appsettings.json</c> file.
     /// </summary>
@@ -26,17 +31,10 @@ public static class ConfigurationLoader
     /// </returns>
     public static Configuration Load()
     {
- 
         var json = File.ReadAllText("appsettings.json");
 
-        var options = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
+        var config = JsonSerializer.Deserialize<Configuration>(json, _jsonOptions);
 
-        var config = JsonSerializer.Deserialize<Configuration>(json, options);
-
-  
         return config;
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UpperCaseFirstCharConverterApp.Classes;
+﻿namespace UpperCaseFirstCharConverterApp.Classes;
 public static class StringExtensions
 {
     /// <summary>
@@ -15,5 +9,5 @@ public static class StringExtensions
     /// A new string with the first character converted to uppercase 
     /// </returns>
     public static string CapitalizeFirstLetter(this string sender)
-        => string.IsNullOrEmpty(sender) ? sender : $"{char.ToUpper(sender[0])}{sender[1..]}";
+        => string.IsNullOrEmpty(sender) ? sender : $"{char.ToUpper(sender[0])}{sender[1..].ToLower()}";
 }

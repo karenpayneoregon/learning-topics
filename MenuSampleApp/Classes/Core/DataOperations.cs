@@ -71,6 +71,34 @@ internal class DataOperations
         return cn.Query<Categories>("SELECT CategoryID,CategoryName FROM dbo.Categories;").ToList();
     }
 
-
+    /// <summary>
+    /// Retrieves customers grouped by their respective countries.
+    /// </summary>
+    /// <remarks>
+    /// This method executes a SQL query to fetch customer data along with their associated country names.
+    /// The results are grouped by country and returned as an enumerable collection of groups.
+    /// </remarks>
+    /// <returns>
+    /// An <see cref="IEnumerable{T}"/> of <see cref="IGrouping{TKey, TElement}"/> where the key is the country name
+    /// and the elements are instances of <see cref="CustomerCountry"/>.
+    /// </returns>
+    /// <exception cref="SqlException">
+    /// Thrown when there is an issue with database connectivity or query execution.
+    /// </exception>
+    public static IEnumerable<IGrouping<string, CustomerCountry>> GetCustomersGroupedByCountry()
+    {
+        const string sql = """
+                            SELECT 
+                                C.CompanyName, 
+                                CO.Name
+                            FROM dbo.Customers AS C
+                            INNER JOIN dbo.Countries AS CO
+                                ON C.CountryIdentifier = CO.CountryIdentifier
+                            ORDER BY CO.Name;
+                           """;
+        using var connection = new SqlConnection(AppConnections.Instance.MainConnection);
+        var data = connection.Query<CustomerCountry>(sql);
+        return data.GroupBy(cc => cc.Name);
+    }
 
 }

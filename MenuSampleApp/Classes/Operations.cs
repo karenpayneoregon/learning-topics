@@ -8,6 +8,27 @@ using Spectre.Console;
 using static MenuSampleApp.Classes.Core.SpectreConsoleHelpers;
 
 namespace MenuSampleApp.Classes;
+/// <summary>
+/// Provides a collection of static methods for performing various operations 
+/// related to the NorthWind database, including displaying table counts, 
+/// viewing categories, grouping customers by country, and exiting the application.
+/// </summary>
+/// <remarks>
+/// This class contains utility methods that interact with the database and 
+/// provide feedback to the user. It includes functionality for checking database 
+/// existence, retrieving and displaying data, and managing user interactions.
+///
+/// --- Stored procedures can be an option. ---
+/// 
+/// </remarks>
+/// <example>
+/// The <see cref="MenuSampleApp.Classes.Operations"/> class can be used in conjunction 
+/// with menu operations to execute specific tasks. For example:
+/// <code>
+/// var menu = MenuOperations.MainSelectionPrompt();
+/// menu.Show();
+/// </code>
+/// </example>
 internal class Operations
 {
 
@@ -90,12 +111,12 @@ internal class Operations
     /// Displays the list of categories from the database, including their IDs and names.
     /// </summary>
     /// <remarks>
-    /// This method checks if the database exists before attempting to retrieve the categories.
-    /// If the database exists, it fetches the list of categories and displays their IDs and names.
+    /// This method verifies the existence of the database before attempting to retrieve the categories.
+    /// If the database exists, it fetches and displays the list of categories with their IDs and names.
     /// If the database does not exist, it logs an informational message and notifies the user.
     /// </remarks>
     /// <exception cref="SqlException">
-    /// Thrown if there is an issue connecting to the database or executing the SQL commands.
+    /// Thrown when there is an issue connecting to the database or executing SQL commands.
     /// </exception>
     public static void ViewCategories()
     {
@@ -124,30 +145,17 @@ internal class Operations
     /// Retrieves and displays a list of customers grouped by their respective countries.
     /// </summary>
     /// <remarks>
-    /// This method executes a SQL query to fetch customer names and their associated country names.
-    /// The results are grouped by country and displayed in a structured format using Spectre.Console.
+    /// This method fetches customer data grouped by country using <see cref="DataOperations.GetCustomersGroupedByCountry"/>.
+    /// The results are displayed in a formatted manner using Spectre.Console utilities.
     /// </remarks>
     /// <exception cref="SqlException">
-    /// Thrown if there is an issue connecting to the database or executing the SQL query.
+    /// Thrown when there is an issue with database connectivity or query execution.
     /// </exception>
     public static void GetCustomersGroupedByCountry()
     {
         
-        const string sql = """
-                            SELECT 
-                                C.CompanyName, 
-                                CO.Name
-                            FROM dbo.Customers AS C
-                            INNER JOIN dbo.Countries AS CO
-                                ON C.CountryIdentifier = CO.CountryIdentifier
-                            ORDER BY CO.Name;
-                           """;
 
-        using var connection = new SqlConnection(AppConnections.Instance.MainConnection);
-
-        var data = connection.Query<CustomerCountry>(sql);
-
-        var groups = data.GroupBy(cc => cc.Name);
+        IEnumerable<IGrouping<string, CustomerCountry>> groups = DataOperations.GetCustomersGroupedByCountry();
 
 
         foreach (var group in groups)

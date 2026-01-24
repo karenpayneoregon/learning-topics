@@ -1,6 +1,6 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
 using ConsoleHelperLibrary.Classes;
-using MenuImageSampleApp.Classes;
+using MenuImageSampleApp.Classes.Core;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Runtime.CompilerServices;

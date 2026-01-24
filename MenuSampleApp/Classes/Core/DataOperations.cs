@@ -71,4 +71,6 @@ internal class DataOperations
         return cn.Query<Categories>("SELECT CategoryID,CategoryName FROM dbo.Categories;").ToList();
     }
 
+
+
 }

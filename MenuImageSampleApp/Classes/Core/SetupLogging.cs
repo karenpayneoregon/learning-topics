@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using static System.DateTime;
 
-namespace MenuImageSampleApp.Classes;
+namespace MenuImageSampleApp.Classes.Core;
 internal class SetupLogging
 {
     public static void Development()

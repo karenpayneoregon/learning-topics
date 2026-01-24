@@ -1,7 +1,10 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
+using Dapper;
 using MenuSampleApp.Classes.Core;
+using MenuSampleApp.Models;
 using Microsoft.Data.SqlClient;
 using Serilog;
+using Spectre.Console;
 using static MenuSampleApp.Classes.Core.SpectreConsoleHelpers;
 
 namespace MenuSampleApp.Classes;
@@ -117,6 +120,49 @@ internal class Operations
         Continue();
     }
 
+    /// <summary>
+    /// Retrieves and displays a list of customers grouped by their respective countries.
+    /// </summary>
+    /// <remarks>
+    /// This method executes a SQL query to fetch customer names and their associated country names.
+    /// The results are grouped by country and displayed in a structured format using Spectre.Console.
+    /// </remarks>
+    /// <exception cref="SqlException">
+    /// Thrown if there is an issue connecting to the database or executing the SQL query.
+    /// </exception>
+    public static void GetCustomersGroupedByCountry()
+    {
+        
+        const string sql = """
+                            SELECT 
+                                C.CompanyName, 
+                                CO.Name
+                            FROM dbo.Customers AS C
+                            INNER JOIN dbo.Countries AS CO
+                                ON C.CountryIdentifier = CO.CountryIdentifier
+                            ORDER BY CO.Name;
+                           """;
+
+        using var connection = new SqlConnection(AppConnections.Instance.MainConnection);
+
+        var data = connection.Query<CustomerCountry>(sql);
+
+        var groups = data.GroupBy(cc => cc.Name);
+
+
+        foreach (var group in groups)
+        {
+            AnsiConsole.MarkupLine($"[cyan]Country:[/] [DeepPink1]{group.Key}[/]");
+
+            foreach (var customer in group.OrderBy(x => x.CompanyName))
+            {
+                AnsiConsole.MarkupLine($"  {customer.CompanyName}");
+            }
+        }
+        
+        Continue();
+        
+    }
     /// <summary>
     /// Exits the application immediately by terminating the current process.
     /// </summary>

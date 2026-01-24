@@ -1,7 +1,7 @@
 ﻿using Spectre.Console;
 using System.Runtime.CompilerServices;
 
-namespace MenuImageSampleApp.Classes;
+namespace MenuImageSampleApp.Classes.Core;
 public static class SpectreConsoleHelpers
 {
     /// <summary>

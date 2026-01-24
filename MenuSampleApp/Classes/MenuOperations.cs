@@ -1,5 +1,6 @@
 ﻿
 
+using MenuSampleApp.Classes.Core;
 using MenuSampleApp.Models;
 using Spectre.Console;
 
@@ -41,6 +42,12 @@ class MenuOperations
                 Id = 2, 
                 Text = "View categories", 
                 Action = Operations.ViewCategories
+            },
+            new ()
+            {
+                Id = 3,
+                Text = "View Customers by Country",
+                Action = Operations.GetCustomersGroupedByCountry
             },
             new ()
             {

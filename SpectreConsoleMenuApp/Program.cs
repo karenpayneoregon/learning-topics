@@ -1,13 +1,11 @@
-﻿using MenuSampleApp.Classes;
-using Spectre.Console;
-// ReSharper disable FunctionNeverReturns ;;
+﻿using Spectre.Console;
+using SpectreConsoleMenuApp.Classes;
 
-namespace MenuSampleApp;
+namespace SpectreConsoleMenuApp;
 internal partial class Program
 {
     static void Main(string[] args)
     {
-
         while (true)
         {
             Console.Clear();

@@ -1,5 +1,4 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
-using Dapper;
 using MenuSampleApp.Classes.Core;
 using MenuSampleApp.Models;
 using Microsoft.Data.SqlClient;
@@ -39,7 +38,7 @@ internal class Operations
     /// This field is initialized using the connection string provided by the application's configuration.
     /// It is used in various operations to verify the existence of the database and to perform database-related tasks.
     /// </remarks>
-    private static readonly string databaseName = DataOperations.InitialCatalogFromConnectionString(AppConnections.Instance.MainConnection);
+    private static readonly string DatabaseName = DataOperations.InitialCatalogFromConnectionString(AppConnections.Instance.MainConnection);
     
     /// <summary>
     /// Checks whether the database specified in the application's main connection string exists.
@@ -54,7 +53,7 @@ internal class Operations
     /// <exception cref="SqlException">
     /// Thrown if there is an issue connecting to the database or executing the SQL command.
     /// </exception>
-    private static bool DatabaseExists() => DataOperations.ExpressDatabaseExists(databaseName);
+    private static bool DatabaseExists() => DataOperations.ExpressDatabaseExists(DatabaseName);
 
     /// <summary>
     /// Displays the count of tables and their respective row counts in the NorthWind database.
@@ -83,28 +82,13 @@ internal class Operations
         }
         else
         {
-            Console.WriteLine($"Database {databaseName} does not exist.");
-            Log.Information("Database {databaseName} does not exist.", databaseName);
+            Console.WriteLine($"Database {DatabaseName} does not exist.");
+            Log.Information("Database {databaseName} does not exist.", DatabaseName);
         }
 
 
         Continue();
 
-    }
-    /// <summary>
-    /// Executes a predefined operation and provides feedback to the user.
-    /// </summary>
-    /// <remarks>
-    /// This method serves as a placeholder for performing a specific operation. 
-    /// It outputs a message indicating the operation is being performed and then 
-    /// waits for user interaction to continue.
-    /// </remarks>
-    public static void PerformOperation()
-    {
-        // Placeholder for performing a specific operation
-        Console.WriteLine($"Performing operation.");
-
-        Continue();
     }
 
     /// <summary>
@@ -133,8 +117,8 @@ internal class Operations
         }
         else
         {
-            Console.WriteLine($"Database {databaseName} does not exist.");
-            Log.Information("Database {databaseName} does not exist.", databaseName);
+            Console.WriteLine($"Database {DatabaseName} does not exist.");
+            Log.Information("Database {databaseName} does not exist.", DatabaseName);
         }
 
 
@@ -153,8 +137,9 @@ internal class Operations
     /// </exception>
     public static void GetCustomersGroupedByCountry()
     {
-        
 
+        PrintCyan();
+        
         IEnumerable<IGrouping<string, CustomerCountry>> groups = DataOperations.GetCustomersGroupedByCountry();
 
 

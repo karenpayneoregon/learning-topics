@@ -1,6 +1,6 @@
-﻿using ModelFormatCustomSample.Classes;
+﻿using ModelFormatLibrary.Classes;
 
-namespace ModelFormatCustomSample.Models;
+namespace ModelFormatLibrary.Models;
 public record Customer(int Id, string FirstName, string LastName, DateOnly BirthDay) : IFormattable
 {
     public int Id { get; set; } = Id;

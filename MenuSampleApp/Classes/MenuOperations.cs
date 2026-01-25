@@ -20,7 +20,7 @@ class MenuOperations
     /// The selection prompt includes options for viewing the table count in the NorthWind database, 
     /// viewing categories, and exiting the application. Each menu item is associated with a specific action.
     /// </remarks>
-    public static SelectionPrompt<MenuItem> MainSelectionPrompt()
+    public static SelectionPrompt<MenuItem> SelectionPrompt()
     {
         SelectionPrompt<MenuItem> menu = new()
         {

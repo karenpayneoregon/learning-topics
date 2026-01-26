@@ -31,7 +31,7 @@ internal class MenuOperations
             new ()
             {
                 Id = -1,
-                Text = "Exit :stop_sign:",
+                Text = "Exit",
                 Action = Operations.ExitApplication
             },
         });

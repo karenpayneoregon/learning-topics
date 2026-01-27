@@ -3,6 +3,14 @@ using System.Text.Json.Serialization;
 
 namespace UpperCaseFirstCharConverterApp.Classes;
 
+/// <summary>
+/// A custom JSON converter that ensures the first character of a string 
+/// is converted to uppercase during serialization and deserialization.
+/// </summary>
+/// <remarks>
+/// This converter is particularly useful for scenarios where string values 
+/// need to follow a specific capitalization format, such as names or titles.
+/// </remarks>
 public class UpperCaseFirstCharConverter : JsonConverter<string>
 {
     public override bool CanConvert(Type typeToConvert) 

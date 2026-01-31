@@ -12,7 +12,7 @@ internal partial class Program
 
         var fullName = $"{firstName.CapitalizeFirstLetter()} {lastName.CapitalizeFirstLetter()}";
         AnsiConsole.MarkupLine($"[bold green]{fullName}[/] using [DeepPink1]CapitalizeFirstLetter[/]");
-        
+
         var emptyVariable = "";
         AnsiConsole.MarkupLine($"[bold green]{emptyVariable.IsEmptyField.IsEmpty()}[/] using [DeepPink1]IsEmptyField[/]");
 
@@ -23,11 +23,24 @@ internal partial class Program
         Mocked.GetCategories().Iterate(c => $"{c.Id,-3} {c.Name}");
         Console.WriteLine();
 
+        AnsiConsole.MarkupLine($"[bold green]using [DeepPink1]Between[/][/]");
+        Console.WriteLine();
+        
         Console.WriteLine(1.Between(0, 2));
-        Console.WriteLine(1.IsBetween(0, 2));
-        Console.WriteLine(1.BetweenExclusive(0, 2));
-        Console.WriteLine(1.IsBetweenExclusive(0, 2));
+        Console.WriteLine(10.IsBetween(0, 2));
 
+        foreach (var (index, item) in MockedTimeOnlyItem.List.Index())
+        {
+            AnsiConsole.MarkupLine($"{index,-3}Is " +
+                                   $"{PrintValue(item.Value)} between " +
+                                   $"{PrintValue(item.Start)} and {PrintValue(item.End)}? " +
+                                   $"{PrintYes(item.Value.Between(item.Start, item.End).ToYesNo())}");
+        }
+        
+        Console.WriteLine();
+        
         SpectreConsoleHelpers.ExitPrompt();
     }
+
+
 }

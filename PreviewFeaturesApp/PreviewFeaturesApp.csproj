@@ -9,7 +9,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Product>Template</Product>
+		<Product>extension blocks demo</Product>
 	</PropertyGroup>
 
 	<ItemGroup>

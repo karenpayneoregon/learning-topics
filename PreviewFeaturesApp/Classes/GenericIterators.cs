@@ -1,4 +1,6 @@
-﻿namespace PreviewFeaturesApp.Classes;
+﻿using Spectre.Console;
+
+namespace PreviewFeaturesApp.Classes;
 public static class GenericIterators
 {
     /// <summary>
@@ -25,7 +27,7 @@ public static class GenericIterators
         public void Iterate(Func<T, string> formatter)
         {
             foreach (var (index, item) in values.Index())
-                Console.WriteLine($"{index,-5}{formatter(item)}");
+                AnsiConsole.MarkupLine($"[bold]{index,-5}[/]{formatter(item)}");
         }
     }
 }

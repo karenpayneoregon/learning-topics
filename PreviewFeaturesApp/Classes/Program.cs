@@ -24,6 +24,10 @@ internal partial class Program
         Setup();
 
     }
+
+    public static string PrintValue<T>(T item) => $"[cyan]{item!.ToString()}[/]";
+    public static string PrintYes<T>(T item) => $"[green]{item!.ToString()}[/]";
+    public static string PrintNo<T>(T item) => $"[red]{item!.ToString()}[/]";
     private static void Setup()
     {
         var services = ConfigureServices();

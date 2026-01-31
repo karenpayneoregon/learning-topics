@@ -26,9 +26,9 @@ internal partial class Program
 
         AnsiConsole.MarkupLine($"[bold green]using [DeepPink1]Between[/][/]");
         Console.WriteLine();
-        
-        Console.WriteLine(1.Between(0, 2));
-        Console.WriteLine(10.IsBetween(0, 2));
+
+        AnsiConsole.MarkupLine($"[bold cyan]1.Between(0, 2)[/] {1.Between(0, 2).ToYesNo()}");
+        AnsiConsole.MarkupLine($"[bold cyan]14.Between(0, 2)[/] {14.Between(0, 2).ToYesNo()}");
 
         foreach (var (index, item) in MockedTimeOnlyItem.List.Index())
         {

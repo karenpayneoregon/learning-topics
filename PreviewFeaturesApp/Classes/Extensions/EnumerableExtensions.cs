@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿
+namespace PreviewFeaturesApp.Classes.Extensions;
 
-namespace PreviewFeaturesApp.Classes;
-
+/// <summary>
+/// Provides a set of extension methods for working with enumerable collections.
+/// </summary>
 public static class EnumerableExtensions
 {
     extension<TSource>(IEnumerable<TSource>) 
     {
-        // static extension method:
         public static IEnumerable<TSource> Combine(IEnumerable<TSource> first, IEnumerable<TSource> second) 
             => first.Concat(second);
 
@@ -16,16 +16,4 @@ public static class EnumerableExtensions
             => Enumerable.Empty<TSource>();
 
     }
-}
-
-
-public static class IntExtensions
-{
-    extension(int number)
-    {
-        public void Increment()
-            => number++;
-    }
-
-
 }

@@ -1,6 +1,12 @@
 ﻿using System.Text;
 
-namespace PreviewFeaturesApp.Classes;
+namespace PreviewFeaturesApp.Classes.Extensions;
+/// <summary>
+/// Provides extension methods for <see cref="string"/> to enhance its functionality.
+/// </summary>
+/// <remarks>
+/// This class contains static methods that extend the capabilities of the <see cref="string"/> type.
+/// </remarks>
 public static class StringExtensions
 {
 

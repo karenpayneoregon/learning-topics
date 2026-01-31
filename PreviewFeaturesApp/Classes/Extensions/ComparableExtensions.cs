@@ -1,4 +1,4 @@
-﻿namespace PreviewFeaturesApp.Classes;
+﻿namespace PreviewFeaturesApp.Classes.Extensions;
 
 /// <summary>
 /// Provides extension methods for comparing values that implement <see cref="IComparable{T}"/>.

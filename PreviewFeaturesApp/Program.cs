@@ -1,5 +1,6 @@
 ﻿using PreviewFeaturesApp.Classes;
 using PreviewFeaturesApp.Classes.Core;
+using PreviewFeaturesApp.Classes.Extensions;
 using Spectre.Console;
 
 namespace PreviewFeaturesApp;

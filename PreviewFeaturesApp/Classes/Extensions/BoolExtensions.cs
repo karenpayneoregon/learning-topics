@@ -1,4 +1,4 @@
-﻿namespace PreviewFeaturesApp.Classes
+﻿namespace PreviewFeaturesApp.Classes.Extensions
 {
     public static class BoolExtensions
     {

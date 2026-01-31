@@ -19,18 +19,6 @@
         "terminal.ansiMagenta": "#FF73FD",
         "terminal.ansiRed": "#FF6C60",
         "terminal.ansiWhite": "#B5B3AA",
-        "titleBar.activeBackground": "#321fdd",
-        "titleBar.activeForeground": "#000000",
-        "titleBar.inactiveBackground": "#321fdd",
-        "titleBar.inactiveForeground": "#000000",
-        "titleBar.border": "#321fdd",
-        "activityBar.background": "#321fdd",
-        "activityBar.foreground": "#000000",
-        "statusBar.background": "#321fdd",
-        "statusBar.foreground": "#000000",
-        "statusBar.debuggingBackground": "#321fdd",
-        "statusBar.debuggingForeground": "#000000",
-        "tab.activeBorder": "#321fdd",
         "iLoveWorkSpaceColors": true,
         "iLoveWorkSpaceRandom": false
     }

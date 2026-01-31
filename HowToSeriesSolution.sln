@@ -280,6 +280,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpectreConsoleMenuApp", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecretBasicApp", "SecretBasicApp\SecretBasicApp.csproj", "{455C37A7-E133-4DB2-9C7B-68BF049300E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewFeaturesApp", "PreviewFeaturesApp\PreviewFeaturesApp.csproj", "{ABE34EEC-DF9D-4191-A336-832E40FD70E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -598,6 +600,10 @@ Global
 		{455C37A7-E133-4DB2-9C7B-68BF049300E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{455C37A7-E133-4DB2-9C7B-68BF049300E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{455C37A7-E133-4DB2-9C7B-68BF049300E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE34EEC-DF9D-4191-A336-832E40FD70E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE34EEC-DF9D-4191-A336-832E40FD70E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE34EEC-DF9D-4191-A336-832E40FD70E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE34EEC-DF9D-4191-A336-832E40FD70E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -693,6 +699,7 @@ Global
 		{1798BFB6-4616-4165-B810-8CB71465B96B} = {3EB53241-8B25-B258-DF9F-79118DC554A7}
 		{20149A41-331E-4253-AB85-F35CDC30CADC} = {402F8A9E-94A5-2EA8-2622-43A1D2C6E2A1}
 		{455C37A7-E133-4DB2-9C7B-68BF049300E2} = {9A6472DD-641B-476C-99C0-1281955E119D}
+		{ABE34EEC-DF9D-4191-A336-832E40FD70E2} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

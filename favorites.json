@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "items": [
+    {
+      "name": "Index.cshtml",
+      "path": "BirthDaysApp\\Pages\\Index.cshtml"
+    },
+    {
+      "name": "index.html",
+      "path": "HideShowPasswordSample_1\\index.html"
+    },
+    {
+      "name": "Program.cs",
+      "path": "SectionExistsAppsettingsApp\\Program.cs"
+    }
+  ]
+}

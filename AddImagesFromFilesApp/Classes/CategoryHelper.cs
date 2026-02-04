@@ -1,4 +1,5 @@
-﻿using AddImagesFromFilesApp.Models;
+﻿using AddImagesFromFilesApp.LanguageExtensions;
+using AddImagesFromFilesApp.Models;
 
 namespace AddImagesFromFilesApp.Classes;
 
@@ -36,7 +37,7 @@ public static class CategoryHelper
                 categories.Add(new Category
                 {
                     CategoryName = categoryName,
-                    Description = $"Image for {categoryName}",
+                    Description = $"Image for {categoryName.SplitCamelCase()}",
                     Photo = imageBytes,
                     FileName = fileName
                 });

@@ -1,6 +1,9 @@
 ﻿# About
 
-Basic `FluentValidation` Razor pages example
+Basic `FluentValidation` Razor pages example. As this is a learning project there are two different validation field summaries, one for the create page and one for the edit page. For `FluentValidation` implemenation uses the correct way to implement validation in Razor pages.
+
+> **Note**
+> 02/23/2026 added validation styling with Bootstrap icons and animations to the Person model for display names. See styling in wwwroot\css\site.css.
 
 > **Note**
 > 02/14/2026 added MockedData to load data and removed HasData from the DbContext.

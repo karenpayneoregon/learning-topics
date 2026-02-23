@@ -7,8 +7,8 @@ public class PersonValidator : AbstractValidator<Person>
 {
     public PersonValidator()
     {
-        RuleFor(x => x.FirstName).NotEmpty();
-        RuleFor(x => x.LastName).NotEmpty();
-        RuleFor(x => x.EmailAddress).NotEmpty().EmailAddress();
+        RuleFor(x => x.FirstName).NotEmpty().WithName("First name").WithMessage("First name is required");
+        RuleFor(x => x.LastName).NotEmpty().WithName("Last name").WithMessage("Last name is required");
+        RuleFor(x => x.EmailAddress).NotEmpty().WithName("Email").WithMessage("Email is required").EmailAddress();
     }
 }

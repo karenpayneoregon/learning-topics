@@ -20,3 +20,51 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Field-level errors */
+.field-validation-error {
+    font-weight: bold;
+    color: crimson !important;
+}
+
+/* Summary errors */
+.validation-summary-errors {
+    font-weight: bold;
+    color: crimson !important;
+}
+
+.field-validation-error::before,
+.validation-summary-errors li::before {
+    font-family: "bootstrap-icons" !important;
+    content: "\f333"; /* exclamation-circle (outlined) */
+    margin-right: 6px;
+}
+
+input.input-validation-error,
+select.input-validation-error,
+textarea.input-validation-error {
+    border: 2px solid crimson !important;
+    animation: shakeField 0.3s ease-in-out;
+}
+
+@keyframes shakeField {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-3px);
+    }
+
+    50% {
+        transform: translateX(3px);
+    }
+
+    75% {
+        transform: translateX(-3px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

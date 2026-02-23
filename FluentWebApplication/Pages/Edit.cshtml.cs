@@ -1,13 +1,15 @@
-﻿using FluentValidation;
-using FluentWebApplication.Data;
-using FluentWebApplication.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using FluentWebApplication.Models;
+using FluentValidation;
+using FluentValidation.Results;
+using FluentWebApplication.Classes;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluentWebApplication.Pages;
 
-public class EditModel(Context context, IValidator<Person> validator) : PageModel
+public class EditModel(Data.Context context, IValidator<Person> validator) : PageModel
 {
     [BindProperty]
     public Person Person { get; set; } = null!;
@@ -56,13 +58,14 @@ public class EditModel(Context context, IValidator<Person> validator) : PageMode
     /// </exception>
     public async Task<IActionResult> OnPostAsync()
     {
-        
-        var result = await validator.ValidateAsync(Person);
-        
+        ModelState.Clear();
+        ValidationResult result = await validator.ValidateAsync(Person);
         if (!result.IsValid)
         {
+
             result.AddToModelState(ModelState, nameof(Person));
             return Page();
+
         }
 
         context.Attach(Person).State = EntityState.Modified;

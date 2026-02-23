@@ -26,7 +26,7 @@
     <div class="col-md-4">
         <form method="post" role="form">
 
-            <div asp-validation-summary="ModelOnly" class="text-secondary"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <input type="hidden" asp-for="Person.PersonId"/>
 
@@ -39,15 +39,7 @@
                     @*                     <div>
                         <span style="color: crimson;font-weight: bold">Required</span>
                     </div> *@
-                    <div>
-                        <span class="text-danger">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
-                            </svg>
-
-                        </span>
-                    </div>
+           
                 </div>
 
                 <input asp-for="Person.FirstName"
@@ -55,7 +47,7 @@
                        placeholder="Enter first name"
                        aria-label="First name" required/>
 
-                <span asp-validation-for="Person.FirstName" class="validate-text"></span>
+                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -63,15 +55,7 @@
                     <div>
                         <label asp-for="Person.LastName" class="required"></label>
                     </div>
-                    <div>
-                        <span class="text-danger">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1" />
-                            </svg>
-
-                        </span>
-                    </div>
+        
                 </div>
 
                 <input asp-for="Person.LastName" 
@@ -79,7 +63,7 @@
                        placeholder="Enter last name" 
                        aria-label="Last name" required />
 
-                <span asp-validation-for="Person.LastName" class="validate-text"></span>
+                <span asp-validation-for="Person.LastName" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -89,15 +73,7 @@
                         <label asp-for="Person.EmailAddress" class="required"></label>
                     </div>
 
-                    <div>
-                        <span class="text-danger">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
-                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
-                            </svg>
-
-                        </span>
-                    </div>
+                    
                 </div>
 
                 <input asp-for="Person.EmailAddress" 
@@ -105,7 +81,7 @@
                        placeholder="Enter your email address" 
                        aria-label="Email address" required />
 
-                <span asp-validation-for="Person.EmailAddress" class="validate-text"></span>
+                <span asp-validation-for="Person.EmailAddress" class="text-danger"></span>
 
             </div>
 

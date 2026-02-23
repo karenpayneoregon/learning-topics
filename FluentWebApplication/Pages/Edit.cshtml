@@ -1,0 +1,141 @@
+﻿@page
+@model FluentWebApplication.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .required::after 
+    {
+/*        content: " *";
+        font-weight: bold;
+        color: red; */
+    }
+    .validate-text {
+        color: crimson;
+        font-weight: bold
+    }
+</style>
+
+<div class="alert alert-primary" role="alert">
+    Edit
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" role="form">
+
+            <div asp-validation-summary="ModelOnly" class="text-secondary"></div>
+
+            <input type="hidden" asp-for="Person.PersonId"/>
+
+            <div class="form-group">
+
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label asp-for="Person.FirstName" class="required"></label>
+                    </div>
+                    @*                     <div>
+                        <span style="color: crimson;font-weight: bold">Required</span>
+                    </div> *@
+                    <div>
+                        <span class="text-danger">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
+                            </svg>
+
+                        </span>
+                    </div>
+                </div>
+
+                <input asp-for="Person.FirstName"
+                       class="form-control mb-2"
+                       placeholder="Enter first name"
+                       aria-label="First name" required/>
+
+                <span asp-validation-for="Person.FirstName" class="validate-text"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label asp-for="Person.LastName" class="required"></label>
+                    </div>
+                    <div>
+                        <span class="text-danger">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1" />
+                            </svg>
+
+                        </span>
+                    </div>
+                </div>
+
+                <input asp-for="Person.LastName" 
+                       class="form-control mb-2" 
+                       placeholder="Enter last name" 
+                       aria-label="Last name" required />
+
+                <span asp-validation-for="Person.LastName" class="validate-text"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-between">
+
+                    <div>
+                        <label asp-for="Person.EmailAddress" class="required"></label>
+                    </div>
+
+                    <div>
+                        <span class="text-danger">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1"/>
+                            </svg>
+
+                        </span>
+                    </div>
+                </div>
+
+                <input asp-for="Person.EmailAddress" 
+                       class="form-control" 
+                       placeholder="Enter your email address" 
+                       aria-label="Email address" required />
+
+                <span asp-validation-for="Person.EmailAddress" class="validate-text"></span>
+
+            </div>
+
+@*             <div class="form-group mt-2">
+                <input type="submit" value="Save" role="button" class="btn btn-primary mt-2"/>
+            </div> *@
+            <div class="row">
+                <div class="col-auto">
+                    <input type="submit" value="Save" role="button" class="btn btn-primary mt-2" />
+                </div>
+                <div class="col-auto">
+                    <a asp-page="./List" class="btn btn-primary mt-2">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@* @section Scripts {
+    <script>
+        $(document).ready(function () {
+            document.documentElement.setAttribute('lang', navigator.language);
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} *@

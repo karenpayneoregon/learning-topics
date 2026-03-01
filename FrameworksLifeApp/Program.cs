@@ -1,6 +1,7 @@
 ﻿using FrameworksLifeApp.Classes;
 using FrameworksLifeApp.Classes.Core;
 using FrameworksLifeApp.Interfaces;
+using FrameworksLifeApp.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Spectre.Console;
@@ -16,7 +17,7 @@ internal partial class Program
                 // Use manual registration to avoid dependency on AddHttpClient extension method
                 services.AddSingleton<IDotNetReleaseMetadataService>(sp =>
                 {
-                    var client = new System.Net.Http.HttpClient
+                    HttpClient client = new()
                     {
                         BaseAddress = new Uri("https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/"),
                         Timeout = TimeSpan.FromSeconds(15)
@@ -37,36 +38,54 @@ internal partial class Program
         var supported = channels.Where(c => !IsEol(c.SupportPhase)).ToList();
         var eol = channels.Where(c => IsEol(c.SupportPhase)).ToList();
 
-        // Print
         PrintSection("SUPPORTED (Active/Maintenance)", supported);
         Console.WriteLine();
         PrintSection("END OF LIFE (EOL)", eol);
+        
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
     }
 
-    static void PrintSection(string title, IReadOnlyList<DotNetChannelInfo> items)
+    private static void PrintSection(string title, IReadOnlyList<DotNetChannelInfo> items)
     {
-        Console.WriteLine(title);
-        Console.WriteLine("Channel | Type | Phase        | EOL        | Latest SDK     | Latest Runtime  | Latest ASP.NET Core");
-        Console.WriteLine(new string('-', 100));
+        // Title
+        AnsiConsole.MarkupLine($"[bold]{Markup.Escape(title)}[/]");
+
+        if (items.Count == 0)
+        {
+            AnsiConsole.MarkupLine("[grey](none)[/]");
+            return;
+        }
+
+        var table = new Table()
+            .Border(TableBorder.Rounded)
+            .BorderColor(Color.HotPink)
+            .Expand();
+
+        table.AddColumn(new TableColumn("[IndianRed]Channel[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]Type[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]Phase[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]EOL[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]Latest SDK[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]Latest Runtime[/]"));
+        table.AddColumn(new TableColumn("[IndianRed]Latest ASP.NET Core[/]"));
 
         foreach (var c in items.OrderByDescending(x => Version.Parse(x.ChannelVersion)))
         {
             var eol = c.EolDate?.ToString("yyyy-MM-dd") ?? "(unknown)";
 
-            Console.WriteLine(
-                $"{c.ChannelVersion,-7} | " +
-                $"{(c.ReleaseType ?? "(?)"),-4} | " +
-                $"{(c.SupportPhase ?? "(unknown)"),-12} | " +
-                $"{eol,-10} | " +
-                $"{(c.LatestSdk ?? "(unknown)"),-13} | " +
-                $"{(c.LatestRuntime ?? "(unknown)"),-13} | " +
-                $"{(c.LatestAspNetCoreRuntime ?? "(n/a)")}"
+            table.AddRow(
+                c.ChannelVersion ?? "(unknown)",
+                c.ReleaseType ?? "(?)",
+                c.SupportPhase ?? "(unknown)",
+                eol,
+                c.LatestSdk ?? "(unknown)",
+                c.LatestRuntime ?? "(unknown)",
+                c.LatestAspNetCoreRuntime ?? "(n/a)"
             );
         }
 
-        if (items.Count == 0)
-            Console.WriteLine("(none)");
+        AnsiConsole.Write(table);
+        AnsiConsole.WriteLine(); // spacing between sections
     }
 
 }

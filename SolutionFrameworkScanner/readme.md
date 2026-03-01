@@ -4,4 +4,6 @@ This project was created to get a list of .NET Core Frameworks used in a Microso
 
 Not all variables are used, but they are there for demonstration purposes.
 
+[Article](https://dev.to/karenpayneoregon/side-project-idea-ii-4bce)
+
 

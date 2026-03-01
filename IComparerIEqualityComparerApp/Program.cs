@@ -9,9 +9,9 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        Operations.DistinctPeople1();
+        //Operations.DistinctPeople1();
         Operations.DistinctPeople2();
-        Operations.CompareProducts();
+        //Operations.CompareProducts();
         
         SpectreConsoleHelpers.ExitPrompt();
     }

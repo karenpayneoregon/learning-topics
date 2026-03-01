@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SolutionFrameworkScanner": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\\\OED\\\\DotnetLand\\\\VS2022\\\\HowToSeriesSolution\\\\HowToSeriesSolution.sln"
+    }
+  }
+}

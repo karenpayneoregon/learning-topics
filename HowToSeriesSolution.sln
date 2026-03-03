@@ -294,6 +294,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Side projects", "Side proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworksLifeApp", "FrameworksLifeApp\FrameworksLifeApp.csproj", "{23E0244A-ED39-4E37-8360-0B35F899C577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportedVisualStudioExtensionsApp", "ExportedVisualStudioExtensionsApp\ExportedVisualStudioExtensionsApp.csproj", "{920881DA-477A-4E29-80D6-B76E654D90BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -632,6 +634,10 @@ Global
 		{23E0244A-ED39-4E37-8360-0B35F899C577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E0244A-ED39-4E37-8360-0B35F899C577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23E0244A-ED39-4E37-8360-0B35F899C577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{920881DA-477A-4E29-80D6-B76E654D90BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{920881DA-477A-4E29-80D6-B76E654D90BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{920881DA-477A-4E29-80D6-B76E654D90BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{920881DA-477A-4E29-80D6-B76E654D90BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -733,6 +739,7 @@ Global
 		{55E5BAB9-277A-8787-4BB5-346DC9E25D2A} = {3A7EF8F9-A58A-6994-3FF9-E29A10D92AEB}
 		{C62C9A20-618D-4791-B6B6-71DB0675425A} = {E3DC21D7-A3FA-772B-7369-50E342A4A0B4}
 		{23E0244A-ED39-4E37-8360-0B35F899C577} = {E3DC21D7-A3FA-772B-7369-50E342A4A0B4}
+		{920881DA-477A-4E29-80D6-B76E654D90BD} = {E3DC21D7-A3FA-772B-7369-50E342A4A0B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

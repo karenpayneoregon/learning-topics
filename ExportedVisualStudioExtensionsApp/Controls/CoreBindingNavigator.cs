@@ -2,9 +2,9 @@
 namespace ExportedVisualStudioExtensionsApp.Controls;
 
 /// <summary>
-/// Represents a specialized <see cref="BindingNavigator"/> control with customized behavior 
-/// for managing data-binding operations. This class disables the default functionality 
-/// of adding and deleting items.
+/// Represents a customized <see cref="BindingNavigator"/> control tailored for managing 
+/// data-binding operations in the application. This control disables the default functionality 
+/// for adding and deleting items, ensuring a more controlled user experience.
 /// </summary>
 public sealed class CoreBindingNavigator : BindingNavigator
 {

@@ -8,6 +8,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<SatelliteResourceLanguages>en-US</SatelliteResourceLanguages>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <Content Remove="C:\Users\paynek\.nuget\packages\consoleconfigurationlibrary\1.0.0.2\contentFiles\any\net8.0\readme.md" />
 	</ItemGroup>
@@ -36,6 +40,12 @@
 
 	<ItemGroup>
 	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="File\extensions2026 - Copy.vsext">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	  <None Update="File\extensions2026.vsext">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>

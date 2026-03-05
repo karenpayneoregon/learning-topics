@@ -17,5 +17,5 @@ public class ExtensionCatalog
     public string Description { get; set; }
 
     [JsonPropertyName("extensions")]
-    public List<VsExtension> Extensions { get; set; } = new();
+    public List<VsExtension> Extensions { get; set; } = [];
 }

@@ -24,5 +24,9 @@ internal class ExtensionsReader
 
     }
 
-    public static JsonSerializerOptions Options => new() { PropertyNameCaseInsensitive = true };
+    public static JsonSerializerOptions Options 
+        => new()
+        {
+            PropertyNameCaseInsensitive = true
+        };
 }

@@ -30,6 +30,7 @@ partial class MainForm
     {
         CoreNavigator = new ExportedVisualStudioExtensionsApp.Controls.CoreBindingNavigator();
         ExtensionNameTextBox = new TextBox();
+        LinkLabel1 = new LinkLabel();
         (CoreNavigator).BeginInit();
         SuspendLayout();
         // 
@@ -38,7 +39,7 @@ partial class MainForm
         CoreNavigator.ImageScalingSize = new Size(20, 20);
         CoreNavigator.Location = new Point(0, 0);
         CoreNavigator.Name = "CoreNavigator";
-        CoreNavigator.Size = new Size(586, 27);
+        CoreNavigator.Size = new Size(849, 27);
         CoreNavigator.TabIndex = 0;
         CoreNavigator.Text = "coreBindingNavigator1";
         // 
@@ -49,11 +50,22 @@ partial class MainForm
         ExtensionNameTextBox.Size = new Size(554, 27);
         ExtensionNameTextBox.TabIndex = 1;
         // 
+        // LinkLabel1
+        // 
+        LinkLabel1.AutoSize = true;
+        LinkLabel1.Location = new Point(12, 140);
+        LinkLabel1.Name = "LinkLabel1";
+        LinkLabel1.Size = new Size(126, 20);
+        LinkLabel1.TabIndex = 2;
+        LinkLabel1.TabStop = true;
+        LinkLabel1.Text = "more information";
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(586, 243);
+        ClientSize = new Size(849, 243);
+        Controls.Add(LinkLabel1);
         Controls.Add(ExtensionNameTextBox);
         Controls.Add(CoreNavigator);
         FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -69,4 +81,5 @@ partial class MainForm
 
     private Controls.CoreBindingNavigator CoreNavigator;
     private TextBox ExtensionNameTextBox;
+    private LinkLabel LinkLabel1;
 }

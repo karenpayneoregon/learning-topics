@@ -11,6 +11,9 @@ Basic `FluentValidation` Razor pages example. As this is a learning project ther
 > **Note**
 > 11/2025 refactored away from `FluentValidation.AspNetCore` package
 
+## Debugging UI
+
+<kbd>CTRL</kbd> + <kbd>Alt</kbd>, <kbd>1</kbd> on any page.
 
 ## Database
 

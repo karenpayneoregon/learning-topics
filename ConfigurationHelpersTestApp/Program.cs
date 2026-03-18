@@ -10,11 +10,11 @@ internal partial class Program
 
         if (ConfigurationHelpers.PropertyExists("Logging", "LogLevel", "Microsoft.EntityFrameworkCore.Database.Command"))
         {
-            SpectreConsoleHelpers.PinkPill(Justify.Left, "Property exists in configuration");
+            // Handle the case where the property exists
         }
         else
         {
-            SpectreConsoleHelpers.ErrorPill(Justify.Left, "Property does not exist in configuration");
+            // Handle the case where the property does not exist
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 // See project ConfigurationHelpersTestApp for example usage of this class and its methods.
 
@@ -110,5 +111,109 @@ public class ConfigurationHelpers
         return path.All(segment 
             => current.ValueKind == JsonValueKind.Object && 
                current.TryGetProperty(segment, out current));
+    }
+
+    /// <summary>
+    /// Checks whether a specific property exists in the provided configuration.
+    /// </summary>
+    /// <param name="configuration">
+    /// The <see cref="IConfiguration"/> instance representing the application's configuration.
+    /// </param>
+    /// <param name="key">
+    /// The key of the property to check for existence.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the specified property exists in the configuration; otherwise, <c>false</c>.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when the <paramref name="configuration"/> parameter is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when the <paramref name="key"/> parameter is <c>null</c>, empty, or consists only of whitespace.
+    /// </exception>
+    public static bool PropertyExists(IConfiguration configuration, string key)
+    {
+        if (configuration == null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentException("Key cannot be null or empty.", nameof(key));
+        }
+
+        return configuration.GetSection(key).Exists();
+    }
+
+    /// <summary>
+    /// Attempts to retrieve a value of the specified type from the configuration 
+    /// using the provided key.
+    /// </summary>
+    /// <typeparam name="T">
+    /// The type of the value to retrieve from the configuration.
+    /// </typeparam>
+    /// <param name="configuration">
+    /// The configuration instance to search for the key. Must not be <c>null</c>.
+    /// </param>
+    /// <param name="key">
+    /// The key of the configuration entry to retrieve. Must not be <c>null</c> or empty.
+    /// </param>
+    /// <param name="value">
+    /// When this method returns, contains the value associated with the specified key, 
+    /// if the key is found and the value can be converted to the specified type; 
+    /// otherwise, the default value for the type of the <typeparamref name="T"/> parameter.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the key exists and the value is successfully retrieved; otherwise, <c>false</c>.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when the <paramref name="configuration"/> parameter is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when the <paramref name="key"/> parameter is <c>null</c>, empty, or consists only of white-space characters.
+    /// </exception>
+    public static bool TryGetValue<T>(IConfiguration configuration, string key, out T value)
+    {
+        if (configuration == null)
+        {
+            throw new ArgumentNullException(nameof(configuration));
+        }
+
+        if (string.IsNullOrWhiteSpace(key))
+        {
+            throw new ArgumentException("Key cannot be null or empty.", nameof(key));
+        }
+
+        var section = configuration.GetSection(key);
+
+        if (!section.Exists())
+        {
+            value = default!;
+            return false;
+        }
+
+        value = section.Get<T>()!;
+        return true;
+    }
+
+    /// <summary>
+    /// For demonstration purposes only.
+    /// Builds and retrieves the application's configuration from the "appsettings.json" file.
+    /// </summary>
+    /// <returns>
+    /// An <see cref="IConfiguration"/> instance representing the application's configuration.
+    /// </returns>
+    /// <remarks>
+    /// This method initializes a configuration builder, sets the base path to the current 
+    /// directory, and loads the "appsettings.json" file. The configuration is set to reload 
+    /// automatically if the file changes.
+    /// </remarks>
+    public static IConfiguration GetConfiguration()
+    {
+        return new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile(FileName, optional: false, reloadOnChange: true)
+            .Build();
     }
 }

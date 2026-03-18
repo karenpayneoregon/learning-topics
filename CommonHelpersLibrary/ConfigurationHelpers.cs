@@ -211,9 +211,14 @@ public class ConfigurationHelpers
     /// </remarks>
     public static IConfiguration GetConfiguration()
     {
+        var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "Development";
+        var name =  Path.GetFileNameWithoutExtension(FileName);
+        
         return new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile(FileName, optional: false, reloadOnChange: true)
+            .AddJsonFile($"{name}.{environment}.json", optional: true)
+            .AddEnvironmentVariables()
             .Build();
     }
 }

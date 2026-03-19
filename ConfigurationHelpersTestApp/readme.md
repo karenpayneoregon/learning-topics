@@ -1,5 +1,9 @@
 ﻿# About
-
+<!-- TOC-->
+  - [appsettings](#appsettings)
+  - [Loosely coupled code for Logging section](#loosely-coupled-code-for-logging-section)
+  - [Strongly typed code for Logging section](#strongly-typed-code-for-logging-section)
+<!-- TOC -->
 The intent of the code is to demonstrate how to check whether sections and keys exist and retrieve key values from appsettings.json. Some of the code is dependency injection ready while the majority is for desktop applications.
 
 Depend on `CommonHelpersLibrary.ConfigurationHelpers.`

@@ -2,16 +2,25 @@
   "version": 2,
   "items": [
     {
+      "name": "Configurations",
+      "children": [
+        {
+          "name": "ConfigurationHelpers.cs",
+          "path": "CommonHelpersLibrary\\ConfigurationHelpers.cs"
+        },
+        {
+          "name": "Program.cs",
+          "path": "SectionExistsAppsettingsApp\\Program.cs"
+        }
+      ]
+    },
+    {
       "name": "Index.cshtml",
       "path": "BirthDaysApp\\Pages\\Index.cshtml"
     },
     {
       "name": "index.html",
       "path": "HideShowPasswordSample_1\\index.html"
-    },
-    {
-      "name": "Program.cs",
-      "path": "SectionExistsAppsettingsApp\\Program.cs"
     }
   ]
 }

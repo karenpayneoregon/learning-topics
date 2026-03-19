@@ -57,24 +57,47 @@ public class ConfigurationHelpers
     }
 
     /// <summary>
-    /// Determines whether the "MainConnection" entry exists within the "ConnectionStrings" 
-    /// section of the "appsettings.json" file.
+    /// Checks if the "MainConnection" entry exists within the "ConnectionStrings" section
+    /// of the "appsettings.json" configuration file and retrieves its value.
     /// </summary>
     /// <returns>
-    /// <c>true</c> if the "MainConnection" entry exists within the "ConnectionStrings" section; 
-    /// otherwise, <c>false</c>.
+    /// A tuple containing two elements:
+    /// <list type="bullet">
+    /// <item>
+    /// <description>
+    /// <c>exists</c>: A <see cref="bool"/> indicating whether the "MainConnection" entry exists.
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <description>
+    /// <c>connectionString</c>: A <see cref="string"/> representing the value of the "MainConnection" entry,
+    /// or <c>null</c> if the entry does not exist.
+    /// </description>
+    /// </item>
+    /// </list>
     /// </returns>
     /// <remarks>
-    /// This method is useful for verifying the presence of a specific database connection 
-    /// configuration, ensuring that the required "MainConnection" entry is available before 
-    /// proceeding with application logic.
+    /// This method is designed to validate the presence of a critical database connection string
+    /// in the application's configuration file. It ensures that the "MainConnection" entry is available
+    /// and retrieves its value for further use in the application.
     /// </remarks>
-    public static bool MainConnectionExists()
+    public static (bool exists, string? connectionString) MainConnectionExists()
     {
         string jsonContent = File.ReadAllText(FileName);
         using JsonDocument doc = JsonDocument.Parse(jsonContent);
-        return doc.RootElement.TryGetProperty("ConnectionStrings", out JsonElement connectionStrings) && 
-               connectionStrings.TryGetProperty("MainConnection", out _);
+
+        if (doc.RootElement.TryGetProperty("ConnectionStrings", out JsonElement connectionStrings) &&
+            connectionStrings.TryGetProperty("MainConnection", out JsonElement cnElement))
+        {
+            // Prefer GetString for string values; fallback to ToString if necessary.
+            string? connectionString = cnElement.ValueKind == JsonValueKind.String
+                ? cnElement.GetString()
+                : cnElement.ToString();
+
+            return (true, connectionString);
+        }
+
+        return (false, null);
     }
 
 

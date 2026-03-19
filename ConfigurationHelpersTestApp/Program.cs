@@ -68,9 +68,11 @@ internal partial class Program
         Console.WriteLine();
 
         // Example of checking for a specific connection string
-        if (MainConnectionExists())
+        var (exists, connectionString) = MainConnectionExists();
+        if (exists)
         {
-            AnsiConsole.MarkupLine($"[green bold]Main connection exists:[/][yellow] {AppConnections.Instance.MainConnection}[/]");
+            // or AppConnections.Instance.MainConnection
+            AnsiConsole.MarkupLine($"[green bold]Main connection exists:[/][yellow] {connectionString}[/]");
 
         }
         else

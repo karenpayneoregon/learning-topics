@@ -1,5 +1,4 @@
 ﻿using Spectre.Console;
-using Spectre.Console.Json;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -193,34 +192,7 @@ public static class SpectreConsoleHelpers
 
         Console.ReadLine();
     }
-    /// <summary>
-    /// Writes a JSON string to the console with syntax highlighting using Spectre.Console.
-    /// </summary>
-    /// <param name="json">The JSON string to be displayed in the console.</param>
-    /// <remarks>
-    /// This method uses the <see cref="JsonText"/> class to render the JSON string with customizable
-    /// colors for braces, brackets, colons, commas, strings, numbers, booleans, members, and null values.
-    ///
-    /// Using this method keeps output colors consistent across different JSON outputs.
-    /// </remarks>
-    public static void WriteJson(string json)
-    {
 
-        var jsonText = new JsonText(json)
-                .BracesColor(Color.Red)
-                .BracketColor(Color.Green)
-                .ColonColor(Color.White)
-                .CommaColor(Color.Cyan1)
-                //.StringColor(Color.White)
-                .StringStyle(new Style(Color.White, decoration: Decoration.Italic))
-                .NumberColor(Color.White)
-                .BooleanColor(Color.Red)
-                .MemberColor(Color.Yellow)
-                .NullColor(Color.Green);
-
-        AnsiConsole.Write(jsonText);
-
-    }
 
     /// <summary>
     /// Configures the console's input and output encoding to use UTF-8.

@@ -298,6 +298,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportedVisualStudioExtensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationHelpersTestApp", "ConfigurationHelpersTestApp\ConfigurationHelpersTestApp.csproj", "{82EF3A71-5497-4ACA-A4F6-073D3E7746A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetSettingFromAppSettings", "GetSettingFromAppSettings\GetSettingFromAppSettings.csproj", "{EE04F19C-BAA9-46DA-89FA-8B60D49C0874}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -644,6 +646,10 @@ Global
 		{82EF3A71-5497-4ACA-A4F6-073D3E7746A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82EF3A71-5497-4ACA-A4F6-073D3E7746A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82EF3A71-5497-4ACA-A4F6-073D3E7746A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE04F19C-BAA9-46DA-89FA-8B60D49C0874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE04F19C-BAA9-46DA-89FA-8B60D49C0874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE04F19C-BAA9-46DA-89FA-8B60D49C0874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE04F19C-BAA9-46DA-89FA-8B60D49C0874}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -747,6 +753,7 @@ Global
 		{23E0244A-ED39-4E37-8360-0B35F899C577} = {E3DC21D7-A3FA-772B-7369-50E342A4A0B4}
 		{920881DA-477A-4E29-80D6-B76E654D90BD} = {E3DC21D7-A3FA-772B-7369-50E342A4A0B4}
 		{82EF3A71-5497-4ACA-A4F6-073D3E7746A3} = {CD42C8B1-D1F7-4DD4-9E2B-5E2B3D47F1DA}
+		{EE04F19C-BAA9-46DA-89FA-8B60D49C0874} = {0363E199-36E5-4351-9A8E-57446F991DD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

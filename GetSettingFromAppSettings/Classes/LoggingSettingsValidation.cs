@@ -10,15 +10,8 @@ namespace GetSettingFromAppSettings.Classes;
 /// This class ensures that the required configuration sections and values for logging settings
 /// are present and valid in the application's configuration.
 /// </remarks>
-public sealed class LoggingSettingsValidation : IValidateOptions<LoggingSettings>
+public sealed class LoggingSettingsValidation(IConfiguration configuration) : IValidateOptions<LoggingSettings>
 {
-    private readonly IConfiguration _configuration;
-
-    public LoggingSettingsValidation(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     /// <summary>
     /// Validates the <see cref="LoggingSettings"/> configuration section.
     /// </summary>
@@ -40,14 +33,14 @@ public sealed class LoggingSettingsValidation : IValidateOptions<LoggingSettings
     {
         List<string> errors = [];
 
-        var loggingSection = _configuration.GetSection("Logging");
+        var loggingSection = configuration.GetSection("Logging");
         if (!loggingSection.Exists())
         {
             errors.Add("Configuration section 'Logging' is missing.");
             return ValidateOptionsResult.Fail(errors);
         }
 
-        var logLevelSection = _configuration.GetSection("Logging:LogLevel");
+        var logLevelSection = configuration.GetSection("Logging:LogLevel");
         if (!logLevelSection.Exists())
         {
             errors.Add("Configuration section 'Logging:LogLevel' is missing.");
@@ -78,7 +71,7 @@ public sealed class LoggingSettingsValidation : IValidateOptions<LoggingSettings
     /// </remarks>
     private void ValidateValue(string key, List<string> errors)
     {
-        var value = _configuration[key];
+        var value = configuration[key];
 
         if (string.IsNullOrWhiteSpace(value))
         {

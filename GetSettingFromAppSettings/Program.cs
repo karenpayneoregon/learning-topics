@@ -22,7 +22,13 @@ public class Program
             .Bind(builder.Configuration.GetSection("Logging"))
             .ValidateOnStart();
 
+        builder.Services
+            .AddOptions<HelpDesk>()
+            .Bind(builder.Configuration.GetSection("HelpDesk"))
+            .ValidateOnStart();
+
         builder.Services.AddSingleton<IValidateOptions<LoggingSettings>, LoggingSettingsValidation>();
+        builder.Services.AddSingleton<IValidateOptions<HelpDesk>, HelpdeskValidation>();
 
         var app = builder.Build();
 

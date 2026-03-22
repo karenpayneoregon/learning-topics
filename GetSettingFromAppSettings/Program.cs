@@ -12,23 +12,7 @@ public class Program
         
         builder.Services.AddRazorPages();
 
-        if (!builder.Configuration.GetSection("Logging").Exists())
-        {
-            throw new InvalidOperationException("Configuration section 'Logging' is missing.");
-        }
-
-        builder.Services
-            .AddOptions<LoggingSettings>()
-            .Bind(builder.Configuration.GetSection("Logging"))
-            .ValidateOnStart();
-
-        builder.Services
-            .AddOptions<HelpDesk>()
-            .Bind(builder.Configuration.GetSection("HelpDesk"))
-            .ValidateOnStart();
-
-        builder.Services.AddSingleton<IValidateOptions<LoggingSettings>, LoggingSettingsValidation>();
-        builder.Services.AddSingleton<IValidateOptions<HelpDesk>, HelpdeskValidation>();
+        ConfigureServicesWithValidation(builder);
 
         var app = builder.Build();
 
@@ -51,5 +35,26 @@ public class Program
            .WithStaticAssets();
 
         app.Run();
+    }
+
+    private static void ConfigureServicesWithValidation(WebApplicationBuilder builder)
+    {
+        if (!builder.Configuration.GetSection("Logging").Exists())
+        {
+            throw new InvalidOperationException("Configuration section 'Logging' is missing.");
+        }
+
+        builder.Services
+            .AddOptions<LoggingSettings>()
+            .Bind(builder.Configuration.GetSection("Logging"))
+            .ValidateOnStart();
+
+        builder.Services
+            .AddOptions<HelpDesk>()
+            .Bind(builder.Configuration.GetSection("HelpDesk"))
+            .ValidateOnStart();
+
+        builder.Services.AddSingleton<IValidateOptions<LoggingSettings>, LoggingSettingsValidation>();
+        builder.Services.AddSingleton<IValidateOptions<HelpDesk>, HelpdeskValidation>();
     }
 }

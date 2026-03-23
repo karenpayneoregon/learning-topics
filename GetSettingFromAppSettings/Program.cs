@@ -37,6 +37,20 @@ public class Program
         app.Run();
     }
 
+    /// <summary>
+    /// Configures services with validation for the application.
+    /// </summary>
+    /// <param name="builder">The <see cref="WebApplicationBuilder"/> used to configure the application's services.</param>
+    /// <remarks>
+    /// This method performs the following actions:
+    /// <list type="bullet">
+    /// <item>Ensures the "Logging" configuration section exists; otherwise, throws an <see cref="InvalidOperationException"/>.</item>
+    /// <item>Binds and validates the "Logging" configuration section to the <see cref="LoggingSettings"/> class.</item>
+    /// <item>Binds and validates the "HelpDesk" configuration section to the <see cref="HelpDesk"/> class.</item>
+    /// <item>Registers validation logic for <see cref="LoggingSettings"/> and <see cref="HelpDesk"/> using <see cref="LoggingSettingsValidation"/> and <see cref="HelpdeskValidation"/> respectively.</item>
+    /// </list>
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">Thrown if the "Logging" configuration section is missing.</exception>
     private static void ConfigureServicesWithValidation(WebApplicationBuilder builder)
     {
         if (!builder.Configuration.GetSection("Logging").Exists())

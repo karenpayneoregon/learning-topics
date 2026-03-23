@@ -6,21 +6,21 @@ namespace GetSettingFromAppSettings.Classes;
 public sealed class HelpdeskValidation(IConfiguration configuration) : IValidateOptions<HelpDesk>
 {
     /// <summary>
-    /// Validates the <see cref="LoggingSettings"/> configuration section.
+    /// Validates the <see cref="HelpDesk"/> configuration section.
     /// </summary>
     /// <param name="name">
     /// The name of the options instance being validated. This parameter is optional and may be <c>null</c>.
     /// </param>
     /// <param name="options">
-    /// The <see cref="LoggingSettings"/> instance to validate.
+    /// The <see cref="HelpDesk"/> instance to validate.
     /// </param>
     /// <returns>
     /// A <see cref="ValidateOptionsResult"/> indicating the success or failure of the validation.
     /// </returns>
     /// <remarks>
-    /// This method checks for the existence of the required configuration sections and values
-    /// within the "Logging" section of the application's configuration. If any required sections
-    /// or values are missing or invalid, the method returns a failure result with a list of errors.
+    /// This method ensures that the "HelpDesk" configuration section and its required values, such as
+    /// "Phone" and "Email", are present and valid. If any required sections or values are missing or invalid,
+    /// the method returns a failure result with a list of errors.
     /// </remarks>
     public ValidateOptionsResult Validate(string? name, HelpDesk options)
     {

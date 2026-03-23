@@ -1,4 +1,7 @@
 # About
+
+ASP.NET Core startup [validation part 4](https://dev.to/karenpayneoregon/aspnet-core-startup-validation-part-4-597d)
+
 This project demonstrates how to retrieve settings from the `appsettings.json` file in an ASP.NET Core application. It focuses on `logging settings` and how to access them in Razor Pages.
 
 Also shows [ValidateOnStart()](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsbuilderextensions.validateonstart?view=net-10.0-pp)

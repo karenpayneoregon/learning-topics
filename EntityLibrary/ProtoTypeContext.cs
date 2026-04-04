@@ -2,7 +2,6 @@
 using ConsoleConfigurationLibrary.Classes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using static ConfigurationLibrary.Classes.ConfigurationHelper;
 
 namespace EntityLibrary;
 /// <summary>

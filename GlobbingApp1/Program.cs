@@ -20,7 +20,7 @@ internal partial class Program
                 ParentFolder = folder
             };
 
-            var files = await Globbing.GetAsync(matcherParameters).ConfigureAwait(false);
+            Func<List<string>> files = await Globbing.GetAsync(matcherParameters);
 
             foreach (var file in files())
             {

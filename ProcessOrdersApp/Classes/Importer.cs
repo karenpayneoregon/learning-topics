@@ -74,21 +74,21 @@ public class Importer
             if (!int.TryParse(columns[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out int orderId))
             {
                 badLineNumbers.Add(Index);
-                Log.Information("Invalid id {Index}: {Line}", Index, line);
+                Log.Information("Invalid id at index {Index}: '{I}'", Index, columns[0]);
                 continue;
             }
 
             if (!DateOnly.TryParse(columns[1], CultureInfo.InvariantCulture, out var orderDate))
             {
                 badLineNumbers.Add(Index);
-                Log.Information("Invalid order date at index {Index}: {Line}", Index, line);
+                Log.Information("Invalid order date at index {Index}: '{D}'", Index, columns[1]);
                 continue;
             }
 
             if (!DateOnly.TryParse(columns[2], CultureInfo.InvariantCulture, out var requiredDate))
             {
                 badLineNumbers.Add(Index);
-                Log.Information("Invalid required date at index {Index}: {Line}", Index, line);
+                Log.Information("Invalid required date at index {Index}: '{D}'", Index, columns[2]);
                 continue;
             }
 
@@ -96,7 +96,7 @@ public class Importer
             if (!DateOnly.TryParse(columns[3], CultureInfo.InvariantCulture, out var shippedDate))
             {
                 badLineNumbers.Add(Index);
-                Log.Information("Invalid shipped date at index {Index}: {Line}", Index, line);
+                Log.Information("Invalid shipped date at index {Index}: '{D}'", Index, columns[3]);
                 continue;
             }
 

@@ -21,9 +21,7 @@ namespace ProcessOrdersApp.Components
         /// <summary>
         /// Initializes a new instance of the <see cref="SortableBindingList{T}"/> class.
         /// </summary>
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         public SortableBindingList()
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
         }
 
@@ -31,9 +29,7 @@ namespace ProcessOrdersApp.Components
         /// Initializes a new instance of the <see cref="SortableBindingList{T}"/> class.
         /// </summary>
         /// <param name="list">An <see cref="T:System.Collections.Generic.IList`1" /> of items to be contained in the <see cref="T:System.ComponentModel.BindingList`1" />.</param>
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         public SortableBindingList(IList<T> list)
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
             : base(list)
         {
         }
@@ -70,7 +66,7 @@ namespace ProcessOrdersApp.Components
         protected override void RemoveSortCore()
         {
             _sortDirection = ListSortDirection.Ascending;
-            _sortProperty = null;
+            _sortProperty = null!;
             _isSorted = false;
         }
 

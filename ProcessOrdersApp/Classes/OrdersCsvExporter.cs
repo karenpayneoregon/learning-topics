@@ -5,6 +5,7 @@ using kp.Dapper.Handlers;
 using Microsoft.Data.SqlClient;
 using ProcessOrdersApp.Classes.Configuration;
 using ProcessOrdersApp.Models;
+using Serilog;
 
 namespace ProcessOrdersApp.Classes;
 
@@ -82,5 +83,93 @@ public static class OrdersCsvExporter
         }
 
         return value;
+    }
+
+    /// <summary>
+    /// Removes rows from a CSV file based on a list of order IDs.
+    /// </summary>
+    /// <param name="filePath">
+    /// The full file path of the CSV file to process.
+    /// </param>
+    /// <param name="idsToRemove">
+    /// A list of order IDs to identify rows to be removed from the file.
+    /// </param>
+    /// <param name="hasHeader">
+    /// A boolean indicating whether the CSV file contains a header row. Defaults to <c>false</c>.
+    /// </param>
+    /// <returns>
+    /// <c>true</c> if the operation succeeds; otherwise, <c>false</c>.
+    /// </returns>
+    /// <exception cref="FileNotFoundException">
+    /// Thrown if the specified file does not exist.
+    /// </exception>
+    /// <remarks>
+    /// This method processes the specified CSV file, removing rows where the first column matches
+    /// any of the IDs in the <paramref name="idsToRemove"/> list. If <paramref name="hasHeader"/> is <c>true</c>,
+    /// the header row is preserved.
+    /// </remarks>
+    public static bool RemoveRowsByOrderId(string filePath, List<int> idsToRemove, bool hasHeader = false)
+    {
+        if (!File.Exists(filePath))
+            throw new FileNotFoundException("File not found.", filePath);
+
+        var idSet = new HashSet<int>(idsToRemove);
+
+        var tempFile = Path.GetTempFileName();
+
+        try
+        {
+            using (var reader = new StreamReader(filePath))
+            using (var writer = new StreamWriter(tempFile))
+            {
+                bool isFirstLine = true;
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
+
+                    // Preserve header if needed
+                    if (hasHeader && isFirstLine)
+                    {
+                        writer.WriteLine(line);
+                        isFirstLine = false;
+                        continue;
+                    }
+
+                    isFirstLine = false;
+
+                    var parts = line.Split(',');
+
+                    if (parts.Length == 0)
+                        continue;
+
+                    if (int.TryParse(parts[0], out int id))
+                    {
+                        if (idSet.Contains(id))
+                            continue; // skip row
+                    }
+
+                    writer.WriteLine(line);
+                }
+            }
+
+            // Replace original file safely
+            File.Copy(tempFile, filePath, true);
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error processing file: {FilePath}", filePath);
+            return false;
+        }
+        finally
+        {
+            if (File.Exists(tempFile))
+                File.Delete(tempFile);
+        }
+
+        return true;
     }
 }

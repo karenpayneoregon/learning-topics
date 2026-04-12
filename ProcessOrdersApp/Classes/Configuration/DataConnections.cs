@@ -13,5 +13,12 @@ public sealed class DataConnections
     private static readonly Lazy<DataConnections> Lazy = new(() => new DataConnections());
     public static DataConnections Instance => Lazy.Value;
 
+    /// <summary>
+    /// Gets or sets the primary database connection string.
+    /// </summary>
+    /// <remarks>
+    /// This property provides access to the main database connection string used throughout the application.
+    /// It is intended to be set during application initialization and accessed in a thread-safe manner.
+    /// </remarks>
     public string MainConnection { get; set; }
 }

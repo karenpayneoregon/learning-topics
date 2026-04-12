@@ -5,12 +5,13 @@ using ProcessOrdersApp.Classes.Configuration;
 using ProcessOrdersApp.Classes.Extensions;
 using ProcessOrdersApp.Components;
 using ProcessOrdersApp.Models;
+using Serilog;
 
 namespace ProcessOrdersApp;
 
 public partial class MainForm : Form
 {
-    private SortableBindingList<OrdersResults> _ordersBindingList;
+    private SortableBindingList<OrdersResults> _ordersBindingList = null!;
     private BindingSource _ordersBindingSource = new();
 
     public MainForm()
@@ -27,7 +28,6 @@ public partial class MainForm : Form
         BindingNavigator1.AboutItemButton.Click += AboutItemButton_Click;
         BindingNavigator1.CurrentItemButton.Click += CurrentItemButton_Click;
 
-        //OrdersCsvExporter.ExportOrdersToCsv(FileSettings.Instance.FileName);
 
         if (!ImportOrders())
         {
@@ -132,15 +132,21 @@ public partial class MainForm : Form
     {
         if (!FileAccessUtil.CanOpenTextFile(FileSettings.Instance.FileName))
         {
+            Log.Warning("Cannot open file: {FileName}", FileSettings.Instance.FileName);
             return false;
         }
 
         var (validOrders, badLineNumbers) = Importer.Execute(FileSettings.Instance.FileName);
 
+        if (validOrders.Count == 0)
+        {
+            DisableButtons();
+        }
         var badLines = badLineNumbers.Count;
 
         if (badLines > 0)
         {
+            // logged in the Importer.Execute method
             Dialogs.Information(this, $"Found {badLines} bad lines in the CSV file.");
         }
 
@@ -150,13 +156,20 @@ public partial class MainForm : Form
         BindingNavigator1.BindingSource = _ordersBindingSource;
         dataGridView1.DataSource = _ordersBindingSource;
 
-        DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
         dataGridView1.FixHeaders();
         dataGridView1.ExpandColumns();
 
-
         return true;
 
+    }
+
+    private void DisableButtons()
+    {
+        foreach (var button in this.ButtonList())
+        {
+            button.Enabled = false;
+            BindingNavigator1.CurrentItemButton.Enabled = false;
+        }
     }
 
     /// <summary>
@@ -168,25 +181,34 @@ public partial class MainForm : Form
         List<Order> selected = _ordersBindingList
             .Where(o => o.Process)
             .Select(o => new Order(
-                o.OrderID, 
-                o.OrderDate, 
-                o.RequiredDate, 
+                o.OrderID,
+                o.OrderDate,
+                o.RequiredDate,
                 o.ShippedDate,
-                o.ShipAddress, 
-                o.ShipCity, 
-                o.ShipPostalCode, 
-                o.ShipCountry, 
+                o.ShipAddress,
+                o.ShipCity,
+                o.ShipPostalCode,
+                o.ShipCountry,
                 o.CompanyName))
             .ToList();
 
-        /*
-         * 
-         */
-        foreach (var (id, ordered, requiredBy, shipped, _, _, _, _, company) in selected)
+
+        if (DataOperations.ProcessOrders(selected))
         {
-            Debug.WriteLine($"{id} {ordered} {requiredBy} {shipped} {company}");
+            if (OrdersCsvExporter.RemoveRowsByOrderId(FileSettings.Instance.FileName, selected.Select(o => o.OrderID).ToList()))
+            {
+                foreach (var existingOrder in selected.Select(order => _ordersBindingList.FirstOrDefault(o => o.OrderID == order.OrderID)))
+                {
+                    _ordersBindingList.Remove(existingOrder);
+                }
+
+                if (_ordersBindingList.Count == 0)
+                {
+                    DisableButtons();
+                }
+            }
         }
-  
+
     }
 
     private void ExitAppButton_Click(object sender, EventArgs e)

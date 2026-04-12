@@ -10,11 +10,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <NoWarn>1701;1702;CS8604</NoWarn>
+	  <NoWarn>1701;1702;CS8604;CS8618</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <NoWarn>1701;1702;CS8604</NoWarn>
+	  <NoWarn>1701;1702;CS8604;CS8618</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -54,10 +54,7 @@
 	  <None Update="appsettings.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
-	  <None Update="CSV\dummy.csv">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="data.csv">
+	  <None Update="output.csv">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	  <None Update="Stash\data.csv">
@@ -67,7 +64,6 @@
 
 
 	<ItemGroup>
-	  <Folder Include="CSV\" />
 	  <Folder Include="Statements\" />
 	</ItemGroup>
 

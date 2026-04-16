@@ -48,8 +48,6 @@ internal partial class Program
         
     }
 
-    // C#
-
     /// <summary>
     /// Creates and returns a dictionary containing data.
     /// </summary>

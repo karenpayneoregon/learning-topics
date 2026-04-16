@@ -14,8 +14,9 @@ internal partial class Program
     [ModuleInitializer]
     public static void Init()
     {
-        var assembly = Assembly.GetEntryAssembly();
-        var product = assembly?.GetCustomAttribute<AssemblyProductAttribute>()?.Product;
+        var product = Assembly.GetEntryAssembly()?
+            .GetCustomAttribute<AssemblyProductAttribute>()?
+            .Product;
 
         Console.Title = product!;
 

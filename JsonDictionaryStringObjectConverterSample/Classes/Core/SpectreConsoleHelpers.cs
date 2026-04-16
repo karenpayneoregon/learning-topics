@@ -219,6 +219,7 @@ public static class SpectreConsoleHelpers
                 .NullColor(Color.Green);
 
         AnsiConsole.Write(jsonText);
+        AnsiConsole.WriteLine("");
 
     }
 

@@ -10,6 +10,7 @@ internal partial class Program
     static void Main(string[] args)
     {
         SpectreConsoleHelpers.PinkPill(Justify.Left, "Converter");
+        Console.WriteLine();
 
         var options = new JsonSerializerOptions
         {
@@ -21,7 +22,7 @@ internal partial class Program
 
         string json = JsonSerializer.Serialize(data, options);
 
-        Console.WriteLine(json);
+        SpectreConsoleHelpers.WriteJson(json);
         Console.WriteLine();
         
         IDictionary<string, object>? deserialized = 
@@ -32,11 +33,23 @@ internal partial class Program
         foreach (var kvp in clean)
         {
             AnsiConsole.MarkupLine($"[cyan]{kvp.Key,-6}[/]: {FormatValue(kvp.Value).ConsoleEscape()}");
+            
+            if (kvp.Key != "scores") continue;
+            
+            // The "scores" key is expected to contain a list of integers
+            if (kvp.Value is List<object> scoresList && scoresList.All(item => item is JsonElement { ValueKind: JsonValueKind.Number }))
+            {
+                List<int> scores = scoresList.Select(item => ((JsonElement)item).GetInt32()).ToList();
+                AnsiConsole.MarkupLine($"    [hotpink2](List<int>):[/] [cyan]{string.Join(", ", scores)}[/]");
+            }
         }
 
 
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
+        
     }
+
+    // C#
 
     /// <summary>
     /// Creates and returns a dictionary containing data.
@@ -44,7 +57,8 @@ internal partial class Program
     /// <returns>
     /// An <see cref="IDictionary{TKey, TValue}"/> where the keys are strings and the values are objects.
     /// The dictionary includes sample data such as a name, age, active status, and a list of scores.
-    /// </returns>
+    /// </returns>System.Text.Json.JsonException: ''S' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.'
+
     private static IDictionary<string, object> Dictionary() =>
         new Dictionary<string, object>
         {

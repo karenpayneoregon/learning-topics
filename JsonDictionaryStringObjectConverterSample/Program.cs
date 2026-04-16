@@ -44,7 +44,6 @@ internal partial class Program
             }
         }
 
-
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
         
     }

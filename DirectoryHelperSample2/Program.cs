@@ -4,6 +4,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine(DirectoryHelper.SolutionFolder());
         Console.WriteLine(DirectoryHelper.ProjectFolder());
         Console.WriteLine(DirectoryHelper.ProjectName());
  

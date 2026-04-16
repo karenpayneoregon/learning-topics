@@ -3,7 +3,6 @@ namespace DirectoryHelperSample2;
 
 public static class DirectoryHelper
 {
-
     public static string? UpperFolder(this string? folderName, int level)
     {
         var folderList = new List<string>();
@@ -28,7 +27,7 @@ public static class DirectoryHelper
             : folderName;
     }
 
-    public static string? ProjectFolder()
+    public static string? ProjectFolder() 
         => AppDomain.CurrentDomain.BaseDirectory.UpperFolder(4);
 
     public static string? ProjectName()
@@ -38,4 +37,11 @@ public static class DirectoryHelper
             null :
             Directory.GetFiles(projectFolder, "*.csproj").FirstOrDefault();
     }
+
+    /// <summary>
+    /// From project folder, get the solution folder path
+    /// </summary>
+    /// <returns>folder name</returns>
+    public static string SolutionFolder() 
+        => AppDomain.CurrentDomain.BaseDirectory.UpperFolder(5)!;
 }

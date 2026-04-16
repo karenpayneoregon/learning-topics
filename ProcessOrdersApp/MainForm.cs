@@ -11,7 +11,7 @@ namespace ProcessOrdersApp;
 public partial class MainForm : Form
 {
     private SortableBindingList<OrdersResults> _ordersBindingList = null!;
-    private BindingSource _ordersBindingSource = new();
+    private readonly BindingSource _ordersBindingSource = new();
 
     public MainForm()
     {
@@ -196,11 +196,6 @@ public partial class MainForm : Form
 
     }
 
-    private void AboutItemButton_Click(object? sender, EventArgs e)
-    {
-        Dialogs.Information(this, "Shows creating a CSV file and reading the orders from the file.");
-    }
-
     /// <summary>
     /// Disables all buttons within the current form, including BindingNavigator1.CurrentItemButton.
     /// </summary>
@@ -230,6 +225,11 @@ public partial class MainForm : Form
     {
         var current = _ordersBindingSource.GetCurrentOrder();
         Dialogs.Information(this, $"{current!.OrderID} {current.CompanyName} {current.Process}");
+    }
+
+    private void AboutItemButton_Click(object? sender, EventArgs e)
+    {
+        Dialogs.Information(this, "Shows creating a CSV file and reading the orders from the file.");
     }
 
     private void ExitAppButton_Click(object sender, EventArgs e)

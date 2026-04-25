@@ -1,4 +1,4 @@
-# CommonHelpersLib<!-- TOC-->
+# CommonHelpersLibrary<!-- TOC-->
   - [Contents](#contents)
   - [Overview](#overview)
   - [Packages](#packages)

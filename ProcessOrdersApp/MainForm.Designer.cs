@@ -33,9 +33,10 @@ partial class MainForm
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         BindingNavigator1 = new CoreBindingNavigator();
         panel1 = new Panel();
+        ProcessButtom = new Button();
         ExitAppButton = new Button();
         dataGridView1 = new DataGridView();
-        ProcessButtom = new Button();
+        CsvReaderButton = new Button();
         (BindingNavigator1).BeginInit();
         panel1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -52,6 +53,7 @@ partial class MainForm
         // 
         // panel1
         // 
+        panel1.Controls.Add(CsvReaderButton);
         panel1.Controls.Add(ProcessButtom);
         panel1.Controls.Add(ExitAppButton);
         panel1.Dock = DockStyle.Bottom;
@@ -59,6 +61,16 @@ partial class MainForm
         panel1.Name = "panel1";
         panel1.Size = new Size(1717, 54);
         panel1.TabIndex = 1;
+        // 
+        // ProcessButtom
+        // 
+        ProcessButtom.Location = new Point(12, 13);
+        ProcessButtom.Name = "ProcessButtom";
+        ProcessButtom.Size = new Size(94, 29);
+        ProcessButtom.TabIndex = 3;
+        ProcessButtom.Text = "Process";
+        ProcessButtom.UseVisualStyleBackColor = true;
+        ProcessButtom.Click += ProcessButton_Click;
         // 
         // ExitAppButton
         // 
@@ -81,15 +93,15 @@ partial class MainForm
         dataGridView1.Size = new Size(1717, 369);
         dataGridView1.TabIndex = 2;
         // 
-        // ProcessButtom
+        // CsvReaderButton
         // 
-        ProcessButtom.Location = new Point(12, 13);
-        ProcessButtom.Name = "ProcessButtom";
-        ProcessButtom.Size = new Size(94, 29);
-        ProcessButtom.TabIndex = 3;
-        ProcessButtom.Text = "Process";
-        ProcessButtom.UseVisualStyleBackColor = true;
-        ProcessButtom.Click += ProcessButton_Click;
+        CsvReaderButton.Location = new Point(125, 13);
+        CsvReaderButton.Name = "CsvReaderButton";
+        CsvReaderButton.Size = new Size(94, 29);
+        CsvReaderButton.TabIndex = 3;
+        CsvReaderButton.Text = "Csv Reader";
+        CsvReaderButton.UseVisualStyleBackColor = true;
+        CsvReaderButton.Click += CsvReaderButton_Click;
         // 
         // MainForm
         // 
@@ -117,4 +129,5 @@ partial class MainForm
     private DataGridView dataGridView1;
     private Button ExitAppButton;
     private Button ProcessButtom;
+    private Button CsvReaderButton;
 }

@@ -14,11 +14,13 @@ internal class DataOperations
 
     public static bool ProcessOrders(List<Order> selected)
     {
+        
         foreach (var (id, ordered, requiredBy, shipped, _, _, _, _, company) in selected)
         {
             Debug.WriteLine($"{id} {ordered} {requiredBy} {shipped} {company}");
         }
         
         return true;
+        
     }
 }

@@ -87,23 +87,23 @@ internal partial class Program
     /// </remarks>
     private static void GetWinesTree()
     {
-        var redWines = new[]
-        {
+        string[] redWines =
+        [
             "Cabernet Sauvignon", "Merlot", "Pinot Noir", "Zinfandel", "Syrah",
             "Malbec", "Tempranillo", "Barbera", "Sangiovese", "Grenache"
-        };
+        ];
 
-        var whiteWines = new[]
-        {
+        string[] whiteWines =
+        [
             "Chardonnay", "Sauvignon Blanc", "Riesling", "Pinot Grigio", "Gewürztraminer",
             "Viognier", "Chenin Blanc", "Albariño", "Moscato", "Grüner Veltliner"
-        };
+        ];
 
-        var roseWines = new[]
-        {
+        string[] roseWines =
+        [
             "Provence Rosé", "White Zinfandel", "Tavel Rosé", "Rosé of Pinot Noir", "Rosé of Syrah",
             "Champagne", "Prosecco", "Cava", "Lambrusco", "Brut Rosé"
-        };
+        ];
 
         int wineIdCounter = 1;
         var wines = new List<Wine>();
@@ -117,7 +117,7 @@ internal partial class Program
         AddWines(whiteWines, WineType.White);
         AddWines(roseWines, WineType.Rose);
 
-        var tree = new Tree("[deeppink3]Wine[/]")
+        var tree = new Tree("[deeppink3]Wines[/]")
             .Style(Style.Parse("dim"));
         
         var types = tree.AddNode("[yellow]Types[/]");

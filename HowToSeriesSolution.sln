@@ -306,6 +306,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessOrdersApp", "Process
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonDictionaryStringObjectConverterSample", "JsonDictionaryStringObjectConverterSample\JsonDictionaryStringObjectConverterSample.csproj", "{E60CF538-D26F-4DA2-84E8-32B002718917}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithDateOnly", "WorkingWithDateOnly\WorkingWithDateOnly.csproj", "{D7BC1625-E91F-9880-7C0B-C8D4B00D084E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DateOnly", "DateOnly", "{FF990F0D-9AC3-0224-5067-A24FBB988D7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -668,6 +672,10 @@ Global
 		{E60CF538-D26F-4DA2-84E8-32B002718917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60CF538-D26F-4DA2-84E8-32B002718917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60CF538-D26F-4DA2-84E8-32B002718917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BC1625-E91F-9880-7C0B-C8D4B00D084E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BC1625-E91F-9880-7C0B-C8D4B00D084E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BC1625-E91F-9880-7C0B-C8D4B00D084E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BC1625-E91F-9880-7C0B-C8D4B00D084E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -775,6 +783,7 @@ Global
 		{92760E1D-C217-489A-8E78-02BA8D70356D} = {2075631B-31DD-92B6-B0A7-6AFE1F99C0B4}
 		{790A062F-E131-AEB6-8FEC-D70A0946D2FB} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 		{E60CF538-D26F-4DA2-84E8-32B002718917} = {9792E6E2-564B-9699-7DA2-9F7194AE82F6}
+		{D7BC1625-E91F-9880-7C0B-C8D4B00D084E} = {FF990F0D-9AC3-0224-5067-A24FBB988D7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

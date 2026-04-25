@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace ProcessOrdersApp.Classes.Extensions;
 
@@ -89,5 +90,20 @@ public static class DataGridViewExtensions
         }
 
         return result[..resultIndex].ToString();
+    }
+
+    /// <summary>
+    /// Sets the background colors for the rows in the specified <see cref="DataGridView"/>.
+    /// </summary>
+    /// <param name="source">The <see cref="DataGridView"/> whose row background colors will be set.</param>
+    /// <remarks>
+    /// This method applies a white background color to even rows and a light gray background color to odd rows.
+    /// </remarks>
+    public static void SetBackgroundRowColors(this DataGridView source)
+    {
+        // Set the standard row color (even rows)
+        source.RowsDefaultCellStyle.BackColor = Color.White;
+        // Set the alternating row color (odd rows)
+        source.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
     }
 }

@@ -2,6 +2,7 @@ using System.ComponentModel;
 using ProcessOrdersApp.Classes;
 using ProcessOrdersApp.Classes.Configuration;
 using ProcessOrdersApp.Classes.Extensions;
+using ProcessOrdersApp.Classes.UI;
 using ProcessOrdersApp.Components;
 using ProcessOrdersApp.Models;
 using Serilog;
@@ -23,16 +24,10 @@ public partial class MainForm : Form
     {
 
         dataGridView1.AllowUserToAddRows = false;
-
-        // Set the standard row color (even rows)
-        dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-        // Set the alternating row color (odd rows)
-        dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
-
+        dataGridView1.SetBackgroundRowColors();
 
         BindingNavigator1.AboutItemButton.Click += AboutItemButton_Click;
         BindingNavigator1.CurrentItemButton.Click += CurrentItemButton_Click;
-
 
         if (!ImportOrders())
         {
@@ -44,7 +39,7 @@ public partial class MainForm : Form
             dataGridView1.CurrentCellDirtyStateChanged += DataGridView_CurrentCellDirtyStateChanged;
             dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
         }
-        
+
     }
 
     /// <summary>
@@ -61,7 +56,7 @@ public partial class MainForm : Form
     /// <seealso cref="Importer.Execute"/>
     private bool ImportOrders()
     {
-        
+
         if (!FileAccessUtil.CanOpenTextFile(FileSettings.Instance.FileName))
         {
             Log.Warning("Cannot open file: {FileName}", FileSettings.Instance.FileName);
@@ -74,7 +69,7 @@ public partial class MainForm : Form
         {
             DisableButtons();
         }
-        
+
         var badLines = badLineNumbers.Count;
 
         if (badLines > 0)
@@ -96,6 +91,15 @@ public partial class MainForm : Form
 
     }
 
+    /// <summary>
+    /// Handles the <see cref="DataGridView.CellValueChanged"/> event for the <see cref="dataGridView1"/> control.
+    /// </summary>
+    /// <remarks>
+    /// This method is triggered when a cell's value in the <see cref="dataGridView1"/> control changes. 
+    /// It specifically checks if the changed cell belongs to the <c>Process</c> column. If so, it updates the 
+    /// <see cref="OrdersResults.Process"/> property of the currently bound data item.
+    /// </remarks>
+    /// <seealso cref="OrdersResults.Process"/>
     private void DataGridView1_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
     {
         if (e is { RowIndex: >= 0, ColumnIndex: >= 0 })
@@ -104,7 +108,7 @@ public partial class MainForm : Form
             if (dgv.Columns[e.ColumnIndex].Name != nameof(OrdersResults.Process)) return;
             DataGridViewCell changedCell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
-        if (changedCell.Value is bool processValue && _ordersBindingSource.Current is OrdersResults current)
+            if (changedCell.Value is bool processValue && _ordersBindingSource.Current is OrdersResults current)
             {
                 current.Process = processValue;
             }
@@ -140,6 +144,8 @@ public partial class MainForm : Form
         if (dataGridView1.CurrentCell!.ColumnIndex == 0)
         {
             dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            // After committing the edit, we can access the current item to ensure
+            // that the changes are reflected in the data source.
             var current = _ordersBindingSource.GetCurrentOrder();
         }
     }
@@ -182,10 +188,11 @@ public partial class MainForm : Form
         {
             if (OrdersCsvExporter.RemoveRowsByOrderId(FileSettings.Instance.FileName, selected.Select(o => o.OrderID).ToList()))
             {
-                
-                foreach (var existingOrder in selected
-                             .Select(order => _ordersBindingList.FirstOrDefault(o => o.OrderID == order.OrderID)))
+
+                foreach (var existingOrder in selected.Select(order => _ordersBindingList.FirstOrDefault(o => o.OrderID == order.OrderID)))
+                {
                     _ordersBindingList.Remove(existingOrder);
+                }
 
                 if (_ordersBindingList.Count == 0)
                 {
@@ -235,5 +242,11 @@ public partial class MainForm : Form
     private void ExitAppButton_Click(object sender, EventArgs e)
     {
         Close();
+    }
+
+    private void CsvReaderButton_Click(object sender, EventArgs e)
+    {
+        Log.Information("Starting CSV file processing.");
+        var records = ImporterCsvHelper.Execute1();
     }
 }

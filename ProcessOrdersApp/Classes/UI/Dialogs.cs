@@ -1,4 +1,4 @@
-﻿namespace ProcessOrdersApp.Classes;
+﻿namespace ProcessOrdersApp.Classes.UI;
 internal class Dialogs
 {
     /// <summary>

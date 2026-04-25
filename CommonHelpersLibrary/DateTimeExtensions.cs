@@ -1,5 +1,5 @@
 ﻿namespace CommonHelpersLibrary;
-public static class DateTimeExtensions
+public static partial class DateTimeExtensions
 {
     public static (DateOnly saturday, DateOnly sunday) GetWeekendDates(this DateTime date, DayOfWeek startOfWeek = DayOfWeek.Sunday)
     {

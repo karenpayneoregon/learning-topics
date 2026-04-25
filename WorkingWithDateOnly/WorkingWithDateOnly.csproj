@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Product>Basic</Product>
+		<Product>Working with DateOnly</Product>
 	</PropertyGroup>
 
 	<ItemGroup>

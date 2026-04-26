@@ -1,9 +1,12 @@
-﻿namespace ProjectPropertiesLibrary;
+﻿using ProjectPropertiesLibrary.Models;
+
+namespace ProjectPropertiesLibrary;
 using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Versioning;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -111,7 +114,24 @@ public class Info
     {
         var asm = Assembly.GetCallingAssembly();
         var attr = asm.GetCustomAttribute<AssemblyCompanyAttribute>();
+        
         return attr?.Company ?? "No company information found.";
+    }
+
+    /// <summary>
+    /// Retrieves the description information associated with the calling assembly.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string"/> containing the description information, or "No description found" 
+    /// if the description is not specified in the assembly metadata.
+    /// </returns>
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public static string GetDescription()
+    {
+        var asm = Assembly.GetCallingAssembly();
+        var attr = asm.GetCustomAttribute<AssemblyDescriptionAttribute>();
+
+        return attr?.Description ?? "No description found.";
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -169,4 +189,6 @@ public class Info
         caller = BuildCallerDetails(memberName, filePath, lineNumber);
         return GetVersion();
     }
+
+
 }

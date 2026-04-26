@@ -1,4 +1,4 @@
-﻿namespace ProjectPropertiesApp.Classes;
+﻿namespace ProjectPropertiesApp.Classes.Core;
 /// <summary>
 /// Represents the type of pill-shaped UI element, determining its visual style and color scheme.
 /// </summary>

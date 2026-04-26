@@ -1,7 +1,7 @@
 ﻿using Spectre.Console;
 using Spectre.Console.Rendering;
 
-namespace ProjectPropertiesApp.Classes;
+namespace ProjectPropertiesApp.Classes.Core;
 /// <summary>
 /// Represents a styled pill-shaped UI element that can be rendered in the console.
 /// </summary>

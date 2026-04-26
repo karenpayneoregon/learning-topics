@@ -73,36 +73,6 @@ public class Info
     }
 
     /// <summary>
-    /// Retrieves the copyright information associated with the calling assembly.
-    /// </summary>
-    /// <param name="caller">
-    /// When this method returns, contains details about the caller, including the assembly name, 
-    /// version, target framework, type name, method name, file path, and line number.
-    /// </param>
-    /// <param name="memberName">
-    /// The name of the member that invoked this method. This parameter is optional and is automatically 
-    /// populated by the compiler if not explicitly provided.
-    /// </param>
-    /// <param name="filePath">
-    /// The file path of the source code that invoked this method. This parameter is optional and is 
-    /// automatically populated by the compiler if not explicitly provided.
-    /// </param>
-    /// <param name="lineNumber">
-    /// The line number in the source code file that invoked this method. This parameter is optional 
-    /// and is automatically populated by the compiler if not explicitly provided.
-    /// </param>
-    /// <returns>
-    /// A <see cref="string"/> containing the copyright information, or "No copyright information found" 
-    /// if the copyright is not specified in the assembly metadata.
-    /// </returns>
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static string GetCopyright(out CallerDetails caller, [CallerMemberName] string? memberName = null, [CallerFilePath] string? filePath = null, [CallerLineNumber] int lineNumber = 0)
-    {
-        caller = BuildCallerDetails(memberName, filePath, lineNumber);
-        return GetCopyright();
-    }
-
-    /// <summary>
     /// Retrieves the company name associated with the calling assembly.
     /// </summary>
     /// <returns>

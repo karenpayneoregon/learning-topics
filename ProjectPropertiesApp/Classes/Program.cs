@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using ProjectPropertiesLibrary;
 using Spectre.Console;
 using static ConsoleConfigurationLibrary.Classes.ApplicationConfiguration;
+using ProjectPropertiesApp.Classes.Core;
 
 // ReSharper disable once CheckNamespace
 namespace ProjectPropertiesApp;
@@ -48,11 +49,11 @@ internal partial class Program
         table.AddColumn("[yellow bold]Value[/]");
 
         var details = GetAllInfo();
-        table.AddRow("[cyan]Company[/]", details.Company);
-        table.AddRow("[cyan]Copyright[/]", details.Copyright);
         table.AddRow("[cyan]Product[/]", details.Product);
-        table.AddRow("[cyan]Description[/]", details.Description);
         table.AddRow("[cyan]Version[/]", details.Version);
+        table.AddRow("[cyan]Copyright[/]", details.Copyright);
+        table.AddRow("[cyan]Company[/]", details.Company);
+        table.AddRow("[cyan]Description[/]", details.Description);
         AnsiConsole.Write(table);
         
 

@@ -1,4 +1,4 @@
-﻿namespace ProjectPropertiesApp.Classes;
+﻿namespace ProjectPropertiesApp.Classes.Core;
 
 /// <summary>
 /// Provides utility methods for working with file paths and project structures.

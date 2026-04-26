@@ -4,7 +4,7 @@ using Spectre.Console;
 using Spectre.Console.Json;
 using Spectre.Console.Rendering;
 
-namespace ProjectPropertiesApp.Classes;
+namespace ProjectPropertiesApp.Classes.Core;
 
 public static class SpectreConsoleHelpers
 {

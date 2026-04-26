@@ -1,6 +1,6 @@
 ﻿using ConsoleConfigurationLibrary.Classes;
 
-namespace ProjectPropertiesApp.Classes;
+namespace ProjectPropertiesApp.Classes.Core;
 /// <summary>
 /// Performs data operations.
 /// </summary>

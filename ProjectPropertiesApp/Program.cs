@@ -1,4 +1,4 @@
-﻿using ProjectPropertiesApp.Classes;
+﻿using ProjectPropertiesApp.Classes.Core;
 using ProjectPropertiesLibrary;
 using Spectre.Console;
 
@@ -7,7 +7,6 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-
 
         ShowDetails();
 

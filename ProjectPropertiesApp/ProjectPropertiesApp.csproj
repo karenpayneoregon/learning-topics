@@ -9,9 +9,9 @@
 
 	<PropertyGroup>
 		<Product>Code sample</Product>
-		<Description>Goes here</Description>
+		<Description>A sample project demonstrating assembly metadata retrieval.</Description>
 		<Company>Payne services</Company>
-		<Copyright>Copyright  2019-$([System.DateTime]::Now.Year)</Copyright>
+		<Copyright>2019-$([System.DateTime]::Now.Year)</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>

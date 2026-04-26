@@ -1,17 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectPropertiesLibrary\ProjectPropertiesLibrary.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<Product>Code sample</Product>
+		<Description>A sample project demonstrating assembly metadata retrieval.</Description>
+		<Company>Payne services</Company>
+		<Copyright>2019-$([System.DateTime]::Now.Year)</Copyright>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ProjectPropertiesLibrary\ProjectPropertiesLibrary.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Classes\" />
+	</ItemGroup>
 
 </Project>

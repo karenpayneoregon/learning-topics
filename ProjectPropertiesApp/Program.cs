@@ -11,6 +11,6 @@ internal partial class Program
 
         ShowDetails();
 
-        SpectreConsoleHelpers.ExitPrompt();
+        SpectreConsoleHelpers.ExitPrompt(Justify.Left);
     }
 }

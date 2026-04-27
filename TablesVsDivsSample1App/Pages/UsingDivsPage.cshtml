@@ -18,10 +18,10 @@
     </div>
 
     <!-- Data Rows with Zebra Style + Mobile Labels -->
-    @for (int i = 0; i < Model.Customers.Count; i++)
+    @for (int index = 0; index < Model.Customers.Count; index++)
     {
-        var item = Model.Customers[i];
-        var rowClass = (i % 2 == 0) ? "bg-light" : "";
+        var item = Model.Customers[index];
+        var rowClass = (index % 2 == 0) ? "bg-light" : "";
 
         <div class="row border-bottom py-3 align-items-center @rowClass">
             <div class="col-12 col-md-3">

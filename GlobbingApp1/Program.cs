@@ -6,7 +6,34 @@ using System.Text.Json;
 namespace GlobbingApp1;
 internal partial class Program
 {
-    static async Task Main(string[] args)
+    private static async Task Main(string[] args)
+    {
+        var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        var list = await Globbing.GetDuplicatesTask(folder);
+        Console.WriteLine(list.Count);
+        foreach (var (index, item) in list.Index())
+        {
+            try
+            {
+                if (File.Exists(item.FullName))
+                {
+                    File.Delete(item.FullName);
+                }else
+                {
+                    AnsiConsole.MarkupLine($"[yellow bold]{item.FullName}[/]");
+                }
+            }
+            catch (Exception e)
+            {
+                AnsiConsole.MarkupLine($"[red bold]Failed to delete " +
+                                       $"{index} {item.FullName}[/]");
+            }
+        }
+
+        SpectreConsoleHelpers.ExitPrompt();
+    }
+
+    private static async Task ProcessGlobbingFiles()
     {
         var options = JsonSerializer.Deserialize<GlobbingSetup>(await File.ReadAllTextAsync("GlobbingOptions.json"));
         var folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -31,8 +58,5 @@ internal partial class Program
         {
             AnsiConsole.MarkupLine($"Folder [hotpink]{folder}[/] not found");
         }
-        
-        SpectreConsoleHelpers.ExitPrompt();
-        
     }
 }

@@ -39,4 +39,48 @@ public class Globbing
             .ToList())
             .ConfigureAwait(false);
     }
+
+
+    /// <summary>
+    /// Asynchronously retrieves a list of duplicate file paths within the specified parent folder.
+    /// </summary>
+    /// <param name="parentFolder">
+    /// The path to the parent folder where the search for duplicate files will be performed.
+    /// </param>
+    /// <returns>
+    /// A task representing the asynchronous operation. The task result is a list of 
+    /// <see cref="FileMatchItem"/> objects representing the duplicate files found.
+    /// </returns>
+    /// <remarks>
+    /// This method uses the <see cref="Matcher"/> class to identify duplicate files based on 
+    /// predefined include and exclude patterns. The results are saved to a file named "Duplicates.txt".
+    /// </remarks>
+    public static async Task<List<FileMatchItem>> GetDuplicatesTask(string parentFolder )
+    {
+        List<FileMatchItem> list = [];
+        Matcher matcher = new();
+        matcher.AddIncludePatterns([
+            "**/* - Copy .*", 
+            "**/* - Copy (*.*"
+        ]);
+        matcher.AddExcludePatterns([
+            "**/My Music/**",
+            "**/My Pictures/**",
+            "**/My Videos/**"
+        ]);
+
+        await Task.Run(() =>
+        {
+            foreach (string file in matcher.GetResultsInFullPath(parentFolder))
+            {
+                list.Add(new FileMatchItem(file));
+            }
+        });
+
+        await File.WriteAllLinesAsync($"Duplicates.txt", 
+            list.Select(item => item.ToString()));
+        
+        return list;
+    }
+
 }

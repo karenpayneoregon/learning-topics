@@ -51,6 +51,7 @@ internal partial class Program
         var details = GetAllInfo();
         table.AddRow("[cyan]Product[/]", details.Product);
         table.AddRow("[cyan]Version[/]", details.Version);
+        table.AddRow("[cyan]Build Date[/]", details.BuildDate);
         table.AddRow("[cyan]Copyright[/]", details.Copyright);
         table.AddRow("[cyan]Company[/]", details.Company);
         table.AddRow("[cyan]Description[/]", details.Description);
@@ -63,9 +64,10 @@ internal partial class Program
             {
                 Company = Info.GetCompany(),
                 Copyright = Info.GetCopyright(),
+                BuildDate = Info.GetBuildDate()!,
                 Product = Info.GetProduct(),
                 Description = Info.GetDescription(),
-                Version = Info.GetVersion().ToString()
+                Version = Info.GetVersion().ToString(),
             };
         }
     }

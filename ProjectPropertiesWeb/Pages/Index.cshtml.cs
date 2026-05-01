@@ -24,6 +24,7 @@ public class IndexModel(ILogger<IndexModel> logger) : PageModel
             Copyright = Info.GetCopyright(),
             Product = Info.GetProduct(),
             Description = Info.GetDescription(),
-            Version = Info.GetVersion().ToString()
+            Version = Info.GetVersion().ToString(),
+            BuildDate = Info.GetBuildDate()!
         };
 }

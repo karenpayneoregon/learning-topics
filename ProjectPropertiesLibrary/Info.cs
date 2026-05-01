@@ -160,5 +160,51 @@ public class Info
         return GetVersion();
     }
 
+    /// <summary>
+    /// Retrieves the build date of the calling assembly from its metadata.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="string"/> containing the build date if it is specified in the assembly metadata,
+    /// or <see langword="null"/> if the build date is not found.
+    /// </returns>
+    public static string? GetBuildDate()
+    {
+        var asm = Assembly.GetCallingAssembly();
 
+        var attr = asm
+            .GetCustomAttributes<AssemblyMetadataAttribute>()
+            .FirstOrDefault(a => a.Key == "BuildDate");
+
+        return attr?.Value;
+    }
+
+    public static DateOnly BuildDate()
+    {
+        var buildDate = GetBuildDate();
+        if (buildDate is not null && DateOnly.TryParse(buildDate, out var dateOnly))
+        {
+            return dateOnly;
+        }
+
+        return default;
+    }
+
+    /// <summary>
+    /// Retrieves the build date of the calling assembly from its metadata, optionally including caller details.
+    /// </summary>
+    /// <param name="caller">Output parameter to receive caller details.</param>
+    /// <param name="memberName">The name of the member calling this method (automatically provided).</param>
+    /// <param name="filePath">The full path of the source file calling this method (automatically provided).</param>
+    /// <param name="lineNumber">The line number in the source file where this method is called (automatically provided).</param>
+    /// <returns>
+    /// A <see cref="DateOnly"/> representing the build date if found, otherwise <see langword="default"/> (<see cref="DateOnly.MinValue"/>).
+    /// </returns>
+    public static DateOnly BuildDate(out CallerDetails caller, [CallerMemberName] string? memberName = null,
+        [CallerFilePath] string? filePath = null, [CallerLineNumber] int lineNumber = 0)
+    {
+        caller = BuildCallerDetails(memberName, filePath, lineNumber);
+        return BuildDate();
+        
+        
+    }
 }

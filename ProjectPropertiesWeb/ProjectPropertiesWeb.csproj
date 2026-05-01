@@ -13,6 +13,14 @@
 		<Copyright>2019-$([System.DateTime]::Now.Year)</Copyright>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<BuildDate>$([System.DateTime]::Now.ToString("yyyy-MM-dd"))</BuildDate>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AssemblyMetadata Include="BuildDate" Value="$(BuildDate)" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\ProjectPropertiesLibrary\ProjectPropertiesLibrary.csproj" />
 	</ItemGroup>

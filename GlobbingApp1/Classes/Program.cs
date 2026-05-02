@@ -1,6 +1,7 @@
 ﻿using ConsoleHelperLibrary.Classes;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using GlobbingApp1.Classes.Core;
 
 // ReSharper disable once CheckNamespace
 namespace GlobbingApp1;
@@ -15,6 +16,7 @@ internal partial class Program
         Console.Title = product!;
 
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+        SpectreConsoleHelpers.SetEncoding();
 
     }
  

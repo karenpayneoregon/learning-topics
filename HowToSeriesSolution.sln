@@ -262,8 +262,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyApp", "AssemblyApp\AssemblyApp.csproj", "{2BEE5FE9-EDE3-413C-AEF7-7198AB5C83A5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EF Core for teaching", "EF Core for teaching", "{78A1A399-045A-AB9C-6864-D4E048EFF174}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryHelperSample2", "DirectoryHelperSample2\DirectoryHelperSample2.csproj", "{D009F261-A8A7-4561-AF53-EC9FCE6D113D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{402F8A9E-94A5-2EA8-2622-43A1D2C6E2A1}"

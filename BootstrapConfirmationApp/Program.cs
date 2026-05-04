@@ -1,3 +1,4 @@
+using BootstrapConfirmationApp.Classes;
 using Serilog;
 using Serilog.Events;
 
@@ -45,6 +46,9 @@ public class Program
         app.MapStaticAssets();
         app.MapRazorPages()
            .WithStaticAssets();
+
+        app.ShowConsoleWindow();
+        app.SetConsoleWindowTitleWindows11("Bootstrap modals code sample");
 
         app.Run();
     }

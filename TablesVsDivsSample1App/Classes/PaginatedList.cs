@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+// https://learn.microsoft.com/en-us/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-10.0#add-paging-to-the-students-index
 namespace TablesVsDivsSample1App.Classes;
 
 public class PaginatedList<T> : List<T>

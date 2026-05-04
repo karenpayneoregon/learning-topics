@@ -9,6 +9,10 @@
           "path": "CommonHelpersLibrary\\ConfigurationHelpers.cs"
         },
         {
+          "name": "Info.cs",
+          "path": "ProjectPropertiesLibrary\\Info.cs"
+        },
+        {
           "name": "LoggingSettingsValidation.cs",
           "path": "GetSettingFromAppSettings\\Classes\\LoggingSettingsValidation.cs"
         },

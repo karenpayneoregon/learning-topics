@@ -33,6 +33,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="ConsoleConfigurationLibrary" Version="1.0.0.10" />
+		<PackageReference Include="System.Management" Version="9.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>

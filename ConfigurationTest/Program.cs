@@ -2,7 +2,7 @@
 using System.Management;
 using ConsoleConfigurationLibrary.Classes;
 // ReSharper disable PossibleInvalidCastExceptionInForeachLoop
-#pragma warning disable CA1416
+
 
 namespace ConfigurationTest;
 
@@ -17,22 +17,22 @@ internal partial class Program
         Console.WriteLine(EntitySettings.Instance.CreateNew);
 
         Console.WriteLine();
-        Console.WriteLine(ComputerInfo.GetManufacturer());
+        Console.WriteLine(ComputerInfo.GetManufacturer() ?? "Unknown");
         Console.ReadLine();
     }
 }
 
-public static class ComputerInfo
-{
-    public static string? GetManufacturer()
+    public static class ComputerInfo
     {
-        using var searcher = new ManagementObjectSearcher("SELECT Manufacturer FROM Win32_ComputerSystem");
-
-        foreach (ManagementObject obj in searcher.Get())
+        public static string? GetManufacturer()
         {
-            return obj["Manufacturer"]?.ToString();
-        }
+            using var searcher = new ManagementObjectSearcher("SELECT Manufacturer FROM Win32_ComputerSystem");
 
-        return null;
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                return obj["Manufacturer"]?.ToString();
+            }
+
+            return null;
+        }
     }
-}

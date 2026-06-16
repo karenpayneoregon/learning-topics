@@ -9,6 +9,7 @@ internal class MainOperation
         string outputPath = Path.Combine(AppContext.BaseDirectory, "vs.json");
         FileOperations.GenerateDataJson(outputPath);
 
+        // may need to modify
         Installation? data = FileOperations.ReadDataJson(outputPath).FirstOrDefault();
 
         Console.WriteLine();

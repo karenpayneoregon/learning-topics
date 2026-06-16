@@ -9,7 +9,7 @@ internal class MainOperation
         string outputPath = Path.Combine(AppContext.BaseDirectory, "vs.json");
         FileOperations.GenerateDataJson(outputPath);
 
-        Installation? data = FileOperations.ReadDataJson(outputPath).LastOrDefault();
+        Installation? data = FileOperations.ReadDataJson(outputPath).FirstOrDefault();
 
         Console.WriteLine();
         AnsiConsole.MarkupLine($"[green3_1]        Edition[/] {data?.DisplayName}");

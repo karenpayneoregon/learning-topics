@@ -6,5 +6,5 @@ Of course a developer can get the same information from Visual Studio about dial
 
 ![Screen](images/screen.png)
 
-- `Install.bat` to install the dotnet tool
+- `Install.bat` to install the dotnet tool which now depends on `NuGet.config` 6/2026
 - `Uninstall.bat` to uninstall the dotnet tool

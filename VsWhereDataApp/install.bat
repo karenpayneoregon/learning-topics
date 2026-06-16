@@ -1,2 +1,2 @@
-dotnet tool install --global --add-source ./nupkg VsWhereDataApp
+dotnet tool install --global VsWhereDataApp --configfile .\NuGet.config
 pause

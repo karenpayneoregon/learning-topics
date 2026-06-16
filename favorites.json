@@ -23,12 +23,25 @@
       ]
     },
     {
+      "name": "SystemManagement",
+      "children": [
+        {
+          "name": "Program.cs",
+          "path": "ConfigurationTest\\Program.cs"
+        }
+      ]
+    },
+    {
       "name": "Index.cshtml",
       "path": "BirthDaysApp\\Pages\\Index.cshtml"
     },
     {
       "name": "index.html",
       "path": "HideShowPasswordSample_1\\index.html"
+    },
+    {
+      "name": "WindowHelper.cs",
+      "path": "BootstrapConfirmationApp\\Classes\\WindowHelper.cs"
     }
   ]
 }

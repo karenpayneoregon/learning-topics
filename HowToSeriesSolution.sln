@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35806.99
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.12105.206 oobstable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddInMemoryCollectionSample", "AddInMemoryCollectionSample\AddInMemoryCollectionSample.csproj", "{FFADEA27-B886-40CE-B4FD-5D3183ADDDFD}"
 EndProject
@@ -319,6 +319,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpectreLoginSample", "SpectreLoginSample\SpectreLoginSample.csproj", "{E0BDCC75-D107-40C1-9CB4-58ABEBC212A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPN_Detector", "VPN_Detector\VPN_Detector.csproj", "{CB351A34-6D2C-49AC-ACFE-3E98AEC02B92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetRestoreRunner", "DotNetRestoreRunner\DotNetRestoreRunner.csproj", "{79F75AC9-7F2E-40C4-9344-847F13EF1F8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -698,6 +700,10 @@ Global
 		{CB351A34-6D2C-49AC-ACFE-3E98AEC02B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB351A34-6D2C-49AC-ACFE-3E98AEC02B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB351A34-6D2C-49AC-ACFE-3E98AEC02B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F75AC9-7F2E-40C4-9344-847F13EF1F8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F75AC9-7F2E-40C4-9344-847F13EF1F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F75AC9-7F2E-40C4-9344-847F13EF1F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F75AC9-7F2E-40C4-9344-847F13EF1F8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -810,6 +816,7 @@ Global
 		{7047890C-8B10-400C-A4E6-94AF87A1114B} = {C58BA5B7-0822-A82B-CBEA-DCEF7F38940C}
 		{E0BDCC75-D107-40C1-9CB4-58ABEBC212A8} = {D04CF0F2-974C-5D72-9175-74118F68291D}
 		{CB351A34-6D2C-49AC-ACFE-3E98AEC02B92} = {3AC0C92A-F656-4C14-BA2D-4F4560097AC0}
+		{79F75AC9-7F2E-40C4-9344-847F13EF1F8E} = {07C2787E-EAC7-C090-1BA3-A61EC2A24D84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C007A4B1-8688-434B-8558-0420E7C51784}

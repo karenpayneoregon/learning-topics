@@ -32,6 +32,10 @@
       ]
     },
     {
+      "name": "appsettings.json",
+      "path": "InParameterSampleApp\\appsettings.json"
+    },
+    {
       "name": "Index.cshtml",
       "path": "BirthDaysApp\\Pages\\Index.cshtml"
     },

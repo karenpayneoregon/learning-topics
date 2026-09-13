@@ -23,15 +23,15 @@
             <div class="mb-5">
                 <h2 class="mb-3">@group.MonthName</h2>
                 <div class="row">
-                    @foreach (var b in group.Items.OrderBy(x => x.LastName))
+                    @foreach (var pvm in group.Items.OrderBy(x => x.LastName))
                     {
                         <div class="col-md-4 mb-3">
                             <div class="card shadow h-100">
                                 <div class="card-body">
-                                    <h3 class="card-title">@b.ToString("FullName", GlobalCulture.CurrentCulture)</h3>
+                                    <h3 class="card-title">@pvm.ToString("FullName", GlobalCulture.CurrentCulture)</h3>
                                     <p class="card-text">
-                                        <strong>Birth Date:</strong> @b.BirthDate.ToString("MMMM dd, yyyy", GlobalCulture.CurrentCulture) <br/>
-                                        <strong>Age:</strong> @b.Age.ToString(GlobalCulture.CurrentCulture)
+                                        <strong>Birth Date:</strong> @pvm.BirthDate.ToString("MMMM dd, yyyy", GlobalCulture.CurrentCulture) <br/>
+                                        <strong>Age:</strong> @pvm.Age.ToString(GlobalCulture.CurrentCulture)
                                     </p>
                                 </div>
                             </div>

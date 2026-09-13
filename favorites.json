@@ -23,6 +23,19 @@
       ]
     },
     {
+      "name": "JavaScriptDebugger",
+      "children": [
+        {
+          "name": "debugHelper.js",
+          "path": "Web1\\Lib\\debugHelper.js"
+        },
+        {
+          "name": "index.html",
+          "path": "Web1\\index.html"
+        }
+      ]
+    },
+    {
       "name": "SystemManagement",
       "children": [
         {

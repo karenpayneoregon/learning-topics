@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link href="Lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="Lib/styles/headers.css" rel="stylesheet" />
+    <script src="lib/debugHelper.js"></script>
+    <!--suppress no favicon-->
+    <link rel="shortcut icon" href="#">
+
+    <!-- styles are here temp and once okay move to a .css file(s) -->
+    <style>
+    </style>
+
+</head>
+<body>
+    <div class="nine mt-3">
+        <h1>bootstrap <span> v5.3.3</span></h1>
+    </div>
+
+    <main>
+
+        <div class="container">
+
+        </div>
+
+    </main>
+
+<script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.addEventListener('keydown', function (event) {
+                if (event.key === '1' && event.altKey && event.ctrlKey) {
+                    if (!document.getElementById("debugger-inline-style")) {
+                        $debugHelper.addCss();
+                    } else {
+                        $debugHelper.removeCss();
+                    }
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>

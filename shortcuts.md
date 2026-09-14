@@ -1,0 +1,16 @@
+| Description                                 | Shortcut                                     | Keyboard Reference                                                                                                                                        |
+| :------------------------------------------ | :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Locate current document in Solution﻿         | <kbd>ctrl</kbd> + <kbd>L</kbd> <kbd>L</kbd>  | [ReSharper_LocateInSolutionOrAssemblyExplorer](https://www.jetbrains.com/help/resharper/Navigation_and_Search__Locating_a_File_in_Solution_Explorer.html) |
+| Extract Interface                           | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>G</kbd>  | [ReSharper_ExtractInterface](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Interface.html)                                               |
+| Make Method/Property Static                 | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>G</kbd>  | [ReSharper_MakeStatic ](https://www.jetbrains.com/help/resharper/Refactorings__Make_Method_Static.html)                                               |
+| Convert Static to Extension Method          | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>O</kbd>  | [ReSharper_Static2ExtensionAction ](https://www.jetbrains.com/help/resharper/Refactorings__Convert_Static_to_Extension_Method.html)                       |
+| Change Signature                            | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>S</kbd>  | [ReSharper_ChangeSignature](https://www.jetbrains.com/help/resharper/Refactorings__Change_Signature.html)                                                 |
+| Convert Anonymous to Named Type refactoring | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>P</kbd>  | [ReSharper_Anonymous2Declared](https://www.jetbrains.com/help/resharper/Refactorings__Convert_Anonymous_to_Named_Type.html)                               |
+| Extract Method refactoring                  | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>I</kbd>  | [ReSharper_ExtractMethod](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Method.html)                                                     |
+| Goto file                                   | <kbd>ctrl</kbd> + <kbd>J</kbd>, <kbd>J</kbd> | [ReSharper_GotoFile](https://www.jetbrains.com/help/resharper/Navigation_and_Search__Go_to_File.html)                                                     |
+| Copy Type refactoring  :star:               | <kbd>ctrl</kbd> + <kbd>T</kbd> <kbd>T</kbd>  | [ReSharper_CopyType](https://www.jetbrains.com/help/resharper/Refactorings__Copy_Type.html)                                                               |  
+| Duplicate Line                              | <kbd>ctrl</kbd> + <kbd>D</kbd>               | |                                                                |  
+
+---
+
+- [Keyboard shortcuts](https://learn.microsoft.com/en-us/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=visualstudio)

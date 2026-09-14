@@ -346,6 +346,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web1", "Web1\", "{8447890E-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Markdown files", "Markdown files", "{257247F7-4B34-4CA1-B52F-BD1C019BF68E}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\Payne\copilot-instructions.md = ..\..\..\Users\Payne\copilot-instructions.md
 		shortcuts.md = shortcuts.md
 	EndProjectSection
 EndProject

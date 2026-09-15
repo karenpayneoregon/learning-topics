@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 using UUIDNext;
+using static CreateGuidToolApp.Classes.Dialogs;
 
 namespace CreateGuidToolApp
 {
@@ -42,7 +43,7 @@ namespace CreateGuidToolApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DisplayError(this, ex);
             }
         }
     }

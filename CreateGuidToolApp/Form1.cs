@@ -11,24 +11,39 @@ namespace CreateGuidToolApp
             InitializeComponent();
         }
 
-        private  void CreateButton_Click(object sender, EventArgs e)
+        private async void CreateButton_Click(object sender, EventArgs e)
         {
-            textBox1.Text = @"Please wait...";
-            textBox1.Refresh();
-
-            Thread.Sleep(500);
-
-            StringBuilder sb = new();
-
-            for (int index = 0; index < 10; index++)
+            try
             {
-                Guid sequentialUuid = Uuid.NewDatabaseFriendly(Database.SqlServer);
-                sb.AppendLine(sequentialUuid.ToString());
-                Thread.Sleep(1000);
-            }
+                CreateButton.Enabled = false;
 
-            textBox1.Text = sb.ToString();
-            textBox1.Refresh();
+                try
+                {
+                    textBox1.Text = @"Please wait...";
+
+                    await Task.Delay(500);
+
+                    StringBuilder sb = new();
+
+                    for (int index = 0; index < 10; index++)
+                    {
+                        Guid sequentialUuid = Uuid.NewDatabaseFriendly(Database.SqlServer);
+                        sb.AppendLine(sequentialUuid.ToString());
+
+                        await Task.Delay(1000);
+                    }
+
+                    textBox1.Text = sb.ToString();
+                }
+                finally
+                {
+                    CreateButton.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

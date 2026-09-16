@@ -1,0 +1,257 @@
+<Solution>
+  <Folder Name="/Actions/">
+    <Project Path="MenuImageSampleApp/MenuImageSampleApp.csproj" />
+    <Project Path="MenuSampleApp/MenuSampleApp.csproj" />
+    <Project Path="SpectreConsoleMenuApp/SpectreConsoleMenuApp.csproj" />
+  </Folder>
+  <Folder Name="/Actions/Class projects/">
+    <Project Path="ModelFormatLibrary/ModelFormatLibrary.csproj" />
+  </Folder>
+  <Folder Name="/ASP/">
+    <Project Path="AppFooterTagHelperSample/AppFooterTagHelperSample.csproj" />
+    <Project Path="BootstrapConfirmationApp/BootstrapConfirmationApp.csproj" />
+    <Project Path="CustomTagHelpersApp/CustomTagHelpersApp.csproj" />
+    <Project Path="DateTimeWeekNumberSample/DateTimeWeekNumberSample.csproj" />
+    <Project Path="IsSectionDefinedApp/IsSectionDefinedApp.csproj" />
+    <Project Path="MutilpleSubmitButtons1/MultipleSubmitButtons1.csproj" />
+    <Project Path="SelectWithChecksSample/SelectWithChecksSample.csproj" />
+  </Folder>
+  <Folder Name="/ASP/Accessibility/">
+    <Project Path="TablesVsDivsSample1App/TablesVsDivsSample1App.csproj" />
+  </Folder>
+  <Folder Name="/ASP/Bogus/">
+    <Project Path="BogusDateOnlyTimeOnlyApp/BogusDateOnlyTimeOnlyApp.csproj" />
+    <Project Path="BogusLibrary1/BogusLibrary1.csproj" />
+  </Folder>
+  <Folder Name="/ASP/Class projects/">
+    <Project Path="CommonLibrary/CommonLibrary.csproj" />
+    <Project Path="CustomTagHelpersLibrary/CustomTagHelpersLibrary.csproj" />
+    <Project Path="FooterLibrary/FooterLibrary.csproj" />
+  </Folder>
+  <Folder Name="/ASP/PasswordEye/">
+    <Project Path="HideShowPasswordSample_1/" Type="Website" DisplayName="HideShowPasswordSample_1">
+      <BuildType Project="Debug" />
+      <Properties Name="WebsiteProperties">
+        <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+        <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;HideShowPasswordSample_1\&quot;" />
+        <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_65033\&quot;" />
+        <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_65033&quot;" />
+        <Property Name="DefaultWebSiteLanguage" Value="&quot;Visual Basic&quot;" />
+        <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+        <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;HideShowPasswordSample_1\&quot;" />
+        <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_65033\&quot;" />
+        <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_65033&quot;" />
+        <Property Name="SlnRelativePath" Value="&quot;HideShowPasswordSample_1\&quot;" />
+        <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.7.2&quot;" />
+        <Property Name="VWDPort" Value="&quot;65033&quot;" />
+      </Properties>
+    </Project>
+    <Project Path="HideShowPasswprdSample/HideShowPasswordSample.csproj" />
+    <Project Path="MockupApplication/MockupApplication.csproj" />
+  </Folder>
+  <Folder Name="/Class projects/">
+    <Project Path="CommonHelpersLibrary/CommonHelpersLibrary.csproj" />
+    <Project Path="NuGetLibrary/NuGetLibrary.csproj" />
+    <Project Path="SpectreConsoleLibrary/SpectreConsoleLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Configurations/" />
+  <Folder Name="/Configurations/Console projects/">
+    <Project Path="AddInMemoryCollectionSample/AddInMemoryCollectionSample.csproj" />
+    <Project Path="ConfigurationHelpersTestApp/ConfigurationHelpersTestApp.csproj" />
+    <Project Path="CustomIConfigurationSourceSample/CustomIConfigurationSourceSample.csproj" />
+    <Project Path="InParameterSampleApp/InParameterSampleApp.csproj" />
+  </Folder>
+  <Folder Name="/Configurations/Web projects/">
+    <File Path="Configuration.md" />
+    <Project Path="CustomIConfigurationSourceRazorPages/CustomIConfigurationSourceRazorPages.csproj" />
+    <Project Path="GetSettingFromAppSettings/GetSettingFromAppSettings.csproj" />
+    <Project Path="HelpDeskApplication/HelpDeskApplication.csproj" />
+    <Project Path="MemoryConfigurationSourceRazorPages/MemoryConfigurationSourceRazorPages.csproj" />
+  </Folder>
+  <Folder Name="/DateOnly/">
+    <Project Path="WorkingWithDateOnly/WorkingWithDateOnly.csproj" />
+  </Folder>
+  <Folder Name="/Deconstruction/">
+    <Project Path="DeconstructDictionaryApp/DeconstructDictionaryApp.csproj" />
+    <Project Path="DeconstructSamplesApp/DeconstructSamplesApp.csproj" />
+    <Project Path="ModelDeconstructApp/ModelDeconstructApp.csproj" />
+  </Folder>
+  <Folder Name="/EF Core class projects/">
+    <Project Path="EntityLibrary/EntityLibrary.csproj" />
+  </Folder>
+  <Folder Name="/EF Core examples/">
+    <Project Path="AuditInterceptorSampleApp/AuditInterceptorSampleApp.csproj" />
+    <Project Path="BaseContextExampleApp/BaseContextExampleApp.csproj" />
+    <Project Path="BirthDaysApp/BirthDaysApp.csproj" />
+  </Folder>
+  <Folder Name="/Excel/">
+    <Project Path="SpreadSheetLightTableSample/SpreadSheetLightTableSample.csproj" />
+    <Project Path="SpreadSheetLightTableSampleLibrary/SpreadSheetLightTableSampleLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Experiments/">
+    <Project Path="AssemblyApp/AssemblyApp.csproj" />
+    <Project Path="DirectoryHelperSample1/DirectoryHelperSample1.csproj" />
+    <Project Path="DirectoryHelperSample2/DirectoryHelperSample2.csproj" />
+    <Project Path="IterateSamplesApp/IterateSamplesApp.csproj" />
+    <Project Path="ModelFormatCustomSample/ModelFormatCustomSample.csproj" />
+    <Project Path="PasswordGeneratorArgonSample/PasswordGeneratorArgonSample.csproj" />
+    <Project Path="PreviewFeaturesApp/PreviewFeaturesApp.csproj" />
+    <Project Path="SelectUnCheckedExample/" Type="Website" DisplayName="SelectUnCheckedExample">
+      <BuildType Project="Debug" />
+      <Properties Name="WebsiteProperties">
+        <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+        <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;SelectUnCheckedExample\&quot;" />
+        <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_53990\&quot;" />
+        <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_53990&quot;" />
+        <Property Name="DefaultWebSiteLanguage" Value="&quot;Visual Basic&quot;" />
+        <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+        <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;SelectUnCheckedExample\&quot;" />
+        <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_53990\&quot;" />
+        <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_53990&quot;" />
+        <Property Name="SlnRelativePath" Value="&quot;SelectUnCheckedExample\&quot;" />
+        <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.7.2&quot;" />
+        <Property Name="VWDPort" Value="&quot;53990&quot;" />
+      </Properties>
+    </Project>
+    <Project Path="StringsBetweenQuotesExample/StringsBetweenQuotesExample.csproj" />
+    <Project Path="TempApp/TempApp.csproj" />
+    <Project Path="UpperCaseFirstCharConverterApp/UpperCaseFirstCharConverterApp.csproj" />
+    <Project Path="VPN_Detector/VPN_Detector.csproj" />
+    <Project Path="WeekendDatesApp/WeekendDatesApp.csproj" />
+    <Project Path="WorkingWithRecords/WorkingWithRecords.csproj" />
+  </Folder>
+  <Folder Name="/Experiments/Configuration/">
+    <Project Path="ConfigurationTest/ConfigurationTest.csproj" />
+  </Folder>
+  <Folder Name="/Experiments/Spectre.Console/">
+    <Project Path="BasicConsoleProject1/BasicConsoleProject1.csproj" />
+    <Project Path="EmojisDemoApp/EmojisDemoApp.csproj" />
+    <Project Path="SpectreLoginSample/SpectreLoginSample.csproj" />
+  </Folder>
+  <Folder Name="/Features/">
+    <Project Path="../LanguageFeatures/DistinctByApp/DistinctByApp.csproj" />
+    <Project Path="IncrementDecrementApp/IncrementDecrementApp.csproj" />
+    <Project Path="JsonDictionaryStringObjectConverterSample/JsonDictionaryStringObjectConverterSample.csproj" />
+  </Folder>
+  <Folder Name="/Features/Equality comparison/">
+    <Project Path="IComparerIEqualityComparerApp/IComparerIEqualityComparerApp.csproj" />
+  </Folder>
+  <Folder Name="/Features/Formattable Strings/">
+    <Project Path="FormattableStringBasics/FormattableStringBasics.csproj" />
+  </Folder>
+  <Folder Name="/Globbing/">
+    <Project Path="GlobbingApp1/GlobbingApp1.csproj" />
+  </Folder>
+  <Folder Name="/Language extensions/">
+    <Project Path="GenericExtentionsLibrary/GenericExtensionsLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Lazy Helpers/">
+    <Project Path="JsonPathFixer/JsonPathFixer.csproj" />
+  </Folder>
+  <Folder Name="/Markdown files/">
+    <File Path="../../../Users/Payne/copilot-instructions.md" />
+    <File Path="shortcuts.md" />
+  </Folder>
+  <Folder Name="/NuGet/">
+    <Project Path="Publisher/Publisher.csproj" />
+  </Folder>
+  <Folder Name="/Partial classes and properties/">
+    <Project Path="PartialSamples1/PartialSamples1.csproj" />
+  </Folder>
+  <Folder Name="/Project Properties/">
+    <Project Path="ProjectPropertiesApp/ProjectPropertiesApp.csproj" />
+    <Project Path="ProjectPropertiesWeb/ProjectPropertiesWeb.csproj" />
+  </Folder>
+  <Folder Name="/Project Properties/Class projects/">
+    <Project Path="ProjectPropertiesLibrary/ProjectPropertiesLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Records samples/">
+    <Project Path="PrintMembersSamples/PrintMembersSamples.csproj" />
+  </Folder>
+  <Folder Name="/Secrets utilities/">
+    <Project Path="FindUserSecretsApp/FindUserSecretsApp.csproj" />
+    <Project Path="SecretBasicApp/SecretBasicApp.csproj" />
+    <Project Path="SecretsLibrary/SecretsLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Secrets utilities/Serilog/">
+    <Project Path="SerilogLibrary/SerilogLibrary.csproj" />
+  </Folder>
+  <Folder Name="/Side projects/">
+    <Project Path="ExportedVisualStudioExtensionsApp/ExportedVisualStudioExtensionsApp.csproj" />
+    <Project Path="FrameworksLifeApp/FrameworksLifeApp.csproj" />
+    <Project Path="SolutionFrameworkScanner/SolutionFrameworkScanner.csproj" />
+    <Project Path="Web1/" Type="Website" DisplayName="Web1">
+      <BuildType Project="Debug" />
+      <Properties Name="WebsiteProperties">
+        <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+        <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;Web1\&quot;" />
+        <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_62724\&quot;" />
+        <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_62724&quot;" />
+        <Property Name="DefaultWebSiteLanguage" Value="&quot;Visual Basic&quot;" />
+        <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+        <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;Web1\&quot;" />
+        <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_62724\&quot;" />
+        <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_62724&quot;" />
+        <Property Name="SlnRelativePath" Value="&quot;Web1\&quot;" />
+        <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.7.2&quot;" />
+        <Property Name="VWDPort" Value="&quot;62724&quot;" />
+      </Properties>
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="readme.md" />
+    <File Path="readme_ai.md" />
+    <File Path="VisualStudio.md" />
+  </Folder>
+  <Folder Name="/SQL Server/">
+    <Project Path="AddImagesFromFilesApp/AddImagesFromFilesApp.csproj" />
+    <Project Path="SqlLibrary/SqlLibrary.csproj" />
+    <Project Path="TableDependenciesSample/TableDependenciesSample.csproj" />
+  </Folder>
+  <Folder Name="/Templates/">
+    <Project Path="BasicConsoleProject/BasicConsoleProject.csproj" />
+  </Folder>
+  <Folder Name="/Tools/">
+    <Project Path="CreateGuidToolApp/CreateGuidToolApp.csproj" />
+    <Project Path="DotNetRestoreRunner/DotNetRestoreRunner.csproj" />
+    <Project Path="ProcessOrdersApp/ProcessOrdersApp.csproj" />
+    <Project Path="VsWhereDataApp/VsWhereDataApp.csproj" />
+    <Project Path="WindowsTimeApp/WindowsTimeApp.csproj" />
+  </Folder>
+  <Folder Name="/Using Prompt files/">
+    <Project Path="PromptFilesExamplesApp/PromptFilesExamplesApp.csproj" />
+    <Project Path="PromptFilesExamplesApp1/PromptFilesExamplesApp1.csproj" />
+    <Project Path="WebApplication1/WebApplication1.csproj" />
+  </Folder>
+  <Folder Name="/Using Prompt files/Creating nesting files/">
+    <Project Path="NestedClassesFinder/NestedClassesFinder.csproj" />
+  </Folder>
+  <Folder Name="/Validation/">
+    <Project Path="FluentWebApplication/FluentWebApplication.csproj" />
+    <Project Path="SectionExistsAppsettingsApp/SectionExistsAppsettingsApp.csproj" />
+  </Folder>
+  <Folder Name="/Visual Studio IEnumerable visualizer/">
+    <File Path="VisualizerReadme.md" />
+    <Project Path="FieldKeywordSample/FieldKeywordSample.csproj" />
+    <Project Path="WineConsoleApp/WineConsoleApp.csproj" />
+  </Folder>
+</Solution>

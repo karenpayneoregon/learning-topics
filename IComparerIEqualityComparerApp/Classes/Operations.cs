@@ -27,7 +27,9 @@ internal class Operations
             new Person { Id = 3, FirstName = "john", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) },
         };
 
-        var distinctPeople = people.Distinct(new FirstNameLastNameBirthDateComparer()).ToList();
+        var distinctPeople = people
+            .Distinct(new FirstNameLastNameBirthDateComparer())
+            .ToList();
 
         AnsiConsole.MarkupLine("[bold]Distinct People:[/]");
         foreach (var person in distinctPeople)
@@ -94,7 +96,9 @@ internal class Operations
             new() { Id = 1, FirstName = "Karen", LastName = "Payne", BirthDate = new DateOnly(1956, 9, 24) }
         ];
 
-        return peopleList.OrderBy(x => x.LastName).ToList();
+        return peopleList
+            .OrderBy(x => x.LastName)
+            .ToList();
     }
 
 
@@ -130,7 +134,8 @@ internal class Operations
 
         AnsiConsole.MarkupLine("[bold]Products SequenceEqual[/]");
 
-        var productDetailsHaveChanged = !updatedProducts.SequenceEqual(originalProducts, new ProductComparer());
+        var productDetailsHaveChanged = !updatedProducts
+            .SequenceEqual(originalProducts, new ProductComparer());
 
         AnsiConsole.MarkupLine(productDetailsHaveChanged
             ? "    [bold DeepPink3]Product details have changed.[/]"

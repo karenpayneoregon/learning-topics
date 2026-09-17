@@ -20,12 +20,12 @@ internal class Operations
     {
         SpectreConsoleHelpers.PrintCyan();
         
-        var people = new List<Person>
-        {
+        List<Person> people =
+        [
             new Person { Id = 1, FirstName = "John", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) },
             new Person { Id = 2, FirstName = "Jane", LastName = "Doe", BirthDate = new DateOnly(1992, 2, 2) },
-            new Person { Id = 3, FirstName = "john", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) },
-        };
+            new Person { Id = 3, FirstName = "john", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) }
+        ];
 
         var distinctPeople = people
             .Distinct(new FirstNameLastNameBirthDateComparer())
@@ -53,23 +53,23 @@ internal class Operations
 
         SpectreConsoleHelpers.PrintCyan();
         
-        var people = new List<Person>
-        {
+        List<Person> people =
+        [
             new Person { Id = 1, FirstName = "John", LastName = "doe", BirthDate = new DateOnly(1990, 1, 1) },
             new Person { Id = 2, FirstName = "Jane", LastName = "Doe", BirthDate = new DateOnly(1992, 2, 2) },
-            new Person { Id = 3, FirstName = "john", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) },
-        };
+            new Person { Id = 3, FirstName = "john", LastName = "Doe", BirthDate = new DateOnly(1990, 1, 1) }
+        ];
 
-        var count = people.Count;
+        int count = people.Count;
 
-        var distinctPeople = people.DistinctBy(x =>
+        List<Person> distinctPeople = people.DistinctBy(x =>
         (
             x.FirstName,
             x.LastName,
             x.BirthDate
         )).ToList();
 
-        var distinctCount = distinctPeople.Count;
+        int distinctCount = distinctPeople.Count;
 
         foreach (var person in distinctPeople)
         {
@@ -120,17 +120,17 @@ internal class Operations
 
         SpectreConsoleHelpers.PrintCyan();
         
-        var originalProducts = new List<Product>()
-        {
+        List<Product> originalProducts =
+        [
             new() { Id = 1, Name = "ProductName1", Description = "ProductDescription1", Price = 199.99f },
-            new() { Id = 2, Name = "ProductName2", Description = "ProductDescription2", Price = 29.99f },
-        };
+            new() { Id = 2, Name = "ProductName2", Description = "ProductDescription2", Price = 29.99f }
+        ];
 
-        var updatedProducts = new List<Product>()
-        {
+        List<Product> updatedProducts =
+        [
             new() { Id = 1, Name = "ProductName1", Description = "UpdatedProductDescription1", Price = 199.99f },
-            new() { Id = 2, Name = "UpdatedProductName2", Description = "ProductDescription2", Price = 29.99f },
-        };
+            new() { Id = 2, Name = "UpdatedProductName2", Description = "ProductDescription2", Price = 29.99f }
+        ];
 
         AnsiConsole.MarkupLine("[bold]Products SequenceEqual[/]");
 

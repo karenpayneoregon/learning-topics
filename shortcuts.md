@@ -8,8 +8,9 @@
 | Convert Anonymous to Named Type refactoring | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>P</kbd>  | [ReSharper_Anonymous2Declared](https://www.jetbrains.com/help/resharper/Refactorings__Convert_Anonymous_to_Named_Type.html)                               |
 | Extract Method refactoring                  | <kbd>ctrl</kbd> + <kbd>O</kbd> <kbd>I</kbd>  | [ReSharper_ExtractMethod](https://www.jetbrains.com/help/resharper/Refactorings__Extract_Method.html)                                                     |
 | Goto file                                   | <kbd>ctrl</kbd> + <kbd>J</kbd>, <kbd>J</kbd> | [ReSharper_GotoFile](https://www.jetbrains.com/help/resharper/Navigation_and_Search__Go_to_File.html)                                                     |
-| Copy Type refactoring  :star:               | <kbd>ctrl</kbd> + <kbd>T</kbd> <kbd>T</kbd>  | [ReSharper_CopyType](https://www.jetbrains.com/help/resharper/Refactorings__Copy_Type.html)                                                               |  
-| Duplicate Line                              | <kbd>ctrl</kbd> + <kbd>D</kbd>               | |                                                                |  
+| Copy Type refactoring  :star:               | <kbd>ctrl</kbd> + <kbd>T</kbd> <kbd>T</kbd>  | [ReSharper_CopyType](https://www.jetbrains.com/help/resharper/Refactorings__Copy_Type.html)                                                               | d 
+| Duplicate Line                              | <kbd>ctrl</kbd> + <kbd>D</kbd>                    | |                                                                |  
+| Select current word                         | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>W</kbd> | Edit.SelectCurrentWord |                                                                |  
 
 ---
 

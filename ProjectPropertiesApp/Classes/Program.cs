@@ -25,19 +25,39 @@ internal partial class Program
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
 
         SetupLogging.Development();
+        
         Setup();
 
     }
+    
+    /// <summary>
+    /// Configures and initializes essential services and settings required for the application.
+    /// </summary>
+    /// <remarks>
+    /// This method sets up dependency injection, retrieves connection strings, 
+    /// loads entity settings, and configures the console's encoding for proper output handling.
+    /// </remarks>
     private static void Setup()
     {
+        
         var services = ConfigureServices();
         using var provider = services.BuildServiceProvider();
+        
         var setup = provider.GetService<SetupServices>();
         setup.GetConnectionStrings();
         setup.GetEntitySettings();
+        
         SpectreConsoleHelpers.SetEncoding();
     }
 
+    /// <summary>
+    /// Displays detailed project information in a formatted table using Spectre.Console.
+    /// </summary>
+    /// <remarks>
+    /// This method gathers project details such as product name, version, build date, copyright, 
+    /// company, and description. It then presents this information in a visually styled table 
+    /// with a rounded border and custom colors.
+    /// </remarks>
     internal static void ShowDetails()
     {
         var table = new Table()
@@ -70,5 +90,6 @@ internal partial class Program
                 Version = Info.GetVersion().ToString(),
             };
         }
+        
     }
 }

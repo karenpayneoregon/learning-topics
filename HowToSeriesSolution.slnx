@@ -141,7 +141,8 @@
     <Project Path="SpectreLoginSample/SpectreLoginSample.csproj" />
   </Folder>
   <Folder Name="/Features/">
-    <Project Path="../LanguageFeatures/DistinctByApp/DistinctByApp.csproj" />
+    <Project Path="CapitalizeFirstLetterSample/CapitalizeFirstLetterSample.csproj" Id="a4524551-1f8f-4e47-b7e6-a13c428f1ae2" />
+    <Project Path="DistinctByApp/DistinctByApp.csproj" />
     <Project Path="IncrementDecrementApp/IncrementDecrementApp.csproj" />
     <Project Path="JsonDictionaryStringObjectConverterSample/JsonDictionaryStringObjectConverterSample.csproj" />
   </Folder>

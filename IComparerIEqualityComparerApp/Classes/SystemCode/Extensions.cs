@@ -21,5 +21,8 @@ internal static class Extensions
 
     public static string? CapitalizeFirstLetter(this string? input)
         => string.IsNullOrWhiteSpace(input) ?
-            input : char.ToUpper(input[0]) + input.AsSpan(1).ToString();
+            input : char.ToUpper(input[0]) + 
+                    input.AsSpan(1)
+                        .ToString()
+                        .ToLower();
 }

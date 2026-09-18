@@ -60,6 +60,7 @@ internal partial class Program
     /// </remarks>
     internal static void ShowDetails()
     {
+        
         var table = new Table()
             .RoundedBorder()
             .BorderColor(Color.Pink1)
@@ -69,12 +70,14 @@ internal partial class Program
         table.AddColumn("[yellow bold]Value[/]");
 
         var details = GetAllInfo();
+        
         table.AddRow("[cyan]Product[/]", details.Product);
         table.AddRow("[cyan]Version[/]", details.Version);
         table.AddRow("[cyan]Build Date[/]", details.BuildDate);
         table.AddRow("[cyan]Copyright[/]", details.Copyright);
         table.AddRow("[cyan]Company[/]", details.Company);
         table.AddRow("[cyan]Description[/]", details.Description);
+        
         AnsiConsole.Write(table);
         
 

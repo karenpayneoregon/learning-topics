@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using UpperCaseFirstCharConverterApp.JsonConverters;
 
-namespace UpperCaseFirstCharConverterApp.Classes;
+namespace UpperCaseFirstCharConverterApp.Models;
 
 public class Person
 {

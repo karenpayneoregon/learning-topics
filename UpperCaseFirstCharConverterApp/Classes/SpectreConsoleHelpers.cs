@@ -1,5 +1,6 @@
 ﻿using Spectre.Console;
 using Spectre.Console.Json;
+using System.Runtime.CompilerServices;
 
 namespace UpperCaseFirstCharConverterApp.Classes;
 public static class SpectreConsoleHelpers
@@ -38,6 +39,19 @@ public static class SpectreConsoleHelpers
     {
         AnsiConsole.Write(rule);
         AnsiConsole.WriteLine();
+    }
+
+    public static void PrintPink([CallerFilePath] string? filePath = null, [CallerMemberName] string? methodName = null)
+    {
+
+        // Get file and project name
+        var fileName = Path.GetFileNameWithoutExtension(filePath);
+        var projectName = Utilities.GetProjectName(filePath);
+
+        AnsiConsole.MarkupLine($"[hotpink2]{projectName}[/][yellow bold].[/][hotpink2]" +
+                               $"{fileName}[/][yellow bold].[/][hotpink2]{methodName}[/]");
+
+        Console.WriteLine();
     }
 
 

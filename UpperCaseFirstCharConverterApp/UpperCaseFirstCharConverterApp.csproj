@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Product>UpperCaseFirstCharConverter example</Product>
+    <Product>Converter example</Product>
   </PropertyGroup>
 
   <ItemGroup>

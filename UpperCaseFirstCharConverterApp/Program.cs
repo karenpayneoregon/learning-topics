@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Spectre.Console;
 using UpperCaseFirstCharConverterApp.Classes;
 using static UpperCaseFirstCharConverterApp.Classes.SpectreConsoleHelpers;
 
@@ -26,17 +27,25 @@ internal partial class Program
               {
                 "Id": 3,
                 "FirstName": "angel",
-                "LastName": "perez",
+                "LastName": "PEREZ",
                 "BirthDate": "1980-09-11"
               }
             ]
             """;
         
+        AnsiConsole.MarkupLine("[bold yellow]Original JSON:[/]");
+        PresentJson(json);
+
+        Console.WriteLine("\n");
+        
+        AnsiConsole.MarkupLine("[bold blue]Deserialized and Serialized JSON (with capitalized names):[/]");
         var people = JsonSerializer.Deserialize<List<Person>>(json, Options);
         var json1 = JsonSerializer.Serialize(people, Options);
         
         PresentJson(json1);
+
         ExitPrompt();
+        
     }
 
     private static JsonSerializerOptions Options => new() { WriteIndented = true };

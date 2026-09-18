@@ -1,6 +1,5 @@
 ﻿using Spectre.Console;
 using Spectre.Console.Json;
-using System.Runtime.CompilerServices;
 
 namespace UpperCaseFirstCharConverterApp.Classes;
 public static class SpectreConsoleHelpers
@@ -8,10 +7,18 @@ public static class SpectreConsoleHelpers
     public static void ExitPrompt()
     {
         Console.WriteLine();
-        AnsiConsole.MarkupLine("[bold cyan]Press any key to exit...[/]");
+        Console.WriteLine();
+        AnsiConsole.MarkupLine("[bold cyan]Press ENTER key to exit...[/]");
 
         Console.ReadLine();
     }
+    /// <summary>
+    /// Displays a JSON string in a formatted and color-coded manner using Spectre.Console.
+    /// </summary>
+    /// <param name="json">The JSON string to be presented.</param>
+    /// <remarks>
+    /// The method uses Spectre.Console's <see cref="JsonText"/> to render the JSON with specific colors for braces, brackets, colons, commas, strings, numbers, booleans, members, and null values.
+    /// </remarks>
     public static void PresentJson(string json)
     {
         AnsiConsole.Write(
@@ -33,16 +40,6 @@ public static class SpectreConsoleHelpers
         AnsiConsole.WriteLine();
     }
 
-    public static void PrintCyan([CallerMemberName] string? methodName = null)
-    {
-        AnsiConsole.MarkupLine($"[cyan]{methodName}[/]");
-        Console.WriteLine();
-    }
-
-    public static void LineSeparator()
-    {
-        AnsiConsole.Write(new Rule().RuleStyle(Style.Parse("grey")).Centered());
-    }
 
     /// <summary>
     /// Spectre.Console  Add [ to [ and ] to ] so Children[0].Name changes to Children[[0]].Name

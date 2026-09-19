@@ -2,6 +2,7 @@
 using Spectre.Console.Json;
 using System.Runtime.CompilerServices;
 using System.Text;
+using RegisterJsonConveterApp.Classes;
 
 namespace UpperCaseFirstCharConverterApp.Classes;
 public static class SpectreConsoleHelpers

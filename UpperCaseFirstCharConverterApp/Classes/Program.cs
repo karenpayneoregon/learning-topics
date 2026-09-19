@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UpperCaseFirstCharConverterApp.Classes;
+using UpperCaseFirstCharConverterApp.JsonConverters;
 using static ConsoleConfigurationLibrary.Classes.ApplicationConfiguration;
 
 // ReSharper disable once CheckNamespace
@@ -20,7 +21,20 @@ internal partial class Program
 
         WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
 
+        Setup();
+    }
+    private static void Setup()
+    {
+
+        SetupLogging.Development();
+
+        ServiceCollection services = ConfigureServices();
+        using ServiceProvider provider = services.BuildServiceProvider();
+        var setup = provider.GetService<SetupServices>();
+        setup!.GetConnectionStrings();
+        setup.GetEntitySettings();
+
+        SpectreConsoleHelpers.SetEncoding();
 
     }
-
 }

@@ -7,6 +7,17 @@ namespace UpperCaseFirstCharConverterApp.Classes;
 
 internal class Samples
 {
+    /// <summary>
+    /// Demonstrates the usage of global JSON serialization options with a custom converter 
+    /// to capitalize the first character of string properties during serialization and deserialization.
+    /// </summary>
+    /// <remarks>
+    /// This method performs the following steps:
+    /// 1. Prints the original JSON data.
+    /// 2. Deserializes the JSON into a list of <see cref="Person"/> objects using global JSON options.
+    /// 3. Serializes the list back to JSON with the custom converter applied.
+    /// 4. Displays the transformed JSON data.
+    /// </remarks>
     public static void GlobalExample()
     {
 
@@ -15,27 +26,27 @@ internal class Samples
         string json =
             /*lang=json*/
             """
-            [
-              {
-                "Id": 1,
-                "FirstName": "jose",
-                "LastName": "fernandez",
-                "BirthDate": "1985-01-01"
-              },
-              {
-                "Id": 2,
-                "FirstName": "Miguel",
-                "LastName": "loPez",
-                "BirthDate": "1970-12-04"
-              },
-              {
-                "Id": 3,
-                "FirstName": "angel",
-                "LastName": "PEREZ",
-                "BirthDate": "1980-09-11"
-              }
-            ]
-            """;
+        [
+          {
+            "Id": 1,
+            "FirstName": "jose",
+            "LastName": "fernandez",
+            "BirthDate": "1985-01-01"
+          },
+          {
+            "Id": 2,
+            "FirstName": "Miguel",
+            "LastName": "loPez",
+            "BirthDate": "1970-12-04"
+          },
+          {
+            "Id": 3,
+            "FirstName": "angel",
+            "LastName": "PEREZ",
+            "BirthDate": "1980-09-11"
+          }
+        ]
+        """;
 
         AnsiConsole.MarkupLine("[bold yellow]Original JSON:[/]");
         SpectreConsoleHelpers.PresentJson(json);
@@ -49,6 +60,15 @@ internal class Samples
         SpectreConsoleHelpers.PresentJson(json1);
     }
 
+    /// <summary>
+    /// Provides global JSON serialization options configured with a custom converter 
+    /// to capitalize the first character of string properties during serialization and deserialization.
+    /// </summary>
+    /// <remarks>
+    /// This field is used to ensure consistent JSON formatting and transformation 
+    /// by applying the <see cref="UpperCaseFirstCharConverterApp.JsonConverters.UpperCaseFirstCharConverter"/> 
+    /// and enabling indented output for better readability.
+    /// </remarks>
     private static readonly JsonSerializerOptions GlobalJsonOptions = new()
     {
         Converters = { new UpperCaseFirstCharConverter() },

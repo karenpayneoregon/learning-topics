@@ -8,7 +8,11 @@ namespace RegisterJsonConveterApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
+            /*
+             * Register the custom JSON converter globally for all Razor Pages.
+             * This ensures that the converter is applied to all JSON serialization
+             * and deserialization operations.
+             */
             builder.Services
                 .AddRazorPages()
                 .AddJsonOptions(options =>    

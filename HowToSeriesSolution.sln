@@ -358,7 +358,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateGuidToolApp", "Create
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicConsoleProject20261", "BasicConsoleProject20261\BasicConsoleProject20261.csproj", "{1BC609B6-D963-4BF3-8161-C94DA4F94DFA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonConverter", "JsonConverter", "{5EAABCF9-808B-4ED6-963C-13F91EF48001}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonConverter_Article", "JsonConverter_Article", "{5EAABCF9-808B-4ED6-963C-13F91EF48001}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterJsonConveterApp", "RegisterJsonConveterApp\RegisterJsonConveterApp.csproj", "{42A3F298-435C-45C3-8EEE-E888CBA7AE73}"
 EndProject

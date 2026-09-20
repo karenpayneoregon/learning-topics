@@ -19,6 +19,10 @@ public class UpperCaseFirstCharConverter : JsonConverter<string>
     public override bool CanConvert(Type typeToConvert) 
         => typeToConvert == typeof(string);
 
+    /// <summary>
+    /// Reads and converts the JSON string value to ensure the first character 
+    /// is uppercase.
+    /// </summary>
     public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) 
         => (reader.GetString() ?? string.Empty).CapitalizeFirstLetter();
 

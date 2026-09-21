@@ -1,5 +1,4 @@
-﻿using static System.DateTime;
-namespace AuditInterceptorSampleApp.Classes;
+﻿namespace EntityLogLibrary;
 /// <summary>
 /// For logging messages from DbContext.
 /// 

@@ -22,12 +22,12 @@ internal class Samples
         
         SpectreConsoleHelpers.PrintPink();
         
-        var data = new DataClass() { PropTwoPlaces = 10.5678, PropFivePlaces = 3.14159267 };
-        var serialized = JsonSerializer.Serialize(data, Options);
+        var dataClass = new DataClass() { PropTwoPlaces = 10.5678, PropFivePlaces = 3.14159267 };
+        var serialized = JsonSerializer.Serialize(dataClass, Options);
         
         SpectreConsoleHelpers.PresentJson(serialized);
         Console.WriteLine("\n");
-        Console.WriteLine(ObjectDumper.Dump(data));
+        Console.WriteLine(ObjectDumper.Dump(dataClass, DumpStyle.CSharp));
         
     }
 

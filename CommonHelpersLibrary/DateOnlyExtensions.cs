@@ -68,41 +68,52 @@ public static partial class DateTimeExtensions
         return DateOnly.FromDateTime(newDate);
     }
 
-    /// <summary>
-    /// Adds a full business week (7 working days) to the specified date.
-    /// </summary>
-    /// <param name="day">The starting date to which a business week will be added.</param>
-    /// <returns>
-    /// A <see cref="DateOnly"/> representing the date after adding 7 working days.
-    /// </returns>
-    /// <remarks>
-    /// This method uses the <see cref="WorkingDayCultureInfo"/> class to determine working days.
-    /// It skips holidays and weekends as defined by the culture-specific working day rules.
-    /// </remarks>
-    public static DateOnly AddBusinessWeekDay(this DateOnly day)
+    extension(DateOnly day)
     {
-        var date = DateTimeFromDateOnly(day);
-        var newDate = date.AddWorkingDays(7, new WorkingDayCultureInfo());
-        return DateOnly.FromDateTime(newDate);
-    }
-    /// <summary>
-    /// Retrieves all holidays for the entire year based on the specified date.
-    /// </summary>
-    /// <param name="day">The date for which the year's holidays are to be retrieved.</param>
-    /// <returns>
-    /// A dictionary where the keys are <see cref="DateOnly"/> objects representing the dates of the holidays, 
-    /// and the values are <see cref="Holiday"/> objects containing details about each holiday.
-    /// </returns>
-    /// <remarks>
-    /// This method uses the <see cref="WorkingDayCultureInfo"/> class to determine holidays.
-    /// The returned dictionary includes all holidays for the year of the provided date.
-    /// </remarks>
-    public static IDictionary<DateOnly, Holiday> AllYearHolidays(this DateOnly day)
-    {
-        IDictionary<DateTime, Holiday>? x = day
-            .ToDateTime(TimeOnly.Parse("00:00 AM"))
-            .AllYearHolidays(new WorkingDayCultureInfo());
-        return x.ToDictionary(kvp => DateOnly.FromDateTime(kvp.Key), kvp => kvp.Value);
+        /// <summary>
+        /// Adds a full business week (7 working days) to the specified date.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="DateOnly"/> representing the date after adding 7 working days.
+        /// </returns>
+        /// <remarks>
+        /// This method uses the <see cref="WorkingDayCultureInfo"/> class to determine working days.
+        /// It skips holidays and weekends as defined by the culture-specific working day rules.
+        /// </remarks>
+        public DateOnly AddBusinessWeekDay()
+        {
+            var date = DateTimeFromDateOnly(day);
+            var newDate = date.AddWorkingDays(7, new WorkingDayCultureInfo());
+            return DateOnly.FromDateTime(newDate);
+        }
+
+
+        /// <summary>
+        /// Retrieves all holidays for the entire year based on the specified culture.
+        /// </summary>
+        /// <param name="cultureName">
+        /// The name of the culture to use for determining holidays. 
+        /// Defaults to <c>"en-US"</c> if not specified.
+        /// </param>
+        /// <returns>
+        /// A dictionary where the keys are <see cref="DateOnly"/> objects representing the dates of the holidays, 
+        /// and the values are <see cref="Holiday"/> objects containing details about each holiday.
+        /// </returns>
+        /// <remarks>
+        /// This method uses the <see cref="WorkingDayCultureInfo"/> class to determine holidays for the entire year.
+        /// It considers culture-specific holiday rules to generate the list of holidays.
+        /// </remarks>
+        public IDictionary<DateOnly, Holiday> AllYearHolidays(string cultureName = "en-US")
+        {
+            IDictionary<DateTime, Holiday>? x = day
+                .ToDateTime(TimeOnly.MinValue)
+                .AllYearHolidays(new WorkingDayCultureInfo(cultureName));
+
+            if (x is null)
+                return new Dictionary<DateOnly, Holiday>();
+
+            return x.ToDictionary(kvp => DateOnly.FromDateTime(kvp.Key), kvp => kvp.Value);
+        }
     }
 
     /// <summary>
@@ -134,3 +145,5 @@ public static partial class DateTimeExtensions
     public static DateTime DateTimeFromDateOnly(DateOnly day, int hour, int minute)
         => day.ToDateTime(new TimeOnly(hour, minute));
 }
+
+

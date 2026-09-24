@@ -6,6 +6,7 @@ using System.Data;
 using System.Globalization;
 using System.Reflection;
 using System.Xml.Linq;
+using CommonHelpersLibrary;
 using TempApp.Classes;
 using TempApp.Json.Appsettings;
 
@@ -15,6 +16,19 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        var words = "Hello, World! This is a sample string to demonstrate the character occurrence analysis.";
+        var result = words.Occurrences();
+        foreach (var item in result)
+        {
+            Console.WriteLine($"Character: {item.Character}, " +
+                              $"Occurrences: {item.Occurrences}, Code: {item.Code}");
+        }
+        
+        Console.ReadLine();
+    }
+
+    private static void DisplayApplicationInfo()
+    {
         //var list = Lookups.BuildMonths();
         //Work.ReadConfiguration();
 
@@ -23,7 +37,6 @@ internal partial class Program
         //AnsiConsole.MarkupLine($"[green3_1]  Copyright[/] {Info.GetCopyright()}");
         //AnsiConsole.MarkupLine($"[green3_1]    Version[/] {Info.GetVersion()}");
         GetWinesTree();
-        Console.ReadLine();
     }
 
 

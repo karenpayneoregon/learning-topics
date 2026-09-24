@@ -16,6 +16,13 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        GetAllWines();
+
+        Console.ReadLine();
+    }
+
+    private static void AnalyzeCharacterOccurrences()
+    {
         var words = "Hello, World! This is a sample string to demonstrate the character occurrence analysis.";
         var result = words.Occurrences();
         foreach (var item in result)
@@ -23,8 +30,6 @@ internal partial class Program
             Console.WriteLine($"Character: {item.Character}, " +
                               $"Occurrences: {item.Occurrences}, Code: {item.Code}");
         }
-        
-        Console.ReadLine();
     }
 
     private static void DisplayApplicationInfo()
@@ -166,17 +171,14 @@ internal partial class Program
             SELECT WineId
                 ,Name
                 ,WineType
-            FROM dbo.Wine
+            FROM dbo.Wines
             """;
 
         var wines = db.Query<Wine>(statement).AsList();
-
-
-
-
-
+        
         foreach (var wine in wines)
         {
+            Console.WriteLine($"ID: {wine.WineId}, Name: {wine.Name}, Type: {wine.WineType}");
             
         }
     }

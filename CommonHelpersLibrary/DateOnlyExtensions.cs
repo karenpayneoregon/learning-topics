@@ -94,6 +94,16 @@ public static partial class DateTimeExtensions
         /// <param name="cultureName">
         /// The name of the culture to use for determining holidays. 
         /// Defaults to <c>"en-US"</c> if not specified.
+        /// <list type="bullet">
+        /// <item><description>United States (en-US)</description></item>
+        /// <item><description>United Kingdom (en-GB)</description></item>
+        /// <item><description>France (fr-FR)</description></item>
+        /// <item><description></description>Germany (de-DE)</item>
+        /// <item><description></description>Spain (es-ES)</item>
+        /// <item><description></description>Brazil (pt-BR)</item>
+        /// <item><description>Portugal (pt-PT</description></item>
+        /// <item><description>Add more</description></item>
+        /// </list>
         /// </param>
         /// <returns>
         /// A dictionary where the keys are <see cref="DateOnly"/> objects representing the dates of the holidays, 

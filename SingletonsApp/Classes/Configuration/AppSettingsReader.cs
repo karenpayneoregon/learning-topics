@@ -14,7 +14,12 @@ public static class AppSettingsReader
 {
     private static readonly JsonSerializerOptions SerializerOptions = new() { PropertyNameCaseInsensitive = true };
 
-    public static DataConnections Load(string path = "appsettings.json") 
+    public static DataConnections LoadConnectionStringsConnections(string path = "appsettings.json") 
         => JsonSerializer.Deserialize<DataConnections>(File.ReadAllText(path), SerializerOptions)!;
+
+    public static HelpDesk LoadHelpDesk(string path = "appsettings.json") 
+        => JsonDocument.Parse(File.ReadAllText(path))
+            .RootElement.GetProperty(nameof(HelpDesk))
+            .Deserialize<HelpDesk>(SerializerOptions)!;
 }
 

@@ -42,7 +42,8 @@ public sealed class EnvironmentSettings
     /// if the environment is identified as production using the <see cref="HostEnvironmentExtensions.CheckIsProductionEnvironment"/> method.
     /// </remarks>
     public bool IsProduction { get; init; }
- 
+
+    public HelpDesk HelpDesk { get; init; }
 
     /// <summary>
     /// Sets the database connection string for the current environment.
@@ -72,7 +73,8 @@ public sealed class EnvironmentSettings
     private EnvironmentSettings()
     {
         
-        DataConnections connections = AppSettingsReader.Load();
+        DataConnections connections = AppSettingsReader.LoadConnectionStringsConnections();
+        HelpDesk = AppSettingsReader.LoadHelpDesk();
         
         using IHost host = Host.CreateDefaultBuilder().Build();
 
@@ -88,7 +90,7 @@ public sealed class EnvironmentSettings
         {
             IsStaging = true;
             DatabaseConnectionString = connections.ConnectionStrings.StagingConnection;
-            environment.Print(DatabaseConnectionString);
+            environment.DebugPrint(DatabaseConnectionString, HelpDesk);
         }
 
         if (environment.CheckIsProductionEnvironment())

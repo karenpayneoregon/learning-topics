@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using SingletonsApp.Models;
 
 namespace SingletonsApp.Classes.Configuration;
 
@@ -42,12 +43,16 @@ public static class HostEnvironmentExtensions
         /// Thrown if the <paramref name="environment"/> is <c>null</c>.
         /// </exception>
         public bool CheckIsProductionEnvironment() => environment.IsProduction();
-        
+
         /// <summary>
-        /// Prints details about the current hosting environment and a specified database connection string to the console.
+        /// Outputs detailed information about the current hosting environment and a specified database connection string
+        /// to the console.
         /// </summary>
         /// <param name="databaseConnectionString">
         /// The database connection string to be displayed.
+        /// </param>
+        /// <param name="helpDesk">
+        /// The help desk information containing phone and email details to be displayed.
         /// </param>
         /// <remarks>
         /// This method outputs the following information:
@@ -56,17 +61,24 @@ public static class HostEnvironmentExtensions
         /// <item><description>The application name.</description></item>
         /// <item><description>The content root path.</description></item>
         /// <item><description>The provided database connection string.</description></item>
+        /// <item><description>The help desk phone number.</description></item>
+        /// <item><description>The help desk email address.</description></item>
         /// </list>
         /// </remarks>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown if the <paramref name="environment"/> is <c>null</c>.
         /// </exception>
-        public void Print(string databaseConnectionString)
+        public void DebugPrint(string databaseConnectionString, HelpDesk helpDesk)
         {
+            
+            if (environment.IsProduction()) return;
+            
             Console.WriteLine($"       Current Environment: {environment.EnvironmentName}");
             Console.WriteLine($"          Application Name: {environment.ApplicationName}");
             Console.WriteLine($"         Content Root Path: {environment.ContentRootPath}");
             Console.WriteLine($"Database Connection String: {databaseConnectionString}");
+            Console.WriteLine($"           Help Desk Phone: {helpDesk.Phone}");
+            Console.WriteLine($"           Help Desk Email: {helpDesk.Email}");
         }
     }
 }

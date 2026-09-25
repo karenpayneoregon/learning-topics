@@ -12,23 +12,9 @@ namespace SingletonsApp.Classes.Configuration;
 /// </remarks>
 public static class AppSettingsReader
 {
-    public static DataConnections Load(string path = "appsettings.json")
-    {
-        using FileStream stream = File.OpenRead(path);
+    private static readonly JsonSerializerOptions SerializerOptions = new() { PropertyNameCaseInsensitive = true };
 
-        DataConnections settings = JsonSerializer.Deserialize<DataConnections>(
-            stream,
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })
-            ?? throw new InvalidDataException($"'{path}' contains no settings.");
-
-        if (settings.ConnectionStrings is null ||
-            string.IsNullOrWhiteSpace(settings.ConnectionStrings.ProductionConnection) ||
-            string.IsNullOrWhiteSpace(settings.ConnectionStrings.DevelopmentConnection) ||
-            string.IsNullOrWhiteSpace(settings.ConnectionStrings.StagingConnection))
-        {
-            throw new InvalidDataException($"'{path}' is missing required connection strings.");
-        }
-
-        return settings;
-    }
+    public static DataConnections Load(string path = "appsettings.json") 
+        => JsonSerializer.Deserialize<DataConnections>(File.ReadAllText(path), SerializerOptions)!;
 }
+

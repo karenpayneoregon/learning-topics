@@ -217,6 +217,9 @@
       </Properties>
     </Project>
   </Folder>
+  <Folder Name="/Singletons/">
+    <Project Path="SingletonsApp/SingletonsApp.csproj" Id="6fc4a73a-d08f-42b5-895f-c7c1f584880a" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
     <File Path="readme.md" />

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "SingletonsApp": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Staging",
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      }
+    }
+  }
+}

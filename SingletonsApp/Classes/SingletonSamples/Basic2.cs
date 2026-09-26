@@ -17,7 +17,7 @@ public sealed class Basic2
 
     private Basic2()
     {
-        var x = TransactionInformationReader.Load();
+        TransactionInformation? x = TransactionInformationReader.Load();
         
         Transaction = new TransactionInformation()
         {

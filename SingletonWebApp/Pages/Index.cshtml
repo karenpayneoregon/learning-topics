@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Month Selection";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <form method="post">
+
+            <div class="mb-3">
+                <label asp-for="SelectedMonth" class="form-label">
+                    Select month
+                </label>
+
+                <select asp-for="SelectedMonth"
+                        class="form-select"
+                        style="width: 250px;">
+
+                    <option value="">Select a month</option>
+
+                    @foreach (var month in Model.MonthItems)
+                    {
+                        <option value="@month.Index">
+                            @month.Name
+                        </option>
+                    }
+
+                </select>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Get Month
+            </button>
+
+            @if (Model.SelectedMonthItem is not null)
+            {
+                <div class="alert alert-success mt-3">
+                    Selected month:
+                    <strong>@Model.SelectedMonthItem.Name</strong>
+                    (@Model.SelectedMonthItem.Index)
+                </div>
+            }
+
+        </form>
+    </div>
+</div>

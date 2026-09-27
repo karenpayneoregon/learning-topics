@@ -18,30 +18,8 @@ public sealed class EnvironmentSettings
     private static readonly Lazy<EnvironmentSettings> Lazy = new(() => new EnvironmentSettings());
     public static EnvironmentSettings Instance => Lazy.Value;
 
-    /// <summary>
-    /// Gets a value indicating whether the application is running in a development environment.
-    /// </summary>
-    /// <value>
-    /// <see langword="true"/> if the application is running in a development environment; otherwise, <see langword="false"/>.
-    /// </value>
-    /// <remarks>
-    /// This property is initialized during the construction of the <see cref="EnvironmentSettings"/> singleton instance.
-    /// It is determined based on the current hosting environment.
-    /// </remarks>
-    public bool IsDevelopment { get; init ; }
-
-    public bool IsStaging { get; init; }
-    /// <summary>
-    /// Gets a value indicating whether the application is running in a production environment.
-    /// </summary>
-    /// <value>
-    /// <c>true</c> if the application is running in a production environment; otherwise, <c>false</c>.
-    /// </value>
-    /// <remarks>
-    /// This property is initialized based on the current hosting environment. It is set to <c>true</c>
-    /// if the environment is identified as production using the <see cref="HostEnvironmentExtensions.CheckIsProductionEnvironment"/> method.
-    /// </remarks>
-    public bool IsProduction { get; init; }
+    public AppEnvironment Environment { get; init; }
+    
 
     public HelpDesk HelpDesk { get; init; }
 
@@ -82,20 +60,19 @@ public sealed class EnvironmentSettings
 
         if (environment.CheckIsDevelopmentEnvironment())
         {
-            IsDevelopment = true;
+            Environment = AppEnvironment.Development;
             DatabaseConnectionString = connections.ConnectionStrings.DevelopmentConnection;
         }
         
         if (environment.CheckIsStagingEnvironment())
         {
-            IsStaging = true;
+            Environment = AppEnvironment.Staging;
             DatabaseConnectionString = connections.ConnectionStrings.StagingConnection;
-            environment.DebugPrint(DatabaseConnectionString, HelpDesk);
         }
 
         if (environment.CheckIsProductionEnvironment())
         {
-            IsProduction = true;
+            Environment = AppEnvironment.Production;
             DatabaseConnectionString = connections.ConnectionStrings.ProductionConnection;
         }
     }

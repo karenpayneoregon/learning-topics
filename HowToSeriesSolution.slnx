@@ -218,6 +218,8 @@
     </Project>
   </Folder>
   <Folder Name="/Singletons/">
+    <Project Path="SingletonLibrary.Tests/SingletonLibrary.Tests.csproj" />
+    <Project Path="SingletonLibrary/SingletonLibrary.csproj" Id="c5166489-daf0-448a-a19b-ea31df492fca" />
     <Project Path="SingletonsApp/SingletonsApp.csproj" Id="6fc4a73a-d08f-42b5-895f-c7c1f584880a" />
     <Project Path="SingletonWebApp/SingletonWebApp.csproj" Id="7d065ba0-7cff-4e97-9880-f7ea3a88c5ce" />
   </Folder>

@@ -10,7 +10,7 @@ namespace SingletonsApp.Singletons;
 /// </summary>
 /// <remarks>
 /// This class is designed to handle environment-specific configurations, such as determining 
-/// whether the application is running in a development or production environment. 
+/// whether the application is running in a development, staging, or production environment. 
 /// It ensures a single shared instance is used throughout the application, adhering to the singleton pattern.
 /// </remarks>
 public sealed class EnvironmentSettings
@@ -20,7 +20,6 @@ public sealed class EnvironmentSettings
 
     public AppEnvironment Environment { get; init; }
     
-
     public HelpDesk HelpDesk { get; init; }
 
     /// <summary>

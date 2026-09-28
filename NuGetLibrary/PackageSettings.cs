@@ -23,7 +23,7 @@ public sealed class PackageSettings
     /// </value>
     public string Path { get; init; }
 
-    public List<string> DisabledSources { get; init; }
+    public List<string> DisabledSources { get; init; } = null!;
 
     /// <summary>
     /// Gets the list of NuGet packages
@@ -46,8 +46,11 @@ public sealed class PackageSettings
          */
         SettingSection? disableSources = NuGetSettings.GetSection(ConfigurationConstants.DisabledPackageSources);
 
-        DisabledSources = disableSources!.Items.Select(x => 
-            x.GetAttributes().Values.FirstOrDefault()).ToList();
+        if (disableSources is not null)
+        {
+            DisabledSources = disableSources!.Items.Select(x => x.GetAttributes().Values.FirstOrDefault()).ToList();
+        }
+        
     }
 
 }

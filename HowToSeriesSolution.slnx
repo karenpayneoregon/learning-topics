@@ -57,7 +57,6 @@
   </Folder>
   <Folder Name="/Class projects/">
     <Project Path="CommonHelpersLibrary/CommonHelpersLibrary.csproj" />
-    <Project Path="NuGetLibrary/NuGetLibrary.csproj" />
     <Project Path="SpectreConsoleLibrary/SpectreConsoleLibrary.csproj" />
   </Folder>
   <Folder Name="/Configurations/" />
@@ -134,6 +133,10 @@
   </Folder>
   <Folder Name="/Experiments/Configuration/">
     <Project Path="ConfigurationTest/ConfigurationTest.csproj" />
+  </Folder>
+  <Folder Name="/Experiments/NuGet/">
+    <Project Path="GetGlobalNuGetPackages/GetGlobalNuGetPackages.csproj" />
+    <Project Path="NuGetLibrary/NuGetLibrary.csproj" />
   </Folder>
   <Folder Name="/Experiments/Spectre.Console/">
     <Project Path="BasicConsoleProject1/BasicConsoleProject1.csproj" />

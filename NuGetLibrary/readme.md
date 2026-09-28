@@ -11,12 +11,6 @@ This project goal is to show how a new developer or even a season developer can 
 - NuGet package [NuGet.Configuration](https://www.nuget.org/packages/NuGet.Configuration/6.12.1?_src=template)
 - NuGet package [NuGet.Protocol](https://www.nuget.org/packages/NuGet.Protocol/6.12.1?_src=template)
 
-## Example usage
-
-One example to get all cached local packages and versions to a text file.
-```csharp
-PackageWork.DisplayPackagesGroupedByName();
-```
 
 
 ## NuGet documentation

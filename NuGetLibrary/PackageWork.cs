@@ -1,6 +1,10 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using NuGet.Common;
 using NuGet.Configuration;
+using NuGet.Protocol;
+using NuGet.Protocol.Core.Types;
+using NuGet.Versioning;
 using NuGetLibrary.Models;
 
 namespace NuGetLibrary;
@@ -27,23 +31,20 @@ public partial class PackageWork
                 .Select(version => new Package { Name = packageName, Version = version }));
         }
 
+
         return packages;
 
     }
-    /// <summary>
-    /// Displays the available NuGet packages grouped by their names.
-    /// </summary>
-    /// <remarks>
-    /// This method retrieves all available packages, groups them by their names, 
-    /// and writes the grouped information, including package versions, to a file named "GroupedPackages.txt".
-    /// </remarks>
+
     public static void DisplayPackagesGroupedByName()
     {
+        // Retrieve all available packages
         var packages = AvailablePackages();
 
+        // Group by Name
         IOrderedEnumerable<IGrouping<string, Package>> groupedPackages = packages
             .GroupBy(p => p.Name)
-            .OrderBy(g => g.Key); 
+            .OrderBy(g => g.Key); // optional: alphabetically sort
 
         StringBuilder sb = new();
         
@@ -60,18 +61,6 @@ public partial class PackageWork
         File.WriteAllText("GroupedPackages.txt", sb.ToString());
     }
 
-    /// <summary>
-    /// Groups the available NuGet packages by their names.
-    /// </summary>
-    /// <returns>
-    /// An <see cref="IEnumerable{T}"/> of <see cref="IGrouping{TKey, TElement}"/> where the key is the package name 
-    /// and the elements are <see cref="Package"/> objects representing the grouped packages.
-    /// </returns>
-    /// <remarks>
-    /// This method retrieves all available NuGet packages and groups them by their names for further processing.
-    /// </remarks>
-    public static IEnumerable<IGrouping<string, Package>> GetPackagesGroupedByName() 
-        => AvailablePackages().GroupBy(p => p.Name);
 
     /// <summary>
     /// Retrieves a list of NuGet package sources, including their names, sources, and enabled statuses.
@@ -83,7 +72,7 @@ public partial class PackageWork
 
         ISettings settings = Settings.LoadDefaultSettings(null);
 
-        PackageSourceProvider packageSourceProvider = new(settings);
+        PackageSourceProvider packageSourceProvider = new PackageSourceProvider(settings);
         var packageSources = packageSourceProvider.LoadPackageSources();
 
         foreach (var source in packageSources)
@@ -100,6 +89,40 @@ public partial class PackageWork
         }
 
         return list;
+    }
+
+
+    /// <summary>
+    /// Asynchronously retrieves and displays all available versions of the Serilog NuGet package.
+    /// </summary>
+    /// <remarks>
+    /// This method connects to the NuGet V3 API to fetch version information for the Serilog package.
+    /// </remarks>
+    /// <returns>A task representing the asynchronous operation.</returns>
+    public static async Task GetVersionsForSeriLog()
+    {
+
+        ILogger logger = NullLogger.Instance;
+        CancellationToken cancellationToken = CancellationToken.None;
+
+        SourceCacheContext cache = new SourceCacheContext();
+        SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
+        FindPackageByIdResource resource = await repository.GetResourceAsync<FindPackageByIdResource>(cancellationToken);
+
+        IEnumerable<NuGetVersion> versions = await resource.GetAllVersionsAsync(
+            "Serilog",
+            cache,
+            logger,
+            cancellationToken);
+
+        StringBuilder stringBuilder = new();
+        foreach (NuGetVersion version in versions)
+        {
+            stringBuilder.AppendLine(version.ToString());
+        }
+
+        await File.WriteAllTextAsync("SerilogVersions.txt", stringBuilder.ToString(), cancellationToken);
+
     }
 
     /// <summary>

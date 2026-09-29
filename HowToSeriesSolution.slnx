@@ -134,10 +134,6 @@
   <Folder Name="/Experiments/Configuration/">
     <Project Path="ConfigurationTest/ConfigurationTest.csproj" />
   </Folder>
-  <Folder Name="/Experiments/NuGet/">
-    <Project Path="GetGlobalNuGetPackages/GetGlobalNuGetPackages.csproj" />
-    <Project Path="NuGetLibrary/NuGetLibrary.csproj" />
-  </Folder>
   <Folder Name="/Experiments/Spectre.Console/">
     <Project Path="BasicConsoleProject1/BasicConsoleProject1.csproj" />
     <Project Path="EmojisDemoApp/EmojisDemoApp.csproj" />
@@ -157,6 +153,7 @@
   </Folder>
   <Folder Name="/Globbing/">
     <Project Path="GlobbingApp1/GlobbingApp1.csproj" />
+    <Project Path="GlobbingApp2/GlobbingApp2.csproj" Id="3e98720a-7d1e-4db4-a6d1-01b15b8a8dd4" />
   </Folder>
   <Folder Name="/Language extensions/">
     <Project Path="GenericExtentionsLibrary/GenericExtensionsLibrary.csproj" />
@@ -225,6 +222,10 @@
     <Project Path="SingletonLibrary/SingletonLibrary.csproj" Id="c5166489-daf0-448a-a19b-ea31df492fca" />
     <Project Path="SingletonsApp/SingletonsApp.csproj" Id="6fc4a73a-d08f-42b5-895f-c7c1f584880a" />
     <Project Path="SingletonWebApp/SingletonWebApp.csproj" Id="7d065ba0-7cff-4e97-9880-f7ea3a88c5ce" />
+  </Folder>
+  <Folder Name="/Singletons/NuGet/">
+    <Project Path="GetGlobalNuGetPackages/GetGlobalNuGetPackages.csproj" />
+    <Project Path="NuGetLibrary/NuGetLibrary.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />

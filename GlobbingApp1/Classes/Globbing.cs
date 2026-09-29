@@ -83,4 +83,24 @@ public class Globbing
         return list;
     }
 
+    public static async Task<List<FileMatchItem>> GetWordDocumentsTask(string parentFolder)
+    {
+        List<FileMatchItem> list = [];
+        Matcher matcher = new();
+        matcher.AddIncludePatterns(["**/*.docx", "**/* (*.doc"]);
+        matcher.AddExcludePatterns([
+            "**/My Music/**",
+            "**/My Pictures/**",
+            "**/My Videos/**"
+        ]);
+
+        await Task.Run(() =>
+        {
+            list.AddRange(matcher.GetResultsInFullPath(parentFolder)
+                .Select(file => new FileMatchItem(file)));
+        });
+
+        return list;
+
+    }
 }

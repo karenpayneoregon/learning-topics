@@ -46,8 +46,12 @@ public class Globbing
 
         await Task.Run(() =>
         {
-            list.AddRange(matcher.GetResultsInFullPath(parentFolder)
-                .Select(file => new FileMatchItem(file)));
+            foreach (var file in matcher.GetResultsInFullPath(parentFolder))
+            {
+                // modify to get file size and add it to the FileMatchItem class
+                FileInfo fileInfo = new FileInfo(file);
+                list.Add(new FileMatchItem(file) { Size = fileInfo.Length });   
+            }
         });
 
         return list;

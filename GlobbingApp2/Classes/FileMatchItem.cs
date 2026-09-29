@@ -5,5 +5,9 @@ public class FileMatchItem(string sender)
     public string? Folder { get; init; } = Path.GetDirectoryName(sender);
     public string FileName { get; init; } = Path.GetFileName(sender);
     public  string FullName => $"{Folder}\\{FileName}";
+    public long Size { get; set; }
+    public string SizeInReadableFormat => Size.ToFileSize();
+
     public override string ToString() => $"{Folder}\\{FileName}";
 }
+

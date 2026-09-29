@@ -18,7 +18,7 @@ namespace GlobbingApp2
                 AnsiConsole.MarkupLine("[green]Word documents found:[/]"                                                                    );
                 foreach (var item in list)
                 {
-                    Console.WriteLine(item);
+                    Console.WriteLine($"{item} ({item.SizeInReadableFormat})");
                 }
             }
             else

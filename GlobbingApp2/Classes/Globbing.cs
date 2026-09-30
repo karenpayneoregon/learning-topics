@@ -48,7 +48,6 @@ public class Globbing
         {
             foreach (var file in matcher.GetResultsInFullPath(parentFolder))
             {
-                // modify to get file size and add it to the FileMatchItem class
                 FileInfo fileInfo = new FileInfo(file);
                 list.Add(new FileMatchItem(file) { Size = fileInfo.Length });   
             }

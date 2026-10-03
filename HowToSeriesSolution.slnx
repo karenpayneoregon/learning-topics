@@ -97,6 +97,7 @@
     <Project Path="AssemblyApp/AssemblyApp.csproj" />
     <Project Path="DirectoryHelperSample1/DirectoryHelperSample1.csproj" />
     <Project Path="DirectoryHelperSample2/DirectoryHelperSample2.csproj" />
+    <Project Path="IsEvenIsOddApp/IsEvenIsOddApp.csproj" Id="cd9a2d4f-4cab-4f7d-bb31-adb165b63567" />
     <Project Path="IterateSamplesApp/IterateSamplesApp.csproj" />
     <Project Path="ModelFormatCustomSample/ModelFormatCustomSample.csproj" />
     <Project Path="PasswordGeneratorArgonSample/PasswordGeneratorArgonSample.csproj" />

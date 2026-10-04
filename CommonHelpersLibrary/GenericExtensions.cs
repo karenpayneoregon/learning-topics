@@ -5,9 +5,10 @@ namespace CommonHelpersLibrary;
 public static class GenericExtensions
 {
   
-    public static bool IsEven<T>(this T sender) where T : INumber<T>
-        => sender % T.CreateChecked(2) == T.Zero;
+    extension<T>(T sender) where T : INumber<T>
+    {
+        public bool IsEven() => sender % T.CreateChecked(2) == T.Zero;
+        public bool IsOdd() => sender % T.CreateChecked(2) != T.Zero;
+    }
 
-    public static bool IsOdd<T>(this T sender) where T : INumber<T>
-        => sender % T.CreateChecked(2) != T.Zero;
 }

@@ -15,7 +15,7 @@ namespace IsEvenIsOddApp
             float floatValue = 14F;
             BigInteger bigInteger = new(15);
 
-            Console.WriteLine(intValue.IsEven());       // True
+            Console.WriteLine(intValue.IsEven());       // False
             Console.WriteLine(longValue.IsOdd());       // True
             Console.WriteLine(decimalValue.IsEven());   // True
             Console.WriteLine(doubleValue.IsOdd());     // True

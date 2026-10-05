@@ -1,4 +1,7 @@
-﻿using IterateSamplesApp.Classes;
+﻿using CommonHelpersLibrary;
+using IterateSamplesApp.Classes;
+using Spectre.Console;
+using System.Runtime.InteropServices.Marshalling;
 using static IterateSamplesApp.Classes.GenericIterators;
 
 namespace IterateSamplesApp;
@@ -16,7 +19,24 @@ internal partial class Program
         Console.WriteLine();
         
         Mocked.GetCategories().Iterate(category => category.ToString());
+
+        Console.WriteLine();
         
+        string[] names =
+        [
+            "Karen",
+            "mARY",
+            "John"
+        ];
+
+        names.Iterate(name => name.CapitalizeFirstLetter(), 
+            (index, value) => Console.WriteLine($"{index,-5}{value}"));
+
+        Console.WriteLine();
+        
+        names.Iterate(name => name.CapitalizeFirstLetter(), 
+            (index, value) => AnsiConsole.MarkupLine($"[cyan]{index,-5}{value}[/]"));
+
         SpectreConsoleHelpers.ExitPrompt();
     }
 }

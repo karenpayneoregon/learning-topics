@@ -25,6 +25,12 @@ public static class GenericIterators
         foreach (var (index, item) in values.Index())
             Console.WriteLine($"{index,-5}{formatter(item)}");
     }
+
+    public static void Iterate<T>(this IEnumerable<T> values, Func<T, string> formatter, Action<int, string> action)
+    {
+        foreach (var (index, item) in values.Index())
+            action(index, formatter(item));
+    }
 }
 
 

@@ -26,6 +26,20 @@ public static class GenericIterators
             Console.WriteLine($"{index,-5}{formatter(item)}");
     }
 
+    /// <summary>
+    /// Iterates over a collection of items, applies a formatter function to each item, 
+    /// and executes a specified action with the item's index and formatted value.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the collection.</typeparam>
+    /// <param name="values">The collection of items to iterate over.</param>
+    /// <param name="formatter">
+    /// A function that takes an item of type <typeparamref name="T"/> and returns a string
+    /// representation of the item.
+    /// </param>
+    /// <param name="action">
+    /// An action to execute for each item, which takes the item's index and its formatted value
+    /// as parameters.
+    /// </param>
     public static void Iterate<T>(this IEnumerable<T> values, Func<T, string> formatter, Action<int, string> action)
     {
         foreach (var (index, item) in values.Index())

@@ -7,11 +7,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<Product>
-			<Name>Iterate Samples</Name>
-		</Product>
-	</PropertyGroup>
+  <PropertyGroup>
+    <Product>Sample Application</Product>
+  </PropertyGroup>
 
 	<ItemGroup>
 	  <Content Remove="C:\Users\paynek\.nuget\packages\consoleconfigurationlibrary\1.0.0.12\contentFiles\any\net8.0\readme.md" />
@@ -41,6 +39,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CommonHelpersLibrary\CommonHelpersLibrary.csproj" />
+	  <ProjectReference Include="..\SpectreConsoleLibrary\SpectreConsoleLibrary.csproj" />
 	</ItemGroup>
 
   <PropertyGroup>

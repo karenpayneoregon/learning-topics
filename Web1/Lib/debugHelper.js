@@ -23,7 +23,6 @@ $debugHelper = function () {
         const style = document.getElementById(debugStyleId);
         if (style) {
             style.remove();
-        } else {
         }
     }
 

@@ -9,9 +9,14 @@ public static class SpectreConsoleHelpers
     public static void ExitPrompt()
     {
         Console.WriteLine();
-        AnsiConsole.MarkupLine("[bold cyan]Press any key to exit...[/]");
+        //AnsiConsole.MarkupLine("[bold cyan]Press any key to exit...[/]");
 
-        Console.ReadLine();
+        //Console.ReadLine();
+
+        if (AnsiConsole.Confirm("press 'y' or 'ENTER' to exit"))
+        {
+            Environment.Exit(0);
+        }
     }
 
     private static void Render(Rule rule)

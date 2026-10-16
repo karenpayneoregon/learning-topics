@@ -139,6 +139,7 @@
     <Project Path="BasicConsoleProject1/BasicConsoleProject1.csproj" />
     <Project Path="EmojisDemoApp/EmojisDemoApp.csproj" />
     <Project Path="SpectreLoginSample/SpectreLoginSample.csproj" />
+    <Project Path="Treesexamples/Treesexamples.csproj" Id="bf7ed0fb-9c09-4370-bc80-44d45d3a11ff" DisplayName="TreesExamples" />
   </Folder>
   <Folder Name="/Features/">
     <Project Path="CapitalizeFirstLetterSample/CapitalizeFirstLetterSample.csproj" Id="a4524551-1f8f-4e47-b7e6-a13c428f1ae2" />

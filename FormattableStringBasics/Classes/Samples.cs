@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using FormattableStringBasics.Models;
 using Spectre.Console;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace FormattableStringBasics.Classes;
 internal class Samples

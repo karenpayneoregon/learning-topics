@@ -11,7 +11,7 @@ public static class Extensions
 {
 
     public static int Id(this FormattableString sender)
-        => Convert.ToInt32(sender.GetArguments()[0].ToString());
+        => Convert.ToInt32(sender.GetArguments()[0]!.ToString());
 
     public static string FirstName(this FormattableString sender)
         => (string)sender.GetArguments()[1];

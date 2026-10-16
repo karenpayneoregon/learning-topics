@@ -7,6 +7,14 @@ using TreesExamples.Models;
 
 namespace TreesExamples.Classes
 {
+    /// <summary>
+    /// Provides operations related to wine management, including generating and displaying
+    /// a hierarchical tree structure of wines categorized by their types.
+    /// </summary>
+    /// <remarks>
+    /// This class is designed to work with wine data, organizing it into a structured format
+    /// and utilizing the Spectre.Console library for visual representation in the console.
+    /// </remarks>
     internal class WineOperations
     {
         /// <summary>

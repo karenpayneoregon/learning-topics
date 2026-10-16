@@ -7,6 +7,13 @@ using TreesExamples.Models;
 
 namespace TreesExamples.Classes;
 
+/// <summary>
+/// Provides operations related to book management, including grouping books by price range and displaying them in a hierarchical tree structure.
+/// </summary>
+/// <remarks>
+/// This class is designed to work with book data, organizing it into a structured format
+/// and utilizing the Spectre.Console library for visual representation in the console.
+/// </remarks>
 internal class BookOperations
 {
     /// <summary>

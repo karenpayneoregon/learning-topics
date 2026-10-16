@@ -260,6 +260,7 @@ namespace TreesExamples.Classes.Core
             var fileName = Path.GetFileNameWithoutExtension(filePath);
             var projectName = Utilities.GetProjectName(filePath);
 
+            Console.WriteLine();
             AnsiConsole.MarkupLine($"[Pink1]{projectName}[/][yellow bold].[/][Pink1]" +
                                    $"{fileName}[/][yellow bold].[/][Pink1]{methodName}[/]");
 

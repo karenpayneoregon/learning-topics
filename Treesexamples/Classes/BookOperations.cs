@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using Spectre.Console;
+using System.Diagnostics;
 using System.Text.Json;
 using Treesexamples.Models;
+using TreesExamples.Classes.Core;
 using TreesExamples.Models;
 
 namespace TreesExamples.Classes;
@@ -8,33 +10,46 @@ namespace TreesExamples.Classes;
 internal class BookOperations
 {
     /// <summary>
-    /// Groups a predefined collection of books by price ranges and outputs the grouped results.
+    /// Groups a collection of books by predefined price ranges and displays the results in a tree structure.
     /// </summary>
     /// <remarks>
-    /// This method deserializes a JSON string containing book data into a list of <see cref="Book"/> objects.
-    /// It then groups the books into price ranges using the <see cref="GroupBooksByPriceRange"/> method.
-    /// The grouped results are written to the debug output for inspection.
+    /// This method performs the following steps:
+    /// <list type="number">
+    /// <item>Deserializes a JSON string into a list of <see cref="Book"/> objects.</item>
+    /// <item>Groups the books into price ranges using the <see cref="GroupBooksByPriceRange"/> method.</item>
+    /// <item>Displays the grouped books in a tree structure using Spectre.Console.</item>
+    /// </list>
+    /// The tree structure categorizes books by price range and includes details such as ID, title, and price.
     /// </remarks>
+
     public static void BooksGroupings()
     {
 
+        SpectreConsoleHelpers.PrintPink();
+        
         List<Book> books = JsonSerializer.Deserialize<List<Book>>(Json())!;
 
-        IEnumerable<IGrouping<string, Book>> results = GroupBooksByPriceRange(books);
+        IEnumerable<IGrouping<string, Book>> grouped = GroupBooksByPriceRange(books);
 
-        foreach (var (price, booksGroup) in results.Select(group
+        var tree = new Tree("[bold yellow]Books by Price Range[/]");
+
+        foreach (var (price, booksGroup) in grouped.Select(group
                      => (group.Key, group)))
         {
-
-            Console.WriteLine($"Price Range: {price}");
+            var priceNode = tree.AddNode($"[bold cyan]{Markup.Escape(price)}[/]");
 
             foreach (var book in booksGroup)
             {
-                Console.WriteLine($"\tId: {book.Id}, Title: {book.Title}, Price: {book.Price:C}");
+                priceNode.AddNode(
+                    $"[green]Id:[/] {book.Id}, " +
+                    $"[green]Title:[/] {Markup.Escape(book.Title)}, " +
+                    $"[green]Price:[/] {book.Price:C}");
             }
-
         }
+
+        AnsiConsole.Write(tree);
     }
+
 
     /// <summary>
     /// Provides a JSON string representation of a predefined collection of books.

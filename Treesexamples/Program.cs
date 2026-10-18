@@ -9,10 +9,12 @@ namespace TreesExamples
     {
         static void Main(string[] args)
         {
-
-            WineOperations.GetWinesTree();
-            BookOperations.BooksGroupings();
-
+            //Basics.Example1();
+            //Basics.Example2();
+            //DirectoryTree.Display(DirectoryHelper.ProjectFolder()!);
+            //WineOperations.GetWinesTree();
+            //BookOperations.BooksGroupings();
+            MenuSystem.Run();
             SpectreConsoleHelpers.ExitPrompt(Justify.Left);
 
         }

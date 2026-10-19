@@ -11,10 +11,10 @@ namespace TreesExamples
         {
             //Basics.Example1();
             //Basics.Example2();
-            //DirectoryTree.Display(DirectoryHelper.ProjectFolder()!);
+            DirectoryTree.Display(DirectoryHelper.ProjectFolder()!);
             //WineOperations.GetWinesTree();
             //BookOperations.BooksGroupings();
-            MenuSystem.Run();
+            //MenuSystem.Run();
             SpectreConsoleHelpers.ExitPrompt(Justify.Left);
 
         }

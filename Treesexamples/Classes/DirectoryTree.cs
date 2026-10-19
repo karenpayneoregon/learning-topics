@@ -60,7 +60,7 @@ public static class DirectoryTree
         {
             foreach (DirectoryInfo subdirectory in directory.GetDirectories().OrderBy(d => d.Name))
             {
-                var node = parent.AddNode($"[blue]📁 {Markup.Escape(subdirectory.Name)}[/]");
+                TreeNode node = parent.AddNode($"[blue]📁 {Markup.Escape(subdirectory.Name)}[/]");
 
                 AddDirectory(subdirectory, node);
                 if (isBinObj)

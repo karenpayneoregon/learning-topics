@@ -17,22 +17,30 @@ namespace TreesExamples.Classes
         /// </remarks>
         public static void Example1()
         {
+            // Create a tree with a root node
             var tree = new Tree("[deeppink3 bold]root node[/]")
                 .Guide(TreeGuide.Line);
 
-            var types = tree.AddNode("[yellow]Types[/] [dim]Child 1[/]");
+            // Add child node to the root node
+            TreeNode types = tree.AddNode("[yellow]Types[/] [dim]Child 1[/]");
+            
+            // Add grandchild nodes to the child node
             types.AddNode("[green]String[/] [dim]Grandchild 1.1[/]");
             types.AddNode("[green]Int32[/] [dim]Grandchild 1.2[/]");
             types.AddNode("[green]Boolean[/] [dim]Grandchild 1.3[/]");
 
-            var collection = tree.AddNode("[blue]Collections[/] [dim]Child 1[/]");
+            
+            // Add child node to the root node
+            TreeNode collection = tree.AddNode("[blue]Collections[/] [dim]Child 1[/]");
+            
+            // Add grandchild nodes to the child node
             collection.AddNode("[green]List<String>[/] [dim]Grandchild 1.1[/]");
             collection.AddNode("[green]Dictionary<String,Int32>[/] [dim]Grandchild 1.2[/]");
 
-            var footer = new Panel("[bold]Root Footer[/]")
-                .BorderColor(Color.Grey)
-                .Padding(1, 0);
-            tree.AddNode(footer);
+            //var footer = new Panel("[bold]Root Footer[/]")
+            //    .BorderColor(Color.Grey)
+            //    .Padding(1, 0);
+            //tree.AddNode(footer);
             
             AnsiConsole.Write(tree);
         }

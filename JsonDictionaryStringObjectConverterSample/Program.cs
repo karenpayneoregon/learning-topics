@@ -18,7 +18,7 @@ internal partial class Program
             WriteIndented = true
         };
 
-        var data = Dictionary();
+        IDictionary<string, object> data = Dictionary();
 
         string json = JsonSerializer.Serialize(data, options);
 

@@ -16,7 +16,8 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        GetAllWines();
+        //GetAllWines();
+        GetWinesTree();
 
         Console.ReadLine();
     }

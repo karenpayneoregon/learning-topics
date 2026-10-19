@@ -7,7 +7,12 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        Customer customer = new(1, "Karen", "Payne", new DateOnly(1956, 9, 24));
+        
+        Customer customer = new(
+            1, 
+            "Karen", 
+            "Payne", 
+            new DateOnly(1956, 9, 24));
 
         AnsiConsole.MarkupLine($"[cyan]Age[/]: {customer:Age}");
         AnsiConsole.MarkupLine($"[cyan]IFL[/]: {customer:IFL}");
@@ -17,7 +22,7 @@ internal partial class Program
 
         Console.WriteLine();
 
-        var (firstName, lastName, birthDate) = customer;
+        var (_, firstName, lastName, birthDate) = customer;
         AnsiConsole.MarkupLine($"[cyan]Deconstruct[/]: {firstName} {lastName}, born on {birthDate}");
         SpectreConsoleHelpers.ExitPrompt();
     }

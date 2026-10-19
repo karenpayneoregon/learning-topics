@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TablesVsDivsSample1App.Data;
@@ -13,5 +14,21 @@ namespace TablesVsDivsSample1App.Pages
         {
             Customers = await context.Customers.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var customer = await context.Customers.FindAsync(id);
+
+            if (customer is null)
+            {
+                return NotFound();
+            }
+
+            context.Customers.Remove(customer);
+            await context.SaveChangesAsync();
+
+            return RedirectToPage();
+        }
+
     }
 }

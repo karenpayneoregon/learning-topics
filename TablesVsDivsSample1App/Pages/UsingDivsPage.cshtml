@@ -57,9 +57,16 @@
                 <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" title="Details">
                     <i class="bi bi-eye"></i>
                 </a>
-                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                <button type="button"
+                        class="btn btn-sm btn-outline-danger"
+                        title="Delete"
+                        aria-label="Delete @item.Company"
+                        data-bs-toggle="modal"
+                        data-bs-target="#deleteModal"
+                        data-customer-id="@item.Id"
+                        data-customer-name="@item.Company">
                     <i class="bi bi-trash"></i>
-                </a>
+                </button>
             </div>
         </div>
     }
@@ -75,10 +82,75 @@
             </button>
         </div>
     </div>
+    
+    <div class="modal fade"
+         id="deleteModal"
+         tabindex="-1"
+         aria-labelledby="deleteModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">
+                        Confirm Delete
+                    </h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this customer?</p>
+                    <p class="fw-bold" id="customerName"></p>
+                    <p class="text-danger mb-0">
+                        This action cannot be undone.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <form method="post" asp-page-handler="Delete">
+                        <input type="hidden"
+                               name="id"
+                               id="deleteCustomerId" />
+
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash me-1"></i>
+                            Delete
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
     document.getElementById("backHome").addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+
+    const deleteModal = document.getElementById("deleteModal");
+
+    deleteModal.addEventListener("show.bs.modal", function (event) {
+
+        const button = event.relatedTarget;
+
+        const customerId = button.getAttribute("data-customer-id");
+        const customerName = button.getAttribute("data-customer-name");
+
+        document.getElementById("deleteCustomerId").value = customerId;
+        document.getElementById("customerName").textContent = customerName;
+
     });
 </script>

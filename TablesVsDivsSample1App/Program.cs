@@ -1,9 +1,9 @@
-using EntityCoreFileLogger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
+using TablesVsDivsSample1App.Classes;
 using TablesVsDivsSample1App.Data;
 
 namespace TablesVsDivsSample1App;

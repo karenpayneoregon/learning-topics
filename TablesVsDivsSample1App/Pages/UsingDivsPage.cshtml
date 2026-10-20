@@ -113,6 +113,7 @@
 
                 <div class="modal-footer">
                     <button type="button"
+                            id="cancelDeleteButton"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal">
                         Cancel
@@ -146,11 +147,15 @@
 
         const button = event.relatedTarget;
 
-        const customerId = button.getAttribute("data-customer-id");
-        const customerName = button.getAttribute("data-customer-name");
+        document.getElementById("deleteCustomerId").value =
+            button.getAttribute("data-customer-id");
 
-        document.getElementById("deleteCustomerId").value = customerId;
-        document.getElementById("customerName").textContent = customerName;
+        document.getElementById("customerName").textContent =
+            button.getAttribute("data-customer-name");
 
+    });
+
+    deleteModal.addEventListener("shown.bs.modal", function () {
+        document.getElementById("cancelDeleteButton").focus();
     });
 </script>

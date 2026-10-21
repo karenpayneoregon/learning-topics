@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Background images for environments</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/animate.css/animate.min.css" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <div style="background-color: #0d5170">
+            <a asp-page="/Taxpayers" aria-label="Return to home page"><img src="/lib/images/header_logo_ogov_2019.png" /></a>
+            <span class="text-white">Acme Department</span>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Sections">Sections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Taxpayers">Taxpayers</a>
+                        </li>
+      
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        @* example to indicate we are in dev environment *@
+        <environment names="Development">
+
+            <style>
+
+                body {
+                    background-image: url(/lib/images/dev_background.png);
+                    background-repeat: repeat;
+                }
+
+                .tooltip-inner {
+                    background-color: green !important;
+                    color: white !important;
+                }
+
+                .tooltip.bs-tooltip-top .tooltip-arrow::before {
+                    border-top-color: green;
+                }
+
+                .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+                    border-bottom-color: green;
+                }
+
+                .tooltip.bs-tooltip-start .tooltip-arrow::before {
+                    border-left-color: green;
+                }
+
+                .tooltip.bs-tooltip-end .tooltip-arrow::before {
+                    border-right-color: green;
+                }
+            </style>
+
+        </environment>
+
+        @* example to indicate we are in staging environment *@
+        <environment names="Staging">
+
+            <style>
+
+                body {
+                    background-image: url(/lib/images/stage_background.png);
+                    background-repeat: repeat;
+                }
+
+                .tooltip-inner {
+                    background-color: grey !important;
+                    color: white !important;
+                }
+
+                .tooltip.bs-tooltip-top .tooltip-arrow::before {
+                    border-top-color: grey;
+                }
+
+                .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+                    border-bottom-color: grey;
+                }
+
+                .tooltip.bs-tooltip-start .tooltip-arrow::before {
+                    border-left-color: grey;
+                }
+
+                .tooltip.bs-tooltip-end .tooltip-arrow::before {
+                    border-right-color: grey;
+                }
+            </style>
+
+        </environment>
+
+
+@*         <nav aria-label="breadcrumb" class="ms-3">
+            <ol class="breadcrumb m-lg-1">
+                <li class="breadcrumb-item"><a href="#" class="link-warning">Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="link-danger">Unemployment</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Online Claim System</li>
+            </ol>
+        </nav> *@
+
+    </header>
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <footer class="border-top footer">
+
+        <div id="footMain" class="container" style="font-size: x-small;">
+            &copy; @DateTime.Now.Year
+            <environment include="Staging,Development">
+                <span class="fw-bold text-danger">Environment is @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")</span>
+                <a href="https://twitter.com/KarenPayneMVP" target="_blank" class="btn mt-3 btn-sm btn-outline-success bi bi-twitter float-end animate__animated animate__bounce" data-bs-toggle="tooltip" data-bs-placement="top" title="Follow Karen">
+                    &nbsp;Connect
+                </a>
+            </environment>
+
+            <environment include="Production">
+                <a href="https://twitter.com/ORemployment" target="_blank" class="btn mt-3 btn-sm btn-outline-success bi bi-twitter float-end">
+                    &nbsp;Connect
+                </a>
+            </environment>
+
+        </div>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @* popper must be loaded before bootstrap*@
+    <environment include="Staging,Development">
+        <script src="~/lib/popper.js/umd/popper.js"></script>
+    </environment>
+
+    @* optional, setup environment sections to load full version in staging and dev, min version in production *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootbox.js/bootbox.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <environment include="Staging,Development">
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        </script>
+    </environment>
+
+
+    @if (IsSectionDefined("Karen"))
+    {
+        @await RenderSectionAsync("Karen", required: false)
+    }
+    else
+    {
+        <em>Section not defined</em>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

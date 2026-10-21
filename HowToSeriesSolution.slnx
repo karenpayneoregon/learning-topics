@@ -12,6 +12,7 @@
     <Project Path="BootstrapConfirmationApp/BootstrapConfirmationApp.csproj" />
     <Project Path="CustomTagHelpersApp/CustomTagHelpersApp.csproj" />
     <Project Path="DateTimeWeekNumberSample/DateTimeWeekNumberSample.csproj" />
+    <Project Path="EnvionmentSample/EnvironmentApplication.csproj" />
     <Project Path="IsSectionDefinedApp/IsSectionDefinedApp.csproj" />
     <Project Path="MutilpleSubmitButtons1/MultipleSubmitButtons1.csproj" />
     <Project Path="SelectWithChecksSample/SelectWithChecksSample.csproj" />

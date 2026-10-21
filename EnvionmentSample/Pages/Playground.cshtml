@@ -1,0 +1,95 @@
+﻿@page
+@using EnvironmentApplication.Classes
+@model EnvironmentApplication.Pages.PlaygroundModel
+@{
+}
+<div class="container mt-2">
+    <h4 class="text-center shadow bg-success text-white pt-2 pb-2">Mixing HTML with C#</h4>
+
+    <p class="mt-lg-4">Some states</p>
+    <ul class="list-group mt-2 border border-primary shadow">
+        @foreach (var location in Locations.GetLocations())
+        {
+
+            @if (@location == "Oregon")
+            {
+                <li class="list-group-item active" aria-current="true">@location</li>
+            }
+            else
+            {
+                <li class="list-group-item list-group-item-warning">@location</li>
+            }
+        }
+    </ul>
+
+
+</div>
+
+<div class="container mt-lg-3">
+
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Information
+    </button>
+
+
+    <a asp-page="Index" class="btn btn-success">Home</a>
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="staticBackdrop"
+         data-bs-backdrop="static"
+         data-bs-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><i class="bi bi-exclamation-circle pe-2"></i>Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <environment include="Staging,Development">
+                        <strong>Environment is</strong> @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+                    </environment>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+<div class="container">
+    @section Karen
+        {
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-auto bg-danger text-white">
+                Conditional rendering
+            </div>
+        </div>
+        <p>ssss</p>
+    }
+
+
+</div>
+
+
+

@@ -42,6 +42,8 @@ public class IndexModel : PageModel
     /// </returns>
     public PageResult OnPostButton1()
     {
+        Console.WriteLine("--------------");
+        
         var selectedItems = Items.Where(item => item.IsSelected).ToList();
         if (selectedItems.Any())
         {

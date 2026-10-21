@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Background images for environments</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/animate.css/animate.min.css" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <div style="background-color: #0d5170">
+            <img src="/lib/images/header_logo_ogov_2019.png" />
+            <span class="text-white">Employment Department</span>
+        </div>
+
+    </header>
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @* popper must be loaded before bootstrap*@
+    <environment include="Staging,Development">
+        <script src="~/lib/popper.js/umd/popper.js"></script>
+    </environment>
+
+    @* optional, setup environment sections to load full version in staging and dev, min version in production *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootbox.js/bootbox.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <environment include="Staging,Development">
+        <script>
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        </script>
+    </environment>
+
+    @if (IsSectionDefined("Karen"))
+    {
+        @await RenderSectionAsync("Karen", required: false)
+    }
+    else
+    {
+        <em>Nothing to see here</em>
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

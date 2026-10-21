@@ -1,0 +1,111 @@
+﻿@page
+@using EnvironmentApplication.Classes
+@model EnvironmentApplication.Pages.TaxpayersModel
+
+
+
+<style>
+    table {
+        width: 100%;
+    }
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+    tbody {
+        display: block;
+        overflow-y: auto;
+        table-layout: fixed;
+        max-height: 600px;
+    }
+
+</style>
+
+<h3 class="text-success">Taxpayers</h3>
+
+<table class="table table-bordered table-responsive table-striped">
+    <thead class="bg-success text-white bg-opacity-75">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Ssn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Pin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Added)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Modified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxpayer[0].Category)
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Taxpayer.OrderBy(t => t.LastName))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @*@item.SocialMasked()*@
+                @Html.DisplayFor(modelItem => item.Ssn, "SSN")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Added)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Modified)
+            </td>
+            <td>
+                @if (item.Deleted.HasValue)
+                {
+                    @if (item.Deleted.Value)
+                    {
+                        <span class="text-danger fw-bold bi bi-check-square"> @item.Deleted.ToFormatted("Yes", "No", "")</span>
+                    }
+                    else
+                    {
+                        <span class="text-bg-warning fw-bold">@item.Deleted.ToFormatted("Yes", "No", "")</span>
+                    }
+                }
+                    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Description)
+            </td>
+
+        </tr>
+    }
+    </tbody>
+</table>
+@section Karen {
+    <p>Custom Home Page Footer: Contact us at help@example.com</p>
+}

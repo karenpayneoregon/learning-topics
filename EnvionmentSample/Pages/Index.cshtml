@@ -1,0 +1,124 @@
+﻿@page "{lang:=en}"
+@inject IWebHostEnvironment HostingEnv
+@model EnvironmentApplication.Pages.IndexModel
+
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<link rel="stylesheet" href="~/@(nameof(WebApplication1)).styles.css" />
+
+<div class="container border border-dark border-1 mt-4">
+    <div class="row">
+
+        <div style="background-color: #0f506f" class="text-white text-center p-2">
+            Welcome to Your Online Claim System
+            <a id="SP" href="#" class="float-end btn btn btn-sm customLangButton btn-success">Español</a>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-md-start border border-dark border-0">
+
+        <div class="col-md-3 border border-dark  d-flex justify-content-center align-items-center">
+            <button class="btn btn-block btn-primary-green" type="button">
+                Regular UI <br> Initial Claim
+            </button>
+        </div>
+
+        <div class="col-md-9 border border-dark justify-content-md-start">
+            <p>Apply for regular unemployment insurance (UI) benefits by filing an initial claim. After you apply, you will also need to file a weekly claim (see below).</p>
+            <p>After completing your application, you will need to verify your identity through ID.me before receiving benefits. Visit ID.me.</p>
+            <p>Once you file your claim, you will receive a "Wage and Potential Benefit Report" showing the wages and hours we used to determine your weekly benefit amount. If the wages or hours are less than what you believe they should be, please submit a request through Contact Us. It may take up to two weeks to complete the review of your wage information.</p>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-md-start border border-dark border-0">
+
+        <div class="col-md-3 border border-dark  d-flex justify-content-center align-items-center">
+            <button class="btn btn-block btn-primary-green" type="button">
+                Regular UI <br> Weekly Claim
+            </button>
+        </div>
+
+        <div class="col-md-9 border border-dark">
+            <p>To start getting regular unemployment insurance (UI) benefits, you need to file a weekly claim. This is different than the initial claim. You have to file both to get your benefits.   Help</p>
+            <p>A weekly claim is how we figure out how much money to send you for that week. A week is Sunday through Saturday. You can't submit a weekly claim until the week is over. So if you filed your initial claim this week, you need to wait until Sunday to file your first weekly claim.</p>
+            <p><strong>To keep getting benefits, you need to file a new weekly claim every week.</strong></p>
+            <p>Filing a claim wrong can delay your benefits. And during COVID-19, the right answers to the questions on the claim form are different than you might think. If you are out of work due to COVID-19, use our step-by-step guides and videos to help you file your claim correctly.</p>
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-md-start border border-dark border-0">
+
+        <div class="col-md-3 border border-dark d-flex justify-content-center">
+
+            <button class="btn btn-block  btn-primary p-1" type="button">
+                Pandemic Unemployment&nbsp;<br>Assistance (PUA)
+            </button>
+
+        </div>
+
+        <div class="col-md-9 border border-dark">
+            <p style="height: 90px">Submit your identity verification documents for your PUA claim through our "Contact Us" form.</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+@*
+    ASPNETCORE_ENVIRONMENT is an environment variable at server level or application level
+
+    First para shows getting ASPNETCORE_ENVIRONMENT setting conventionally while the second is
+    an alternate of the first. Recommend using GetEnvironmentVariable
+*@
+
+<environment include="Staging,Development">
+    <div id="EnvDetails" class="container border border-primary border-1 mt-4 bg-success bg-opacity-25 shadow">
+        <p>
+            <strong>Environment is</strong> @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+        </p>
+
+        <p>
+            <strong>@HostingEnv.EnvironmentName</strong> is @HostingEnv.EnvironmentName
+        </p>
+    </div>
+    
+
+</environment>
+
+
+
+@{
+    await Html.RenderPartialAsync("IndexPartial");
+}
+
+@section Scripts
+{
+    <script>
+
+        $('#SP').click(function (event) {
+
+            var timeout = 3000;
+            var dialog = bootbox.dialog(
+                {
+                    message: '<p class="text-center mb-0 bi bi-exclamation-circle font-weight-bold fs-3"> This is not implemented</p>',
+                    centerVertical: true,
+                    closeButton: false
+                });
+
+            setTimeout(function () { dialog.modal('hide'); }, timeout);
+            dialog.modal('hide');
+
+        });
+
+    </script>
+} 
+
+

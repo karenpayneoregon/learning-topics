@@ -1,0 +1,16 @@
+﻿@*
+    This is a partial view to Pages\Index.cshtml which is connected via await Html.RenderPartialAsync("IndexPartial");
+    Although the two pages are in different folders, the framework searches by walking up the directory tree from the 
+    location of the calling page looking for the file name that you pass in as long as you do not include the file extension, 
+    until it reaches the root Pages folder
+*@
+@{
+}
+
+<environment include="Staging,Development">
+    <OEDBorderTagHelper></OEDBorderTagHelper>
+    <ColorLabelTagHelper color="red">I'm in a partial view</ColorLabelTagHelper>
+    <OEDBorderTagHelper></OEDBorderTagHelper>
+</environment>
+
+

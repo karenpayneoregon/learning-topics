@@ -1,0 +1,32 @@
+﻿div#Demo {
+    font-size: 1.5em;
+    padding: 20px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: blue;
+}
+
+.spread2 {
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px -2px;
+}
+
+.btn-primary {
+    font-size: 14px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 20px !important;
+}
+
+@media (max-width: 992px) {
+    #EnvDetails {
+        color:orangered;
+    }
+}
+
+@media (max-width: 500px) {
+    #EnvDetails {
+        color:blue;
+    }
+}

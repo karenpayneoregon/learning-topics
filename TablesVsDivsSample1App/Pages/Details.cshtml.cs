@@ -1,19 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using TablesVsDivsSample1App.Models;
 using TablesVsDivsSample1App.Data;
+using TablesVsDivsSample1App.Models;
 
-namespace TablesVsDivsSample1App.Pages.CustomersPages;
+namespace TablesVsDivsSample1App.Pages;
 
-public class DetailsModel : PageModel
+public class DetailsModel(Context context) : PageModel
 {
-    private readonly Context _context;
-    public DetailsModel(Context context)
-    {
-        _context = context;
-    }
-
     public Customers Customers { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
@@ -23,7 +17,7 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        var customers = await _context.Customers.FirstOrDefaultAsync(m => m.Id == id);
+        var customers = await context.Customers.FirstOrDefaultAsync(m => m.Id == id);
         if (customers is null)
         {
             return NotFound();

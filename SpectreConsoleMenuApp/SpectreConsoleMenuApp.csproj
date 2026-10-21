@@ -33,8 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ModelFormatCustomSample\ModelFormatCustomSample.csproj" />
-	  <ProjectReference Include="..\ModelFormatLibrary\ModelFormatLibrary.csproj" />
+		<ProjectReference Include="..\ModelFormatLibrary\ModelFormatLibrary.csproj" />
 	</ItemGroup>
 
 	<!--<ItemGroup>

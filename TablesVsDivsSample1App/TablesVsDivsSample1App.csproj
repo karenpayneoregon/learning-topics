@@ -43,6 +43,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Pages\CustomersPages\" />
 		<Folder Include="Scripts\" />
 	</ItemGroup>
 

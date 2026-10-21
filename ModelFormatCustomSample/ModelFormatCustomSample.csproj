@@ -21,7 +21,7 @@
 		<PackageReference Include="SeriLogThemesLibrary" Version="1.0.0.2" />
 		<PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
-		<PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.18" />
+		<PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.13" />
 	</ItemGroup>
 
 

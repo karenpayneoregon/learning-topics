@@ -1,0 +1,60 @@
+@page
+@model TablesVsDivsSample1App.Pages.StandardViewModel
+
+@{
+    ViewData["Title"] = "Standard View";
+}
+
+<h1>Standard View</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].ContactType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customers[0].JoinDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ContactType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.JoinDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

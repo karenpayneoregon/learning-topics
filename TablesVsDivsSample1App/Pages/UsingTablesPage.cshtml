@@ -5,80 +5,99 @@
     ViewData["Title"] = "UsingTablesPage";
 }
 
+<style>
+    .customer-table-container {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    .customer-table-container thead th {
+        /* ReSharper disable once CssBrowserCompatibility */
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+</style>
+
 <h1 class="fs-4">Customers (using tables)</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers[0].Company)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers[0].ContactType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers[0].ContactName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers[0].Country)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Customers[0].JoinDate)
-        </th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model.Customers)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JoinDate)
-            </td>
-            <td>
-                @* Added by Karen *@
-                <a asp-page="./CustomerEditPage"
-                   asp-route-id="@item.Id"
-                   asp-route-returnUrl="@($"{Request.Path}{Request.QueryString}")"
-                   class="btn btn-sm btn-outline-primary"
-                   title="Edit">
-                    <i class="bi bi-pencil"></i>
-                </a>
-                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" title="Details">
-                    <i class="bi bi-eye"></i>
-                </a>
-  
-                <button type="button"
-                        class="btn btn-sm btn-outline-danger"
-                        title="Delete"
-                        aria-label="Delete @item.Company"
-                        data-bs-toggle="modal"
-                        data-bs-target="#deleteModal"
-                        data-customer-id="@item.Id"
-                        data-customer-name="@item.Company">
-                    <i class="bi bi-trash"></i>
-                </button>
+<div class="customer-table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customers[0].Company)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customers[0].ContactType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customers[0].ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customers[0].Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customers[0].JoinDate)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Customers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JoinDate)
+                    </td>
+                    <td>
+                        @* Added by Karen *@
+                        <a asp-page="./CustomerEditPage"
+                           asp-route-id="@item.Id"
+                           asp-route-returnUrl="@($"{Request.Path}{Request.QueryString}")"
+                           class="btn btn-sm btn-outline-primary"
+                           title="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-dark" title="Details">
+                            <i class="bi bi-eye"></i>
+                        </a>
 
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-danger"
+                                title="Delete"
+                                aria-label="Delete @item.Company"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteModal"
+                                data-customer-id="@item.Id"
+                                data-customer-name="@item.Company">
+                            <i class="bi bi-trash"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
 
 <div class="modal fade"
      id="deleteModal"

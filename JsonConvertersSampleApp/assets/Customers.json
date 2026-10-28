@@ -1,0 +1,22 @@
+[
+  {
+    "CreditCardNumber": "XXXXXXXXXXXX3456",
+    "PIN": "5555",
+    "Id": 1,
+    "FirstName": "John",
+    "LastName": "Jones",
+    "Title": "Mr.",
+    "BirthDate": "1980-01-01",
+    "Gender": "Male"
+  },
+  {
+    "CreditCardNumber": "XXXXXXXXXXXX3456",
+    "PIN": "1234",
+    "Id": 2,
+    "FirstName": "Mary",
+    "LastName": "Gallagher",
+    "Title": "Miss.",
+    "BirthDate": "1980-01-01",
+    "Gender": "Male"
+  }
+]

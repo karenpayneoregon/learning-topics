@@ -161,6 +161,10 @@
     <Project Path="GlobbingApp1/GlobbingApp1.csproj" />
     <Project Path="GlobbingApp2/GlobbingApp2.csproj" Id="3e98720a-7d1e-4db4-a6d1-01b15b8a8dd4" />
   </Folder>
+  <Folder Name="/JSON/">
+    <Project Path="JsonConvertersSampleApp/JsonConvertersSampleApp.csproj" />
+    <Project Path="JsonConvertersSampleLibrary/JsonConvertersSampleLibrary.csproj" />
+  </Folder>
   <Folder Name="/Language extensions/">
     <Project Path="GenericExtentionsLibrary/GenericExtensionsLibrary.csproj" />
   </Folder>

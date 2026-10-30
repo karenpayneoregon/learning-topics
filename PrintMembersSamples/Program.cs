@@ -25,12 +25,12 @@ internal partial class Program
 
     private static void DisplayAddressExample()
     {
-        var addresses = new List<Address>
-    {
-        new("123 Main St", null, "Portland", "USA", "97201"),
-        new("456 Maple Ave", "Apt 4B", "Eugene", "USA", "97401"),
-        new("789 Oak Dr", "", "Salem", "USA", "97301")
-    };
+        List<Address> addresses =
+        [
+            new("123 Main St", null, "Portland", "USA", "97201"),
+            new("456 Maple Ave", "Apt 4B", "Eugene", "USA", "97401"),
+            new("789 Oak Dr", "", "Salem", "USA", "97301")
+        ];
 
         foreach (var address in addresses)
         {

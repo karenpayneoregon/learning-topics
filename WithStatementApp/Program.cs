@@ -10,7 +10,8 @@ namespace WithStatementApp
         {
 
             SpectreConsoleHelpers.PrintPink();
-            //Samples.BaseExample();
+            Samples.BaseExample();
+            Console.WriteLine(new string('-', 50));
             Samples.ProductsExample();
             SpectreConsoleHelpers.ExitPrompt(Justify.Left);
 

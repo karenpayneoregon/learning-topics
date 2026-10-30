@@ -137,12 +137,8 @@ internal class Samples
         PrintCyan();
 
         var distinctList = MockedData.MembersList1()
-            .DistinctBy(member => new
-            {
-                member.FirstName,
-                member.SurName,
-                member.Active
-            })
+            .DistinctBy(member => 
+                (member.FirstName, member.SurName, member.Active))
             .ToList();
 
         MemberHeader();
@@ -198,14 +194,12 @@ internal class Samples
         PrintCyan();
 
         var distinctList = MockedData.MembersList4()
-            .DistinctBy(member => new
-            {
-                member.Address.Id,
-                member.Address.Street,
-                member.Address.City,
-                member.Address.State
-
-            })
+            .DistinctBy(member => 
+                (
+                    member.Address.Id, 
+                    member.Address.Street, 
+                    member.Address.City, 
+                    member.Address.State))
             .ToList();
 
         MemberHeader();

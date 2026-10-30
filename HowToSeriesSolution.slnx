@@ -190,6 +190,7 @@
   </Folder>
   <Folder Name="/Records samples/">
     <Project Path="PrintMembersSamples/PrintMembersSamples.csproj" />
+    <Project Path="WithStatementApp/WithStatementApp.csproj" Id="6293750d-091d-472d-9731-4350714c70c2" />
   </Folder>
   <Folder Name="/Secrets utilities/">
     <Project Path="FindUserSecretsApp/FindUserSecretsApp.csproj" />

@@ -18,6 +18,7 @@ internal partial class Program
         AnsiConsole.MarkupLine("[cyan]First     Last      SSN          Birthdate     UserName  Password    Phone numbers[/]");
         foreach (var person in people)
         {
+
             AnsiConsole.MarkupLine(person.Colorize());
         }
     }

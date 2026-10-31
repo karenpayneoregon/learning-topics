@@ -32,8 +32,12 @@
 
             <div class="form-check mb-2">
                 <input class="form-check-input" asp-for="Items[index].IsSelected" />
+
+                @{
+                    var index1 = index;
+                }
                 <label class="form-check-label" asp-for="Items[index].IsSelected">
-                    @Model.Items[index].Text
+                    @Model.Items[index1].Text
                 </label>
             </div>
         }

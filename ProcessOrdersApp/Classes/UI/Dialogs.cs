@@ -19,7 +19,7 @@ internal class Dialogs
         
         TaskDialogButton okayButton = new(buttonText);
 
-        var iconBitmap = IconBitmap();
+        var iconBitmap = Exclamation24IconBitmap();
 
         TaskDialogPage page = new()
         {
@@ -44,7 +44,7 @@ internal class Dialogs
     /// This method reads the resource <c>exclamation24</c> from the application's resources,
     /// converts it into a <see cref="Bitmap"/>, and returns the resulting object.
     /// </remarks>
-    private static Bitmap IconBitmap()
+    private static Bitmap Exclamation24IconBitmap()
     {
         Bitmap bitmap;
         using var ms = new MemoryStream(Properties.Resources.exclamation24);

@@ -51,6 +51,9 @@ public class OrdersResults : INotifyPropertyChanged, IOrdersResults
     }
 }
 
+/// <summary>
+/// Represents an item in the result of processing an order, containing the processing status and associated order data.
+/// </summary>
 public class OrderResultItem
 {
     public bool Process { get; set; } 

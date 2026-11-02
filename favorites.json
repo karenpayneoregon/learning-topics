@@ -61,6 +61,10 @@
       "path": "UpperCaseFirstCharConverterApp\\Program.cs"
     },
     {
+      "name": "settings.json",
+      "path": "C:\\Users\\Payne\\AppData\\Local\\Microsoft\\VisualStudio\\18.0_370e5cf8\\settings.json"
+    },
+    {
       "name": "WindowHelper.cs",
       "path": "BootstrapConfirmationApp\\Classes\\WindowHelper.cs"
     }

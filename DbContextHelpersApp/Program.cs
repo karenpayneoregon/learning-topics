@@ -34,6 +34,11 @@ internal partial class Program
             Console.WriteLine("Database does not exist.");
         }
 
+        if (context.FullCheck(DbContextHelpers.TableNames))
+        {
+            AnsiConsole.MarkupLine("[green bold]Full check passed.[/]");
+        }
+
 
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
     }

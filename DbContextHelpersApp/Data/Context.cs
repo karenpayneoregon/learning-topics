@@ -51,7 +51,12 @@ public partial class Context : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(DataConnections.Instance.MainConnection);
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer(DataConnections.Instance.MainConnection);
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

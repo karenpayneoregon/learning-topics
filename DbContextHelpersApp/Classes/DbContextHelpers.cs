@@ -89,4 +89,25 @@ public static class DbContextHelpers
     /// </exception>
     public static bool FullCheck<TContext>(this TContext context, params string[] tableNames) where TContext : DbContext 
         => context.DatabaseExists() && context.HasTables() && context.TablesExist(tableNames);
+    
+    public static string[] TableNames =
+    [
+        "Categories",
+        "ContactDevices",
+        "Contacts",
+        "ContactType",
+        "Countries",
+        "Customers",
+        "Employees",
+        "EmployeeTerritories",
+        "OrderDetails",
+        "Orders",
+        "PhoneType",
+        "Products",
+        "Region",
+        "Shippers",
+        "SupplierRegion",
+        "Suppliers",
+        "Territories"
+    ];
 }

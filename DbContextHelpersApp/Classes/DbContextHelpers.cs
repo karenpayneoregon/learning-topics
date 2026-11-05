@@ -89,7 +89,32 @@ public static class DbContextHelpers
     /// </exception>
     public static bool FullCheck<TContext>(this TContext context, params string[] tableNames) where TContext : DbContext 
         => context.DatabaseExists() && context.HasTables() && context.TablesExist(tableNames);
-    
+
+    /// <summary>
+    /// Generates SQL scripts for creating the database schema associated with the provided <see cref="DbContext"/>.
+    /// </summary>
+    /// <typeparam name="TContext">The type of the database context, which must inherit from <see cref="DbContext"/>.</typeparam>
+    /// <param name="context">The database context for which to generate the creation scripts.</param>
+    /// <param name="filePath">The file path where the generated SQL script will be saved.</param>
+    /// <remarks>
+    /// This method retrieves the database creation scripts using the <see cref="RelationalDatabaseCreator"/> service
+    /// and writes them to a file named "CreateScript.sql" in the current working directory.
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">
+    /// Thrown when the database creator service is not available in the provided context.
+    /// </exception>
+    public static void GenerateScripts<TContext>(this TContext context, string filePath = "CreateScript.sql") where TContext : DbContext
+    {
+        var scripts = context.GetService<IDatabaseCreator>() is not RelationalDatabaseCreator databaseCreator
+            ? throw new InvalidOperationException("Database creator service is not available.")
+            : databaseCreator.GenerateCreateScript();
+        
+        File.WriteAllText(filePath, scripts);
+    }
+
+    /// <summary>
+    /// A predefined list of table names.
+    /// </summary>
     public static string[] TableNames =
     [
         "Categories",

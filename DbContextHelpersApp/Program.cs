@@ -26,7 +26,7 @@ internal partial class Program
             }
             else
             {
-                Console.WriteLine("Customers Countries are required.");
+                Console.WriteLine("Customers Countries are required."); 
             }
         }
         else
@@ -37,6 +37,7 @@ internal partial class Program
         if (context.FullCheck(DbContextHelpers.TableNames))
         {
             AnsiConsole.MarkupLine("[green bold]Full check passed.[/]");
+            context.GenerateScripts();
         }
 
 

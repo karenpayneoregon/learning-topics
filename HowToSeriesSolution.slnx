@@ -269,6 +269,28 @@
     <Project Path="NestedClassesFinder/NestedClassesFinder.csproj" />
   </Folder>
   <Folder Name="/Validation/">
+    <Project Path="Bootstrap6Examples/" Type="Website" DisplayName="Bootstrap6Examples">
+      <BuildType Project="Debug" />
+      <Properties Name="WebsiteProperties">
+        <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
+        <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Debug.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.PhysicalPath" Value="&quot;Bootstrap6Examples\&quot;" />
+        <Property Name="Debug.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_64613\&quot;" />
+        <Property Name="Debug.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Debug.AspNetCompiler.VirtualPath" Value="&quot;/localhost_64613&quot;" />
+        <Property Name="DefaultWebSiteLanguage" Value="&quot;Visual Basic&quot;" />
+        <Property Name="Release.AspNetCompiler.Debug" Value="&quot;False&quot;" />
+        <Property Name="Release.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />
+        <Property Name="Release.AspNetCompiler.ForceOverwrite" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.PhysicalPath" Value="&quot;Bootstrap6Examples\&quot;" />
+        <Property Name="Release.AspNetCompiler.TargetPath" Value="&quot;PrecompiledWeb\localhost_64613\&quot;" />
+        <Property Name="Release.AspNetCompiler.Updateable" Value="&quot;true&quot;" />
+        <Property Name="Release.AspNetCompiler.VirtualPath" Value="&quot;/localhost_64613&quot;" />
+        <Property Name="TargetFrameworkMoniker" Value="&quot;.NETFramework,Version%3Dv4.7.2&quot;" />
+        <Property Name="VWDPort" Value="&quot;64613&quot;" />
+      </Properties>
+    </Project>
     <Project Path="FluentWebApplication/FluentWebApplication.csproj" />
     <Project Path="SectionExistsAppsettingsApp/SectionExistsAppsettingsApp.csproj" />
   </Folder>

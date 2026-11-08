@@ -10,6 +10,7 @@
   <Folder Name="/ASP/">
     <Project Path="AppFooterTagHelperSample/AppFooterTagHelperSample.csproj" />
     <Project Path="BootstrapConfirmationApp/BootstrapConfirmationApp.csproj" />
+    <Project Path="ChangeLayoutSampleApp/ChangeLayoutSampleApp.csproj" Id="b48e0a95-bd53-4baa-9ed6-5be59d9ccffd" />
     <Project Path="CustomTagHelpersApp/CustomTagHelpersApp.csproj" />
     <Project Path="DateTimeWeekNumberSample/DateTimeWeekNumberSample.csproj" />
     <Project Path="EnvionmentSample/EnvironmentApplication.csproj" />

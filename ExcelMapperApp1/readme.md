@@ -12,9 +12,9 @@ An example which reads from a specific worksheet in an Excel file with the first
 
 Is in `appsettings.json`
 
-# Requies
+# Uses
 
-- EF Core 8
+- EF Core 8 or 9
 - [ExcelMapper](https://www.nuget.org/packages/ExcelMapper/5.2.568?_src=template) NuGet package and [documentation](https://github.com/mganss/ExcelMapper/tree/master).
 
 ## Model

@@ -1,6 +1,6 @@
 ﻿
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -21,7 +21,13 @@
 
     <main>
         <div class="container">
-            <div style="max-width: 40em;margin-top: 20em">
+            <div style="max-width: 40em; margin-top: 20em">
+
+                <button type="button"
+                        class="theme-primary btn-solid btn-styled mb-5"
+                        id="themeButton">
+                    Toggle Theme
+                </button>
 
                 <div class="form-field">
 
@@ -99,6 +105,15 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
+            // document.documentElement.setAttribute("data-bs-theme", "dark");
+            console.log(`Bootstrap mode ${document.documentElement.getAttribute("data-bs-theme")}`);
+            document.getElementById("themeButton").addEventListener("click", toggleTheme);
+
+            // set the theme based on localStorage value or default to light
+            const theme = localStorage.getItem("theme") ?? "light";
+
+            document.documentElement.setAttribute("data-bs-theme", theme);
+
             document.addEventListener("keydown", (event) => {
 
                 if (event.key === "1" &&
@@ -121,6 +136,20 @@
             });
 
         });
+
+        // toggle the theme between light and dark
+        function toggleTheme() {
+            const html = document.documentElement;
+
+            const currentTheme = html.getAttribute("data-bs-theme");
+
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+            html.setAttribute("data-bs-theme", newTheme);
+
+            localStorage.setItem("theme", newTheme);
+        }
+
     </script>
 
 </body>

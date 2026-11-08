@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Normalise stack trace file locations">
+		<PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="readme.md" />
+	  <None Remove="readme1.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="assets\csharp.ico" />
+	  <Content Include="readme.md" />
+	  <Content Include="readme1.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ConfigurationLibrary" Version="1.0.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ConsoleHelperLibrary" Version="1.0.2" />
+		<PackageReference Include="Dapper" Version="2.1.35" />
+		<!-- ReSharper disable once VulnerablePackage -->
+		<PackageReference Include="ExcelMapper" Version="5.2.590" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+		<PackageReference Include="ObjectDumper.NET" Version="4.2.7" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Spectre.Console" Version="0.48.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Customers.xlsx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Nested.xlsx">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
+	</ItemGroup>
+
+</Project>

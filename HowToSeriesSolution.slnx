@@ -116,6 +116,7 @@
     <Project Path="DbContextHelpersApp/DbContextHelpersApp.csproj" Id="9c80b94b-818b-4954-895b-eff0c6a65284" />
   </Folder>
   <Folder Name="/Excel/">
+    <Project Path="ExcelMapperApp1/ExcelMapperApp1.csproj" />
     <Project Path="SpreadSheetLightTableSample/SpreadSheetLightTableSample.csproj" />
     <Project Path="SpreadSheetLightTableSampleLibrary/SpreadSheetLightTableSampleLibrary.csproj" />
   </Folder>

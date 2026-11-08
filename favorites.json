@@ -49,6 +49,10 @@
       "path": "InParameterSampleApp\\appsettings.json"
     },
     {
+      "name": "DbContextHelpers.cs",
+      "path": "DbContextHelpersApp\\Classes\\DbContextHelpers.cs"
+    },
+    {
       "name": "Index.cshtml",
       "path": "BirthDaysApp\\Pages\\Index.cshtml"
     },
@@ -57,8 +61,16 @@
       "path": "HideShowPasswordSample_1\\index.html"
     },
     {
+      "name": "PageHelpers.cs",
+      "path": "EnvionmentSample\\Classes\\PageHelpers.cs"
+    },
+    {
       "name": "Program.cs",
       "path": "UpperCaseFirstCharConverterApp\\Program.cs"
+    },
+    {
+      "name": "QueryExtensions.cs",
+      "path": "EntityLibrary\\QueryExtensions.cs"
     },
     {
       "name": "settings.json",

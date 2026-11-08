@@ -12,8 +12,7 @@ internal partial class Program
     [ModuleInitializer]
     public static void Initialize()
     {
-        Console.Title = "TODO";
-        //WindowUtility.SetConsoleWindowPosition(WindowUtility.AnchorWindow.Center);
+        Console.Title = "Code sample";
         Setup();
     }
 

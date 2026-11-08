@@ -17,6 +17,9 @@ public class Person
     public Address Address { get; set; }
 }
 
+/// <summary>
+/// Represents an address model for mapping data from an Excel row.
+/// </summary>
 public class Address
 {
     public int Id { get; set; }

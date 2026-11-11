@@ -7,7 +7,7 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
-        //DisplayWithIndex();
+        DisplayWithIndex();
         UnionHandleProductLookup();
 
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
@@ -49,7 +49,12 @@ internal partial class Program
         {
             AnsiConsole.MarkupLine($"[green]{index}[/]: [cyan]{tag}[/]");
         }
-        
+
+        Console.WriteLine();
+
+        AnsiConsole.MarkupLine($"[green]Names: [/][cyan]{string.Join(", ", names)}[/]");
+
+
     }
 }
 

@@ -7,8 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
-    <Product>Trees examples</Product>
-    <Description>Trees examples project</Description>
+    <Product>C# examples</Product>
+    <Description>C# examples project</Description>
     <Company>Payne services</Company>
     <Copyright>2019-$([System.DateTime]::Now.Year)</Copyright>
   </PropertyGroup>

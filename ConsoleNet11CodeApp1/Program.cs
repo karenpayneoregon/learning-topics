@@ -7,10 +7,26 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        //DisplayWithIndex();
+        UnionHandleProductLookup();
 
-        DisplayWithIndex();
-        
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
+    }
+
+    private static void UnionHandleProductLookup()
+    {
+        
+        SpectreConsoleHelpers.PrintPink();
+        
+        ProductLookup result = new Product(42, "Mechanical keyboard");
+
+        var message = result switch
+        {
+            Product product => $"Found {product.Name}",
+            ProductNotFound missing => $"No product with ID {missing.Id}",
+        };
+
+        AnsiConsole.MarkupLine($"[green bold]{message}[/]");
     }
 
     /// <summary>
@@ -23,6 +39,9 @@ internal partial class Program
     /// </remarks>
     private static void DisplayWithIndex()
     {
+
+        SpectreConsoleHelpers.PrintPink();
+        
         HashSet<string> names = [with(StringComparer.OrdinalIgnoreCase), "Alice", "ALICE", "Bob"];
         HashSet<string> tags = [with(StringComparer.OrdinalIgnoreCase), "one", "two", "three"];
 
@@ -30,5 +49,12 @@ internal partial class Program
         {
             AnsiConsole.MarkupLine($"[green]{index}[/]: [cyan]{tag}[/]");
         }
+        
     }
 }
+
+
+public sealed record Product(int Id, string Name);
+public sealed record ProductNotFound(int Id);
+
+public union ProductLookup(Product, ProductNotFound);

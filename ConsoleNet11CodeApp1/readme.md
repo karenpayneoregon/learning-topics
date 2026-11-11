@@ -1,3 +1,3 @@
 ﻿# About
 
-NET 11 sCode from [here](https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/)
+NET 11 Code from [here](https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/)

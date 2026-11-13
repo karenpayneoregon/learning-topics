@@ -13,12 +13,8 @@ namespace FrameworksLifeApp.Classes;
 /// and other related details. It also enriches the data with additional information from
 /// channel-specific metadata files.
 /// </remarks>
-public sealed class DotNetReleaseMetadataService : IDotNetReleaseMetadataService
+public sealed class DotNetReleaseMetadataService(HttpClient http) : IDotNetReleaseMetadataService
 {
-    private readonly HttpClient _http;
-
-    public DotNetReleaseMetadataService(HttpClient http) => _http = http;
-
     public async Task<IReadOnlyList<DotNetChannelInfo>> GetChannelsAsync(CancellationToken cancellationToken = default)
     {
         using var indexDoc = await GetJsonAsync("releases-index.json", cancellationToken);
@@ -100,7 +96,7 @@ public sealed class DotNetReleaseMetadataService : IDotNetReleaseMetadataService
     private async Task<JsonDocument> GetJsonAsync(string relativeOrAbsolute, CancellationToken cancellationToken)
     {
         // HttpClient has BaseAddress; relative paths work. Absolute URLs also work.
-        using var resp = await _http.GetAsync(relativeOrAbsolute, cancellationToken);
+        using var resp = await http.GetAsync(relativeOrAbsolute, cancellationToken);
         resp.EnsureSuccessStatusCode();
 
         await using var stream = await resp.Content.ReadAsStreamAsync(cancellationToken);

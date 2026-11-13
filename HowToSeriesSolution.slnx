@@ -205,6 +205,7 @@
   <Folder Name="/November 2026/">
     <Project Path="ConsoleNet11CodeApp1/ConsoleNet11CodeApp1.csproj" Id="245e7026-cb65-4b82-ba68-e0acf2ad9c69" />
     <Project Path="Net11CodeApp/Net11CodeApp.csproj" Id="02ad7740-9b0b-48ff-b428-058a9543d5bc" />
+    <Project Path="WinFormsApp1/WinFormsApp1.csproj" Id="12ea4473-9b40-4e5b-913b-5bd5c30b0315" />
   </Folder>
   <Folder Name="/NuGet/">
     <Project Path="Publisher/Publisher.csproj" />

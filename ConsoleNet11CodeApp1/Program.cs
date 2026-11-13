@@ -1,4 +1,6 @@
 ﻿using ConsoleNet11CodeApp1.Classes.Core;
+using ConsoleNet11CodeApp1.Models;
+using Serilog;
 using Spectre.Console;
 
 namespace ConsoleNet11CodeApp1;
@@ -7,10 +9,16 @@ internal partial class Program
 {
     static void Main(string[] args)
     {
+        EmployeeOrManager employee = new Employee("John", "Doe");
+        EmployeeOrManager manager = new Manager("Jane", "Smith", "Sales");
+        
+        AnsiConsole.MarkupLine($"[green bold]Employee:[/] {employee.FirstName} {employee.LastName}");
+        AnsiConsole.MarkupLine($"[green bold]Manager:[/] {manager.FirstName} {manager.LastName} ({((Manager)manager).Department})");
         ClosedHierarchyProcessSensorsAndReports();
         DisplayWithIndex();
         UnionHandleProductLookup();
-
+        ManualUnionExample();
+        
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
     }
 
@@ -42,6 +50,14 @@ internal partial class Program
         AnsiConsole.MarkupLine($"[green bold]Report leaves:[/] {Count(report)}");
     }
 
+    /// <summary>
+    /// Handles the lookup of a product and displays the result in the console.
+    /// </summary>
+    /// <remarks>
+    /// This method demonstrates the use of a union type <see cref="ProductLookup"/> to handle
+    /// different outcomes of a product lookup operation. It uses pattern matching to determine
+    /// whether a product was found or not and displays an appropriate message using Spectre.Console.
+    /// </remarks>
     private static void UnionHandleProductLookup()
     {
         
@@ -58,6 +74,38 @@ internal partial class Program
         AnsiConsole.MarkupLine($"[green bold]{message}[/]");
     }
 
+    /// <summary>
+    /// Demonstrates the use of a manual union type to calculate the area of a shape
+    /// using pattern matching and a closed hierarchy of shape types.
+    /// </summary>
+    /// <remarks>
+    /// This method utilizes the <see cref="Shape"/> struct, which represents a union of 
+    /// different shape types, such as <see cref="Circle"/> and <see cref="Rectangle"/>.
+    /// The area of the shape is calculated based on its specific type using a <c>switch</c> expression.
+    /// The result is displayed in the console using Spectre.Console.
+    /// </remarks>
+    /// <example>
+    /// Example output:
+    /// <code>
+    /// 78.54
+    /// </code>
+    /// </example>
+    private static void ManualUnionExample()
+    {
+
+        SpectreConsoleHelpers.PrintPink();
+        
+        Shape shape = new(new Circle(5.0));
+
+        var area = shape switch
+        {
+            Circle c => Math.PI * c.Radius * c.Radius,
+            Rectangle r => r.Width * r.Height,
+        };
+
+        AnsiConsole.MarkupLine($"[green bold]{area:F2}[/]"); // output: 78.54
+        
+    }
     /// <summary>
     /// Displays a list of tags along with their corresponding indices in the console.
     /// </summary>
@@ -132,3 +180,29 @@ public record class Contact(bool Open) : Sensor;
 public closed record class Report<T>;
 public sealed record class Single<T>(T Value) : Report<T>;
 public sealed record class Group<T>(Report<T> Left, Report<T> Right) : Report<T>;
+
+
+
+public class Employee(string firstName, string lastName)
+{
+    public string FirstName { get; set; } = firstName;
+    public string LastName { get; set; } = lastName;
+    public bool IsManager { get; set; } = false;
+}
+public  class Manager(string firstName, string lastName, string department)
+{
+    public string FirstName { get; set; } = firstName;
+    public string LastName { get; set; } = lastName;
+    public string Department { get; set; } = department;
+    public bool IsManager { get; set; } = true;
+}
+
+public union EmployeeOrManager(Employee, Manager)
+{
+    public bool IsManager => this switch
+    {
+        Employee employee => employee.IsManager,
+        Manager manager => manager.IsManager,
+        null => false,
+    };
+}

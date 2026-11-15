@@ -36,6 +36,8 @@ internal partial class Program
 
         // Extension indexer
         AnsiConsole.MarkupLine($"[green]First:[/] [yellow]{names[0]}[/]");
+        
+        AnsiConsole.MarkupLine($"[green]Last:[/] [yellow]{names[^1]}[/]");
     }
 
     private static void ClosedHierarchyProcessSensorsAndReports()

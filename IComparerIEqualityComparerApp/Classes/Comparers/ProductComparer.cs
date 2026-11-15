@@ -1,4 +1,5 @@
 ﻿using IComparerIEqualityComparerApp.Models;
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
 
 namespace IComparerIEqualityComparerApp.Classes.Comparers;
 public class ProductComparer : IEqualityComparer<Product>
@@ -10,7 +11,8 @@ public class ProductComparer : IEqualityComparer<Product>
         if (left.GetType() != right.GetType()) return false;
 
 
-        return left.Name == right.Name && left.Description == right.Description;
+        return left.Name == right.Name && 
+               left.Description == right.Description;
     }
     public int GetHashCode(Product obj)
     {

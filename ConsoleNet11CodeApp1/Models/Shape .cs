@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,3 +18,4 @@ public struct Shape : System.Runtime.CompilerServices.IUnion
 
 public record class Circle(double Radius);
 public record class Rectangle(double Width, double Height);
+

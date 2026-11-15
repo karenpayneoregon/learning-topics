@@ -12,7 +12,9 @@ internal partial class Program
         EmployeeOrManager employee = new Employee("John", "Doe");
         EmployeeOrManager manager = new Manager("Jane", "Smith", "Sales");
 
-    
+
+        IndexerDemo();
+
 
         ClosedHierarchyProcessSensorsAndReports();
         DisplayWithIndex();
@@ -20,6 +22,20 @@ internal partial class Program
         ManualUnionExample();
         
         SpectreConsoleHelpers.ExitPrompt(Justify.Left);
+    }
+
+    private static void IndexerDemo()
+    {
+
+        SpectreConsoleHelpers.PrintPink();
+        
+        List<string> names = ["John", "Jane", "Mary"];
+
+        // Extension property
+        AnsiConsole.MarkupLine($"[green]Count:[/] [yellow]{names.Count}[/]");
+
+        // Extension indexer
+        AnsiConsole.MarkupLine($"[green]First:[/] [yellow]{names[0]}[/]");
     }
 
     private static void ClosedHierarchyProcessSensorsAndReports()

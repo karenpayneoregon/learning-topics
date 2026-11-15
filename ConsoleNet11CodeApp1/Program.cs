@@ -11,9 +11,9 @@ internal partial class Program
     {
         EmployeeOrManager employee = new Employee("John", "Doe");
         EmployeeOrManager manager = new Manager("Jane", "Smith", "Sales");
-        
-        AnsiConsole.MarkupLine($"[green bold]Employee:[/] {employee.FirstName} {employee.LastName}");
-        AnsiConsole.MarkupLine($"[green bold]Manager:[/] {manager.FirstName} {manager.LastName} ({((Manager)manager).Department})");
+
+    
+
         ClosedHierarchyProcessSensorsAndReports();
         DisplayWithIndex();
         UnionHandleProductLookup();
@@ -199,10 +199,22 @@ public  class Manager(string firstName, string lastName, string department)
 
 public union EmployeeOrManager(Employee, Manager)
 {
-    public bool IsManager => this switch
+    //public bool IsManager => this switch
+    //{
+    //    Employee employee => employee.IsManager,
+    //    Manager manager => manager.IsManager,
+    //    null => false,
+    //};
+  
+    //public string EmployeeName => this switch
+    //{
+    //    Employee person => "(not a manager)",
+    //    Manager person => $"{person.FirstName} {person.LastName}"
+    //};
+
+    public string Description => this switch
     {
-        Employee employee => employee.IsManager,
-        Manager manager => manager.IsManager,
-        null => false,
+        Manager person => $"({person.Department})",
+        Employee person => "(not a manager)"
     };
 }

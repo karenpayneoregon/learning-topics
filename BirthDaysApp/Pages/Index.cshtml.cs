@@ -18,7 +18,7 @@ public class IndexModel(Context context) : PageModel
     {
         Log.Information("Greetings");
 
-        BirthDays = context.BirthDays.ToList();
+        BirthDays = [.. context.BirthDays];
 
         var people = BirthDays.Select(b =>
             new PersonViewModel(

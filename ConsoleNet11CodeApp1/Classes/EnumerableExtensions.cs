@@ -1,5 +1,8 @@
 ﻿namespace ConsoleNet11CodeApp1.Classes;
 
+/// <summary>
+/// Provides extension methods for <see cref="System.Collections.Generic.IEnumerable{T}"/>.
+/// </summary>
 public static class EnumerableExtensions
 {
     extension<T>(IEnumerable<T> sender)

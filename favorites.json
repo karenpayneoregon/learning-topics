@@ -53,6 +53,10 @@
       "path": "DbContextHelpersApp\\Classes\\DbContextHelpers.cs"
     },
     {
+      "name": "EnumerableExtensions.cs",
+      "path": "ConsoleNet11CodeApp1\\Classes\\EnumerableExtensions.cs"
+    },
+    {
       "name": "Index.cshtml",
       "path": "BirthDaysApp\\Pages\\Index.cshtml"
     },

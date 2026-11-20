@@ -12,16 +12,31 @@ internal partial class Program
         EmployeeOrManager employee = new Employee("John", "Doe");
         EmployeeOrManager manager = new Manager("Jane", "Smith", "Sales");
 
+        GenerateNext();
 
         IndexerDemo();
-
-
+        
         ClosedHierarchyProcessSensorsAndReports();
         DisplayWithIndex();
         UnionHandleProductLookup();
         ManualUnionExample();
         
-        SpectreConsoleHelpers.ExitPrompt(Justify.Left);
+        
+        
+    }
+
+    private static void GenerateNext()
+    {
+        var rng = new Random(2026);
+        HashSet<int> set = [];
+        for (int i = 0; i < 10; i++)
+        {
+            var roll = rng.NextInteger(1, 5);
+            set.Add(roll);
+        }
+        
+        AnsiConsole.MarkupLine($"[green]Unique rolls:[/] [yellow]" +
+                               $"{string.Join(", ", set.Order())}[/]");
     }
 
     private static void IndexerDemo()

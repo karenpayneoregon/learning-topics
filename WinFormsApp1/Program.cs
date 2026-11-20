@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace WinFormsApp1
 {
     internal static class Program
@@ -12,6 +14,15 @@ namespace WinFormsApp1
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.SetColorMode(SystemColorMode.Dark);
+            
+            Application.SystemVisualSettingsChanged += (sender, e) =>
+            {
+                if ((e.Changed & SystemVisualSettingsCategories.AccentColor) == 0) return;
+                Color accent = e.NewSettings.AccentColor;
+                Debug.WriteLine($"Accent color changed to {accent.Name}.");
+
+            };
+            
             Application.Run(new Form1());
         }
     }
